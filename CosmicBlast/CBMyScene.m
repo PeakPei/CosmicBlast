@@ -56,7 +56,7 @@ static inline CGPoint cbVectorNormalize(CGPoint a){
         self.backgroundColor = [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
         
         self.player = [SKSpriteNode spriteNodeWithImageNamed:@"player"];
-        self.player.position = CGPointMake(self.player.size.width/2, self.frame.size.height/2);
+        self.player.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
         [self addChild: self.player];
         
         
@@ -187,7 +187,7 @@ static inline CGPoint cbVectorNormalize(CGPoint a){
     CGPoint offset = cbVectorSub(location,projectile.position);
     
     //discount invalid clicks
-    if (offset.x <= 0) return;
+    //if (offset.x <= 0) return;
     
     //Add the projectile
     [self addChild:projectile];
