@@ -10,4 +10,11 @@
 
 @interface CBMyScene : SKScene
 
+@property (nonatomic) SKSpriteNode * player;
+
+
+@property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
+@property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
+
+
 @end
