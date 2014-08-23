@@ -58,7 +58,10 @@ static inline CGPoint cbVectorNormalize(CGPoint a){
         self.player = [SKSpriteNode spriteNodeWithImageNamed:@"player"];
         self.player.position = CGPointMake(self.player.size.width/2, self.frame.size.height/2);
         [self addChild: self.player];
-        [self addChild: [self upButtonNode]];
+        
+        
+        
+        
         
         
         
