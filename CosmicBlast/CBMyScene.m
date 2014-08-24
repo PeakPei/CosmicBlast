@@ -177,7 +177,7 @@ CMMotionManager *_motionManager;
         self.lastSpawnTimeInterval = 0;
         
         //uncomment to enable monsters
-        //[self addMonster];
+        [self addMonster];
     }
     [self updatePositionFromMotionManager];
     

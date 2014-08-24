@@ -31,17 +31,21 @@
         self.position = CGPointMake(oldPoint.x + 1, oldPoint.y);
         
     }
-    if (y > .2){
+    if (y < -.5){
         
         CGPoint oldPoint = CGPointMake(self.position.x, self.position.y);
         self.position = CGPointMake(oldPoint.x, oldPoint.y+1);
         
     }
-    if (y < -.2){
+    if (y > -.2){
         CGPoint oldPoint = CGPointMake(self.position.x, self.position.y);
         self.position = CGPointMake(oldPoint.x, oldPoint.y-1);
     }
-        
+    
+    //just log out some data
+    
+    //NSLog(@"worldPosition x = %f worldPosition y = %f", self.position.x, self.position.y);
+    
     
 }
 
