@@ -6,12 +6,17 @@
 //  Copyright (c) 2014 Teddy Kitchen. All rights reserved.
 //
 
+
+@import CoreMotion;
 #import "CBMyScene.h"
 
 
 
 static const uint32_t projectileCategory     =  0x1 << 0;
 static const uint32_t monsterCategory        =  0x1 << 1;
+
+
+
 
 //Adds two vectors represented as points
 static inline CGPoint cbVectorAdd(CGPoint a, CGPoint b ) {
@@ -47,6 +52,9 @@ static inline CGPoint cbVectorNormalize(CGPoint a){
 
 @implementation CBMyScene
 
+
+CMMotionManager *_motionManager;
+
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
         
@@ -55,12 +63,16 @@ static inline CGPoint cbVectorNormalize(CGPoint a){
         
         self.backgroundColor = [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
         
+        
         self.player = [SKSpriteNode spriteNodeWithImageNamed:@"player"];
         self.player.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
         [self addChild: self.player];
         
         
         
+        
+        _motionManager = [[CMMotionManager alloc] init];
+        [self startMonitoringAcceleration];
         
         
         
@@ -73,6 +85,41 @@ static inline CGPoint cbVectorNormalize(CGPoint a){
     return self;
     
 }
+
+-(void)startMonitoringAcceleration{
+    
+    
+    if(_motionManager.accelerometerAvailable){
+        [_motionManager startAccelerometerUpdates];
+        NSLog(@"accelerometer updates on...");
+    }
+    else{
+        NSLog(@"motionManager.accelerometerAvailable is false");
+    }
+}
+
+
+- (void)stopMonitoringAcceleration
+{
+    if (_motionManager.accelerometerAvailable && _motionManager.accelerometerActive) {
+        [_motionManager stopAccelerometerUpdates];
+        NSLog(@"accelerometer updates off...");
+    }
+}
+
+
+-(void)updatePositionFromMotionManager {
+    
+    CMAccelerometerData* data = _motionManager.accelerometerData;
+    if(fabs(data.acceleration.x) > 0.2){
+        NSLog(@"x acceleration value = %f", data.acceleration.x);
+    }
+    if(fabs(data.acceleration.y) > 0.2){
+        NSLog(@"y acceleration value = %f", data.acceleration.y);
+    }
+}
+
+
 
 -(void)addMonster {
     //Create Sprite
@@ -121,6 +168,7 @@ static inline CGPoint cbVectorNormalize(CGPoint a){
         self.lastSpawnTimeInterval = 0;
         [self addMonster];
     }
+    [self updatePositionFromMotionManager];
     
     
 }
