@@ -27,7 +27,7 @@
 		6566BEBD1980387400602447 /* background-music-aac.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6566BEBA1980387400602447 /* background-music-aac.caf */; };
 		6566BEBE1980387400602447 /* pew-pew-lei.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6566BEBB1980387400602447 /* pew-pew-lei.caf */; };
 		6566BEBF1980387400602447 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 6566BEBC1980387400602447 /* sprites.atlas */; };
-		65EBF13219A96E4100F0BA37 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 65EBF13119A96E4100F0BA37 /* Background.png */; };
+		65EBF13419A9731000F0BA37 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 65EBF13319A9731000F0BA37 /* Background.png */; };
 		65F1DCA5199046A500701865 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 65F1DCA4199046A500701865 /* up.png */; };
 /* End PBXBuildFile section */
 
@@ -68,7 +68,7 @@
 		6566BEBA1980387400602447 /* background-music-aac.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "background-music-aac.caf"; sourceTree = "<group>"; };
 		6566BEBB1980387400602447 /* pew-pew-lei.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pew-pew-lei.caf"; sourceTree = "<group>"; };
 		6566BEBC1980387400602447 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
-		65EBF13119A96E4100F0BA37 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
+		65EBF13319A9731000F0BA37 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
 		65F1DCA4199046A500701865 /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,7 +140,7 @@
 				6566BE9619802D5D00602447 /* CBMyScene.h */,
 				6566BE9719802D5D00602447 /* CBMyScene.m */,
 				6566BE9919802D5D00602447 /* Spaceship.png */,
-				65EBF13119A96E4100F0BA37 /* Background.png */,
+				65EBF13319A9731000F0BA37 /* Background.png */,
 				6566BE9B19802D5D00602447 /* Images.xcassets */,
 				6566BEB81980387400602447 /* SpriteKitSimpleGameResources */,
 				6566BE8519802D5D00602447 /* Supporting Files */,
@@ -277,8 +277,8 @@
 			files = (
 				6566BEBF1980387400602447 /* sprites.atlas in Resources */,
 				6566BEBD1980387400602447 /* background-music-aac.caf in Resources */,
-				65EBF13219A96E4100F0BA37 /* Background.png in Resources */,
 				6566BE8919802D5D00602447 /* InfoPlist.strings in Resources */,
+				65EBF13419A9731000F0BA37 /* Background.png in Resources */,
 				6566BE9C19802D5D00602447 /* Images.xcassets in Resources */,
 				6566BE9A19802D5D00602447 /* Spaceship.png in Resources */,
 				6566BE9219802D5D00602447 /* Main.storyboard in Resources */,

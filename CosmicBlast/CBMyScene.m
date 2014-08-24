@@ -64,6 +64,11 @@ CMMotionManager *_motionManager;
         self.backgroundColor = [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
         
         
+        self.background = [SKSpriteNode spriteNodeWithImageNamed:@"Background"];
+        self.background.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+        [self addChild: self.background];
+        
+        
         self.player = [SKSpriteNode spriteNodeWithImageNamed:@"player"];
         self.player.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
         [self addChild: self.player];
@@ -166,6 +171,8 @@ CMMotionManager *_motionManager;
     self.lastSpawnTimeInterval += timeSinceLast;
     if (self.lastSpawnTimeInterval > 1) {
         self.lastSpawnTimeInterval = 0;
+        
+        
         [self addMonster];
     }
     [self updatePositionFromMotionManager];
