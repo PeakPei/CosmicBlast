@@ -64,9 +64,9 @@ CMMotionManager *_motionManager;
         self.backgroundColor = [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
         
         
-        self.background = [SKSpriteNode spriteNodeWithImageNamed:@"Background"];
-        self.background.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
-        [self addChild: self.background];
+        self.currentWorld = [CBWorld worldWithImageNamed:@"Background" position:CGPointZero];
+        self.currentWorld.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+        [self addChild: self.currentWorld];
         
         
         self.player = [SKSpriteNode spriteNodeWithImageNamed:@"player"];
@@ -122,6 +122,10 @@ CMMotionManager *_motionManager;
     if(fabs(data.acceleration.y) > 0.2){
         NSLog(@"y acceleration value = %f", data.acceleration.y);
     }
+    
+    [self.currentWorld moveCameraWithAccelerationXValue:data.acceleration.x yValue:data.acceleration.y];
+    
+    
 }
 
 

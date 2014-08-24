@@ -10,10 +10,10 @@
 
 @implementation CBWorld
 
-+ (id)worldWithImageNamed:(NSString *)name drawingPosition:(CGPoint)drawPoint{
++ (id)worldWithImageNamed:(NSString *)name position:(CGPoint)drawPoint{
     
      CBWorld * world = [CBWorld spriteNodeWithImageNamed:name];
-    world.drawingPoint = drawPoint;
+    world.position = drawPoint;
     
     return world;
 }
@@ -22,9 +22,9 @@
 -(void)moveCameraWithAccelerationXValue:(double)x yValue:(double)y{
     
     if (x > .2){
-        CGPoint oldPoint = CGPointMake(self.drawingPoint.x, self.drawingPoint.y);
+        CGPoint oldPoint = CGPointMake(self.position.x, self.position.y);
         
-        self.drawingPoint = CGPointMake(oldPoint.x + 5, oldPoint.y + 5);
+        self.position = CGPointMake(oldPoint.x + 5, oldPoint.y + 5);
     }
         
     

@@ -11,9 +11,9 @@
 @interface CBWorld : SKSpriteNode
 
 @property CGPoint playerLocation;
-@property CGPoint drawingPoint;
 
-+ (id)worldWithImageNamed:(NSString *)name drawingPosition:(CGPoint)drawPoint;
+
++ (id)worldWithImageNamed:(NSString *)name position:(CGPoint)drawPoint;
 
 
 -(void)moveCameraWithAccelerationXValue:(double)x yValue:(double)y;
