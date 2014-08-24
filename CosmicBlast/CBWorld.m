@@ -23,8 +23,23 @@
     
     if (x > .2){
         CGPoint oldPoint = CGPointMake(self.position.x, self.position.y);
+        self.position = CGPointMake(oldPoint.x - 1, oldPoint.y);
+    }
+    if (x < -.2){
         
-        self.position = CGPointMake(oldPoint.x + 5, oldPoint.y + 5);
+        CGPoint oldPoint = CGPointMake(self.position.x, self.position.y);
+        self.position = CGPointMake(oldPoint.x + 1, oldPoint.y);
+        
+    }
+    if (y > .2){
+        
+        CGPoint oldPoint = CGPointMake(self.position.x, self.position.y);
+        self.position = CGPointMake(oldPoint.x, oldPoint.y+1);
+        
+    }
+    if (y < -.2){
+        CGPoint oldPoint = CGPointMake(self.position.x, self.position.y);
+        self.position = CGPointMake(oldPoint.x, oldPoint.y-1);
     }
         
     
