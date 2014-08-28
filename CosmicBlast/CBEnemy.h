@@ -10,4 +10,9 @@
 
 @interface CBEnemy : SKSpriteNode
 
++(id)enemyWithImageNamed:(NSString *)name;
+
+
+
+
 @end

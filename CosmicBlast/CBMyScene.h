@@ -9,10 +9,11 @@
 #import <SpriteKit/SpriteKit.h>
 
 #import"CBWorld.h"
+#import"CBPlayer.h"
 
 @interface CBMyScene : SKScene
 
-@property (nonatomic) SKSpriteNode * player;
+@property (nonatomic) CBPlayer * player;
 @property (nonatomic) CBWorld * currentWorld;
 
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;

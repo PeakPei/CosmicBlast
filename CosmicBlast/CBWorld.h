@@ -16,6 +16,6 @@
 + (id)worldWithImageNamed:(NSString *)name position:(CGPoint)drawPoint;
 
 
--(void)moveCameraWithAccelerationXValue:(double)x yValue:(double)y;
+-(void)moveCameraWithAccelerationXValue:(double)x yValue:(double)y speed:(int)speed;
 
 @end

@@ -9,7 +9,8 @@
 
 @import CoreMotion;
 #import "CBMyScene.h"
-
+#import "CBEnemy.h"
+#import "CBPlayer.h"
 
 
 static const uint32_t projectileCategory     =  0x1 << 0;
@@ -69,9 +70,9 @@ CMMotionManager *_motionManager;
         [self addChild: self.currentWorld];
         
         
-        self.player = [SKSpriteNode spriteNodeWithImageNamed:@"player"];
-        self.player.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
-        [self addChild: self.player];
+        self.player = [CBPlayer playerWithImageNamed:@"player"];
+        self.player.position = CGPointMake(0, 0);
+        [self.currentWorld addChild: self.player];
         
         
         
@@ -123,7 +124,11 @@ CMMotionManager *_motionManager;
         NSLog(@"y acceleration value = %f", data.acceleration.y);
     }
     
-    [self.currentWorld moveCameraWithAccelerationXValue:data.acceleration.x yValue:data.acceleration.y];
+    int speed = 2;
+    
+    [self.currentWorld moveCameraWithAccelerationXValue:data.acceleration.x yValue:data.acceleration.y speed:speed];
+    [self.player movePlayerWithAccelerationXvalue:data.acceleration.x yValue:data.acceleration.y speed:speed];
+    
     
     
 }
@@ -132,8 +137,10 @@ CMMotionManager *_motionManager;
 
 -(void)addMonster {
     //Create Sprite
-    SKSpriteNode * monster = [SKSpriteNode spriteNodeWithImageNamed:@"monster"];
+    CBEnemy * monster = [CBEnemy enemyWithImageNamed:@"monster"];
     
+    
+    //Set up monster physics body (may want to make a class to do this later)
     monster.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:monster.size];
     monster.physicsBody.dynamic = YES;
     monster.physicsBody.categoryBitMask = monsterCategory;
@@ -146,11 +153,14 @@ CMMotionManager *_motionManager;
     int rangeY = maxY - minY;
     int actualY = (arc4random() % rangeY) + minY;
     
+    int testY = 0;//self.currentWorld.size.width/2;
+    int testX = 0;//self.currentWorld.size.height/2;
+    
     // Create the monster slightly off-screen along the right edge,
     // and along a random position along the Y axis as calculated above
     
-    monster.position = CGPointMake(self.frame.size.width + monster.size.width/2, actualY);
-    
+    //monster.position = CGPointMake(self.frame.size.width + monster.size.width/2, actualY);
+    monster.position = CGPointMake(testX, testY);
     [self.currentWorld addChild:monster];
     
     int minDuration = 2.0;
@@ -165,7 +175,7 @@ CMMotionManager *_motionManager;
     
     SKAction * actionMoveDone = [SKAction removeFromParent];
     
-    [monster runAction:[SKAction sequence:@[actionMove, actionMoveDone]]];
+    //[monster runAction:[SKAction sequence:@[actionMove, actionMoveDone]]];
     
     
 }
@@ -226,7 +236,7 @@ CMMotionManager *_motionManager;
     
     //chose a touch to work with
     UITouch * touch = [touches anyObject];
-    CGPoint location = [touch locationInNode:self];
+    CGPoint location = [touch locationInNode:self.currentWorld];
     
     //set up initial location
     SKSpriteNode * projectile = [SKSpriteNode spriteNodeWithImageNamed:@"projectile"];
@@ -249,7 +259,7 @@ CMMotionManager *_motionManager;
     //if (offset.x <= 0) return;
     
     //Add the projectile
-    [self addChild:projectile];
+    [self.currentWorld addChild:projectile];
     
     //Get shooting direction
     CGPoint direction = cbVectorNormalize(offset);

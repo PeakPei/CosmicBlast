@@ -10,4 +10,13 @@
 
 @implementation CBEnemy
 
+
++(id)enemyWithImageNamed:(NSString *)name{
+
+    CBEnemy * enemy = [CBEnemy spriteNodeWithImageNamed:name];
+
+    return enemy;
+}
+
+
 @end

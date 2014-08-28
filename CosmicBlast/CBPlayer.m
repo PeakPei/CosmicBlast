@@ -1,57 +1,50 @@
 //
-//  CBWorld.m
+//  CBPlayer.m
 //  CosmicBlast
 //
-//  Created by Teddy Kitchen on 8/23/14.
+//  Created by Teddy Kitchen on 8/28/14.
 //  Copyright (c) 2014 Teddy Kitchen. All rights reserved.
 //
 
-#import "CBWorld.h"
+#import "CBPlayer.h"
 
-@implementation CBWorld
+@implementation CBPlayer
 
-+ (id)worldWithImageNamed:(NSString *)name position:(CGPoint)drawPoint{
++(id)playerWithImageNamed:(NSString *)name{
     
-     CBWorld * world = [CBWorld spriteNodeWithImageNamed:name];
-    world.position = drawPoint;
+    CBPlayer * player = [CBPlayer spriteNodeWithImageNamed:name];
     
-    return world;
+    return player;
+    
 }
 
 
--(void)moveCameraWithAccelerationXValue:(double)x yValue:(double)y speed:(int)speed{
+-(void)movePlayerWithAccelerationXvalue:(double)x yValue:(double)y speed:(int)speed{
     
     
     
-    if (x > .2){
+    if (x < -.2){
         CGPoint oldPoint = CGPointMake(self.position.x, self.position.y);
         self.position = CGPointMake(oldPoint.x - speed, oldPoint.y);
     }
-    if (x < -.2){
+    if (x > .2){
         
         CGPoint oldPoint = CGPointMake(self.position.x, self.position.y);
         self.position = CGPointMake(oldPoint.x + speed, oldPoint.y);
         
     }
-    if (y < -.5){
+    if (y > -.2){
         
         CGPoint oldPoint = CGPointMake(self.position.x, self.position.y);
         self.position = CGPointMake(oldPoint.x, oldPoint.y + speed);
         
     }
-    if (y > -.2){
+    if (y < -.5){
         CGPoint oldPoint = CGPointMake(self.position.x, self.position.y);
         self.position = CGPointMake(oldPoint.x, oldPoint.y - speed);
     }
-    //just log out some data
-    
-    //NSLog(@"worldPosition x = %f worldPosition y = %f", self.position.x, self.position.y);
     
     
 }
-
-
-
-
 
 @end
