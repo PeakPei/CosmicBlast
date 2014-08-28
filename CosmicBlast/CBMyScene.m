@@ -151,7 +151,7 @@ CMMotionManager *_motionManager;
     
     monster.position = CGPointMake(self.frame.size.width + monster.size.width/2, actualY);
     
-    [self addChild:monster];
+    [self.currentWorld addChild:monster];
     
     int minDuration = 2.0;
     int maxDuration = 4.0;
