@@ -148,8 +148,8 @@ CMMotionManager *_motionManager;
     monster.physicsBody.collisionBitMask = 0;
     
    //Determine where to spawn monster along Y axis
-    int minY = monster.size.height/2;
-    int maxY = self.frame.size.height - monster.size.height/2;
+    int minY = (monster.size.height/2) - (self.currentWorld.size.height/2);
+    int maxY = self.currentWorld.size.height - monster.size.height/2;
     int rangeY = maxY - minY;
     int actualY = (arc4random() % rangeY) + minY;
     
@@ -159,8 +159,8 @@ CMMotionManager *_motionManager;
     // Create the monster slightly off-screen along the right edge,
     // and along a random position along the Y axis as calculated above
     
-    //monster.position = CGPointMake(self.frame.size.width + monster.size.width/2, actualY);
-    monster.position = CGPointMake(testX, testY);
+    monster.position = CGPointMake(self.frame.size.width + monster.size.width/2, actualY);
+    //monster.position = CGPointMake(testX, testY);
     [self.currentWorld addChild:monster];
     
     int minDuration = 2.0;
@@ -175,7 +175,7 @@ CMMotionManager *_motionManager;
     
     SKAction * actionMoveDone = [SKAction removeFromParent];
     
-    //[monster runAction:[SKAction sequence:@[actionMove, actionMoveDone]]];
+    [monster runAction:[SKAction sequence:@[actionMove, actionMoveDone]]];
     
     
 }
