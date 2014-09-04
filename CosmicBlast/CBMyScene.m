@@ -129,7 +129,7 @@ CMMotionManager *_motionManager;
         NSLog(@"y acceleration value = %f", data.acceleration.y);
     }
     
-    int speed = 2;
+    int speed = 0;
     
     [self.currentWorld moveCameraWithAccelerationXValue:data.acceleration.x yValue:data.acceleration.y speed:speed];
     [self.player movePlayerWithAccelerationXvalue:data.acceleration.x yValue:data.acceleration.y speed:speed];
@@ -179,8 +179,8 @@ CMMotionManager *_motionManager;
     
         //Create the actions
         
-        int randx = arc4random_uniform(self.currentWorld.size.width);
-        int randy = arc4random_uniform(self.currentWorld.size.height);
+        int randx = arc4random_uniform(self.currentWorld.size.width)-self.currentWorld.size.width/2;
+        int randy = arc4random_uniform(self.currentWorld.size.height)-self.currentWorld.size.height/2;
         
         SKAction * actionMove = [SKAction moveTo:CGPointMake(randx,randy) duration:actualDuration];
     

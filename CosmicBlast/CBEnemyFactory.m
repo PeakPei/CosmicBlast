@@ -18,7 +18,7 @@
 
 +(id)enemyFactoryWithColor:(SKColor *)color size:(CGSize)size{
     
-    CBEnemyFactory * enemyFactory = [CBEnemyFactory enemyFactoryWithColor:color size:size];
+    CBEnemyFactory * enemyFactory = [CBEnemyFactory spriteNodeWithColor:color size:size];
     return enemyFactory;
     
 }
