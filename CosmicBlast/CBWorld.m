@@ -47,8 +47,9 @@
     
     //NSLog(@"worldPosition x = %f worldPosition y = %f", self.position.x, self.position.y);
     
-    
 }
+
+
 
 
 

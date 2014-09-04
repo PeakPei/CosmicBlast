@@ -11,6 +11,8 @@
 #import "CBMyScene.h"
 #import "CBEnemy.h"
 #import "CBPlayer.h"
+#import "CBEnemyFactory.h"
+
 
 
 static const uint32_t projectileCategory     =  0x1 << 0;
@@ -74,13 +76,16 @@ CMMotionManager *_motionManager;
         self.player.position = CGPointMake(0, 0);
         [self.currentWorld addChild: self.player];
         
-        
+        self.factories = [[NSMutableArray alloc] init];
         
         
         _motionManager = [[CMMotionManager alloc] init];
         [self startMonitoringAcceleration];
         
         
+        
+        //Change this depending on levels
+        [self placeFactoryAtPosition:CGPointMake(0, 0)];
         
         
         
@@ -135,48 +140,53 @@ CMMotionManager *_motionManager;
 
 
 
+
+//Fix hardcoding.  need to figur out world configuration
+-(void)placeFactoryAtPosition:(CGPoint)position{
+    CBEnemyFactory * factory = [CBEnemyFactory enemyFactoryWithColor:[SKColor blackColor] size:CGSizeMake(30,30)];
+    
+    [factory setPosition:position];
+    [self.currentWorld addChild:factory];
+    [self.factories addObject:factory];
+    
+    
+    
+}
+
+
 -(void)addMonster {
     //Create Sprite
-    CBEnemy * monster = [CBEnemy enemyWithImageNamed:@"monster"];
+    for (CBEnemyFactory *factory in self.factories) {
+        
+    
+        CBWalker * monster = [CBEnemy enemyWithImageNamed:@"monster"];
     
     
     //Set up monster physics body (may want to make a class to do this later)
-    monster.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:monster.size];
-    monster.physicsBody.dynamic = YES;
-    monster.physicsBody.categoryBitMask = monsterCategory;
-    monster.physicsBody.contactTestBitMask = projectileCategory;
-    monster.physicsBody.collisionBitMask = 0;
+        monster.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:monster.size];
+        monster.physicsBody.dynamic = YES;
+        monster.physicsBody.categoryBitMask = monsterCategory;
+        monster.physicsBody.contactTestBitMask = projectileCategory;
+        monster.physicsBody.collisionBitMask = 0;
+        [self.currentWorld addChild:monster];
     
-   //Determine where to spawn monster along Y axis
-    int minY = (monster.size.height/2) - (self.currentWorld.size.height/2);
-    int maxY = self.currentWorld.size.height - monster.size.height/2;
-    int rangeY = maxY - minY;
-    int actualY = (arc4random() % rangeY) + minY;
-    
-    int testY = 0;//self.currentWorld.size.width/2;
-    int testX = 0;//self.currentWorld.size.height/2;
-    
-    // Create the monster slightly off-screen along the right edge,
-    // and along a random position along the Y axis as calculated above
-    
-    monster.position = CGPointMake(self.frame.size.width + monster.size.width/2, actualY);
-    //monster.position = CGPointMake(testX, testY);
-    [self.currentWorld addChild:monster];
-    
-    int minDuration = 2.0;
-    int maxDuration = 4.0;
-    int rangeDuration = maxDuration - minDuration;
-    int actualDuration = (arc4random() % rangeDuration) + minDuration;
+        int minDuration = 2.0;
+        int maxDuration = 4.0;
+        int rangeDuration = maxDuration - minDuration;
+        int actualDuration = (arc4random() % rangeDuration) + minDuration;
     
     
-    //Create the actions
+        //Create the actions
+        
+        int randx = arc4random_uniform(self.currentWorld.size.width);
+        int randy = arc4random_uniform(self.currentWorld.size.height);
+        
+        SKAction * actionMove = [SKAction moveTo:CGPointMake(randx,randy) duration:actualDuration];
     
-    SKAction * actionMove = [SKAction moveTo:CGPointMake(-monster.size.width/2, actualY) duration:actualDuration];
+        SKAction * actionMoveDone = [SKAction removeFromParent];
     
-    SKAction * actionMoveDone = [SKAction removeFromParent];
-    
-    [monster runAction:[SKAction sequence:@[actionMove, actionMoveDone]]];
-    
+        [monster runAction:[SKAction sequence:@[actionMove, actionMoveDone]]];
+    }
     
 }
 

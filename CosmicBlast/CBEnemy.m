@@ -19,4 +19,11 @@
 }
 
 
+
+-(void)setEnemyPosition:(CGPoint)position{
+    
+    self.position = position;
+    
+}
+
 @end

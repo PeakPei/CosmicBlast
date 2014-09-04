@@ -15,9 +15,14 @@
 
 @property (nonatomic) CBPlayer * player;
 @property (nonatomic) CBWorld * currentWorld;
+@property (nonatomic) NSMutableArray * factories;
+
 
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
+
+
+
 
 
 @end

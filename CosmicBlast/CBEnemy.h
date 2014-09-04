@@ -12,7 +12,7 @@
 
 +(id)enemyWithImageNamed:(NSString *)name;
 
-
+-(void)setEnemyPosition:(CGPoint)position;
 
 
 @end

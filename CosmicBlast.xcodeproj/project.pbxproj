@@ -29,6 +29,8 @@
 		6566BEBD1980387400602447 /* background-music-aac.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6566BEBA1980387400602447 /* background-music-aac.caf */; };
 		6566BEBE1980387400602447 /* pew-pew-lei.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6566BEBB1980387400602447 /* pew-pew-lei.caf */; };
 		6566BEBF1980387400602447 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 6566BEBC1980387400602447 /* sprites.atlas */; };
+		65BA8A8419B8E187003DCDD9 /* CBWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8A8319B8E187003DCDD9 /* CBWalker.m */; };
+		65BA8A8719B8E4B6003DCDD9 /* CBEnemyFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8A8619B8E4B6003DCDD9 /* CBEnemyFactory.m */; };
 		65EBF13419A9731000F0BA37 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 65EBF13319A9731000F0BA37 /* Background.png */; };
 		65EBF13719A97AD400F0BA37 /* CBWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EBF13619A97AD400F0BA37 /* CBWorld.m */; };
 		65F1DCA5199046A500701865 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 65F1DCA4199046A500701865 /* up.png */; };
@@ -76,6 +78,10 @@
 		6566BEBA1980387400602447 /* background-music-aac.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "background-music-aac.caf"; sourceTree = "<group>"; };
 		6566BEBB1980387400602447 /* pew-pew-lei.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pew-pew-lei.caf"; sourceTree = "<group>"; };
 		6566BEBC1980387400602447 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
+		65BA8A8219B8E187003DCDD9 /* CBWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWalker.h; sourceTree = "<group>"; };
+		65BA8A8319B8E187003DCDD9 /* CBWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWalker.m; sourceTree = "<group>"; };
+		65BA8A8519B8E4B6003DCDD9 /* CBEnemyFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBEnemyFactory.h; sourceTree = "<group>"; };
+		65BA8A8619B8E4B6003DCDD9 /* CBEnemyFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBEnemyFactory.m; sourceTree = "<group>"; };
 		65EBF13319A9731000F0BA37 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
 		65EBF13519A97AD400F0BA37 /* CBWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWorld.h; sourceTree = "<group>"; };
 		65EBF13619A97AD400F0BA37 /* CBWorld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWorld.m; sourceTree = "<group>"; };
@@ -160,6 +166,10 @@
 				6515FAD619AFD25800E82568 /* CBPlayer.m */,
 				65FDF3AF19A996B200D4269C /* CBEnemy.h */,
 				65FDF3B019A996B200D4269C /* CBEnemy.m */,
+				65BA8A8219B8E187003DCDD9 /* CBWalker.h */,
+				65BA8A8519B8E4B6003DCDD9 /* CBEnemyFactory.h */,
+				65BA8A8619B8E4B6003DCDD9 /* CBEnemyFactory.m */,
+				65BA8A8319B8E187003DCDD9 /* CBWalker.m */,
 				65EBF13319A9731000F0BA37 /* Background.png */,
 				6566BE9B19802D5D00602447 /* Images.xcassets */,
 				6566BEB81980387400602447 /* SpriteKitSimpleGameResources */,
@@ -328,6 +338,8 @@
 				65FDF3B119A996B200D4269C /* CBEnemy.m in Sources */,
 				6566BE9819802D5D00602447 /* CBMyScene.m in Sources */,
 				6515FAD419AFB6DE00E82568 /* CBVectorMath.m in Sources */,
+				65BA8A8719B8E4B6003DCDD9 /* CBEnemyFactory.m in Sources */,
+				65BA8A8419B8E187003DCDD9 /* CBWalker.m in Sources */,
 				65EBF13719A97AD400F0BA37 /* CBWorld.m in Sources */,
 				6515FAD719AFD25800E82568 /* CBPlayer.m in Sources */,
 			);
