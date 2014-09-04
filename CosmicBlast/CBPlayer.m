@@ -19,6 +19,7 @@
 }
 
 
+
 -(void)movePlayerWithAccelerationXvalue:(double)x yValue:(double)y speed:(int)speed{
     
     

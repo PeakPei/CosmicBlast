@@ -154,15 +154,16 @@ CMMotionManager *_motionManager;
 }
 
 
+
 -(void)addMonster {
     //Create Sprite
     for (CBEnemyFactory *factory in self.factories) {
         
     
-        CBWalker * monster = [CBEnemy enemyWithImageNamed:@"monster"];
+        CBWalker * monster = [factory createWalker];
     
     
-    //Set up monster physics body (may want to make a class to do this later)
+        //Set up monster physics body (may want to make a class to do this later)
         monster.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:monster.size];
         monster.physicsBody.dynamic = YES;
         monster.physicsBody.categoryBitMask = monsterCategory;
