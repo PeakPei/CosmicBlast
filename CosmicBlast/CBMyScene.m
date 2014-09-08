@@ -129,7 +129,7 @@ CMMotionManager *_motionManager;
         NSLog(@"y acceleration value = %f", data.acceleration.y);
     }
     
-    int speed = 0;
+    int speed = 2;
     
     [self.currentWorld moveCameraWithAccelerationXValue:data.acceleration.x yValue:data.acceleration.y speed:speed];
     [self.player movePlayerWithAccelerationXvalue:data.acceleration.x yValue:data.acceleration.y speed:speed];

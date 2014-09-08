@@ -12,4 +12,7 @@
 
 +(id)walkerWithImageNamed:(NSString *)name;
 
+-(void)handleMovement;
+
+
 @end

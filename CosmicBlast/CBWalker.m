@@ -10,6 +10,8 @@
 
 @implementation CBWalker
 
+
+//creates a walker sprite with an image name
 +(id)walkerWithImageNamed:(NSString *)name{
     
     CBWalker * walker = [CBWalker spriteNodeWithImageNamed:name];
@@ -17,5 +19,14 @@
     return walker;
     
 }
+
+
+-(void)handleMovement{
+    
+    
+    
+}
+
+
 
 @end

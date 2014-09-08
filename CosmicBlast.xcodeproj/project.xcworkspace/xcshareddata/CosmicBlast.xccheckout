@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2C00EE8D-CC74-4D75-B5C4-2B5CA03F1337</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CosmicBlast</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>88CF2BDC-6FF1-4352-8772-F0AB6911CCE6</key>
+		<string>https://github.com/kitchenteddy/CosmicBlast.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CosmicBlast.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>88CF2BDC-6FF1-4352-8772-F0AB6911CCE6</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/kitchenteddy/CosmicBlast.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>88CF2BDC-6FF1-4352-8772-F0AB6911CCE6</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>88CF2BDC-6FF1-4352-8772-F0AB6911CCE6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CosmicBlast</string>
+		</dict>
+	</array>
+</dict>
+</plist>
