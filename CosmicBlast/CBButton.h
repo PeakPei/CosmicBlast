@@ -10,4 +10,8 @@
 
 @interface CBButton : SKSpriteNode
 
++(id)buttonWithColor:(SKColor *)color size:(CGSize)size;
+
+-(void)setButtonPosition:(CGPoint)position;
+
 @end
