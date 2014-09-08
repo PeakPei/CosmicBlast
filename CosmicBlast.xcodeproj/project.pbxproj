@@ -19,7 +19,6 @@
 		6566BE9219802D5D00602447 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6566BE9019802D5D00602447 /* Main.storyboard */; };
 		6566BE9519802D5D00602447 /* CBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6566BE9419802D5D00602447 /* CBViewController.m */; };
 		6566BE9819802D5D00602447 /* CBMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6566BE9719802D5D00602447 /* CBMyScene.m */; };
-		6566BE9A19802D5D00602447 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 6566BE9919802D5D00602447 /* Spaceship.png */; };
 		6566BE9C19802D5D00602447 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6566BE9B19802D5D00602447 /* Images.xcassets */; };
 		6566BEA319802D5D00602447 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6566BEA219802D5D00602447 /* XCTest.framework */; };
 		6566BEA419802D5D00602447 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6566BE7C19802D5D00602447 /* Foundation.framework */; };
@@ -35,7 +34,6 @@
 		65BA8A8719B8E4B6003DCDD9 /* CBEnemyFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8A8619B8E4B6003DCDD9 /* CBEnemyFactory.m */; };
 		65EBF13419A9731000F0BA37 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 65EBF13319A9731000F0BA37 /* Background.png */; };
 		65EBF13719A97AD400F0BA37 /* CBWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EBF13619A97AD400F0BA37 /* CBWorld.m */; };
-		65F1DCA5199046A500701865 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 65F1DCA4199046A500701865 /* up.png */; };
 		65FDF3B119A996B200D4269C /* CBEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FDF3B019A996B200D4269C /* CBEnemy.m */; };
 /* End PBXBuildFile section */
 
@@ -70,7 +68,6 @@
 		6566BE9419802D5D00602447 /* CBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBViewController.m; sourceTree = "<group>"; };
 		6566BE9619802D5D00602447 /* CBMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBMyScene.h; sourceTree = "<group>"; };
 		6566BE9719802D5D00602447 /* CBMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBMyScene.m; sourceTree = "<group>"; };
-		6566BE9919802D5D00602447 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		6566BE9B19802D5D00602447 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6566BEA119802D5D00602447 /* CosmicBlastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmicBlastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6566BEA219802D5D00602447 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -91,7 +88,6 @@
 		65EBF13319A9731000F0BA37 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
 		65EBF13519A97AD400F0BA37 /* CBWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWorld.h; sourceTree = "<group>"; };
 		65EBF13619A97AD400F0BA37 /* CBWorld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWorld.m; sourceTree = "<group>"; };
-		65F1DCA4199046A500701865 /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up.png; sourceTree = "<group>"; };
 		65FDF3AF19A996B200D4269C /* CBEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBEnemy.h; sourceTree = "<group>"; };
 		65FDF3B019A996B200D4269C /* CBEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBEnemy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,32 +151,12 @@
 		6566BE8419802D5D00602447 /* CosmicBlast */ = {
 			isa = PBXGroup;
 			children = (
-				6566BE8D19802D5D00602447 /* CBAppDelegate.h */,
-				6566BE8E19802D5D00602447 /* CBAppDelegate.m */,
-				6566BE9019802D5D00602447 /* Main.storyboard */,
-				6566BE9319802D5D00602447 /* CBViewController.h */,
-				6566BE9419802D5D00602447 /* CBViewController.m */,
-				65F1DCA4199046A500701865 /* up.png */,
-				6566BE9619802D5D00602447 /* CBMyScene.h */,
-				6566BE9719802D5D00602447 /* CBMyScene.m */,
-				6579700D19BE43CE00E2B9D9 /* CBButtonBar.h */,
-				6579700E19BE43CE00E2B9D9 /* CBButtonBar.m */,
-				6579701019BE43E200E2B9D9 /* CBButton.h */,
-				6579701119BE43E200E2B9D9 /* CBButton.m */,
-				6515FAD219AFB6DE00E82568 /* CBVectorMath.h */,
-				6515FAD319AFB6DE00E82568 /* CBVectorMath.m */,
-				65EBF13519A97AD400F0BA37 /* CBWorld.h */,
-				65EBF13619A97AD400F0BA37 /* CBWorld.m */,
-				6566BE9919802D5D00602447 /* Spaceship.png */,
-				6515FAD519AFD25800E82568 /* CBPlayer.h */,
-				6515FAD619AFD25800E82568 /* CBPlayer.m */,
-				65FDF3AF19A996B200D4269C /* CBEnemy.h */,
-				65FDF3B019A996B200D4269C /* CBEnemy.m */,
-				65BA8A8519B8E4B6003DCDD9 /* CBEnemyFactory.h */,
-				65BA8A8619B8E4B6003DCDD9 /* CBEnemyFactory.m */,
-				65BA8A8219B8E187003DCDD9 /* CBWalker.h */,
-				65BA8A8319B8E187003DCDD9 /* CBWalker.m */,
-				65EBF13319A9731000F0BA37 /* Background.png */,
+				6579701719BE458F00E2B9D9 /* App */,
+				6579701419BE44BE00E2B9D9 /* WorldScene */,
+				6579701819BE45C300E2B9D9 /* Rescources */,
+				6579701619BE455D00E2B9D9 /* Player */,
+				6579701519BE450A00E2B9D9 /* Enemies */,
+				6579701319BE447800E2B9D9 /* ButtonBar */,
 				6566BE9B19802D5D00602447 /* Images.xcassets */,
 				6566BEB81980387400602447 /* SpriteKitSimpleGameResources */,
 				6566BE8519802D5D00602447 /* Supporting Files */,
@@ -233,6 +209,72 @@
 				6566BEBB1980387400602447 /* pew-pew-lei.caf */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		6579701319BE447800E2B9D9 /* ButtonBar */ = {
+			isa = PBXGroup;
+			children = (
+				6579700D19BE43CE00E2B9D9 /* CBButtonBar.h */,
+				6579700E19BE43CE00E2B9D9 /* CBButtonBar.m */,
+				6579701019BE43E200E2B9D9 /* CBButton.h */,
+				6579701119BE43E200E2B9D9 /* CBButton.m */,
+			);
+			name = ButtonBar;
+			sourceTree = "<group>";
+		};
+		6579701419BE44BE00E2B9D9 /* WorldScene */ = {
+			isa = PBXGroup;
+			children = (
+				65EBF13319A9731000F0BA37 /* Background.png */,
+				65EBF13519A97AD400F0BA37 /* CBWorld.h */,
+				65EBF13619A97AD400F0BA37 /* CBWorld.m */,
+				6566BE9619802D5D00602447 /* CBMyScene.h */,
+				6566BE9719802D5D00602447 /* CBMyScene.m */,
+			);
+			name = WorldScene;
+			sourceTree = "<group>";
+		};
+		6579701519BE450A00E2B9D9 /* Enemies */ = {
+			isa = PBXGroup;
+			children = (
+				65FDF3AF19A996B200D4269C /* CBEnemy.h */,
+				65FDF3B019A996B200D4269C /* CBEnemy.m */,
+				65BA8A8519B8E4B6003DCDD9 /* CBEnemyFactory.h */,
+				65BA8A8619B8E4B6003DCDD9 /* CBEnemyFactory.m */,
+				65BA8A8219B8E187003DCDD9 /* CBWalker.h */,
+				65BA8A8319B8E187003DCDD9 /* CBWalker.m */,
+			);
+			name = Enemies;
+			sourceTree = "<group>";
+		};
+		6579701619BE455D00E2B9D9 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				6515FAD519AFD25800E82568 /* CBPlayer.h */,
+				6515FAD619AFD25800E82568 /* CBPlayer.m */,
+			);
+			name = Player;
+			sourceTree = "<group>";
+		};
+		6579701719BE458F00E2B9D9 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				6566BE9419802D5D00602447 /* CBViewController.m */,
+				6566BE8D19802D5D00602447 /* CBAppDelegate.h */,
+				6566BE8E19802D5D00602447 /* CBAppDelegate.m */,
+				6566BE9019802D5D00602447 /* Main.storyboard */,
+				6566BE9319802D5D00602447 /* CBViewController.h */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		6579701819BE45C300E2B9D9 /* Rescources */ = {
+			isa = PBXGroup;
+			children = (
+				6515FAD219AFB6DE00E82568 /* CBVectorMath.h */,
+				6515FAD319AFB6DE00E82568 /* CBVectorMath.m */,
+			);
+			name = Rescources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,9 +362,7 @@
 				6566BE8919802D5D00602447 /* InfoPlist.strings in Resources */,
 				65EBF13419A9731000F0BA37 /* Background.png in Resources */,
 				6566BE9C19802D5D00602447 /* Images.xcassets in Resources */,
-				6566BE9A19802D5D00602447 /* Spaceship.png in Resources */,
 				6566BE9219802D5D00602447 /* Main.storyboard in Resources */,
-				65F1DCA5199046A500701865 /* up.png in Resources */,
 				6566BEBE1980387400602447 /* pew-pew-lei.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
