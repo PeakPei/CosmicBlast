@@ -7,7 +7,59 @@
 //
 
 #import "CBButtonBar.h"
+#import "CBButton.h"
+
 
 @implementation CBButtonBar
+
+
+
+
++(id)buttonBarWithFrame:(CGRect)frame {
+    
+    CGFloat buttonRatio = 15;
+    
+    CGSize mySize = CGSizeMake(frame.size.width, frame.size.height/buttonRatio);
+    
+    CBButtonBar * buttonBar = [CBButtonBar spriteNodeWithColor:[UIColor blackColor] size:(mySize)];
+    
+    [buttonBar setPosition:CGPointMake(frame.size.width/2, 0)];
+    
+    CBButton * farLeftButton, * leftButton, * rightButton, * farRightButton;
+    
+    
+    farLeftButton = [CBButton buttonWithColor:[UIColor blueColor] size:CGSizeMake(frame.size.width/4, frame.size.height/buttonRatio)];
+    
+    leftButton = [CBButton buttonWithColor:[UIColor redColor] size:CGSizeMake(frame.size.width/4, frame.size.height/buttonRatio)];
+    
+    rightButton = [CBButton buttonWithColor:[UIColor blackColor] size:CGSizeMake(frame.size.width/4, frame.size.height/buttonRatio)];
+    
+    farRightButton = [CBButton buttonWithColor:[UIColor greenColor] size:CGSizeMake(frame.size.width/4, frame.size.height/buttonRatio)];
+    
+    [farLeftButton setPosition:CGPointMake(-farLeftButton.size.width*1.5, farLeftButton.position.y)];
+    [leftButton setPosition:CGPointMake(-leftButton.size.width/2, leftButton.position.y)];
+    [rightButton setPosition:CGPointMake(rightButton.size.width/2, rightButton.position.y)];
+    [farRightButton setPosition:CGPointMake(farRightButton.size.width*1.5, farRightButton.position.y)];
+    
+    
+    
+    
+    
+    buttonBar.buttons = [NSArray arrayWithObjects:farLeftButton, leftButton, rightButton, farRightButton, nil];
+    
+    for (CBButton * button in buttonBar.buttons){
+        
+        [buttonBar addChild:button];
+        
+        
+        
+    }
+    
+    return buttonBar;
+    
+    
+    
+}
+
 
 @end

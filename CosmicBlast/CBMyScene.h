@@ -7,7 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-
+#import "CBButtonBar.h"
 #import"CBWorld.h"
 #import"CBPlayer.h"
 
@@ -16,7 +16,7 @@
 @property (nonatomic) CBPlayer * player;
 @property (nonatomic) CBWorld * currentWorld;
 @property (nonatomic) NSMutableArray * factories;
-
+@property (nonatomic) CBButtonBar * buttonBar;
 
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;

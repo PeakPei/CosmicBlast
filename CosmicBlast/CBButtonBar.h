@@ -11,5 +11,12 @@
 @interface CBButtonBar : SKSpriteNode
 
 
+@property (nonatomic) NSArray * buttons;
+
+
+
+
++(id)buttonBarWithFrame:(CGRect)frame;
+
 
 @end

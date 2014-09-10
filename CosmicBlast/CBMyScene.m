@@ -12,7 +12,7 @@
 #import "CBEnemy.h"
 #import "CBPlayer.h"
 #import "CBEnemyFactory.h"
-
+#import "CBButtonBar.h"
 
 
 static const uint32_t projectileCategory     =  0x1 << 0;
@@ -83,6 +83,9 @@ CMMotionManager *_motionManager;
         [self startMonitoringAcceleration];
         
         
+        //set up button bar
+        self.buttonBar = [CBButtonBar buttonBarWithFrame:self.frame];
+        [self addChild:self.buttonBar];
         
         //Change this depending on levels
         [self placeFactoryAtPosition:CGPointMake(0, 0)];
@@ -91,6 +94,9 @@ CMMotionManager *_motionManager;
         
         self.physicsWorld.gravity = CGVectorMake(0, 0);
         self.physicsWorld.contactDelegate = self;
+        
+        
+        
         
     }
     return self;
@@ -289,6 +295,8 @@ CMMotionManager *_motionManager;
     SKAction * actionMove = [SKAction moveTo:realDest duration: realMoveDuration];
     
     SKAction * actionMoveDone = [SKAction removeFromParent];
+    
+    
     
     [projectile runAction:[SKAction sequence:@[actionMove, actionMoveDone]]];
     
