@@ -14,7 +14,7 @@
 
 
 
-
+//Creates button bar initialized with buttons
 +(id)buttonBarWithFrame:(CGRect)frame {
     
     CGFloat buttonRatio = 15;

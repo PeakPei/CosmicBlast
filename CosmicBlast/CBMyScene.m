@@ -116,8 +116,7 @@ CMMotionManager *_motionManager;
 }
 
 
-- (void)stopMonitoringAcceleration
-{
+- (void)stopMonitoringAcceleration{
     if (_motionManager.accelerometerAvailable && _motionManager.accelerometerActive) {
         [_motionManager stopAccelerometerUpdates];
         NSLog(@"accelerometer updates off...");
@@ -125,7 +124,7 @@ CMMotionManager *_motionManager;
 }
 
 
--(void)updatePositionFromMotionManager {
+-(void)updatePositionFromMotionManager{
     
     CMAccelerometerData* data = _motionManager.accelerometerData;
     if(fabs(data.acceleration.x) > 0.2){
@@ -160,7 +159,7 @@ CMMotionManager *_motionManager;
 }
 
 
-
+//This belongs in another class
 -(void)addMonster {
     //Create Sprite
     for (CBEnemyFactory *factory in self.factories) {
@@ -251,6 +250,10 @@ CMMotionManager *_motionManager;
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     
+    
+    //  This is going to need to be changed.  Will need to split behavior of different items up somehow
+    //
+    
     //chose a touch to work with
     UITouch * touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self.currentWorld];
@@ -302,6 +305,9 @@ CMMotionManager *_motionManager;
     
 }
 
+
+
+//belongs in another class
 -(void)projectile:(SKSpriteNode *)projectile didCollideWithMonster:(SKSpriteNode *)monster {
     NSLog(@"hit");
     [projectile removeFromParent];
