@@ -11,6 +11,15 @@
 @interface CBVectorMath : NSObject
 
 
++(CGPoint)cbVectorAddFirst:(CGPoint)a Second:(CGPoint)b;
+
++(CGPoint)cbVectorSubFirst:(CGPoint)a Second:(CGPoint)b;
+
++(CGPoint)cbVectorMultFirst:(CGPoint)a Value:(float)b;
+
++(float)cbVectorLength:(CGPoint)a;
+
++(CGPoint)cbVectorNormalize:(CGPoint)a;
 
 
 @end

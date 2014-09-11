@@ -13,6 +13,7 @@
 #import "CBPlayer.h"
 #import "CBEnemyFactory.h"
 #import "CBButtonBar.h"
+#import "CBVectorMath.h"
 
 
 static const uint32_t projectileCategory     =  0x1 << 0;
@@ -21,34 +22,7 @@ static const uint32_t monsterCategory        =  0x1 << 1;
 
 
 
-//Adds two vectors represented as points
-static inline CGPoint cbVectorAdd(CGPoint a, CGPoint b ) {
-    return CGPointMake(a.x + b.x, a.y + b.y);
-}
 
-//vector subtraction
-static inline CGPoint cbVectorSub(CGPoint a, CGPoint b ) {
-    return CGPointMake(a.x - b.x, a.y - b.y);
-}
-
-//Vector multiplication
-static inline CGPoint cbVectorMult(CGPoint a, float b ) {
-    return CGPointMake(a.x * b, a.y * b);
-}
-
-
-//Vector Length
-static inline float cbVectorLength(CGPoint a){
-    return sqrtf(a.x*a.x + a.y * a.y);
-    
-
-}
-
-//Vector normalization (makes length = 1)
-static inline CGPoint cbVectorNormalize(CGPoint a){
-    float length = cbVectorLength(a);
-    return CGPointMake(a.x / length, a.y/length);
-}
 
 
 
@@ -279,20 +253,22 @@ CMMotionManager *_motionManager;
     
     
     //configure offset
-    CGPoint offset = cbVectorSub(location,projectile.position);
+    CGPoint offset = [CBVectorMath cbVectorSubFirst:location Second:projectile.position];
+    
     
     
     //Add the projectile
     [self.currentWorld addChild:projectile];
     
     //Get shooting direction
-    CGPoint direction = cbVectorNormalize(offset);
+    CGPoint direction = [CBVectorMath cbVectorNormalize:offset];
+
     
     //Create shot vector
-    CGPoint shotVector = cbVectorMult(direction, 1000);  //THIS SEEMS A LITTLE STUPID
+    CGPoint shotVector = [CBVectorMath cbVectorMultFirst:direction Value:1000];
     
     //Add shot vector to current position
-    CGPoint realDest = cbVectorAdd(shotVector, projectile.position);
+    CGPoint realDest = [CBVectorMath cbVectorAddFirst:shotVector Second:projectile.position];
     
     
     //Create actions
