@@ -260,8 +260,8 @@
 				6515FAD619AFD25800E82568 /* CBPlayer.m */,
 				65545A8119C1443B005F1073 /* CBItem.h */,
 				65545A8219C1443B005F1073 /* CBItem.m */,
-				65545A8419C14650005F1073 /* CBShuriken.h */,
 				65545A8519C14650005F1073 /* CBShuriken.m */,
+				65545A8419C14650005F1073 /* CBShuriken.h */,
 			);
 			name = Player;
 			sourceTree = "<group>";

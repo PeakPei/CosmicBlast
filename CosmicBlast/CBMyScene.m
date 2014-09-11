@@ -254,10 +254,16 @@ CMMotionManager *_motionManager;
     //  This is going to need to be changed.  Will need to split behavior of different items up somehow
     //
     
+    
+    //  VVV OK UNTIL  VVV
     //chose a touch to work with
     UITouch * touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self.currentWorld];
+    // ^^^ HERE ^^^^
     
+    
+    
+    //VVV Should be moved to CBShuriken VVV
     //set up initial location
     SKSpriteNode * projectile = [SKSpriteNode spriteNodeWithImageNamed:@"projectile"];
     projectile.position = self.player.position;
@@ -275,8 +281,6 @@ CMMotionManager *_motionManager;
     //configure offset
     CGPoint offset = cbVectorSub(location,projectile.position);
     
-    //discount invalid clicks
-    //if (offset.x <= 0) return;
     
     //Add the projectile
     [self.currentWorld addChild:projectile];
@@ -303,6 +307,8 @@ CMMotionManager *_motionManager;
     
     [projectile runAction:[SKAction sequence:@[actionMove, actionMoveDone]]];
     
+    //^^^ end add to CBShuriken
+    
 }
 
 
@@ -315,15 +321,7 @@ CMMotionManager *_motionManager;
     
 }
 
-//up button
-- (SKSpriteNode *)upButtonNode{
-    SKSpriteNode * upNode = [SKSpriteNode spriteNodeWithImageNamed:@"up.png"];
-    upNode.position = CGPointMake(0,200);
-    upNode.name = @"upButtonNode";
-    upNode.zPosition = 1.0;
-    return upNode;
-    
-}
+
 
 
 
