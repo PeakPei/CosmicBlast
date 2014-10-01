@@ -102,15 +102,15 @@ CMMotionManager *_motionManager;
     
     CMAccelerometerData* data = _motionManager.accelerometerData;
     if(fabs(data.acceleration.x) > 0.2){
-        NSLog(@"x acceleration value = %f", data.acceleration.x);
+        
     }
     if(fabs(data.acceleration.y) > 0.2){
-        NSLog(@"y acceleration value = %f", data.acceleration.y);
+       
     }
     
     int speed = 2;
     
-    [self.currentWorld moveCameraWithAccelerationXValue:data.acceleration.x yValue:data.acceleration.y speed:speed];
+
     [self.player movePlayerWithAccelerationXvalue:data.acceleration.x yValue:data.acceleration.y speed:speed];
     
     
