@@ -40,7 +40,7 @@
         self.parent.position = CGPointMake(oldParentPoint.x - speed, oldParentPoint.y);
         
     }
-    if (y > -.2){
+    if (y > .2){
         
         CGPoint oldPoint = CGPointMake(self.position.x, self.position.y);
         self.position = CGPointMake(oldPoint.x, oldPoint.y + speed);
@@ -57,7 +57,7 @@
         self.parent.position = CGPointMake(oldParentPoint.x, oldParentPoint.y + speed);
     }
     
-    NSLog(@"CBPlayer ----> self.position: %f self.parent.position %f", self.position, self.parent.position);
+   //NSLog(@"CBPlayer ----> self.position: %f self.parent.position %f", self.position, self.parent.position);
 }
 
 @end

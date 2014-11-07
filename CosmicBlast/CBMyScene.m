@@ -16,8 +16,11 @@
 #import "CBVectorMath.h"
 
 
-static const uint32_t projectileCategory     =  0x1 << 0;
-static const uint32_t monsterCategory        =  0x1 << 1;
+
+//These should eventually be moved somewhere possibly CBWorld
+static const uint32_t projectileCategory = 0x1 << 0;
+static const uint32_t monsterCategory = 0x1 << 1;
+static const uint32_t playerCategory = 0x1 << 2;
 
 
 
@@ -46,9 +49,20 @@ CMMotionManager *_motionManager;
         [self addChild: self.currentWorld];
         
         
+        //Initialize player
         self.player = [CBPlayer playerWithImageNamed:@"player"];
         self.player.position = CGPointMake(0, 0);
         [self.currentWorld addChild: self.player];
+        
+        //add physics body for player
+        self.player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.player.size];
+        self.player.physicsBody.dynamic = YES;
+        self.player.physicsBody.categoryBitMask = playerCategory;
+        self.player.physicsBody.contactTestBitMask = monsterCategory;
+        self.player.physicsBody.collisionBitMask = 0;
+        
+        
+        
         
         self.factories = [[NSMutableArray alloc] init];
         
@@ -214,6 +228,10 @@ CMMotionManager *_motionManager;
     
     if ((firstBody.categoryBitMask & projectileCategory) != 0 &&(secondBody.categoryBitMask & monsterCategory) != 0){
         [self projectile:(SKSpriteNode *) firstBody.node didCollideWithMonster:(SKSpriteNode *) secondBody.node];
+    }
+    
+    if((secondBody.categoryBitMask & monsterCategory) != 0){
+        NSLog(@"player hit by enemy!!!");
     }
     
 }
