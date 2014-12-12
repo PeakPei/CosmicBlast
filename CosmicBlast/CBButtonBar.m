@@ -18,13 +18,9 @@
 +(id)buttonBarWithFrame:(CGRect)frame {
     
     CGFloat buttonRatio = 15;
-    
     CGSize mySize = CGSizeMake(frame.size.width, frame.size.height/buttonRatio);
-    
     CBButtonBar * buttonBar = [CBButtonBar spriteNodeWithColor:[UIColor blackColor] size:(mySize)];
-    
     [buttonBar setPosition:CGPointMake(frame.size.width/2, 0)];
-    
     CBButton * farLeftButton, * leftButton, * rightButton, * farRightButton;
     
     

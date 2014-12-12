@@ -32,6 +32,7 @@
 		6566BEBF1980387400602447 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 6566BEBC1980387400602447 /* sprites.atlas */; };
 		6579700F19BE43CE00E2B9D9 /* CBButtonBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6579700E19BE43CE00E2B9D9 /* CBButtonBar.m */; };
 		6579701219BE43E200E2B9D9 /* CBButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6579701119BE43E200E2B9D9 /* CBButton.m */; };
+		65869F7B1A3A8C260076B9D4 /* CBHealthBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 65869F7A1A3A8C260076B9D4 /* CBHealthBar.m */; };
 		65BA8A8419B8E187003DCDD9 /* CBWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8A8319B8E187003DCDD9 /* CBWalker.m */; };
 		65BA8A8719B8E4B6003DCDD9 /* CBEnemyFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8A8619B8E4B6003DCDD9 /* CBEnemyFactory.m */; };
 		65EBF13419A9731000F0BA37 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 65EBF13319A9731000F0BA37 /* Background.png */; };
@@ -87,6 +88,8 @@
 		6579700E19BE43CE00E2B9D9 /* CBButtonBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBButtonBar.m; sourceTree = "<group>"; };
 		6579701019BE43E200E2B9D9 /* CBButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBButton.h; sourceTree = "<group>"; };
 		6579701119BE43E200E2B9D9 /* CBButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBButton.m; sourceTree = "<group>"; };
+		65869F791A3A8C260076B9D4 /* CBHealthBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHealthBar.h; sourceTree = "<group>"; };
+		65869F7A1A3A8C260076B9D4 /* CBHealthBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHealthBar.m; sourceTree = "<group>"; };
 		65BA8A8219B8E187003DCDD9 /* CBWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWalker.h; sourceTree = "<group>"; };
 		65BA8A8319B8E187003DCDD9 /* CBWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWalker.m; sourceTree = "<group>"; };
 		65BA8A8519B8E4B6003DCDD9 /* CBEnemyFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBEnemyFactory.h; sourceTree = "<group>"; };
@@ -162,7 +165,7 @@
 				6579701819BE45C300E2B9D9 /* Rescources */,
 				6579701619BE455D00E2B9D9 /* Player */,
 				6579701519BE450A00E2B9D9 /* Enemies */,
-				6579701319BE447800E2B9D9 /* ButtonBar */,
+				6579701319BE447800E2B9D9 /* InGameUI */,
 				6566BE9B19802D5D00602447 /* Images.xcassets */,
 				6566BEB81980387400602447 /* SpriteKitSimpleGameResources */,
 				6566BE8519802D5D00602447 /* Supporting Files */,
@@ -217,15 +220,17 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
-		6579701319BE447800E2B9D9 /* ButtonBar */ = {
+		6579701319BE447800E2B9D9 /* InGameUI */ = {
 			isa = PBXGroup;
 			children = (
+				65869F791A3A8C260076B9D4 /* CBHealthBar.h */,
+				65869F7A1A3A8C260076B9D4 /* CBHealthBar.m */,
 				6579700D19BE43CE00E2B9D9 /* CBButtonBar.h */,
 				6579700E19BE43CE00E2B9D9 /* CBButtonBar.m */,
 				6579701019BE43E200E2B9D9 /* CBButton.h */,
 				6579701119BE43E200E2B9D9 /* CBButton.m */,
 			);
-			name = ButtonBar;
+			name = InGameUI;
 			sourceTree = "<group>";
 		};
 		6579701419BE44BE00E2B9D9 /* WorldScene */ = {
@@ -269,11 +274,11 @@
 		6579701719BE458F00E2B9D9 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				6566BE9319802D5D00602447 /* CBViewController.h */,
 				6566BE9419802D5D00602447 /* CBViewController.m */,
 				6566BE8D19802D5D00602447 /* CBAppDelegate.h */,
 				6566BE8E19802D5D00602447 /* CBAppDelegate.m */,
 				6566BE9019802D5D00602447 /* Main.storyboard */,
-				6566BE9319802D5D00602447 /* CBViewController.h */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -396,6 +401,7 @@
 				65545A8619C14650005F1073 /* CBShuriken.m in Sources */,
 				6566BE8B19802D5D00602447 /* main.m in Sources */,
 				6566BE8F19802D5D00602447 /* CBAppDelegate.m in Sources */,
+				65869F7B1A3A8C260076B9D4 /* CBHealthBar.m in Sources */,
 				6579701219BE43E200E2B9D9 /* CBButton.m in Sources */,
 				6566BE9519802D5D00602447 /* CBViewController.m in Sources */,
 				65FDF3B119A996B200D4269C /* CBEnemy.m in Sources */,

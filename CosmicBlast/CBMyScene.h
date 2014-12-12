@@ -10,6 +10,7 @@
 #import "CBButtonBar.h"
 #import"CBWorld.h"
 #import"CBPlayer.h"
+#import"CBHealthBar.h"
 
 @interface CBMyScene : SKScene
 
@@ -17,6 +18,8 @@
 @property (nonatomic) CBWorld * currentWorld;
 @property (nonatomic) NSMutableArray * factories;
 @property (nonatomic) CBButtonBar * buttonBar;
+@property(nonatomic)CBHealthBar * healthBar;
+
 
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;

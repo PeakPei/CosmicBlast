@@ -21,6 +21,7 @@
 static const uint32_t projectileCategory = 0x1 << 0;
 static const uint32_t monsterCategory = 0x1 << 1;
 static const uint32_t playerCategory = 0x1 << 2;
+static const uint32_t edgeCategory = 0x2 << 3;
 
 
 
@@ -54,6 +55,7 @@ CMMotionManager *_motionManager;
         self.player.position = CGPointMake(0, 0);
         [self.currentWorld addChild: self.player];
         
+
         //add physics body for player
         self.player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.player.size];
         self.player.physicsBody.dynamic = YES;
@@ -71,12 +73,30 @@ CMMotionManager *_motionManager;
         [self startMonitoringAcceleration];
         
         
-        //set up button bar
+        //Set up button bar
         self.buttonBar = [CBButtonBar buttonBarWithFrame:self.frame];
         [self addChild:self.buttonBar];
         
+        
+        //Set up health bar
+        self.healthBar = [CBHealthBar healthBarWithFrame:self.frame];
+        [self addChild:self.healthBar];
+        
+        
+        
+        
         //Change this depending on levels
         [self placeFactoryAtPosition:CGPointMake(0, 0)];
+        
+        
+        //set up world physics body
+        self.currentWorld.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:(self.currentWorld.frame)];
+        self.currentWorld.physicsBody.categoryBitMask = edgeCategory;
+       
+        
+        
+        
+        
         
         
         
@@ -230,7 +250,7 @@ CMMotionManager *_motionManager;
         [self projectile:(SKSpriteNode *) firstBody.node didCollideWithMonster:(SKSpriteNode *) secondBody.node];
     }
     
-    if((secondBody.categoryBitMask & monsterCategory) != 0){
+    if((firstBody.categoryBitMask & monsterCategory) != 0){
         NSLog(@"player hit by enemy!!!");
     }
     
@@ -309,7 +329,7 @@ CMMotionManager *_motionManager;
 
 //belongs in another class
 -(void)projectile:(SKSpriteNode *)projectile didCollideWithMonster:(SKSpriteNode *)monster {
-    NSLog(@"hit");
+    //NSLog(@"hit");
     [projectile removeFromParent];
     [monster removeFromParent];
     

@@ -15,6 +15,13 @@
      CBWorld * world = [CBWorld spriteNodeWithImageNamed:name];
     world.position = drawPoint;
     
+   
+
+    
+    
+    
+    
+    
     return world;
 }
 
