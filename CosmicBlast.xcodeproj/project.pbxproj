@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6507E14F1A5117DD00A3FADB /* CBMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6507E14D1A5117DD00A3FADB /* CBMenuScene.m */; };
 		6515FAD419AFB6DE00E82568 /* CBVectorMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 6515FAD319AFB6DE00E82568 /* CBVectorMath.m */; };
 		6515FAD719AFD25800E82568 /* CBPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6515FAD619AFD25800E82568 /* CBPlayer.m */; };
 		65545A8319C1443B005F1073 /* CBItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 65545A8219C1443B005F1073 /* CBItem.m */; };
@@ -51,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6507E14D1A5117DD00A3FADB /* CBMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBMenuScene.m; sourceTree = "<group>"; };
+		6507E14E1A5117DD00A3FADB /* CBMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBMenuScene.h; sourceTree = "<group>"; };
 		6515FAD219AFB6DE00E82568 /* CBVectorMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBVectorMath.h; sourceTree = "<group>"; };
 		6515FAD319AFB6DE00E82568 /* CBVectorMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBVectorMath.m; sourceTree = "<group>"; };
 		6515FAD519AFD25800E82568 /* CBPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBPlayer.h; sourceTree = "<group>"; };
@@ -267,6 +270,8 @@
 				65545A8219C1443B005F1073 /* CBItem.m */,
 				65545A8519C14650005F1073 /* CBShuriken.m */,
 				65545A8419C14650005F1073 /* CBShuriken.h */,
+				6507E14D1A5117DD00A3FADB /* CBMenuScene.m */,
+				6507E14E1A5117DD00A3FADB /* CBMenuScene.h */,
 			);
 			name = Player;
 			sourceTree = "<group>";
@@ -341,7 +346,7 @@
 				ORGANIZATIONNAME = "Teddy Kitchen";
 				TargetAttributes = {
 					6566BE7819802D5D00602447 = {
-						DevelopmentTeam = 6H85QC2SF2;
+						DevelopmentTeam = 5W379BHMRF;
 					};
 					6566BEA019802D5D00602447 = {
 						TestTargetID = 6566BE7819802D5D00602447;
@@ -397,6 +402,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6507E14F1A5117DD00A3FADB /* CBMenuScene.m in Sources */,
 				65545A8319C1443B005F1073 /* CBItem.m in Sources */,
 				65545A8619C14650005F1073 /* CBShuriken.m in Sources */,
 				6566BE8B19802D5D00602447 /* main.m in Sources */,
