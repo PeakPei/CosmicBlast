@@ -21,7 +21,7 @@
 static const uint32_t projectileCategory = 0x1 << 0;
 static const uint32_t monsterCategory = 0x1 << 1;
 static const uint32_t playerCategory = 0x1 << 2;
-static const uint32_t edgeCategory = 0x2 << 3;
+static const uint32_t edgeCategory = 0x1 << 3;
 
 
 
@@ -36,7 +36,7 @@ static const uint32_t edgeCategory = 0x2 << 3;
 
 CMMotionManager *_motionManager;
 
--(id)initWithSize:(CGSize)size {    
+-(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         
         NSLog(@"Size: %@", NSStringFromCGSize(size));
@@ -65,6 +65,17 @@ CMMotionManager *_motionManager;
         
         
         
+        //add physics body for currentWorld
+        
+        self.currentWorld.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.currentWorld.frame];
+        self.currentWorld.physicsBody.dynamic = NO;
+        self.currentWorld.physicsBody.categoryBitMask = edgeCategory;
+        self.currentWorld.physicsBody.contactTestBitMask = projectileCategory;
+        self.currentWorld.physicsBody.collisionBitMask = 0;
+        
+        
+        
+        
         
         self.factories = [[NSMutableArray alloc] init];
         
@@ -89,14 +100,12 @@ CMMotionManager *_motionManager;
         [self placeFactoryAtPosition:CGPointMake(0, 0)];
         
         
-        //set up world physics body
-        self.currentWorld.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:(self.currentWorld.frame)];
-        self.currentWorld.physicsBody.categoryBitMask = edgeCategory;
+       
        
         
         
         
-        
+       
         
         
         
@@ -207,7 +216,7 @@ CMMotionManager *_motionManager;
 -(void)updateWithTimeSinceLastUpdate: (CFTimeInterval) timeSinceLast{
     
     self.lastSpawnTimeInterval += timeSinceLast;
-    if (self.lastSpawnTimeInterval > 1) {
+    if (self.lastSpawnTimeInterval > 0.5) {
         self.lastSpawnTimeInterval = 0;
         
         //uncomment to enable monsters
@@ -234,6 +243,8 @@ CMMotionManager *_motionManager;
     
 }
 
+
+
 -(void)didBeginContact:(SKPhysicsContact *)contact{
     SKPhysicsBody *firstBody, *secondBody;
     
@@ -251,8 +262,18 @@ CMMotionManager *_motionManager;
     }
     
     if((firstBody.categoryBitMask & monsterCategory) != 0){
+    
         NSLog(@"player hit by enemy!!!");
+    
     }
+    
+    
+    if(edgeCategory != 0){
+        NSLog(@"edgeCategory !=0 !!");
+    }
+   
+    
+    
     
 }
 

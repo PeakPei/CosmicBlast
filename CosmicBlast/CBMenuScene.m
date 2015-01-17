@@ -29,8 +29,13 @@
 };
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    //NSLog(@"TOUCHES ENDED");
-    [self.viewController presentGameScreen];
+    
+    
+    
+    
+    
+    
+    //[self.viewController presentGameScreen];
 }
 
 

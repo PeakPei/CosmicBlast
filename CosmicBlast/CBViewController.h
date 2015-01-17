@@ -11,4 +11,7 @@
 
 @interface CBViewController : UIViewController
 
+@property (nonatomic) BOOL menuScene;
+
+
 @end

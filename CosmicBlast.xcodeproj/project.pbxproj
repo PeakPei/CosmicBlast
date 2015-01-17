@@ -270,8 +270,6 @@
 				65545A8219C1443B005F1073 /* CBItem.m */,
 				65545A8519C14650005F1073 /* CBShuriken.m */,
 				65545A8419C14650005F1073 /* CBShuriken.h */,
-				6507E14D1A5117DD00A3FADB /* CBMenuScene.m */,
-				6507E14E1A5117DD00A3FADB /* CBMenuScene.h */,
 			);
 			name = Player;
 			sourceTree = "<group>";
@@ -279,6 +277,8 @@
 		6579701719BE458F00E2B9D9 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				6507E14D1A5117DD00A3FADB /* CBMenuScene.m */,
+				6507E14E1A5117DD00A3FADB /* CBMenuScene.h */,
 				6566BE9319802D5D00602447 /* CBViewController.h */,
 				6566BE9419802D5D00602447 /* CBViewController.m */,
 				6566BE8D19802D5D00602447 /* CBAppDelegate.h */,
