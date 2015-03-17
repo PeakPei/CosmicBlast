@@ -38,6 +38,7 @@
 		65BA8A8719B8E4B6003DCDD9 /* CBEnemyFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8A8619B8E4B6003DCDD9 /* CBEnemyFactory.m */; };
 		65EBF13419A9731000F0BA37 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 65EBF13319A9731000F0BA37 /* Background.png */; };
 		65EBF13719A97AD400F0BA37 /* CBWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EBF13619A97AD400F0BA37 /* CBWorld.m */; };
+		65F42C301AB7B79B001DA12A /* CBLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F42C2F1AB7B79B001DA12A /* CBLogger.m */; };
 		65FDF3B119A996B200D4269C /* CBEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FDF3B019A996B200D4269C /* CBEnemy.m */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +101,8 @@
 		65EBF13319A9731000F0BA37 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
 		65EBF13519A97AD400F0BA37 /* CBWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWorld.h; sourceTree = "<group>"; };
 		65EBF13619A97AD400F0BA37 /* CBWorld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWorld.m; sourceTree = "<group>"; };
+		65F42C2E1AB7B79B001DA12A /* CBLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBLogger.h; path = ../CBLogger.h; sourceTree = "<group>"; };
+		65F42C2F1AB7B79B001DA12A /* CBLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CBLogger.m; path = ../CBLogger.m; sourceTree = "<group>"; };
 		65FDF3AF19A996B200D4269C /* CBEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBEnemy.h; sourceTree = "<group>"; };
 		65FDF3B019A996B200D4269C /* CBEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBEnemy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -291,6 +294,8 @@
 		6579701819BE45C300E2B9D9 /* Rescources */ = {
 			isa = PBXGroup;
 			children = (
+				65F42C2E1AB7B79B001DA12A /* CBLogger.h */,
+				65F42C2F1AB7B79B001DA12A /* CBLogger.m */,
 				6515FAD219AFB6DE00E82568 /* CBVectorMath.h */,
 				6515FAD319AFB6DE00E82568 /* CBVectorMath.m */,
 			);
@@ -406,6 +411,7 @@
 				65545A8319C1443B005F1073 /* CBItem.m in Sources */,
 				65545A8619C14650005F1073 /* CBShuriken.m in Sources */,
 				6566BE8B19802D5D00602447 /* main.m in Sources */,
+				65F42C301AB7B79B001DA12A /* CBLogger.m in Sources */,
 				6566BE8F19802D5D00602447 /* CBAppDelegate.m in Sources */,
 				65869F7B1A3A8C260076B9D4 /* CBHealthBar.m in Sources */,
 				6579701219BE43E200E2B9D9 /* CBButton.m in Sources */,

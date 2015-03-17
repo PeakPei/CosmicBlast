@@ -7,6 +7,7 @@
 //
 
 #import "CBMenuScene.h"
+#import "CBLogger.h"
 
 @implementation CBMenuScene
 -(id)initWithSize:(CGSize)size {
@@ -17,11 +18,18 @@
         
         
         
+        
         //add buttons here
         
         
+        NSString *toLog = [NSString stringWithFormat: @"%@ %@", @"Size: %@", NSStringFromCGSize(size)];
+    
+        [CBLogger logData:toLog :@"CBMenuScene on Init"];
         
-        NSLog(@"Size: %@", NSStringFromCGSize(size));
+        
+        
+        
+        
     }
     return self;
     

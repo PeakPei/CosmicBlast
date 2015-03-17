@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Teddy Kitchen. All rights reserved.
 //
 
-
 @import CoreMotion;
+
 #import "CBMyScene.h"
 #import "CBEnemy.h"
 #import "CBPlayer.h"
@@ -17,34 +17,20 @@
 
 
 
-//These should eventually be moved somewhere possibly CBWorld
 static const uint32_t projectileCategory = 0x1 << 0;
 static const uint32_t monsterCategory = 0x1 << 1;
 static const uint32_t playerCategory = 0x1 << 2;
 static const uint32_t edgeCategory = 0x1 << 3;
 
 
-
-
-
-
-
-
-
 @implementation CBMyScene
-
-
 CMMotionManager *_motionManager;
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         
-        NSLog(@"Size: %@", NSStringFromCGSize(size));
-        
-        
+        //Initialize word
         self.backgroundColor = [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
-        
-        
         self.currentWorld = [CBWorld worldWithImageNamed:@"Background" position:CGPointZero];
         self.currentWorld.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
         [self addChild: self.currentWorld];
@@ -62,11 +48,10 @@ CMMotionManager *_motionManager;
         self.player.physicsBody.categoryBitMask = playerCategory;
         self.player.physicsBody.contactTestBitMask = monsterCategory;
         self.player.physicsBody.collisionBitMask = 0;
-        
+        self.player.physicsBody.usesPreciseCollisionDetection = YES;
         
         
         //add physics body for currentWorld
-        
         self.currentWorld.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.currentWorld.frame];
         self.currentWorld.physicsBody.dynamic = NO;
         self.currentWorld.physicsBody.categoryBitMask = edgeCategory;
@@ -74,11 +59,9 @@ CMMotionManager *_motionManager;
         self.currentWorld.physicsBody.collisionBitMask = 0;
         
         
-        
-        
+
         
         self.factories = [[NSMutableArray alloc] init];
-        
         
         _motionManager = [[CMMotionManager alloc] init];
         [self startMonitoringAcceleration];
@@ -97,24 +80,12 @@ CMMotionManager *_motionManager;
         
         
         //Change this depending on levels
-        [self placeFactoryAtPosition:CGPointMake(0, 0)];
+        [self placeFactoryAtPosition:CGPointMake(800, 800)];
         
-        
-       
-       
-        
-        
-        
-       
-        
-        
+
         
         self.physicsWorld.gravity = CGVectorMake(0, 0);
         self.physicsWorld.contactDelegate = self;
-        
-        
-        
-        
     }
     return self;
     
@@ -125,10 +96,10 @@ CMMotionManager *_motionManager;
     
     if(_motionManager.accelerometerAvailable){
         [_motionManager startAccelerometerUpdates];
-        NSLog(@"accelerometer updates on...");
+        //NSLog(@"accelerometer updates on...");
     }
     else{
-        NSLog(@"motionManager.accelerometerAvailable is false");
+        //NSLog(@"motionManager.accelerometerAvailable is false");
     }
 }
 
@@ -142,21 +113,10 @@ CMMotionManager *_motionManager;
 
 
 -(void)updatePositionFromMotionManager{
-    
-    CMAccelerometerData* data = _motionManager.accelerometerData;
-    if(fabs(data.acceleration.x) > 0.2){
-        
-    }
-    if(fabs(data.acceleration.y) > 0.2){
-       
-    }
-    
-    int speed = 2;
-    
 
+    CMAccelerometerData* data = _motionManager.accelerometerData;
+    int speed = 2;
     [self.player movePlayerWithAccelerationXvalue:data.acceleration.x yValue:data.acceleration.y speed:speed];
-    
-    
     
 }
 
@@ -220,7 +180,7 @@ CMMotionManager *_motionManager;
         self.lastSpawnTimeInterval = 0;
         
         //uncomment to enable monsters
-        [self addMonster];
+        //[self addMonster];
     }
     [self updatePositionFromMotionManager];
     
@@ -263,7 +223,7 @@ CMMotionManager *_motionManager;
     
     if((firstBody.categoryBitMask & monsterCategory) != 0){
     
-        NSLog(@"player hit by enemy!!!");
+        //NSLog(@"player hit by enemy!!!");
     
     }
     
@@ -324,14 +284,14 @@ CMMotionManager *_motionManager;
 
     
     //Create shot vector
-    CGPoint shotVector = [CBVectorMath cbVectorMultFirst:direction Value:1000];
+    CGPoint shotVector = [CBVectorMath cbVectorMultFirst:direction Value:350];
     
     //Add shot vector to current position
     CGPoint realDest = [CBVectorMath cbVectorAddFirst:shotVector Second:projectile.position];
     
     
     //Create actions
-    float velocity = 480.0; 
+    float velocity = 488.0;
     float realMoveDuration = self.size.width / velocity;
     
     SKAction * actionMove = [SKAction moveTo:realDest duration: realMoveDuration];
