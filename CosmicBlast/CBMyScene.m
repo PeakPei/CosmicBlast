@@ -41,6 +41,9 @@ CMMotionManager *_motionManager;
         self.player.position = CGPointMake(0, 0);
         [self.currentWorld addChild: self.player];
         
+        
+        
+        
 
         //add physics body for player
         self.player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.player.size];
