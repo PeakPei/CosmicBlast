@@ -7,6 +7,8 @@
 //
 
 #import "CBPlayer.h"
+#import "CBLogger.h"
+
 
 @implementation CBPlayer
 
@@ -15,7 +17,6 @@
     CBPlayer * player = [CBPlayer spriteNodeWithImageNamed:name];
     
     return player;
-    
 }
 
 
@@ -24,14 +25,25 @@
     
     
     
-    CGVector deviceMotion = CGVectorMake(x*5.0, y*5.0);
-    [self.physicsBody applyForce:deviceMotion];
+    CGVector playerMotion = CGVectorMake(x*5.0, y*5.0);
+    //CGVector worldMotion = CGVectorMake(playerMotion.dx*(-1.0), playerMotion.dy*(-1.0));
+
     
     
-    [self.parent.physicsBody applyForce:deviceMotion];
+    [self.physicsBody applyForce:playerMotion];
+    
+    double parentOffsetX = self.parent.parent.frame.size.width/2.0;
+    double parentOffsetY = self.parent.parent.frame.size.height/2.0;
+    
+    self.parent.position = CGPointMake((-self.position.x)+parentOffsetX, (-self.position.y)+parentOffsetY);
     
     
     
+    //self.parent.position = self.position;
+    //[self.parent.physicsBody applyForce:deviceMotion];
+    
+    //NSLog(@"self pos: {x:%F}{y:%F} \n parent pos: {x:%F}{y:%F}",self.position.x,self.position.y,self.parent.position.x,self.parent.position.y);
+
     
     
 //    if (x < -.2){
