@@ -32,13 +32,13 @@ CMMotionManager *_motionManager;
         //Initialize word
         self.backgroundColor = [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
         self.currentWorld = [CBWorld worldWithImageNamed:@"Background" position:CGPointZero];
-        self.currentWorld.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+        //self.currentWorld.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
         [self addChild: self.currentWorld];
         
         
         //Initialize player
         self.player = [CBPlayer playerWithImageNamed:@"player"];
-        self.player.position = CGPointMake(0, 0);
+        //self.player.position = CGPointMake(0, 0);
         [self.currentWorld addChild: self.player];
         
         
@@ -50,12 +50,17 @@ CMMotionManager *_motionManager;
         self.player.physicsBody.dynamic = YES;
         self.player.physicsBody.categoryBitMask = playerCategory;
         self.player.physicsBody.contactTestBitMask = monsterCategory;
-        self.player.physicsBody.collisionBitMask = 0;
-        self.player.physicsBody.usesPreciseCollisionDetection = YES;
+        self.player.physicsBody.collisionBitMask = edgeCategory;
+        self.player.physicsBody.usesPreciseCollisionDetection = NO;
         
         
         //add physics body for currentWorld
+       //CGRect  adjustedWorld = CGRectMake(self.currentWorld.frame.origin.x - (self.currentWorld.frame.size.width/2.0), self.currentWorld.frame.origin.y - (self.currentWorld.frame.size.height/2.0), self.currentWorld.frame.size.width, self.currentWorld.frame.size.height);
+        
+        //self.currentWorld.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:adjustedWorld];
+        
         self.currentWorld.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.currentWorld.frame];
+        
         self.currentWorld.physicsBody.dynamic = NO;
         self.currentWorld.physicsBody.categoryBitMask = edgeCategory;
         self.currentWorld.physicsBody.contactTestBitMask = projectileCategory;
@@ -83,7 +88,15 @@ CMMotionManager *_motionManager;
         
         
         //Change this depending on levels
-        [self placeFactoryAtPosition:CGPointMake(800, 800)];
+        
+        [self placeFactoryAtPosition:CGPointMake(200,150)];
+        [self placeFactoryAtPosition:CGPointMake(-200,150)];
+        [self placeFactoryAtPosition:CGPointMake(200,-150)];
+        [self placeFactoryAtPosition:CGPointMake(-200,-150)];
+        //[self placeFactoryAtPosition:CGPointMake(self.currentWorld.size.width-100,100)];
+        //[self placeFactoryAtPosition:CGPointMake(100,self.currentWorld.size.height-100)];
+        //[self placeFactoryAtPosition:CGPointMake(self.currentWorld.size.width-100,self.currentWorld.size.height-100)];
+        
         
 
         
@@ -183,7 +196,7 @@ CMMotionManager *_motionManager;
         self.lastSpawnTimeInterval = 0;
         
         //uncomment to enable monsters
-        //[self addMonster];
+        [self addMonster];
     }
     [self updatePositionFromMotionManager];
     

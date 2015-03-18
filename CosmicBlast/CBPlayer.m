@@ -23,9 +23,9 @@
 //should handle player movement and map movement
 -(void)movePlayerWithAccelerationXvalue:(double)x yValue:(double)y speed:(int)speed{
     
+    float coefficient = 30.0;
     
-    
-    CGVector playerMotion = CGVectorMake(x*5.0, y*5.0);
+    CGVector playerMotion = CGVectorMake(x*coefficient, y*coefficient);
     //CGVector worldMotion = CGVectorMake(playerMotion.dx*(-1.0), playerMotion.dy*(-1.0));
 
     
