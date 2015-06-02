@@ -244,9 +244,9 @@ CMMotionManager *_motionManager;
     }
     
     
-    if(edgeCategory != 0){
-        NSLog(@"edgeCategory !=0 !!");
-    }
+   // if(edgeCategory != 0){
+//        NSLog(@"edgeCategory !=0 !!");
+  //  }
    
     
     

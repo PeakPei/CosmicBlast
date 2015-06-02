@@ -15,6 +15,12 @@
     
     CBButton *button = [CBButton spriteNodeWithColor:color size:size];
     
+    
+    
+    
+    button.userInteractionEnabled = YES;
+    
+    
     return button;
     
 }
@@ -23,9 +29,38 @@
 
 -(void)setButtonPosition:(CGPoint)position{
     
-    self.position = position;
+    //[NSStringFromCGPoint(self.position);
+    //[self setSummary:@"hi"];
+    //[self setSummary:NSStringFromCGPoint(position)];
+    [self setSummary:NSStringFromCGSize(self.size)];
+    [self setPosition : position];
+    
+    
     
 }
+
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    [self description];
+    
+}
+
+
+
+-(NSString *)description{
+    
+    
+    NSLog(@"Summary: %@", self.summary);
+    
+    return self.summary;
+}
+
+
+
+
+
+
 
 
 @end
