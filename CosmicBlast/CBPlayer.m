@@ -16,6 +16,10 @@
     
     CBPlayer * player = [CBPlayer spriteNodeWithImageNamed:name];
     
+    player.maxHealth = 100;
+    player.health = 100;
+    player.dead = NO;
+    
     return player;
 }
 
@@ -38,14 +42,11 @@
     self.parent.position = CGPointMake((-self.position.x)+parentOffsetX, (-self.position.y)+parentOffsetY);
     
     
-    
     //self.parent.position = self.position;
     //[self.parent.physicsBody applyForce:deviceMotion];
     
     //NSLog(@"self pos: {x:%F}{y:%F} \n parent pos: {x:%F}{y:%F}",self.position.x,self.position.y,self.parent.position.x,self.parent.position.y);
 
-    
-    
 //    if (x < -.2){
 //        CGPoint oldPoint = CGPointMake(self.position.x, self.position.y);
 //        self.position = CGPointMake(oldPoint.x - speed, oldPoint.y);
@@ -81,5 +82,27 @@
     
    //NSLog(@"CBPlayer ----> self.position: %f self.parent.position %f", self.position, self.parent.position);
 }
+
+
+
+
+
+-(void)playerHit
+{
+    [self playerHitWithDamageAmount:10];
+}
+
+-(void)playerHitWithDamageAmount:(int)damage
+{
+    if (self.health>0){
+        [self setHealth:self.health-damage];
+    }
+    else{
+        self.dead = YES;
+    }
+}
+
+
+
 
 @end

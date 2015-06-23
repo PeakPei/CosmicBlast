@@ -26,7 +26,7 @@ static const uint32_t edgeCategory = 0x1 << 3;
 @implementation CBMyScene
 CMMotionManager *_motionManager;
 
--(id)initWithSize:(CGSize)size {
+-(instancetype)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         
         //Initialize word
@@ -81,7 +81,7 @@ CMMotionManager *_motionManager;
         
         
         //Set up health bar
-        self.healthBar = [CBHealthBar healthBarWithFrame:self.frame];
+        self.healthBar = [CBHealthBar healthBarWithFrame:self.frame player:self.player];
         [self addChild:self.healthBar];
         
         
@@ -239,7 +239,16 @@ CMMotionManager *_motionManager;
     
     if((firstBody.categoryBitMask & monsterCategory) != 0){
     
+        
+        
+        [self.player playerHit];
+        [self.healthBar updateHealthBar];
         //NSLog(@"player hit by enemy!!!");
+        
+        if (self.player.dead) {
+            
+        }
+    
     
     }
     

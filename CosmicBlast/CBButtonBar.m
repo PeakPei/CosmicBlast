@@ -8,7 +8,8 @@
 
 #import "CBButtonBar.h"
 #import "CBButton.h"
-
+#import "EnumConstants.h"
+#import "CBButtonHandler.h"
 
 @implementation CBButtonBar
 
@@ -24,14 +25,18 @@
     CBButton * farLeftButton, * leftButton, * rightButton, * farRightButton;
     
     
-    farLeftButton = [CBButton buttonWithColor:[UIColor blueColor] size:CGSizeMake(frame.size.width/4, frame.size.height/buttonRatio)];
+    //create handler for buttons
+    CBButtonHandler * handler = [CBButtonHandler buttonHandler];
     
-    leftButton = [CBButton buttonWithColor:[UIColor redColor] size:CGSizeMake(frame.size.width/4, frame.size.height/buttonRatio)];
+    //createButtons
+    farLeftButton = [CBButton buttonWithColor:[UIColor blueColor] size:CGSizeMake(frame.size.width/4, frame.size.height/buttonRatio) title:[CBButtonHandler getFarLeftButtonName]];
     
-    rightButton = [CBButton buttonWithColor:[UIColor blackColor] size:CGSizeMake(frame.size.width/4, frame.size.height/buttonRatio)];
+    leftButton = [CBButton buttonWithColor:[UIColor redColor] size:CGSizeMake(frame.size.width/4, frame.size.height/buttonRatio) title:[CBButtonHandler getLeftButtonName]];
     
-    farRightButton = [CBButton buttonWithColor:[UIColor greenColor] size:CGSizeMake(frame.size.width/4, frame.size.height/buttonRatio)];
+    rightButton = [CBButton buttonWithColor:[UIColor blackColor] size:CGSizeMake(frame.size.width/4, frame.size.height/buttonRatio) title:[CBButtonHandler  getRightButtonName]];
     
+    farRightButton = [CBButton buttonWithColor:[UIColor greenColor] size:CGSizeMake(frame.size.width/4, frame.size.height/buttonRatio) title:[CBButtonHandler getFarRightButtonName]];
+
     [farLeftButton setPosition:CGPointMake(-farLeftButton.size.width*1.5, farLeftButton.position.y)];
     [leftButton setPosition:CGPointMake(-leftButton.size.width/2, leftButton.position.y)];
     [rightButton setPosition:CGPointMake(rightButton.size.width/2, rightButton.position.y)];
@@ -46,10 +51,21 @@
     for (CBButton * button in buttonBar.buttons){
         
         [buttonBar addChild:button];
+        [button setHandler:handler];
         
         
         
     }
+    
+// This should bee fixed so we are not hard coding it.
+//    [handler mapButton:farLeftButton toTask:[CBButtonHandler pauseTaskName]];
+    handler.buttonMap = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                         [CBButtonHandler pauseTaskName] , [CBButtonHandler getFarLeftButtonName], nil];
+    
+  //@{
+    //                      [CBButtonHandler getFarLeftButtonName] : [CBButtonHandler pauseTaskName]
+      //                    };
+    
     
     return buttonBar;
     

@@ -74,15 +74,29 @@
         //touch happened, start game, set up scene
         [self setMenuScene:false];
         SKView * skView = (SKView *)self.view;
-        SKScene * gameScene = [CBMyScene sceneWithSize:skView.bounds.size];
-        [skView presentScene:gameScene transition:[SKTransition crossFadeWithDuration:1.0]];
+        CBMyScene * gameScene = [CBMyScene sceneWithSize:skView.bounds.size];
+        self.gameScene = gameScene;
+        [skView presentScene:self.gameScene transition:[SKTransition crossFadeWithDuration:0.2]];
     
 
     }
+    if (self.gameScene.player.dead)
+    {
+        [self setMenuScene:YES];
         
+        SKView * skView = (SKView *)self.view;
+        SKScene * menuScene = [CBMenuScene sceneWithSize:skView.bounds.size];
+        menuScene.scaleMode = SKSceneScaleModeAspectFill;
+        [skView presentScene:menuScene];
         
+
+    }
+        
+    
 }
 
+
+//-(void)view
 
 
 

@@ -7,17 +7,19 @@
 //
 
 #import "CBButton.h"
+#import "EnumConstants.h"
+
 
 @implementation CBButton
 
 
-+(id)buttonWithColor:(SKColor *)color size:(CGSize)size{
++(id)buttonWithColor:(SKColor *)color size:(CGSize)size title:(NSString *)buttonTitle{
     
     CBButton *button = [CBButton spriteNodeWithColor:color size:size];
     
+   
     
-    
-    
+    button.title = buttonTitle;
     button.userInteractionEnabled = YES;
     
     
@@ -42,6 +44,8 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     
+    
+    [self.handler handleButton:self];
     [self description];
     
 }
@@ -51,10 +55,44 @@
 -(NSString *)description{
     
     
-    NSLog(@"Summary: %@", self.summary);
+    NSLog(@"Summary: %@", self.title);
+
     
     return self.summary;
 }
+
+
+-(void)pause
+{
+    if(self.scene.view.paused)
+    {
+        self.scene.view.paused = NO;
+    }
+    else
+    {
+        self.scene.view.paused = YES;
+    }
+}
+
+
+
+-(void)switchToItem:(CBItem *)newItem
+{
+    //STUB
+}
+
+-(void)heal
+{
+    //STUB
+}
+
+-(void)block
+{
+    //STUB
+}
+
+
+
 
 
 

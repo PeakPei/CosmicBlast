@@ -8,11 +8,10 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "CBViewController.h"
-
 @interface CBMenuScene : SKScene
 
 
 
-@property CBViewController * viewController;
+@property UIViewController * viewController;
 
 @end
