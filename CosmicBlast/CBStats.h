@@ -13,8 +13,8 @@
 
 @interface CBStats : NSObject <NSCoding>
 
-@property int kills;
-@property int totalKills;
+@property (nonatomic) NSNumber * kills;
+@property (nonatomic) NSNumber * totalKills;
 
 @property NSString *docPath;
 

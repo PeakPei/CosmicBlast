@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CBDataBase : NSObject
+@interface CBDatabase : NSObject
+
++(NSString *)nextStatsDocPath;
 
 @end

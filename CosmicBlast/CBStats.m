@@ -5,45 +5,98 @@
 //  Created by Teddy Kitchen on 8/10/15.
 //  Copyright (c) 2015 Teddy Kitchen. All rights reserved.
 //
-
+#import "CBDatabase.h"
 #import "CBStats.h"
 @implementation CBStats
-//#import "CBDatabase.h"
-#define totalKillsKey @"totalKills"
 
+#define totalKillsKey @"totalKills"
+#define saveFile @"saveFile.plist"
 
 +(id)stats
 {
-    
-    
-    
     CBStats * newStats = [[CBStats alloc] init];
-                          
+    
+    //Use this method to load stats from disk
     [newStats setKills: 0];
     [newStats setTotalKills: 0];
+    
     
     return newStats;
 }
 
+
 -(void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeInt:[self totalKills] forKey:totalKillsKey];
+    [aCoder encodeObject:[self totalKills] forKey:totalKillsKey];
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     if((self = [self init]))
     {
-        [self setTotalKills: [aDecoder decodeIntForKey:totalKillsKey]];
+        [self setTotalKills: [aDecoder decodeObjectForKey:totalKillsKey]];
         [self setKills: 0];
     }
     return self;
 }
 
+-(void)saveData
+{
+    //IMPLEMENT
+}
+
+-(void)deleteData
+{
+    //IMPLEMENT
+}
+
+-(BOOL)createDataPath
+{
+    if ([self docPath] == nil)
+    {
+        self.docPath = [CBDatabase nextStatsDocPath];
+    }
+    NSError *error;
+    BOOL success = [[NSFileManager defaultManager] createDirectoryAtPath:[self docPath] withIntermediateDirectories:YES attributes:nil error:&error];
+    if (!success)
+    {
+        NSLog(@"Error creating data path: %@", [error localizedDescription]);
+    }
+
+    return success;
+}
+
+
+- (NSNumber *)totalKills
+{
+    //Wondering about recursive structure here
+    if (self.totalKills != nil)  {return self.totalKills;}
+    
+    NSString * totalKillsPath = [[self docPath] stringByAppendingPathComponent:saveFile];
+    NSData * codedTotalKills = [[[[NSData alloc] initWithContentsOfFile:dataPath] autorelease]];
+    if (codedTotalKills == nil) return nil;
+    
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedTotalKills];
+    self.totalKills = [[unarchiver decodeObjectForKey:totalKillsKey] retain];
+    [unarchiver finishDecoding];
+    [unarchiver release];
+    
+    return self.totalKills;
+}
+
+
+
+
 -(void)killDidHappen
 {
-    self.kills += 1;
-    self.totalKills += 1;
+    int newKillsInt = [self.kills intValue]+1;
+    int newTotalKillsInt = [self.totalKills intValue]+1;
+    
+    
+    
+    
+    [self setKills:[NSNumber numberWithInt:newKillsInt]];
+    [self setTotalKills:[NSNumber numberWithInt:newTotalKillsInt]];
 }
 
 

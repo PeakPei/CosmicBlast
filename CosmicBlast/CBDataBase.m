@@ -8,6 +8,11 @@
 
 #import "CBDataBase.h"
 
-@implementation CBDataBase
+@implementation CBDatabase
++(NSString *)nextStatsDocPath
+{
+    //IMPLEMENT THIS BITCH 4 REALZ
+    return nil;
+}
 
 @end
