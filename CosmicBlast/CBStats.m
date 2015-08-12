@@ -12,26 +12,23 @@
 #define totalKillsKey @"totalKills"
 #define saveFile @"saveFile.plist"
 
-+(id)stats
-{
++(id)stats{
     CBStats * newStats = [[CBStats alloc] init];
     
     //Use this method to load stats from disk
     [newStats setKills: 0];
-    [newStats setTotalKills: 0];
-    
-    
+    if([newStats totalKills] == nil){
+        [newStats setTotalKills:[NSNumber numberWithInt:1]];
+    }
     return newStats;
 }
 
 
--(void)encodeWithCoder:(NSCoder *)aCoder
-{
+-(void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:[self totalKills] forKey:totalKillsKey];
 }
 
--(id)initWithCoder:(NSCoder *)aDecoder
-{
+-(id)initWithCoder:(NSCoder *)aDecoder{
     if((self = [self init]))
     {
         [self setTotalKills: [aDecoder decodeObjectForKey:totalKillsKey]];
@@ -40,21 +37,18 @@
     return self;
 }
 
--(void)saveData
-{
+-(void)saveData{
     //IMPLEMENT
 }
 
--(void)deleteData
-{
+-(void)deleteData{
     //IMPLEMENT
 }
 
--(BOOL)createDataPath
-{
+-(BOOL)createDataPath{
     if ([self docPath] == nil)
     {
-        self.docPath = [CBDatabase nextStatsDocPath];
+        self.docPath = [CBDatabase nextTotalKillsDocPath];
     }
     NSError *error;
     BOOL success = [[NSFileManager defaultManager] createDirectoryAtPath:[self docPath] withIntermediateDirectories:YES attributes:nil error:&error];
@@ -67,28 +61,54 @@
 }
 
 
-- (NSNumber *)totalKills
-{
+- (NSNumber *)totalKills{
     //Wondering about recursive structure here
-    if (self.totalKills != nil)  {return self.totalKills;}
+    if (_totalKills != nil)  {
+        return _totalKills;
+    }
     
     NSString * totalKillsPath = [[self docPath] stringByAppendingPathComponent:saveFile];
     NSData * codedTotalKills = [[NSData alloc] initWithContentsOfFile:totalKillsPath];
     if (codedTotalKills == nil) return nil;
     
     NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedTotalKills];
-    self.totalKills = [unarchiver decodeObjectForKey:totalKillsKey];
+    _totalKills = [unarchiver decodeObjectForKey:totalKillsKey];
     [unarchiver finishDecoding];
     
     
-    return self.totalKills;
+    return _totalKills;
+}
+
+
+-(void)saveTotalKills{
+    if([self totalKills] == nil) {return;}
+    
+    [self createDataPath];
+    
+    NSString *totalKillsPath = [[self docPath] stringByAppendingPathComponent:saveFile];
+    NSMutableData* data = [[NSMutableData alloc] init];
+    NSKeyedArchiver * archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [archiver encodeObject:[self totalKills] forKey:totalKillsKey];
+    [data writeToFile:totalKillsPath atomically:YES];
+    [archiver finishEncoding];
+    
+}
+
+
+- (void)deleteDoc {
+    
+    NSError *error;
+    BOOL success = [[NSFileManager defaultManager] removeItemAtPath:_docPath error:&error];
+    if (!success) {
+        NSLog(@"Error removing document path: %@", error.localizedDescription);
+    }
+    
 }
 
 
 
 
--(void)killDidHappen
-{
+-(void)killDidHappen{
     int newKillsInt = [self.kills intValue]+1;
     int newTotalKillsInt = [self.totalKills intValue]+1;
     

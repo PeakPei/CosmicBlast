@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>2C00EE8D-CC74-4D75-B5C4-2B5CA03F1337</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>CosmicBlast</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>F6208A582175C682F7250530ACEB14AFE5A7C6F3</key>
 		<string>https://github.com/kitchenteddy/CosmicBlast.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>CosmicBlast.xcodeproj/project.xcworkspace</string>
+	<string>CosmicBlast.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>F6208A582175C682F7250530ACEB14AFE5A7C6F3</key>

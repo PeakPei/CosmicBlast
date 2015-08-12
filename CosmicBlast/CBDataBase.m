@@ -9,8 +9,12 @@
 #import "CBDataBase.h"
 
 @implementation CBDatabase
-+(NSString *)nextStatsDocPath
-{
++(NSString *)nextTotalKillsDocPath{
+    //IMPLEMENT THIS BITCH 4 REALZ
+    return nil;
+}
+
++(NSNumber *)loadTotalKills{
     //IMPLEMENT THIS BITCH 4 REALZ
     return nil;
 }

@@ -10,6 +10,9 @@
 
 @interface CBDatabase : NSObject
 
-+(NSString *)nextStatsDocPath;
+
++(NSString *)nextTotalKillsDocPath;
+
++(NSNumber *)loadTotalKills;
 
 @end

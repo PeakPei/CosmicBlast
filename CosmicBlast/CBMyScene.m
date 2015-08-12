@@ -256,8 +256,8 @@ CMMotionManager *_motionManager;
             SKScene * menuScene = [CBMenuScene sceneWithSize:skView.bounds.size];
             menuScene.scaleMode = SKSceneScaleModeAspectFill;
             [skView presentScene:menuScene];
-            NSLog(@"\nKills: %d",self.stats.kills);
-            NSLog(@"\nKills: %d",self.stats.totalKills);
+            NSLog(@"\nKills: %d",[self.stats.kills intValue]);
+            NSLog(@"\nKills: %d",[self.stats.totalKills intValue]);
             
             
             
