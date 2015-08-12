@@ -73,13 +73,13 @@
     if (self.totalKills != nil)  {return self.totalKills;}
     
     NSString * totalKillsPath = [[self docPath] stringByAppendingPathComponent:saveFile];
-    NSData * codedTotalKills = [[[[NSData alloc] initWithContentsOfFile:dataPath] autorelease]];
+    NSData * codedTotalKills = [[NSData alloc] initWithContentsOfFile:totalKillsPath];
     if (codedTotalKills == nil) return nil;
     
     NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedTotalKills];
-    self.totalKills = [[unarchiver decodeObjectForKey:totalKillsKey] retain];
+    self.totalKills = [unarchiver decodeObjectForKey:totalKillsKey];
     [unarchiver finishDecoding];
-    [unarchiver release];
+    
     
     return self.totalKills;
 }
@@ -91,9 +91,6 @@
 {
     int newKillsInt = [self.kills intValue]+1;
     int newTotalKillsInt = [self.totalKills intValue]+1;
-    
-    
-    
     
     [self setKills:[NSNumber numberWithInt:newKillsInt]];
     [self setTotalKills:[NSNumber numberWithInt:newTotalKillsInt]];
