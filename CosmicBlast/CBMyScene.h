@@ -8,9 +8,10 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "CBButtonBar.h"
-#import"CBWorld.h"
-#import"CBPlayer.h"
-#import"CBHealthBar.h"
+#import "CBWorld.h"
+#import "CBPlayer.h"
+#import "CBHealthBar.h"
+#import "CBStats.h"
 
 @interface CBMyScene : SKScene
 
@@ -18,7 +19,9 @@
 @property (nonatomic) CBWorld * currentWorld;
 @property (nonatomic) NSMutableArray * factories;
 @property (nonatomic) CBButtonBar * buttonBar;
-@property(nonatomic)CBHealthBar * healthBar;
+@property(nonatomic) CBHealthBar * healthBar;
+@property(nonatomic) CBStats * stats;
+
 
 
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;

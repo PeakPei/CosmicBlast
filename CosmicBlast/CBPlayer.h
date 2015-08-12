@@ -13,6 +13,11 @@
 @property int health;
 @property BOOL dead;
 
+//properties for stats
+@property int kills;
+
+
+
 
 +(id)playerWithImageNamed:(NSString *)name;
 
@@ -21,6 +26,6 @@
 
 -(void)playerHit;
 
--(void)playerHitWithDamageAmount:(int)damage;
+
 
 @end

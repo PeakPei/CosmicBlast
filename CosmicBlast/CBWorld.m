@@ -13,7 +13,7 @@
 + (id)worldWithImageNamed:(NSString *)name position:(CGPoint)drawPoint{
     
      CBWorld * world = [CBWorld spriteNodeWithImageNamed:name];
-    world.position = drawPoint;
+     world.position = drawPoint;
     
     
     //int ox = world.frame.origin.x;

@@ -12,6 +12,8 @@
 		6515FAD719AFD25800E82568 /* CBPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6515FAD619AFD25800E82568 /* CBPlayer.m */; };
 		65545A8319C1443B005F1073 /* CBItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 65545A8219C1443B005F1073 /* CBItem.m */; };
 		65545A8619C14650005F1073 /* CBShuriken.m in Sources */ = {isa = PBXBuildFile; fileRef = 65545A8519C14650005F1073 /* CBShuriken.m */; };
+		655D4D4E1B7955550055FEB1 /* CBStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 655D4D4D1B7955550055FEB1 /* CBStats.m */; };
+		655D4D511B7ADC5D0055FEB1 /* CBDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 655D4D501B7ADC5D0055FEB1 /* CBDataBase.m */; };
 		6566BE7D19802D5D00602447 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6566BE7C19802D5D00602447 /* Foundation.framework */; };
 		6566BE7F19802D5D00602447 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6566BE7E19802D5D00602447 /* CoreGraphics.framework */; };
 		6566BE8119802D5D00602447 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6566BE8019802D5D00602447 /* UIKit.framework */; };
@@ -64,6 +66,10 @@
 		65545A8219C1443B005F1073 /* CBItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBItem.m; sourceTree = "<group>"; };
 		65545A8419C14650005F1073 /* CBShuriken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBShuriken.h; sourceTree = "<group>"; };
 		65545A8519C14650005F1073 /* CBShuriken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBShuriken.m; sourceTree = "<group>"; };
+		655D4D4C1B7955550055FEB1 /* CBStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBStats.h; sourceTree = "<group>"; };
+		655D4D4D1B7955550055FEB1 /* CBStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBStats.m; sourceTree = "<group>"; };
+		655D4D4F1B7ADC5D0055FEB1 /* CBDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDataBase.h; sourceTree = "<group>"; };
+		655D4D501B7ADC5D0055FEB1 /* CBDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDataBase.m; sourceTree = "<group>"; };
 		6566BE7919802D5D00602447 /* CosmicBlast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CosmicBlast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6566BE7C19802D5D00602447 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6566BE7E19802D5D00602447 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -277,7 +283,6 @@
 				6515FAD619AFD25800E82568 /* CBPlayer.m */,
 				65545A8119C1443B005F1073 /* CBItem.h */,
 				65545A8219C1443B005F1073 /* CBItem.m */,
-				65545A8519C14650005F1073 /* CBShuriken.m */,
 			);
 			name = Player;
 			sourceTree = "<group>";
@@ -303,8 +308,13 @@
 				65F42C2E1AB7B79B001DA12A /* CBLogger.h */,
 				65F42C2F1AB7B79B001DA12A /* CBLogger.m */,
 				65545A8419C14650005F1073 /* CBShuriken.h */,
+				65545A8519C14650005F1073 /* CBShuriken.m */,
 				6515FAD219AFB6DE00E82568 /* CBVectorMath.h */,
 				6515FAD319AFB6DE00E82568 /* CBVectorMath.m */,
+				655D4D4F1B7ADC5D0055FEB1 /* CBDataBase.h */,
+				655D4D501B7ADC5D0055FEB1 /* CBDataBase.m */,
+				655D4D4C1B7955550055FEB1 /* CBStats.h */,
+				655D4D4D1B7955550055FEB1 /* CBStats.m */,
 			);
 			name = Rescources;
 			sourceTree = "<group>";
@@ -428,8 +438,10 @@
 				6566BE9819802D5D00602447 /* CBMyScene.m in Sources */,
 				6515FAD419AFB6DE00E82568 /* CBVectorMath.m in Sources */,
 				65BA8A8719B8E4B6003DCDD9 /* CBEnemyFactory.m in Sources */,
+				655D4D4E1B7955550055FEB1 /* CBStats.m in Sources */,
 				65BA8A8419B8E187003DCDD9 /* CBWalker.m in Sources */,
 				65EBF13719A97AD400F0BA37 /* CBWorld.m in Sources */,
+				655D4D511B7ADC5D0055FEB1 /* CBDataBase.m in Sources */,
 				6579700F19BE43CE00E2B9D9 /* CBButtonBar.m in Sources */,
 				6515FAD719AFD25800E82568 /* CBPlayer.m in Sources */,
 			);

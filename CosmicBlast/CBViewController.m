@@ -80,7 +80,7 @@
     
 
     }
-    if (self.gameScene.player.dead)
+    else if (self.gameScene.player.dead)
     {
         [self setMenuScene:YES];
         

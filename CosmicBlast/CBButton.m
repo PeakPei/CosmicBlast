@@ -55,7 +55,7 @@
 -(NSString *)description{
     
     
-    NSLog(@"Summary: %@", self.title);
+    NSLog(@"Title: %@", self.title);
 
     
     return self.summary;

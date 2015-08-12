@@ -14,7 +14,7 @@
 #import "CBEnemyFactory.h"
 #import "CBButtonBar.h"
 #import "CBVectorMath.h"
-
+#import "CBMenuScene.h"
 
 
 static const uint32_t projectileCategory = 0x1 << 0;
@@ -73,6 +73,10 @@ CMMotionManager *_motionManager;
         
         _motionManager = [[CMMotionManager alloc] init];
         [self startMonitoringAcceleration];
+        
+        
+        //Set up Statistics collecting object
+        [self setStats:[CBStats stats]];
         
         
         //Set up button bar
@@ -235,6 +239,7 @@ CMMotionManager *_motionManager;
     
     if ((firstBody.categoryBitMask & projectileCategory) != 0 &&(secondBody.categoryBitMask & monsterCategory) != 0){
         [self projectile:(SKSpriteNode *) firstBody.node didCollideWithMonster:(SKSpriteNode *) secondBody.node];
+        [self.stats killDidHappen];
     }
     
     if((firstBody.categoryBitMask & monsterCategory) != 0){
@@ -246,6 +251,15 @@ CMMotionManager *_motionManager;
         //NSLog(@"player hit by enemy!!!");
         
         if (self.player.dead) {
+            
+            SKView * skView = (SKView *)self.view;
+            SKScene * menuScene = [CBMenuScene sceneWithSize:skView.bounds.size];
+            menuScene.scaleMode = SKSceneScaleModeAspectFill;
+            [skView presentScene:menuScene];
+            NSLog(@"\nKills: %d",self.stats.kills);
+            NSLog(@"\nKills: %d",self.stats.totalKills);
+            
+            
             
         }
     
