@@ -20,15 +20,14 @@
 
 +(id)stats;
 
--(void)encodeWithCoder:
-
-(NSCoder *)aCoder;
+-(void)encodeWithCoder:(NSCoder *)aCoder;
 
 -(id)initWithCoder:(NSCoder *)aDecoder;
 
 -(void)killDidHappen;
 
--(void)saveData;
+-(void)saveTotalKills;
+
 
 -(void)deleteData;
 

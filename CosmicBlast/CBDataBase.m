@@ -10,13 +10,70 @@
 
 @implementation CBDatabase
 +(NSString *)nextTotalKillsDocPath{
-    //IMPLEMENT THIS BITCH 4 REALZ
-    return nil;
+    //Get Private Docs Directory
+    NSString *documentsDirectory = [CBDatabase getPrivateDocsDir];
+    
+    NSError *error;
+    NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory error:&error];
+    if(files == nil){
+        NSLog(@"Error reading contents of documents directory: %@",[error localizedDescription]);
+        return nil;
+    }
+    //search for an available name
+    int maxNumber = 0;
+    for (NSString *file in files){
+        if([file.pathExtension compare:@"totalKills" options:NSCaseInsensitiveSearch] == NSOrderedSame){
+            NSString *fileName = [file stringByDeletingPathExtension];
+            maxNumber = MAX(maxNumber, fileName.intValue);
+        }
+    }
+    //get available name
+    NSString *availableName = [NSString stringWithFormat:@"%d.scarybug", maxNumber+1];
+    return [documentsDirectory stringByAppendingPathComponent:availableName];
+
 }
 
-+(NSNumber *)loadTotalKills{
-    //IMPLEMENT THIS BITCH 4 REALZ
-    return nil;
++(NSMutableArray *)loadTotalKillDocs{
+    NSString *documentsDirectory = [CBDatabase getPrivateDocsDir];
+    NSLog(@"Loading totalKills from %@", documentsDirectory);
+    
+    NSError *error;
+    NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory error:&error];
+    if (files == nil){
+        NSLog(@"Error reading contents of total kills directory: %@", [error localizedDescription]);
+        return nil;
+    }
+    NSMutableArray *toReturn = [[NSMutableArray alloc] init];
+    for (NSString *file in files){
+        if ([file.pathExtension compare:@"totalKills" options:NSCaseInsensitiveSearch] == NSOrderedSame){
+            NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:file];
+            
+            
+            NSData *fileData = [[NSFileManager defaultManager] contentsAtPath:fullPath];
+            [toReturn addObject:fileData];
+        
+        }
+        
+    }
+    return toReturn;
 }
+
+
+
+
+
+
++(NSString *)getPrivateDocsDir {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    documentsDirectory = [documentsDirectory stringByAppendingPathComponent:@"Private Documents"];
+    
+    NSError * error;
+    [[NSFileManager defaultManager] createDirectoryAtPath:documentsDirectory withIntermediateDirectories:YES attributes:nil error:&error];
+    
+    return documentsDirectory;
+    
+}
+
 
 @end

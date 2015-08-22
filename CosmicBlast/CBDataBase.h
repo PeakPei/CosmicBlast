@@ -13,6 +13,7 @@
 
 +(NSString *)nextTotalKillsDocPath;
 
-+(NSNumber *)loadTotalKills;
+
++(NSNumber *)loadTotalKillDocs;
 
 @end
