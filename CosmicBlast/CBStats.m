@@ -17,9 +17,9 @@
     
     //Use this method to load stats from disk
     [newStats setKills: 0];
-    if([newStats totalKills] == nil){
-        [newStats setTotalKills:[NSNumber numberWithInt:1]];
-    }
+    //if([newStats totalKills] == nil){
+    //    [newStats setTotalKills:[NSNumber numberWithInt:1]];
+    //}
     return newStats;
 }
 
@@ -32,7 +32,7 @@
     if((self = [self init]))
     {
         [self setTotalKills: [aDecoder decodeObjectForKey:totalKillsKey]];
-        [self setKills: 0];
+//        [self setKills: 0];
     }
     return self;
 }
@@ -50,41 +50,49 @@
     {
         self.docPath = [CBDatabase nextTotalKillsDocPath];
     }
+    
     NSError *error;
     BOOL success = [[NSFileManager defaultManager] createDirectoryAtPath:[self docPath] withIntermediateDirectories:YES attributes:nil error:&error];
     if (!success)
     {
         NSLog(@"Error creating data path: %@", [error localizedDescription]);
     }
-
+    NSLog(@"creatingDataPath %@",[self docPath]);
     return success;
 }
 
 
 - (NSNumber *)totalKills{
     //Wondering about recursive structure here
+    
     if (_totalKills != nil)  {
         return _totalKills;
     }
+    else{
+        
+        
+        NSString * totalKillsPath = [[self docPath] stringByAppendingPathComponent:saveFile];
+        NSLog(@"about to extract kills from %@",[self docPath]);
+        NSData * codedTotalKills = [[NSData alloc] initWithContentsOfFile:totalKillsPath];
+        if (codedTotalKills == nil) return nil;
+        
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedTotalKills];
+        _totalKills = [unarchiver decodeObjectForKey:totalKillsKey];
+        [unarchiver finishDecoding];
+        
+        return _totalKills;
+    }
     
-    NSString * totalKillsPath = [[self docPath] stringByAppendingPathComponent:saveFile];
-    NSData * codedTotalKills = [[NSData alloc] initWithContentsOfFile:totalKillsPath];
-    if (codedTotalKills == nil) return nil;
-    
-    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedTotalKills];
-    _totalKills = [unarchiver decodeObjectForKey:totalKillsKey];
-    [unarchiver finishDecoding];
-    
-    
-    return _totalKills;
+
 }
 
 
 -(void)saveTotalKills{
-    if([self totalKills] == nil) {return;}
-    
+    if([self totalKills] == nil) {
+        return;
+    }
+    NSLog(@"saving total kills");
     [self createDataPath];
-    
     NSString *totalKillsPath = [[self docPath] stringByAppendingPathComponent:saveFile];
     NSMutableData* data = [[NSMutableData alloc] init];
     NSKeyedArchiver * archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];

@@ -14,6 +14,12 @@
     if (self = [super initWithSize:size]) {
         
         
+        
+
+        
+        
+        
+        
         [self setBackgroundColor: [UIColor redColor]];
         
         

@@ -28,7 +28,8 @@
         }
     }
     //get available name
-    NSString *availableName = [NSString stringWithFormat:@"%d.scarybug", maxNumber+1];
+    NSString *availableName = [NSString stringWithFormat:@"%d.totalKills", maxNumber+1];
+    NSLog(@"NextTotalKillsDocPath %@",[documentsDirectory stringByAppendingPathComponent:availableName]);
     return [documentsDirectory stringByAppendingPathComponent:availableName];
 
 }
@@ -44,17 +45,21 @@
         return nil;
     }
     NSMutableArray *toReturn = [[NSMutableArray alloc] init];
+    //TESTING
+    int fileCounter = 0;
+    //TESTING
     for (NSString *file in files){
         if ([file.pathExtension compare:@"totalKills" options:NSCaseInsensitiveSearch] == NSOrderedSame){
             NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:file];
-            
-            
             NSData *fileData = [[NSFileManager defaultManager] contentsAtPath:fullPath];
             [toReturn addObject:fileData];
         
         }
-        
+        fileCounter++;
     }
+    
+    
+    NSLog(@"fileCounter = %d",fileCounter);
     return toReturn;
 }
 

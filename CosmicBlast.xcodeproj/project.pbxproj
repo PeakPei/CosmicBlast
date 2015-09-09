@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6507900A1B9CD7DA00F9931F /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 650790091B9CD7DA00F9931F /* Background.png */; };
 		6507E14F1A5117DD00A3FADB /* CBMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6507E14D1A5117DD00A3FADB /* CBMenuScene.m */; };
 		6515FAD419AFB6DE00E82568 /* CBVectorMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 6515FAD319AFB6DE00E82568 /* CBVectorMath.m */; };
 		6515FAD719AFD25800E82568 /* CBPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6515FAD619AFD25800E82568 /* CBPlayer.m */; };
@@ -39,7 +40,6 @@
 		65BA8A8419B8E187003DCDD9 /* CBWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8A8319B8E187003DCDD9 /* CBWalker.m */; };
 		65BA8A8719B8E4B6003DCDD9 /* CBEnemyFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8A8619B8E4B6003DCDD9 /* CBEnemyFactory.m */; };
 		65BF3DBD1B27BE4000E7F44E /* CBButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BF3DBC1B27BE4000E7F44E /* CBButtonHandler.m */; };
-		65EBF13419A9731000F0BA37 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 65EBF13319A9731000F0BA37 /* Background.png */; };
 		65EBF13719A97AD400F0BA37 /* CBWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EBF13619A97AD400F0BA37 /* CBWorld.m */; };
 		65F42C301AB7B79B001DA12A /* CBLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F42C2F1AB7B79B001DA12A /* CBLogger.m */; };
 		65FDF3B119A996B200D4269C /* CBEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FDF3B019A996B200D4269C /* CBEnemy.m */; };
@@ -56,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		650790091B9CD7DA00F9931F /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
 		6507E14D1A5117DD00A3FADB /* CBMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBMenuScene.m; sourceTree = "<group>"; };
 		6507E14E1A5117DD00A3FADB /* CBMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBMenuScene.h; sourceTree = "<group>"; };
 		6515FAD219AFB6DE00E82568 /* CBVectorMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBVectorMath.h; sourceTree = "<group>"; };
@@ -108,7 +109,6 @@
 		65BF3DBB1B27BE4000E7F44E /* CBButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBButtonHandler.h; sourceTree = "<group>"; };
 		65BF3DBC1B27BE4000E7F44E /* CBButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBButtonHandler.m; sourceTree = "<group>"; };
 		65D9BC681B2651EE005A5324 /* EnumConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnumConstants.h; sourceTree = "<group>"; };
-		65EBF13319A9731000F0BA37 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
 		65EBF13519A97AD400F0BA37 /* CBWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWorld.h; sourceTree = "<group>"; };
 		65EBF13619A97AD400F0BA37 /* CBWorld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWorld.m; sourceTree = "<group>"; };
 		65F42C2E1AB7B79B001DA12A /* CBLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBLogger.h; path = ../CBLogger.h; sourceTree = "<group>"; };
@@ -254,7 +254,6 @@
 		6579701419BE44BE00E2B9D9 /* WorldScene */ = {
 			isa = PBXGroup;
 			children = (
-				65EBF13319A9731000F0BA37 /* Background.png */,
 				65EBF13519A97AD400F0BA37 /* CBWorld.h */,
 				65EBF13619A97AD400F0BA37 /* CBWorld.m */,
 				6566BE9619802D5D00602447 /* CBMyScene.h */,
@@ -291,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				6566BE9319802D5D00602447 /* CBViewController.h */,
+				650790091B9CD7DA00F9931F /* Background.png */,
 				6566BE9419802D5D00602447 /* CBViewController.m */,
 				6507E14D1A5117DD00A3FADB /* CBMenuScene.m */,
 				6507E14E1A5117DD00A3FADB /* CBMenuScene.h */,
@@ -402,7 +402,7 @@
 				6566BEBF1980387400602447 /* sprites.atlas in Resources */,
 				6566BEBD1980387400602447 /* background-music-aac.caf in Resources */,
 				6566BE8919802D5D00602447 /* InfoPlist.strings in Resources */,
-				65EBF13419A9731000F0BA37 /* Background.png in Resources */,
+				6507900A1B9CD7DA00F9931F /* Background.png in Resources */,
 				6566BE9C19802D5D00602447 /* Images.xcassets in Resources */,
 				6566BE9219802D5D00602447 /* Main.storyboard in Resources */,
 				6566BEBE1980387400602447 /* pew-pew-lei.caf in Resources */,

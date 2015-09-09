@@ -259,7 +259,7 @@ CMMotionManager *_motionManager;
             
             
             NSLog(@"\nKills: %d",[self.stats.kills intValue]);
-            NSLog(@"\nTotal Kills: %d",[self.stats.totalKills intValue]);
+            NSLog(@"\nTotal Kills: %d",[[self.stats totalKills] intValue]);
             NSLog(@"\nsaving total kills to disk\n");
             [self.stats saveTotalKills];
             
