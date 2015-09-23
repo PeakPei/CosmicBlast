@@ -28,9 +28,9 @@
         //add buttons here
         
         
-        NSString *toLog = [NSString stringWithFormat: @"%@ %@", @"Size: %@", NSStringFromCGSize(size)];
+        //NSString *toLog = [NSString stringWithFormat: @"%@ %@", @"Size: %@", NSStringFromCGSize(size)];
     
-        [CBLogger logData:toLog :@"CBMenuScene on Init"];
+        //[CBLogger logData:toLog :@"CBMenuScene on Init"];
         
         
         

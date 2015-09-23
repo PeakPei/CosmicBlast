@@ -11,15 +11,17 @@
 
 #define totalKillsKey @"totalKills"
 #define saveFile @"saveFile.plist"
+#define totalKillsFile @totalKillsFile.plist
 
 +(id)stats{
     CBStats * newStats = [[CBStats alloc] init];
     
     //Use this method to load stats from disk
     [newStats setKills: 0];
-    //if([newStats totalKills] == nil){
-    //    [newStats setTotalKills:[NSNumber numberWithInt:1]];
-    //}
+    if([newStats totalKills] == nil){
+        [newStats setTotalKills:[NSNumber numberWithInt:0]];
+    NSLog(@"retrieving total kills; value: %@",[newStats totalKills]);
+    }
     return newStats;
 }
 
@@ -48,7 +50,7 @@
 -(BOOL)createDataPath{
     if ([self docPath] == nil)
     {
-        self.docPath = [CBDatabase nextTotalKillsDocPath];
+        _docPath = [CBDatabase totalKillsDocPath];
     }
     
     NSError *error;
@@ -70,16 +72,31 @@
     }
     else{
         
+        //NSString * totalKillsPath  = [CBDatabase totalKillsDocPath];
         
-        NSString * totalKillsPath = [[self docPath] stringByAppendingPathComponent:saveFile];
-        NSLog(@"about to extract kills from %@",[self docPath]);
-        NSData * codedTotalKills = [[NSData alloc] initWithContentsOfFile:totalKillsPath];
-        if (codedTotalKills == nil) return nil;
+        //NSData *data = [NSData dataWithContentsOfFile:totalKillsPath];
+        //int totalKillsInt = 0;
+        //NSLog(@"total kills before read from disk %d\n",totalKillsInt);
+        //[data getBytes: &totalKillsInt length: sizeof(totalKillsInt)];
+        NSInteger totalKillsInteger = [[NSUserDefaults standardUserDefaults] integerForKey: @"totalKills"];
         
-        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedTotalKills];
-        _totalKills = [unarchiver decodeObjectForKey:totalKillsKey];
-        [unarchiver finishDecoding];
+        NSNumber * totalKills = [NSNumber numberWithInteger:totalKillsInteger];
+        _totalKills = totalKills;
         
+        
+        //[self setDocPath:[CBDatabase totalKillsDocPath]];
+        
+        //NSString * totalKillsPath = [[self docPath] stringByAppendingPathComponent:saveFile];
+        
+        //NSData * codedTotalKills = [[NSData alloc] initWithContentsOfFile:totalKillsPath];
+        //if (codedTotalKills == nil) return nil;
+        
+        //NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedTotalKills];
+        //_totalKills = [unarchiver decodeObjectForKey:totalKillsKey];
+        //[unarchiver finishDecoding];
+        
+        
+        //NSLog(@"total kills read from disk %d\n",totalKillsInt);
         return _totalKills;
     }
     
@@ -87,20 +104,40 @@
 }
 
 
+
+
 -(void)saveTotalKills{
     if([self totalKills] == nil) {
+        NSLog(@"total kills is nil");
         return;
     }
-    NSLog(@"saving total kills");
-    [self createDataPath];
-    NSString *totalKillsPath = [[self docPath] stringByAppendingPathComponent:saveFile];
-    NSMutableData* data = [[NSMutableData alloc] init];
-    NSKeyedArchiver * archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-    [archiver encodeObject:[self totalKills] forKey:totalKillsKey];
-    [data writeToFile:totalKillsPath atomically:YES];
-    [archiver finishEncoding];
+    int intTotalKills = [[self totalKills] intValue];
+    //NSString *totalKillsPath = [CBDatabase totalKillsDocPath];
+    //NSLog(@"saving totalkills to: %@",totalKillsPath);
+    //NSData *data = [NSData dataWithBytes: &intTotalKills length: sizeof(intTotalKills)];
+    
+    //[data writeToFile:totalKillsPath atomically:YES];
+     
+    
+    [[NSUserDefaults standardUserDefaults] setInteger: intTotalKills forKey: @"totalKills"];
+
     
 }
+
+//-(void)saveTotalKills{
+//    if([self totalKills] == nil) {
+//        return;
+//    }
+//    NSLog(@"saving total kills");
+//    [self createDataPath];
+//    NSString *totalKillsPath = [[self docPath] stringByAppendingPathComponent:saveFile];
+//    NSMutableData* data = [[NSMutableData alloc] init];
+//    NSKeyedArchiver * archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+//    [archiver encodeObject:[self totalKills] forKey:totalKillsKey];
+//    [data writeToFile:totalKillsPath atomically:YES];
+//    [archiver finishEncoding];
+//
+//}
 
 
 - (void)deleteDoc {

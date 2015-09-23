@@ -11,7 +11,7 @@
 @interface CBDatabase : NSObject
 
 
-+(NSString *)nextTotalKillsDocPath;
++(NSString *)totalKillsDocPath;
 
 
 +(NSNumber *)loadTotalKillDocs;
