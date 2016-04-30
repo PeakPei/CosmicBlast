@@ -37,6 +37,7 @@
 		6579700F19BE43CE00E2B9D9 /* CBButtonBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6579700E19BE43CE00E2B9D9 /* CBButtonBar.m */; };
 		6579701219BE43E200E2B9D9 /* CBButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6579701119BE43E200E2B9D9 /* CBButton.m */; };
 		65869F7B1A3A8C260076B9D4 /* CBHealthBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 65869F7A1A3A8C260076B9D4 /* CBHealthBar.m */; };
+		65977D561CD5232400BFEAB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65977D551CD5232400BFEAB9 /* LaunchScreen.storyboard */; };
 		65BA8A8419B8E187003DCDD9 /* CBWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8A8319B8E187003DCDD9 /* CBWalker.m */; };
 		65BA8A8719B8E4B6003DCDD9 /* CBEnemyFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8A8619B8E4B6003DCDD9 /* CBEnemyFactory.m */; };
 		65BF3DBD1B27BE4000E7F44E /* CBButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BF3DBC1B27BE4000E7F44E /* CBButtonHandler.m */; };
@@ -102,6 +103,7 @@
 		6579701119BE43E200E2B9D9 /* CBButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBButton.m; sourceTree = "<group>"; };
 		65869F791A3A8C260076B9D4 /* CBHealthBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHealthBar.h; sourceTree = "<group>"; };
 		65869F7A1A3A8C260076B9D4 /* CBHealthBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHealthBar.m; sourceTree = "<group>"; };
+		65977D551CD5232400BFEAB9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CosmicBlast/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65BA8A8219B8E187003DCDD9 /* CBWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWalker.h; sourceTree = "<group>"; };
 		65BA8A8319B8E187003DCDD9 /* CBWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWalker.m; sourceTree = "<group>"; };
 		65BA8A8519B8E4B6003DCDD9 /* CBEnemyFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBEnemyFactory.h; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 		6566BE7019802D5D00602447 = {
 			isa = PBXGroup;
 			children = (
+				65977D551CD5232400BFEAB9 /* LaunchScreen.storyboard */,
 				6566BE8419802D5D00602447 /* CosmicBlast */,
 				6566BEA819802D5D00602447 /* CosmicBlastTests */,
 				6566BE7B19802D5D00602447 /* Frameworks */,
@@ -400,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6566BEBF1980387400602447 /* sprites.atlas in Resources */,
+				65977D561CD5232400BFEAB9 /* LaunchScreen.storyboard in Resources */,
 				6566BEBD1980387400602447 /* background-music-aac.caf in Resources */,
 				6566BE8919802D5D00602447 /* InfoPlist.strings in Resources */,
 				6507900A1B9CD7DA00F9931F /* Background.png in Resources */,
@@ -573,6 +577,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CosmicBlast/CosmicBlast-Prefix.pch";
 				INFOPLIST_FILE = "CosmicBlast/CosmicBlast-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
@@ -590,6 +595,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CosmicBlast/CosmicBlast-Prefix.pch";
 				INFOPLIST_FILE = "CosmicBlast/CosmicBlast-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
