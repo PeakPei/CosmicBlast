@@ -13,7 +13,8 @@
 #import "CBHealthBar.h"
 #import "CBStats.h"
 
-@interface CBMyScene : SKScene
+@interface CBMyScene : SKScene <SKPhysicsContactDelegate>
+
 
 @property (nonatomic) CBPlayer * player;
 @property (nonatomic) CBWorld * currentWorld;
