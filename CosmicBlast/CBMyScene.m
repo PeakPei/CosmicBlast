@@ -21,6 +21,7 @@ static const uint32_t projectileCategory = 0x1 << 0;
 static const uint32_t monsterCategory = 0x1 << 1;
 static const uint32_t playerCategory = 0x1 << 2;
 static const uint32_t edgeCategory = 0x1 << 3;
+static const uint32_t enemyFactoryCategory = 0x1 << 4;
 
 
 @implementation CBMyScene
@@ -30,7 +31,7 @@ CMMotionManager *_motionManager;
     if (self = [super initWithSize:size]) {
         
         //Initialize word
-        self.backgroundColor = [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+        self.backgroundColor = [SKColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
         self.currentWorld = [CBWorld worldWithImageNamed:@"Background" position:CGPointZero];
         //self.currentWorld.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
         [self addChild: self.currentWorld];
@@ -89,7 +90,10 @@ CMMotionManager *_motionManager;
         [self addChild:self.healthBar];
         
         
+         
         
+        
+        //set up factories
         
         //Change this depending on levels
         
@@ -145,11 +149,18 @@ CMMotionManager *_motionManager;
 
 //Fix hardcoding.  need to figur out world configuration
 -(void)placeFactoryAtPosition:(CGPoint)position{
-    CBEnemyFactory * factory = [CBEnemyFactory enemyFactoryWithColor:[SKColor blackColor] size:CGSizeMake(30,30)];
+    CBEnemyFactory * factory = [CBEnemyFactory enemyFactoryWithColor:[SKColor whiteColor] size:CGSizeMake(30,30)];
     
     [factory setPosition:position];
+    factory.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:factory.size];
+    factory.physicsBody.dynamic = NO;
+    factory.physicsBody.categoryBitMask = enemyFactoryCategory;
+    factory.physicsBody.contactTestBitMask = projectileCategory;
+    factory.physicsBody.usesPreciseCollisionDetection = NO;
+    
     [self.currentWorld addChild:factory];
     [self.factories addObject:factory];
+    
     
     
     
@@ -228,6 +239,7 @@ CMMotionManager *_motionManager;
 -(void)didBeginContact:(SKPhysicsContact *)contact{
     SKPhysicsBody *firstBody, *secondBody;
     
+    // make sure that first body is smaller or equal to secondBody
     if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask){
         firstBody = contact.bodyA;
         secondBody = contact.bodyB;
@@ -237,11 +249,19 @@ CMMotionManager *_motionManager;
         secondBody = contact.bodyA;
     }
     
+    
+    //monster hit by projectile
     if ((firstBody.categoryBitMask & projectileCategory) != 0 &&(secondBody.categoryBitMask & monsterCategory) != 0){
         [self projectile:(SKSpriteNode *) firstBody.node didCollideWithMonster:(SKSpriteNode *) secondBody.node];
         [self.stats killDidHappen];
     }
     
+    //factory hit by projectile
+    if ((firstBody.categoryBitMask & projectileCategory) != 0 &&(secondBody.categoryBitMask & enemyFactoryCategory) != 0){
+        [self projectile:(SKSpriteNode *) firstBody.node didCollideWithEnemyFactory:(SKSpriteNode *) secondBody.node];
+    }
+    
+    //Player hit by monster
     if((firstBody.categoryBitMask & monsterCategory) != 0){
     
         
@@ -350,11 +370,23 @@ CMMotionManager *_motionManager;
 
 
 
-//belongs in another class
+
 -(void)projectile:(SKSpriteNode *)projectile didCollideWithMonster:(SKSpriteNode *)monster {
-    //NSLog(@"hit");
     [projectile removeFromParent];
     [monster removeFromParent];
+    
+}
+
+-(void)projectile:(SKSpriteNode *)projectile didCollideWithEnemyFactory:(CBEnemyFactory *)factory {
+    NSLog(@"HIT BITCH");
+    [projectile removeFromParent];
+    [factory factoryHit];
+    
+    if(factory.dead){
+        NSLog(@"factoryDead");
+        [factory removeFromParent];
+        [self.factories removeObject:factory];
+    }
     
 }
 

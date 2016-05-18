@@ -19,6 +19,9 @@
 +(id)enemyFactoryWithColor:(SKColor *)color size:(CGSize)size{
     
     CBEnemyFactory * enemyFactory = [CBEnemyFactory spriteNodeWithColor:color size:size];
+    enemyFactory.maxHealth = 30;
+    enemyFactory.health = 30;
+    enemyFactory.dead = NO;
     return enemyFactory;
     
 }
@@ -40,6 +43,26 @@
     self.position = position;
     
 }
+
+
+-(void)factoryHit
+{
+    [self factoryHitWithDamageAmount:10];
+}
+
+-(void)factoryHitWithDamageAmount:(int)damage
+{
+    if (self.health>0){
+        [self setHealth:self.health-damage];
+    }
+    else{
+        self.dead = YES;
+    }
+}
+
+
+
+
 
 
 @end

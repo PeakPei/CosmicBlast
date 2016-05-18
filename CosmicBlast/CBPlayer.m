@@ -41,46 +41,6 @@
     
     self.parent.position = CGPointMake((-self.position.x)+parentOffsetX, (-self.position.y)+parentOffsetY);
     
-    
-    //self.parent.position = self.position;
-    //[self.parent.physicsBody applyForce:deviceMotion];
-    
-    //NSLog(@"self pos: {x:%F}{y:%F} \n parent pos: {x:%F}{y:%F}",self.position.x,self.position.y,self.parent.position.x,self.parent.position.y);
-
-//    if (x < -.2){
-//        CGPoint oldPoint = CGPointMake(self.position.x, self.position.y);
-//        self.position = CGPointMake(oldPoint.x - speed, oldPoint.y);
-//        
-//        CGPoint oldParentPoint = CGPointMake(self.parent.position.x,self.parent.position.y);
-//        self.parent.position = CGPointMake(oldParentPoint.x + speed, oldParentPoint.y);
-//    }
-//    if (x > .2){
-//        
-//        CGPoint oldPoint = CGPointMake(self.position.x, self.position.y);
-//        self.position = CGPointMake(oldPoint.x + speed, oldPoint.y);
-//        
-//        CGPoint oldParentPoint = CGPointMake(self.parent.position.x,self.parent.position.y);
-//        self.parent.position = CGPointMake(oldParentPoint.x - speed, oldParentPoint.y);
-//        
-//    }
-//    if (y > .2){
-//        
-//        CGPoint oldPoint = CGPointMake(self.position.x, self.position.y);
-//        self.position = CGPointMake(oldPoint.x, oldPoint.y + speed);
-//        
-//        CGPoint oldParentPoint = CGPointMake(self.parent.position.x,self.parent.position.y);
-//        self.parent.position = CGPointMake(oldParentPoint.x, oldParentPoint.y - speed);
-//        
-//    }
-//    if (y < -.5){
-//        CGPoint oldPoint = CGPointMake(self.position.x, self.position.y);
-//        self.position = CGPointMake(oldPoint.x, oldPoint.y - speed);
-//        
-//        CGPoint oldParentPoint = CGPointMake(self.parent.position.x,self.parent.position.y);
-//        self.parent.position = CGPointMake(oldParentPoint.x, oldParentPoint.y + speed);
-//    }
-    
-   //NSLog(@"CBPlayer ----> self.position: %f self.parent.position %f", self.position, self.parent.position);
 }
 
 

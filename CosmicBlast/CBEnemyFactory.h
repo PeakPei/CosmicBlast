@@ -11,12 +11,18 @@
 
 
 @interface CBEnemyFactory : SKSpriteNode
+@property int maxHealth;
+@property int health;
+@property BOOL dead;
+
 
 +(id)enemyFactoryWithImageNamed:(NSString *)name;
 
 +(id)enemyFactoryWithColor:(SKColor *)color size:(CGSize)size;
 
 -(void)setFactoryPosition:(CGPoint)position;
+
+-(void)factoryHit;
 
 -(CBWalker *)createWalker;
 

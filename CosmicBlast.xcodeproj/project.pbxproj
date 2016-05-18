@@ -34,6 +34,7 @@
 		6566BEBD1980387400602447 /* background-music-aac.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6566BEBA1980387400602447 /* background-music-aac.caf */; };
 		6566BEBE1980387400602447 /* pew-pew-lei.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6566BEBB1980387400602447 /* pew-pew-lei.caf */; };
 		6566BEBF1980387400602447 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 6566BEBC1980387400602447 /* sprites.atlas */; };
+		657432D71CEBEEA900EB6864 /* Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 657432D61CEBEEA900EB6864 /* Level1.sks */; };
 		6579700F19BE43CE00E2B9D9 /* CBButtonBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6579700E19BE43CE00E2B9D9 /* CBButtonBar.m */; };
 		6579701219BE43E200E2B9D9 /* CBButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6579701119BE43E200E2B9D9 /* CBButton.m */; };
 		65869F7B1A3A8C260076B9D4 /* CBHealthBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 65869F7A1A3A8C260076B9D4 /* CBHealthBar.m */; };
@@ -98,6 +99,7 @@
 		6566BEBA1980387400602447 /* background-music-aac.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "background-music-aac.caf"; sourceTree = "<group>"; };
 		6566BEBB1980387400602447 /* pew-pew-lei.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pew-pew-lei.caf"; sourceTree = "<group>"; };
 		6566BEBC1980387400602447 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
+		657432D61CEBEEA900EB6864 /* Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1.sks; sourceTree = "<group>"; };
 		6579700D19BE43CE00E2B9D9 /* CBButtonBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBButtonBar.h; sourceTree = "<group>"; };
 		6579700E19BE43CE00E2B9D9 /* CBButtonBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBButtonBar.m; sourceTree = "<group>"; };
 		6579701019BE43E200E2B9D9 /* CBButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBButton.h; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 		6579701419BE44BE00E2B9D9 /* WorldScene */ = {
 			isa = PBXGroup;
 			children = (
+				657432D61CEBEEA900EB6864 /* Level1.sks */,
 				65EBF13519A97AD400F0BA37 /* CBWorld.h */,
 				65EBF13619A97AD400F0BA37 /* CBWorld.m */,
 				6566BE9619802D5D00602447 /* CBMyScene.h */,
@@ -296,9 +299,9 @@
 			isa = PBXGroup;
 			children = (
 				6566BE9319802D5D00602447 /* CBViewController.h */,
-				650790091B9CD7DA00F9931F /* Background.png */,
 				6566BE9419802D5D00602447 /* CBViewController.m */,
 				6507E14D1A5117DD00A3FADB /* CBMenuScene.m */,
+				650790091B9CD7DA00F9931F /* Background.png */,
 				6507E14E1A5117DD00A3FADB /* CBMenuScene.h */,
 				6566BE8D19802D5D00602447 /* CBAppDelegate.h */,
 				6566BE8E19802D5D00602447 /* CBAppDelegate.m */,
@@ -409,6 +412,7 @@
 			files = (
 				6566BEBF1980387400602447 /* sprites.atlas in Resources */,
 				65977D561CD5232400BFEAB9 /* LaunchScreen.storyboard in Resources */,
+				657432D71CEBEEA900EB6864 /* Level1.sks in Resources */,
 				6566BEBD1980387400602447 /* background-music-aac.caf in Resources */,
 				6566BE8919802D5D00602447 /* InfoPlist.strings in Resources */,
 				6507900A1B9CD7DA00F9931F /* Background.png in Resources */,
