@@ -72,35 +72,14 @@
     }
     else{
         
-        //NSString * totalKillsPath  = [CBDatabase totalKillsDocPath];
-        
-        //NSData *data = [NSData dataWithContentsOfFile:totalKillsPath];
-        //int totalKillsInt = 0;
-        //NSLog(@"total kills before read from disk %d\n",totalKillsInt);
-        //[data getBytes: &totalKillsInt length: sizeof(totalKillsInt)];
         NSInteger totalKillsInteger = [[NSUserDefaults standardUserDefaults] integerForKey: @"totalKills"];
         
         NSNumber * totalKills = [NSNumber numberWithInteger:totalKillsInteger];
         _totalKills = totalKills;
-        
-        
-        //[self setDocPath:[CBDatabase totalKillsDocPath]];
-        
-        //NSString * totalKillsPath = [[self docPath] stringByAppendingPathComponent:saveFile];
-        
-        //NSData * codedTotalKills = [[NSData alloc] initWithContentsOfFile:totalKillsPath];
-        //if (codedTotalKills == nil) return nil;
-        
-        //NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedTotalKills];
-        //_totalKills = [unarchiver decodeObjectForKey:totalKillsKey];
-        //[unarchiver finishDecoding];
-        
-        
-        //NSLog(@"total kills read from disk %d\n",totalKillsInt);
+    
         return _totalKills;
     }
     
-
 }
 
 
@@ -124,20 +103,6 @@
     
 }
 
-//-(void)saveTotalKills{
-//    if([self totalKills] == nil) {
-//        return;
-//    }
-//    NSLog(@"saving total kills");
-//    [self createDataPath];
-//    NSString *totalKillsPath = [[self docPath] stringByAppendingPathComponent:saveFile];
-//    NSMutableData* data = [[NSMutableData alloc] init];
-//    NSKeyedArchiver * archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-//    [archiver encodeObject:[self totalKills] forKey:totalKillsKey];
-//    [data writeToFile:totalKillsPath atomically:YES];
-//    [archiver finishEncoding];
-//
-//}
 
 
 - (void)deleteDoc {
@@ -150,9 +115,6 @@
     
 }
 
-
-
-
 -(void)killDidHappen{
     int newKillsInt = [self.kills intValue]+1;
     int newTotalKillsInt = [self.totalKills intValue]+1;
@@ -160,6 +122,13 @@
     [self setKills:[NSNumber numberWithInt:newKillsInt]];
     [self setTotalKills:[NSNumber numberWithInt:newTotalKillsInt]];
 }
+
+
+
+
+
+
+
 
 
 @end

@@ -15,7 +15,8 @@
 #import "CBButtonBar.h"
 #import "CBVectorMath.h"
 #import "CBMenuScene.h"
-
+#import "CBShuriken.h"
+#import <CosmicBlast-Swift.h>
 
 static const uint32_t projectileCategory = 0x1 << 0;
 static const uint32_t monsterCategory = 0x1 << 1;
@@ -31,19 +32,21 @@ CMMotionManager *_motionManager;
     if (self = [super initWithSize:size]) {
         
         //Initialize word
-        self.backgroundColor = [SKColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
+        GameValues *gameValues = [[GameValues alloc] init];
+        self.backgroundColor = [gameValues backgroundColor];
         self.currentWorld = [CBWorld worldWithImageNamed:@"Background" position:CGPointZero];
         //self.currentWorld.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
         [self addChild: self.currentWorld];
         
         
         //Initialize player
-        self.player = [CBPlayer playerWithImageNamed:@"player"];
-        //self.player.position = CGPointMake(0, 0);
+        //self.player = [CBPlayer playerWithImageNamed:@"player"];
+        self.player = [CBPlayer playerWithColor:[gameValues playerColor] size:[gameValues playerSize]];
         [self.currentWorld addChild: self.player];
         
         
-        
+        //
+ 
         
 
         //add physics body for player
@@ -93,14 +96,18 @@ CMMotionManager *_motionManager;
          
         
         
-        //set up factories
-        
+        //set up factories        
         //Change this depending on levels
-        
-        [self placeFactoryAtPosition:CGPointMake(200,150)];
-        [self placeFactoryAtPosition:CGPointMake(-200,150)];
-        [self placeFactoryAtPosition:CGPointMake(200,-150)];
-        [self placeFactoryAtPosition:CGPointMake(-200,-150)];
+        //NSArray array[] = [gameValues fa]
+        NSArray * array = [gameValues getFactoryLocations];
+        for (NSValue * point in array){
+            [self placeFactoryAtPosition:[point CGPointValue]];
+        }
+ //       [self placeFactoryAtPosition:[gameValues factoryPosition]];
+        //[self placeFactoryAtPosition:CGPointMake(200,150)];
+        //[self placeFactoryAtPosition:CGPointMake(-200,150)];
+        //[self placeFactoryAtPosition:CGPointMake(200,-150)];
+        //[self placeFactoryAtPosition:CGPointMake(-200,-150)];
         //[self placeFactoryAtPosition:CGPointMake(self.currentWorld.size.width-100,100)];
         //[self placeFactoryAtPosition:CGPointMake(100,self.currentWorld.size.height-100)];
         //[self placeFactoryAtPosition:CGPointMake(self.currentWorld.size.width-100,self.currentWorld.size.height-100)];
@@ -149,7 +156,7 @@ CMMotionManager *_motionManager;
 
 //Fix hardcoding.  need to figur out world configuration
 -(void)placeFactoryAtPosition:(CGPoint)position{
-    CBEnemyFactory * factory = [CBEnemyFactory enemyFactoryWithColor:[SKColor whiteColor] size:CGSizeMake(30,30)];
+    CBEnemyFactory * factory = [CBEnemyFactory enemyFactory];
     
     [factory setPosition:position];
     factory.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:factory.size];
@@ -320,7 +327,8 @@ CMMotionManager *_motionManager;
     
     //VVV Should be moved to CBShuriken VVV
     //set up initial location
-    SKSpriteNode * projectile = [SKSpriteNode spriteNodeWithImageNamed:@"projectile"];
+    //SKSpriteNode * projectile = [SKSpriteNode spriteNodeWithImageNamed:@"projectile"];
+    SKSpriteNode * projectile = [CBShuriken shuriken];
     projectile.position = self.player.position;
     
     projectile.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:projectile.size.width/2];
@@ -378,7 +386,6 @@ CMMotionManager *_motionManager;
 }
 
 -(void)projectile:(SKSpriteNode *)projectile didCollideWithEnemyFactory:(CBEnemyFactory *)factory {
-    NSLog(@"HIT BITCH");
     [projectile removeFromParent];
     [factory factoryHit];
     

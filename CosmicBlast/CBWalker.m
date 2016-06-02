@@ -7,7 +7,7 @@
 //
 
 #import "CBWalker.h"
-
+#import <CosmicBlast-Swift.h>
 @implementation CBWalker
 
 
@@ -18,6 +18,11 @@
     
     return walker;
     
+}
++(id)walker{
+    GameValues * gameValues = [[GameValues alloc] init];
+     CBWalker * walker = [CBWalker spriteNodeWithColor:[gameValues walkerColor] size:[gameValues walkerSize]];
+    return walker;
 }
 
 

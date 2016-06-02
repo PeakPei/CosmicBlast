@@ -8,6 +8,7 @@
 
 #import "CBShuriken.h"
 
+
 @implementation CBShuriken
 
 +(id)shurikenWithImageNamed:(NSString *)name{
@@ -15,6 +16,13 @@
     return shuriken;
     
 }
+
++(id)shuriken {
+    GameValues * gameValues = [[GameValues alloc] init];
+    return [CBShuriken spriteNodeWithColor:[gameValues shotColor] size:[gameValues shotSize]];
+}
+
+
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     

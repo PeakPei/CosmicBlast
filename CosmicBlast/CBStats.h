@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <SpriteKit/SpriteKit.h>
 
 
 
@@ -15,6 +15,14 @@
 
 @property (nonatomic) NSNumber * kills;
 @property (nonatomic) NSNumber * totalKills;
+
+
+//@property (nonatomic) UIColor * backgroundColor;
+//@property (nonatomic) int playerMaxHealth;
+
+
+
+
 
 @property NSString *docPath;
 
@@ -30,6 +38,9 @@
 
 
 -(void)deleteData;
+
+
+
 
 
 

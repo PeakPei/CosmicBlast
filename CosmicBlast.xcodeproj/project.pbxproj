@@ -43,6 +43,7 @@
 		65BA8A8419B8E187003DCDD9 /* CBWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8A8319B8E187003DCDD9 /* CBWalker.m */; };
 		65BA8A8719B8E4B6003DCDD9 /* CBEnemyFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8A8619B8E4B6003DCDD9 /* CBEnemyFactory.m */; };
 		65BF3DBD1B27BE4000E7F44E /* CBButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BF3DBC1B27BE4000E7F44E /* CBButtonHandler.m */; };
+		65D9B93F1CFFC1BE00A808BD /* GameValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9B93E1CFFC1BE00A808BD /* GameValues.swift */; };
 		65EBF13719A97AD400F0BA37 /* CBWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EBF13619A97AD400F0BA37 /* CBWorld.m */; };
 		65F42C301AB7B79B001DA12A /* CBLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F42C2F1AB7B79B001DA12A /* CBLogger.m */; };
 		65FDF3B119A996B200D4269C /* CBEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FDF3B019A996B200D4269C /* CBEnemy.m */; };
@@ -115,6 +116,7 @@
 		65BA8A8619B8E4B6003DCDD9 /* CBEnemyFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBEnemyFactory.m; sourceTree = "<group>"; };
 		65BF3DBB1B27BE4000E7F44E /* CBButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBButtonHandler.h; sourceTree = "<group>"; };
 		65BF3DBC1B27BE4000E7F44E /* CBButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBButtonHandler.m; sourceTree = "<group>"; };
+		65D9B93E1CFFC1BE00A808BD /* GameValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameValues.swift; sourceTree = "<group>"; };
 		65D9BC681B2651EE005A5324 /* EnumConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnumConstants.h; sourceTree = "<group>"; };
 		65EBF13519A97AD400F0BA37 /* CBWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWorld.h; sourceTree = "<group>"; };
 		65EBF13619A97AD400F0BA37 /* CBWorld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWorld.m; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 		6579701419BE44BE00E2B9D9 /* WorldScene */ = {
 			isa = PBXGroup;
 			children = (
+				65D9B93E1CFFC1BE00A808BD /* GameValues.swift */,
 				657432D61CEBEEA900EB6864 /* Level1.sks */,
 				65EBF13519A97AD400F0BA37 /* CBWorld.h */,
 				65EBF13619A97AD400F0BA37 /* CBWorld.m */,
@@ -454,6 +457,7 @@
 				655D4D4E1B7955550055FEB1 /* CBStats.m in Sources */,
 				65BA8A8419B8E187003DCDD9 /* CBWalker.m in Sources */,
 				65EBF13719A97AD400F0BA37 /* CBWorld.m in Sources */,
+				65D9B93F1CFFC1BE00A808BD /* GameValues.swift in Sources */,
 				655D4D511B7ADC5D0055FEB1 /* CBDataBase.m in Sources */,
 				65B792EC1CD6CDAE00FC7A28 /* MainMenuViewController.swift in Sources */,
 				6579700F19BE43CE00E2B9D9 /* CBButtonBar.m in Sources */,

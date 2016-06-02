@@ -20,6 +20,8 @@
 
 +(id)enemyFactoryWithColor:(SKColor *)color size:(CGSize)size;
 
++(id)enemyFactory;
+
 -(void)setFactoryPosition:(CGPoint)position;
 
 -(void)factoryHit;

@@ -45,7 +45,7 @@
         //CGFloat deadWidth = self.size.width*((CGFloat)self.player.health/self.player.maxHealth);
         
         CGFloat deadWidth = self.size.width-((self.size.width*self.player.health)/self.player.maxHealth);
-        
+        NSLog(@"max: %d , health: %d, deadWidth: %f, selfWidth %f",self.player.maxHealth,self.player.health, deadWidth, self.size.width);
         //NSLog(@"Width:%f",deadWidth);
         CGSize deadSize = CGSizeMake(deadWidth, self.size.height);
         SKSpriteNode * deadBar = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:deadSize];

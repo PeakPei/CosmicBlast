@@ -7,11 +7,14 @@
 //
 
 #import "CBItem.h"
+#import <CosmicBlast-Swift.h>
 
 @interface CBShuriken : CBItem
 
 
 +(id)shurikenWithImageNamed:(NSString *)name;
+
++(id)shuriken;
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 

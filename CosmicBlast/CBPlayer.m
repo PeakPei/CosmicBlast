@@ -8,20 +8,32 @@
 
 #import "CBPlayer.h"
 #import "CBLogger.h"
-
+#import <CosmicBlast-Swift.h>
 
 @implementation CBPlayer
 
 +(id)playerWithImageNamed:(NSString *)name{
     
     CBPlayer * player = [CBPlayer spriteNodeWithImageNamed:name];
-    
-    player.maxHealth = 100;
-    player.health = 100;
+    GameValues * gameValues = [[GameValues alloc] init];
+    player.maxHealth = (int)[gameValues playerMaxHealth];
+    player.health = player.maxHealth;
     player.dead = NO;
     
     return player;
 }
+
++(id)playerWithColor:(UIColor *)color size:(CGSize)size{
+    GameValues * gameValues = [[GameValues alloc] init];
+    CBPlayer * player = [CBPlayer spriteNodeWithColor:[gameValues playerColor] size:[gameValues playerSize]];
+    player.maxHealth = (int)[gameValues playerMaxHealth];
+    player.health = player.maxHealth;
+    player.dead = NO;
+    
+    return player;
+}
+
+
 
 
 //should handle player movement and map movement

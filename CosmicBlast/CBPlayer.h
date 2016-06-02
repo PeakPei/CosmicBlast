@@ -21,6 +21,8 @@
 
 +(id)playerWithImageNamed:(NSString *)name;
 
++(id)playerWithColor:(UIColor *)color size:(CGSize)size;
+
 -(void)movePlayerWithAccelerationXvalue:(double)x yValue:(double)y speed:(int)speed;
 
 

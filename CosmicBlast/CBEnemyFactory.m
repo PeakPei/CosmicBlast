@@ -7,8 +7,12 @@
 //
 
 #import "CBEnemyFactory.h"
+#import <CosmicBlast-Swift.h>
 
 @implementation CBEnemyFactory
+
+
+
 
 //CreateEnemyFactory
 +(id)enemyFactoryWithImageNamed:(NSString *)name{
@@ -16,22 +20,32 @@
     return enemyFactory;
 }
 
+
 +(id)enemyFactoryWithColor:(SKColor *)color size:(CGSize)size{
     
+    GameValues * gameValues = [[GameValues alloc] init];
     CBEnemyFactory * enemyFactory = [CBEnemyFactory spriteNodeWithColor:color size:size];
-    enemyFactory.maxHealth = 30;
-    enemyFactory.health = 30;
+    enemyFactory.maxHealth = [gameValues factoryMaxHealth];
+    enemyFactory.health = enemyFactory.maxHealth;
     enemyFactory.dead = NO;
     return enemyFactory;
     
 }
 
 
++(id)enemyFactory{
+    GameValues * gameValues = [[GameValues alloc] init];
+    CBEnemyFactory * enemyFactory = [CBEnemyFactory spriteNodeWithColor:[gameValues factoryColor] size:[gameValues factorySize]];
+    enemyFactory.maxHealth = [gameValues factoryMaxHealth];
+    enemyFactory.health = enemyFactory.maxHealth;
+    enemyFactory.dead = NO;
+    return enemyFactory;
 
+}
 
 //CreateWalker in same position as factory
 -(CBWalker *)createWalker{
-    CBWalker * walker = [CBWalker walkerWithImageNamed:@"monster"];
+    CBWalker * walker = [CBWalker walker];
     [walker setEnemyPosition:self.position];
     
     return walker;
