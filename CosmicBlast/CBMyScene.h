@@ -12,9 +12,13 @@
 #import "CBPlayer.h"
 #import "CBHealthBar.h"
 #import "CBStats.h"
+#import "CBButtonDelegate.h"
+#import "CBGameSceneDelegate.h"
 
-@interface CBMyScene : SKScene <SKPhysicsContactDelegate>
 
+@interface CBMyScene : SKScene <SKPhysicsContactDelegate, CBButtonDelegate>
+
+@property (weak) id <CBGameSceneDelegate> gameDelegate;
 
 @property (nonatomic) CBPlayer * player;
 @property (nonatomic) CBWorld * currentWorld;
@@ -24,10 +28,9 @@
 @property(nonatomic) CBStats * stats;
 
 
-
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
-
+-(void)returnToMenuScreen;
 
 
 

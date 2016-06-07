@@ -12,44 +12,15 @@
 @implementation CBMenuScene
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
-        
-        
-        
-
-        
-        
-        
-        
+    //TODO make Background Color game values
         [self setBackgroundColor: [UIColor redColor]];
-        
-        
-        
-        
-        //add buttons here
-        
-        
-        //NSString *toLog = [NSString stringWithFormat: @"%@ %@", @"Size: %@", NSStringFromCGSize(size)];
-    
-        //[CBLogger logData:toLog :@"CBMenuScene on Init"];
-        
-        
-        
-        
-        
     }
     return self;
-    
-    
 };
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    
-    
-    
-    
-    
-    
-    //[self.viewController presentGameScreen];
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"MenuScene touchesEnded");
+    [self.gameDelegate launchGameScreen];
 }
 
 

@@ -6,8 +6,12 @@
 //  Copyright © 2016 Teddy Kitchen. All rights reserved.
 //
 
-#ifndef CBButtonDelegate_h
-#define CBButtonDelegate_h
+@protocol CBButtonDelegate <NSObject>
+
+-(void)returnToMenuScreen;
+
+-(void)pause;
 
 
-#endif /* CBButtonDelegate_h */
+
+@end

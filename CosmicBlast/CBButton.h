@@ -10,6 +10,7 @@
 #import <SpriteKit/SpriteKit.h>
 #import "CBItem.h"
 #import "CBButtonHandler.h"
+#import "CBButtonDelegate.h"
 
 @class CBButtonHandler;
 
@@ -17,7 +18,7 @@
 
 @property NSString * summary;
 @property NSString * title;
-
+@property (weak) id <CBButtonDelegate> delegate;
 @property CBButtonHandler * handler;
 
 
@@ -29,6 +30,7 @@
 
 
 -(void)pause;
+-(void)restart;
 
 -(void)switchToItem:(CBItem *)newItem;
 

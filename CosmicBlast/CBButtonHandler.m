@@ -48,21 +48,17 @@
     return @"Pause";
 }
 
++(NSString *)restartTaskName
+{
+    return @"Restart";
+}
 
 
 -(void)handleButton:(CBButton *)button
 {
     
-    //NOT WORKING
     
     NSString * task = [self.buttonMap objectForKey:button.title];
-    
-    if (self.buttonMap == nil) {
-        NSLog(@"self.buttonMap == nil");
-    }else{
-        NSLog(@"AAYYYY %@", task);
-    }
-                       
     [self executeTaskWithButton:button task:task];
 
 }
@@ -75,6 +71,10 @@
     if (taskName == [CBButtonHandler pauseTaskName])
     {
         [button pause];
+    }
+    if (taskName == [CBButtonHandler restartTaskName])
+    {
+        [button restart];
     }
 }
 

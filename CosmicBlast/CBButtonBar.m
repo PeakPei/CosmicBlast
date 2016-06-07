@@ -16,7 +16,7 @@
 
 
 //Creates button bar initialized with buttons
-+(id)buttonBarWithFrame:(CGRect)frame {
++(id)buttonBarWithFrame:(CGRect)frame buttonDelegate:(id <CBButtonDelegate>)delegate {
     
     CGFloat buttonRatio = 15;
     CGSize mySize = CGSizeMake(frame.size.width, frame.size.height/buttonRatio);
@@ -47,29 +47,19 @@
     
     
     buttonBar.buttons = [NSArray arrayWithObjects:farLeftButton, leftButton, rightButton, farRightButton, nil];
+    for (CBButton * button in buttonBar.buttons){
+        button.delegate = delegate;
+    }
     
     for (CBButton * button in buttonBar.buttons){
         
         [buttonBar addChild:button];
         [button setHandler:handler];
-        
-        
-        
     }
     
-// This should bee fixed so we are not hard coding it.
-//    [handler mapButton:farLeftButton toTask:[CBButtonHandler pauseTaskName]];
-    handler.buttonMap = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                         [CBButtonHandler pauseTaskName] , [CBButtonHandler getFarLeftButtonName], nil];
-    
-  //@{
-    //                      [CBButtonHandler getFarLeftButtonName] : [CBButtonHandler pauseTaskName]
-      //                    };
-    
-    
+    handler.buttonMap = [NSMutableDictionary dictionaryWithObjectsAndKeys:[CBButtonHandler pauseTaskName] , [CBButtonHandler getFarLeftButtonName], [CBButtonHandler restartTaskName] , [CBButtonHandler getFarRightButtonName],nil];
+//    NSLog(@"selfWidth %f", buttonBar.size.width);
     return buttonBar;
-    
-    
     
 }
 

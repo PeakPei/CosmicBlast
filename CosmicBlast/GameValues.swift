@@ -8,19 +8,29 @@
 
 import UIKit
 
-
+//TODO MAKE ALL PROPERTIES LAZY AND READ FROM DISK
+//
+//
 //This Object allows you to access the game's variables
 class GameValues: NSObject {
     
     
-    //Level Characteristics
-    var backgroundColor:UIColor = UIColor.blackColor()
+    //World Characteristics
+    var backgroundColor: UIColor = UIColor.blackColor()
+    var worldColor: UIColor = UIColor.greenColor()
+    //var worldColor = UIColor(patternImage: UIImage(named: "checker.png")!)
+    var woldImage = UIImage(named: "checker.png")
+    var worldSize: CGSize = CGSizeMake(500, 400)
+    
+    
+    
     //Player Characteristics
-    var playerMaxHealth: Int = 50
+    var playerMaxHealth: Int = 150
     var playerColor: UIColor = UIColor.brownColor()
-    var playerSize: CGSize = CGSizeMake(20, 30)
-    var shotSize: CGSize = CGSizeMake(10,10)
+    var playerSize: CGSize = CGSizeMake(20, 40)
+    var shotSize: CGSize = CGSizeMake(8,8)
     var shotColor: UIColor = UIColor.orangeColor()
+    var playerAccelerationCoefficient: Int = 60
     
     //Enemy Characteristics
     var walkerColor:UIColor = UIColor.darkGrayColor()
@@ -32,7 +42,7 @@ class GameValues: NSObject {
     var factoryLocations: NSMutableArray
         {
         get {
-            var pointArray = NSMutableArray()
+            let pointArray = NSMutableArray()
             pointArray.addObject(NSValue(CGPoint: CGPointMake(200, 150)))
             pointArray.addObject(NSValue(CGPoint: CGPointMake(-200, 150)))
             pointArray.addObject(NSValue(CGPoint: CGPointMake(200, -150)))

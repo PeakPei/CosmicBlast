@@ -31,11 +31,15 @@ CMMotionManager *_motionManager;
 -(instancetype)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         
+        
+        
+        
         //Initialize word
         GameValues *gameValues = [[GameValues alloc] init];
         self.backgroundColor = [gameValues backgroundColor];
-        self.currentWorld = [CBWorld worldWithImageNamed:@"Background" position:CGPointZero];
+        //self.currentWorld = [CBWorld worldWithImageNamed:@"Background" position:CGPointZero];
         //self.currentWorld.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+        self.currentWorld = [CBWorld world];
         [self addChild: self.currentWorld];
         
         
@@ -55,7 +59,7 @@ CMMotionManager *_motionManager;
         self.player.physicsBody.categoryBitMask = playerCategory;
         self.player.physicsBody.contactTestBitMask = monsterCategory;
         self.player.physicsBody.collisionBitMask = edgeCategory;
-        self.player.physicsBody.usesPreciseCollisionDetection = NO;
+        self.player.physicsBody.usesPreciseCollisionDetection = YES;
         
         
         //add physics body for currentWorld
@@ -84,7 +88,7 @@ CMMotionManager *_motionManager;
         
         
         //Set up button bar
-        self.buttonBar = [CBButtonBar buttonBarWithFrame:self.frame];
+        self.buttonBar = [CBButtonBar buttonBarWithFrame:self.frame buttonDelegate:self];
         [self addChild:self.buttonBar];
         
         
@@ -103,18 +107,9 @@ CMMotionManager *_motionManager;
         for (NSValue * point in array){
             [self placeFactoryAtPosition:[point CGPointValue]];
         }
- //       [self placeFactoryAtPosition:[gameValues factoryPosition]];
-        //[self placeFactoryAtPosition:CGPointMake(200,150)];
-        //[self placeFactoryAtPosition:CGPointMake(-200,150)];
-        //[self placeFactoryAtPosition:CGPointMake(200,-150)];
-        //[self placeFactoryAtPosition:CGPointMake(-200,-150)];
-        //[self placeFactoryAtPosition:CGPointMake(self.currentWorld.size.width-100,100)];
-        //[self placeFactoryAtPosition:CGPointMake(100,self.currentWorld.size.height-100)];
-        //[self placeFactoryAtPosition:CGPointMake(self.currentWorld.size.width-100,self.currentWorld.size.height-100)];
-        
-        
 
-        
+
+
         self.physicsWorld.gravity = CGVectorMake(0, 0);
         self.physicsWorld.contactDelegate = self;
     }
@@ -146,7 +141,7 @@ CMMotionManager *_motionManager;
 -(void)updatePositionFromMotionManager{
 
     CMAccelerometerData* data = _motionManager.accelerometerData;
-    int speed = 2;
+    int speed = 0;
     [self.player movePlayerWithAccelerationXvalue:data.acceleration.x yValue:data.acceleration.y speed:speed];
     
 }
@@ -167,11 +162,27 @@ CMMotionManager *_motionManager;
     
     [self.currentWorld addChild:factory];
     [self.factories addObject:factory];
-    
-    
-    
-    
 }
+
+-(void)moveFactory:(CBEnemyFactory *)factory {
+    int minDuration = 2.0;
+    int maxDuration = 4.0;
+    int rangeDuration = maxDuration - minDuration;
+    int actualDuration = (arc4random() % rangeDuration) + minDuration;
+    
+    
+    //Create the actions
+    
+    int randx = arc4random_uniform(self.currentWorld.size.width)-self.currentWorld.size.width/2;
+    int randy = arc4random_uniform(self.currentWorld.size.height)-self.currentWorld.size.height/2;
+    
+    SKAction * actionMove = [SKAction moveTo:CGPointMake(randx,randy) duration:actualDuration];
+    
+//    SKAction * actionMoveDone = [SKAction  ];
+    
+    [factory runAction:actionMove];
+}
+
 
 
 //This belongs in another class
@@ -279,35 +290,25 @@ CMMotionManager *_motionManager;
         
         if (self.player.dead) {
             
-            SKView * skView = (SKView *)self.view;
-            SKScene * menuScene = [CBMenuScene sceneWithSize:skView.bounds.size];
-            menuScene.scaleMode = SKSceneScaleModeAspectFill;
-            [skView presentScene:menuScene];
-            
-            
-            NSLog(@"\nKills: %d",[self.stats.kills intValue]);
-            NSLog(@"\nTotal Kills: %d",[[self.stats totalKills] intValue]);
-            NSLog(@"\nsaving total kills to disk\n");
-            [self.stats saveTotalKills];
+            [self returnToMenuScreen];
             
             
         }
     
-    
     }
-    
-    
-   // if(edgeCategory != 0){
-//        NSLog(@"edgeCategory !=0 !!");
-  //  }
-   
-    
-    
     
 }
 
 
-
+-(void)returnToMenuScreen {
+    [self.gameDelegate launchMenuScreen];
+//    SKView * skView = (SKView *)self.view;
+//    SKScene * menuScene = [CBMenuScene sceneWithSize:skView.bounds.size];
+//    menuScene.scaleMode = SKSceneScaleModeAspectFill;
+//    [skView presentScene:menuScene];
+    [self.stats saveTotalKills];
+    
+}
 
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -388,6 +389,7 @@ CMMotionManager *_motionManager;
 -(void)projectile:(SKSpriteNode *)projectile didCollideWithEnemyFactory:(CBEnemyFactory *)factory {
     [projectile removeFromParent];
     [factory factoryHit];
+    [self moveFactory:factory];
     
     if(factory.dead){
         NSLog(@"factoryDead");

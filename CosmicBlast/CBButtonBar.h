@@ -7,7 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-
+#import "CBButtonDelegate.h"
 @interface CBButtonBar : SKSpriteNode
 
 
@@ -16,7 +16,7 @@
 
 
 
-+(id)buttonBarWithFrame:(CGRect)frame;
++(id)buttonBarWithFrame:(CGRect)frame buttonDelegate:(id <CBButtonDelegate>)delegate;
 
 
 @end

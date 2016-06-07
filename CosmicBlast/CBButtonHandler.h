@@ -28,6 +28,7 @@
 +(NSString *)getFarRightButtonName;
 
 +(NSString *)pauseTaskName;
++(NSString *)restartTaskName;
 
 
 -(void)handleButton:(CBButton *)button;

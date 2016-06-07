@@ -6,8 +6,9 @@
 //  Copyright © 2016 Teddy Kitchen. All rights reserved.
 //
 
-#ifndef CBGameSceneDelegate_h
-#define CBGameSceneDelegate_h
+@protocol CBGameSceneDelegate <NSObject>
 
+-(void)launchMenuScreen;
+-(void)launchGameScreen;
 
-#endif /* CBGameSceneDelegate_h */
+@end

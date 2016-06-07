@@ -11,6 +11,7 @@
 		6507E14F1A5117DD00A3FADB /* CBMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6507E14D1A5117DD00A3FADB /* CBMenuScene.m */; };
 		6515FAD419AFB6DE00E82568 /* CBVectorMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 6515FAD319AFB6DE00E82568 /* CBVectorMath.m */; };
 		6515FAD719AFD25800E82568 /* CBPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6515FAD619AFD25800E82568 /* CBPlayer.m */; };
+		6529D9721D061A0300A31762 /* checker.png in Resources */ = {isa = PBXBuildFile; fileRef = 6529D9711D061A0300A31762 /* checker.png */; };
 		65545A8319C1443B005F1073 /* CBItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 65545A8219C1443B005F1073 /* CBItem.m */; };
 		65545A8619C14650005F1073 /* CBShuriken.m in Sources */ = {isa = PBXBuildFile; fileRef = 65545A8519C14650005F1073 /* CBShuriken.m */; };
 		655D4D4E1B7955550055FEB1 /* CBStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 655D4D4D1B7955550055FEB1 /* CBStats.m */; };
@@ -67,6 +68,8 @@
 		6515FAD319AFB6DE00E82568 /* CBVectorMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBVectorMath.m; sourceTree = "<group>"; };
 		6515FAD519AFD25800E82568 /* CBPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBPlayer.h; sourceTree = "<group>"; };
 		6515FAD619AFD25800E82568 /* CBPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBPlayer.m; sourceTree = "<group>"; };
+		6529D9711D061A0300A31762 /* checker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checker.png; sourceTree = "<group>"; };
+		652D56701D01017500AF13C3 /* CBButtonDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CBButtonDelegate.h; path = ../CBButtonDelegate.h; sourceTree = "<group>"; };
 		65545A8119C1443B005F1073 /* CBItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBItem.h; sourceTree = "<group>"; };
 		65545A8219C1443B005F1073 /* CBItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBItem.m; sourceTree = "<group>"; };
 		65545A8419C14650005F1073 /* CBShuriken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBShuriken.h; sourceTree = "<group>"; };
@@ -108,6 +111,7 @@
 		65869F791A3A8C260076B9D4 /* CBHealthBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHealthBar.h; sourceTree = "<group>"; };
 		65869F7A1A3A8C260076B9D4 /* CBHealthBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHealthBar.m; sourceTree = "<group>"; };
 		65977D551CD5232400BFEAB9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6599EC711D02374C00DE1693 /* CBGameSceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBGameSceneDelegate.h; sourceTree = "<group>"; };
 		65B792EA1CD6CDAE00FC7A28 /* CosmicBlast-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CosmicBlast-Bridging-Header.h"; sourceTree = "<group>"; };
 		65B792EB1CD6CDAE00FC7A28 /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		65BA8A8219B8E187003DCDD9 /* CBWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWalker.h; sourceTree = "<group>"; };
@@ -185,6 +189,7 @@
 		6566BE8419802D5D00602447 /* CosmicBlast */ = {
 			isa = PBXGroup;
 			children = (
+				6529D9711D061A0300A31762 /* checker.png */,
 				65977D551CD5232400BFEAB9 /* LaunchScreen.storyboard */,
 				6579701719BE458F00E2B9D9 /* App */,
 				6579701419BE44BE00E2B9D9 /* WorldScene */,
@@ -249,6 +254,7 @@
 		6579701319BE447800E2B9D9 /* InGameUI */ = {
 			isa = PBXGroup;
 			children = (
+				652D56701D01017500AF13C3 /* CBButtonDelegate.h */,
 				65BF3DBB1B27BE4000E7F44E /* CBButtonHandler.h */,
 				65BF3DBC1B27BE4000E7F44E /* CBButtonHandler.m */,
 				65869F791A3A8C260076B9D4 /* CBHealthBar.h */,
@@ -301,10 +307,11 @@
 		6579701719BE458F00E2B9D9 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				6599EC711D02374C00DE1693 /* CBGameSceneDelegate.h */,
 				6566BE9319802D5D00602447 /* CBViewController.h */,
 				6566BE9419802D5D00602447 /* CBViewController.m */,
-				6507E14D1A5117DD00A3FADB /* CBMenuScene.m */,
 				650790091B9CD7DA00F9931F /* Background.png */,
+				6507E14D1A5117DD00A3FADB /* CBMenuScene.m */,
 				6507E14E1A5117DD00A3FADB /* CBMenuScene.h */,
 				6566BE8D19802D5D00602447 /* CBAppDelegate.h */,
 				6566BE8E19802D5D00602447 /* CBAppDelegate.m */,
@@ -414,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6566BEBF1980387400602447 /* sprites.atlas in Resources */,
+				6529D9721D061A0300A31762 /* checker.png in Resources */,
 				65977D561CD5232400BFEAB9 /* LaunchScreen.storyboard in Resources */,
 				657432D71CEBEEA900EB6864 /* Level1.sks in Resources */,
 				6566BEBD1980387400602447 /* background-music-aac.caf in Resources */,

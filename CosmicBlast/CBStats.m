@@ -86,18 +86,13 @@
 
 
 -(void)saveTotalKills{
+    NSLog(@"saveTotalKills called");
     if([self totalKills] == nil) {
         NSLog(@"total kills is nil");
         return;
     }
+    
     int intTotalKills = [[self totalKills] intValue];
-    //NSString *totalKillsPath = [CBDatabase totalKillsDocPath];
-    //NSLog(@"saving totalkills to: %@",totalKillsPath);
-    //NSData *data = [NSData dataWithBytes: &intTotalKills length: sizeof(intTotalKills)];
-    
-    //[data writeToFile:totalKillsPath atomically:YES];
-     
-    
     [[NSUserDefaults standardUserDefaults] setInteger: intTotalKills forKey: @"totalKills"];
 
     

@@ -13,8 +13,8 @@
 @property CGPoint playerLocation;
 
 
-+ (id)worldWithImageNamed:(NSString *)name position:(CGPoint)drawPoint;
-
++ (id)worldWithImageNamed:(NSString *)name;
++(id)world;
 
 //-(void)moveCameraWithAccelerationXValue:(double)x yValue:(double)y speed:(int)speed;
 

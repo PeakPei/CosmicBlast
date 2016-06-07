@@ -7,13 +7,15 @@
 //
 
 #import "CBWorld.h"
+#import <CosmicBlast-Swift.h>
+
 
 @implementation CBWorld
 
-+ (id)worldWithImageNamed:(NSString *)name position:(CGPoint)drawPoint{
-    
++ (id)worldWithImageNamed:(NSString *)name {
+
      CBWorld * world = [CBWorld spriteNodeWithImageNamed:name];
-     world.position = drawPoint;
+    world.position = CGPointZero;
     
     
     //int ox = world.frame.origin.x;
@@ -25,12 +27,21 @@
     
     //NSLog(@" World frame and size:    ox = %i; oy = %i; sh = %i; sw = %i;", ox, oy, sh, sw);
     
-    
-    
-    
-    
     return world;
 }
+
++(id)world {
+    //GameValues * gameValues = [[GameValues alloc] init];
+
+    //CBWorld * myWorld = [CBWorld spriteNodeWithColor:[gameValues worldColor] size:[gameValues worldSize]];
+    CBWorld * myWorld = [CBWorld worldWithImageNamed:@"Background.png"];
+    myWorld.position = CGPointZero;
+
+    return myWorld;
+    
+}
+
+
 
 
 @end

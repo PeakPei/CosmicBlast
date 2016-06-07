@@ -8,7 +8,7 @@
 
 #import "CBButton.h"
 #import "EnumConstants.h"
-
+#import "CBButtonDelegate.h"
 
 @implementation CBButton
 
@@ -27,18 +27,13 @@
     
 }
 
-
+-(void)setButtonDelegate:(id <CBButtonDelegate>)toSet{
+    self.delegate = toSet;
+}
 
 -(void)setButtonPosition:(CGPoint)position{
-    
-    //[NSStringFromCGPoint(self.position);
-    //[self setSummary:@"hi"];
-    //[self setSummary:NSStringFromCGPoint(position)];
     [self setSummary:NSStringFromCGSize(self.size)];
     [self setPosition : position];
-    
-    
-    
 }
 
 
@@ -53,11 +48,7 @@
 
 
 -(NSString *)description{
-    
-    
     NSLog(@"Title: %@", self.title);
-
-    
     return self.summary;
 }
 
@@ -72,6 +63,11 @@
     {
         self.scene.view.paused = YES;
     }
+}
+
+-(void)restart
+{
+    [self.delegate returnToMenuScreen];
 }
 
 

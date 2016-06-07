@@ -10,9 +10,13 @@
 #import <SpriteKit/SpriteKit.h>
 #import "CBMenuScene.h"
 #import "CBMyScene.h"
-@interface CBViewController : UIViewController
+#import "CBGameSceneDelegate.h"
 
-@property (nonatomic) BOOL menuScene;
+
+@interface CBViewController : UIViewController <CBGameSceneDelegate>
+
+//@property (nonatomic) BOOL menuScene;
+
 @property CBMyScene * gameScene;
 //@property CBMenuScene * menuScene;
 
