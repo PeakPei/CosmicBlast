@@ -48,7 +48,6 @@
 
 
 -(NSString *)description{
-    NSLog(@"Title: %@", self.title);
     return self.summary;
 }
 

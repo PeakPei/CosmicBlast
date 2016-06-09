@@ -23,7 +23,7 @@
 }
 
 
-//This does not use the color and size
+
 +(id)playerWithColor:(UIColor *)color size:(CGSize)size{
     CBPlayer * player = [CBPlayer spriteNodeWithColor:color size:size];
     [CBPlayer setPlayerGameValues:player];
@@ -59,15 +59,10 @@
     
     double parentOffsetX = self.parent.parent.frame.size.width/2.0;
     double parentOffsetY = self.parent.parent.frame.size.height/2.0;
-//    NSLog(@"playerPosition x: %f, y: %f", self.position.x, self.position.y);
-//    NSLog(@"parentPosition x: %f, y: %f", self.parent.position.x, self.parent.position.y);
-//    self.position = CGPointMake((self.position.x)-parentOffsetX, (self.position.y)-parentOffsetY);
-    
     CGPoint newParentPosition = CGPointMake((-self.position.x)+parentOffsetX, (-self.position.y)+parentOffsetY);
     CGPoint directionVector = [CBVectorMath cbVectorSubFirst:newParentPosition Second:self.parent.position];
     directionVector = [CBVectorMath cbVectorNormalize:directionVector];
     float newDirection = atan2(-directionVector.x, directionVector.y);
-    NSLog(@"new direction = %f", newDirection);
     self.zRotation = newDirection;
     self.parent.position = newParentPosition;
     

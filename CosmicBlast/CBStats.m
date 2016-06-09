@@ -86,7 +86,6 @@
 
 
 -(void)saveTotalKills{
-    NSLog(@"saveTotalKills called");
     if([self totalKills] == nil) {
         NSLog(@"total kills is nil");
         return;

@@ -17,8 +17,8 @@ class GameValues: NSObject {
     
     //World Characteristics
     var backgroundColor: UIColor = UIColor.blackColor()
-    var worldColor: UIColor = UIColor.greenColor()
-    //var worldColor = UIColor(patternImage: UIImage(named: "checker.png")!)
+    //var worldColor: UIColor = UIColor.greenColor()
+    var worldColor = UIColor(patternImage: UIImage(named: "Background.png")!)
     var woldImage = UIImage(named: "checker.png")
     var worldSize: CGSize = CGSizeMake(500, 400)
     
@@ -28,9 +28,11 @@ class GameValues: NSObject {
     var playerMaxHealth: Int = 150
     var playerColor: UIColor = UIColor.brownColor()
     var playerSize: CGSize = CGSizeMake(20, 40)
+    var playerAccelerationCoefficient: Int = 60
+    
     var shotSize: CGSize = CGSizeMake(8,8)
     var shotColor: UIColor = UIColor.orangeColor()
-    var playerAccelerationCoefficient: Int = 60
+    var playerShotSpeed: Int = 1000
     
     //Enemy Characteristics
     var walkerColor:UIColor = UIColor.darkGrayColor()

@@ -72,16 +72,14 @@
 
 
 -(void)launchMenuScreen {
-    
-    //TODO set self as delegate
-    NSLog(@"launching menu screen on view controller");
     SKView * skView = (SKView *)self.view;
-    CBMenuScene * menuScene = [CBMenuScene sceneWithSize:skView.bounds.size];
+    NSLog(@"about to init");
+    CBMenuScene * menuScene = [CBMenuScene initWithSize:skView.bounds.size];
+    NSLog(@"inited");
     menuScene.gameDelegate = self;
     menuScene.scaleMode = SKSceneScaleModeAspectFill;
     menuScene.gameDelegate = self;
     [skView presentScene:menuScene transition:[SKTransition crossFadeWithDuration:0.2]];
-
 }
 
 

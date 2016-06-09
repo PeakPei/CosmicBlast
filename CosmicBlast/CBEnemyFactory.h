@@ -10,7 +10,7 @@
 #import "CBWalker.h"
 
 
-@interface CBEnemyFactory : SKSpriteNode
+@interface CBEnemyFactory : CBEnemy
 @property int maxHealth;
 @property int health;
 @property BOOL dead;

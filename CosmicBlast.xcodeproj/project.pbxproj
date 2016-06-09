@@ -308,9 +308,9 @@
 			isa = PBXGroup;
 			children = (
 				6599EC711D02374C00DE1693 /* CBGameSceneDelegate.h */,
+				650790091B9CD7DA00F9931F /* Background.png */,
 				6566BE9319802D5D00602447 /* CBViewController.h */,
 				6566BE9419802D5D00602447 /* CBViewController.m */,
-				650790091B9CD7DA00F9931F /* Background.png */,
 				6507E14D1A5117DD00A3FADB /* CBMenuScene.m */,
 				6507E14E1A5117DD00A3FADB /* CBMenuScene.h */,
 				6566BE8D19802D5D00602447 /* CBAppDelegate.h */,

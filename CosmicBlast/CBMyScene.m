@@ -26,6 +26,7 @@ static const uint32_t enemyFactoryCategory = 0x1 << 4;
 
 
 @implementation CBMyScene
+
 CMMotionManager *_motionManager;
 
 -(instancetype)initWithSize:(CGSize)size {
@@ -130,12 +131,12 @@ CMMotionManager *_motionManager;
 }
 
 
-- (void)stopMonitoringAcceleration{
-    if (_motionManager.accelerometerAvailable && _motionManager.accelerometerActive) {
-        [_motionManager stopAccelerometerUpdates];
-        NSLog(@"accelerometer updates off...");
-    }
-}
+//- (void)stopMonitoringAcceleration{
+//    if (_motionManager.accelerometerAvailable && _motionManager.accelerometerActive) {
+//        [_motionManager stopAccelerometerUpdates];
+//        NSLog(@"accelerometer updates off...");
+//    }
+//}
 
 
 -(void)updatePositionFromMotionManager{
@@ -143,6 +144,8 @@ CMMotionManager *_motionManager;
     CMAccelerometerData* data = _motionManager.accelerometerData;
     int speed = 0;
     [self.player movePlayerWithAccelerationXvalue:data.acceleration.x yValue:data.acceleration.y speed:speed];
+    NSLog(@"data.acceleration.x = %f, data.acceleration.y = %f",data.acceleration.x, data.acceleration.y);
+    
     
 }
 
@@ -360,9 +363,10 @@ CMMotionManager *_motionManager;
     //Add shot vector to current position
     CGPoint realDest = [CBVectorMath cbVectorAddFirst:shotVector Second:projectile.position];
     
+    GameValues * gameValues = [[GameValues alloc] init];
     
     //Create actions
-    float velocity = 488.0;
+    float velocity = [gameValues playerShotSpeed];
     float realMoveDuration = self.size.width / velocity;
     
     SKAction * actionMove = [SKAction moveTo:realDest duration: realMoveDuration];

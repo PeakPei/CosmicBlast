@@ -15,4 +15,8 @@
 @property id <CBGameSceneDelegate> gameDelegate;
 @property UIViewController * viewController;
 
+
+
++(id)initWithSize:(CGSize)size;
+
 @end
