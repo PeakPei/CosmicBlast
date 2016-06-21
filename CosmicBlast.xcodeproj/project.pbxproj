@@ -271,11 +271,11 @@
 			isa = PBXGroup;
 			children = (
 				65D9B93E1CFFC1BE00A808BD /* GameValues.swift */,
+				6566BE9719802D5D00602447 /* CBMyScene.m */,
+				6566BE9619802D5D00602447 /* CBMyScene.h */,
 				657432D61CEBEEA900EB6864 /* Level1.sks */,
 				65EBF13519A97AD400F0BA37 /* CBWorld.h */,
 				65EBF13619A97AD400F0BA37 /* CBWorld.m */,
-				6566BE9619802D5D00602447 /* CBMyScene.h */,
-				6566BE9719802D5D00602447 /* CBMyScene.m */,
 			);
 			name = WorldScene;
 			sourceTree = "<group>";

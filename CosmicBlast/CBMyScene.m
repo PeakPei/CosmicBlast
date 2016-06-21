@@ -143,8 +143,14 @@ CMMotionManager *_motionManager;
 
     CMAccelerometerData* data = _motionManager.accelerometerData;
     int speed = 0;
-    [self.player movePlayerWithAccelerationXvalue:data.acceleration.x yValue:data.acceleration.y speed:speed];
-    NSLog(@"data.acceleration.x = %f, data.acceleration.y = %f",data.acceleration.x, data.acceleration.y);
+    GameValues * gameValues = [[GameValues alloc] init];
+    CMAcceleration zeroAcceleration = [gameValues accelerometerZero];
+//    CMAcceleration adjustedAcceleration = [CMAccelerometerData init];
+    double zeroX = zeroAcceleration.x;
+    double zeroY = zeroAcceleration.y;
+//    double zeroZ = zeroAcceleration.z;
+    [self.player movePlayerWithAccelerationXvalue:(data.acceleration.x-zeroX) yValue:(data.acceleration.y-zeroY) speed:speed];
+    //NSLog(@"data.acceleration.x = %f, data.acceleration.y = %f",data.acceleration.x, data.acceleration.y);
     
     
 }
@@ -279,7 +285,11 @@ CMMotionManager *_motionManager;
     
     //factory hit by projectile
     if ((firstBody.categoryBitMask & projectileCategory) != 0 &&(secondBody.categoryBitMask & enemyFactoryCategory) != 0){
-        [self projectile:(SKSpriteNode *) firstBody.node didCollideWithEnemyFactory:(SKSpriteNode *) secondBody.node];
+        //if ([secondBody isKindOfClass:[CBEnemyFactory class]]){
+                [self projectile:(SKSpriteNode *) firstBody.node didCollideWithEnemyFactory:(CBEnemyFactory*) secondBody.node];
+        //}
+        
+
     }
     
     //Player hit by monster
@@ -313,6 +323,9 @@ CMMotionManager *_motionManager;
     
 }
 
+-(void)pause{
+    NSLog(@"\n*\n pause Called on CBMyScene not implemented \n*\n");
+}
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     

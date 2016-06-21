@@ -21,6 +21,7 @@ CMMotionManager * _motionManager;
         [self setBackgroundColor: [UIColor redColor]];
         
         _motionManager = [[CMMotionManager alloc] init];
+        
         [self startMonitoringAcceleration];
         NSLog(@"started monitoring");
         
@@ -39,16 +40,16 @@ CMMotionManager * _motionManager;
     NSLog(@"Starting to monitor in method");
     if(_motionManager.accelerometerAvailable){
         [_motionManager startAccelerometerUpdates];
-        NSLog(@"accelerometer updates on...");
+        //NSLog(@"accelerometer updates on...");
     }
     else{
-        NSLog(@"motionManager.accelerometerAvailable is false");
+        //NSLog(@"motionManager.accelerometerAvailable is false");
     }
 }
 
 -(void)update:(NSTimeInterval)currentTime{
-    CMAccelerometerData* data = _motionManager.accelerometerData;
-    NSLog(@"menu data.acceleration.x = %f, menu data.acceleration.y = %f",data.acceleration.x, data.acceleration.y);
+    //CMAccelerometerData* data = _motionManager.accelerometerData;
+    //NSLog(@"menu data.acceleration.x = %f, menu data.acceleration.y = %f, menu data.acceleration.z = %f",data.acceleration.x, data.acceleration.y, data.acceleration.z);
 }
 
 

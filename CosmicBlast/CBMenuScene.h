@@ -17,6 +17,6 @@
 
 
 
-+(id)initWithSize:(CGSize)size;
+//+(id)initWithSize:(CGSize)size;
 
 @end

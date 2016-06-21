@@ -35,6 +35,17 @@
     player.maxHealth = (int)[gameValues playerMaxHealth];
     player.health = player.maxHealth;
     player.dead = NO;
+    
+//    SKEmitterNode * emitter = [[SKEmitterNode alloc] init];
+//    [emitter setParticleSize:CGSizeMake(1,1)];
+//    [emitter setParticleBirthRate: 50];
+//    [emitter setParticleSpeed:100];
+//    [emitter setParticleColor:[UIColor greenColor]];
+//    [emitter setParticleLifetime:100];
+//    [emitter setEmissionAngleRange:(2*M_PI)];
+//    //[emitter setEmissionAngle:];
+//    [player addChild:emitter];
+    
 }
 
 

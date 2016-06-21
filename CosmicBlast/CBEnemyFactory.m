@@ -25,7 +25,7 @@
     
     GameValues * gameValues = [[GameValues alloc] init];
     CBEnemyFactory * enemyFactory = [CBEnemyFactory spriteNodeWithColor:color size:size];
-    enemyFactory.maxHealth = [gameValues factoryMaxHealth];
+    enemyFactory.maxHealth = (int)[gameValues factoryMaxHealth];
     enemyFactory.health = enemyFactory.maxHealth;
     enemyFactory.dead = NO;
     return enemyFactory;
@@ -36,7 +36,7 @@
 +(id)enemyFactory{
     GameValues * gameValues = [[GameValues alloc] init];
     CBEnemyFactory * enemyFactory = [CBEnemyFactory spriteNodeWithColor:[gameValues factoryColor] size:[gameValues factorySize]];
-    enemyFactory.maxHealth = [gameValues factoryMaxHealth];
+    enemyFactory.maxHealth = (int)[gameValues factoryMaxHealth];
     enemyFactory.health = enemyFactory.maxHealth;
     enemyFactory.dead = NO;
     return enemyFactory;

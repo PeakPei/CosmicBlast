@@ -66,6 +66,10 @@
 
 -(void)restart
 {
+    if (self.scene.view.paused)
+    {
+        [self pause];
+    }
     [self.delegate returnToMenuScreen];
 }
 

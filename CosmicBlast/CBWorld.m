@@ -15,6 +15,11 @@
 + (id)worldWithImageNamed:(NSString *)name {
 
      CBWorld * world = [CBWorld spriteNodeWithImageNamed:name];
+    
+
+    
+    
+    
     world.position = CGPointZero;
     
     
@@ -31,10 +36,32 @@
 }
 
 +(id)world {
-    //GameValues * gameValues = [[GameValues alloc] init];
+    GameValues * gameValues = [[GameValues alloc] init];
+    
+    
+    UIImage * baseImage = [UIImage imageNamed:[gameValues worldImageName]];
+    //UIGraphicsBeginImageContext(newSize);
+    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+    // Pass 1.0 to force exact pixel size.
+    CGSize worldSize = [gameValues worldSize];
+    UIGraphicsBeginImageContextWithOptions(worldSize, NO, 0.0);
+    [baseImage drawInRect:CGRectMake(0, 0, worldSize.width, worldSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    SKTexture * texture = [SKTexture textureWithImage:(newImage)];
+    
+    CBWorld * world = [CBWorld spriteNodeWithTexture:texture];
+    
+    
+    return world;
+    
+    
+    
+    
+    
+    
 
-    //CBWorld * myWorld = [CBWorld spriteNodeWithColor:[gameValues worldColor] size:[gameValues worldSize]];
-    CBWorld * myWorld = [CBWorld worldWithImageNamed:@"Background.png"];
+    CBWorld * myWorld = [CBWorld worldWithImageNamed:@"checker.png"];
     myWorld.position = CGPointZero;
 
     return myWorld;

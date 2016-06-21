@@ -29,12 +29,12 @@
         
         
         // Create and configure the scene.
-        
+        NSLog(@"\n*\n ****************INIT WITH SIZE ABOUT TO BE CALLED\n*\n");
         CBMenuScene * menuScene = [CBMenuScene sceneWithSize:skView.bounds.size];
+        NSLog(@"\n*\n ****************INIT WITH SIZE ABOUT TO BE CALLED\n*\n");
         [menuScene setGameDelegate:self];
         menuScene.scaleMode = SKSceneScaleModeAspectFill;
         [skView presentScene:menuScene];
-        
         
     }
     
@@ -61,6 +61,7 @@
 
     SKView * skView = (SKView *)self.view;
     CBMyScene * gameScene = [CBMyScene sceneWithSize:skView.bounds.size];
+    SKScene * random = [SKScene sceneWithSize:skView.bounds.size];
     self.gameScene = gameScene;
     gameScene.gameDelegate = self;
     [skView presentScene:self.gameScene transition:[SKTransition crossFadeWithDuration:0.2]];
@@ -74,7 +75,7 @@
 -(void)launchMenuScreen {
     SKView * skView = (SKView *)self.view;
     NSLog(@"about to init");
-    CBMenuScene * menuScene = [CBMenuScene initWithSize:skView.bounds.size];
+    CBMenuScene * menuScene = [CBMenuScene sceneWithSize:skView.bounds.size];
     NSLog(@"inited");
     menuScene.gameDelegate = self;
     menuScene.scaleMode = SKSceneScaleModeAspectFill;
