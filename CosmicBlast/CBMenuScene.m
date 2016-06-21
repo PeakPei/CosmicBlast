@@ -25,6 +25,15 @@ CMMotionManager * _motionManager;
         [self startMonitoringAcceleration];
         NSLog(@"started monitoring");
         
+        SKLabelNode * label  = [SKLabelNode labelNodeWithText:@"tap the screen to start"];
+        
+//        CGPoint centerPoint = CGPointMake(self.frame.origin.x , self.frame.origin.y);
+
+//        label setPosition:[self poin]
+        [label setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/2))];
+        [self addChild:label];
+//        [label setPosition:centerPoint];
+        
     }
     return self;
 };
