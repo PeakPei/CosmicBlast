@@ -9,29 +9,38 @@ import UIKit
 
 class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var worldHeight: UITextField!
+    //@IBOutlet weak var worldHeight: UITextField!
     
-    @IBOutlet weak var worldWidth: UITextField!
+    //@IBOutlet weak var worldWidth: UITextField!
     
+    @IBOutlet weak var worldWidth: UISlider!
+    
+    
+    @IBOutlet weak var worldHeight: UISlider!
+    
+    @IBAction func save(sender: UIButton) {
+        
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if worldHeight != nil {
-            worldHeight.text = ""
+            worldHeight.value = 0.5
         }
         if worldWidth != nil {
-            worldWidth.text = ""
+            worldWidth.value = 0.5
         }
         initializeTextFields()
     }
     
     
     func initializeTextFields() {
-        worldHeight.delegate = self
-        worldHeight.keyboardType = UIKeyboardType.DecimalPad
+        //worldHeight.delegate = self
+        //worldHeight.keyboardType = UIKeyboardType.DecimalPad
         
-        worldWidth.delegate = self
-        worldWidth.keyboardType = UIKeyboardType.DecimalPad
+        //worldWidth.delegate = self
+        //worldWidth.keyboardType = UIKeyboardType.DecimalPad
     }
     
     
