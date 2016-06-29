@@ -7,11 +7,15 @@
 //
 
 #import "CBAppDelegate.h"
+#import <CosmicBlast-Swift.h>
+
 
 @implementation CBAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    DatabaseManager * manager = [[DatabaseManager alloc] init];
+    [manager maybeInitializeDatabase];
     // Override point for customization after application launch.
     return YES;
 }

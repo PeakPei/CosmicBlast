@@ -73,8 +73,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="worldHeight" destination="tu9-6d-lSX" id="Tfi-lK-lB0"/>
-                        <outlet property="worldWidth" destination="jgK-Bl-g3K" id="gQ1-QD-vt0"/>
+                        <outlet property="worldHeightSlider" destination="tu9-6d-lSX" id="OE3-4N-J5n"/>
+                        <outlet property="worldWidthSlider" destination="jgK-Bl-g3K" id="Kkr-wv-Zb0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D7n-M5-o8v" userLabel="First Responder" sceneMemberID="firstResponder"/>

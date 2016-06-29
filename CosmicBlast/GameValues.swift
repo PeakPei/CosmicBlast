@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreMotion
+import CoreData
 
 //TODO MAKE ALL PROPERTIES LAZY AND READ FROM DISK
 //
@@ -38,9 +39,20 @@ class GameValues: NSObject {
     //        return toReturn
     //        }
     
-    var worldSize: CGSize = CGSizeMake(400, 400)
-    
-    
+//    var maxWorldSize: CGSize = CGSizeMake(2000, 2000)
+    let maxWorldWidth: CGFloat = 1000
+    let maxWorldHeight: CGFloat = 1000
+    var worldSize: CGSize{
+        get {
+            let manager = DatabaseManager()
+            let worldSettings = manager.fetchSavedWorldSettings()
+            let heightMultiplier = CGFloat(worldSettings!.worldHeight!)
+            let widthMultiplier = CGFloat(worldSettings!.worldWidth!)
+            let size = CGSizeMake(widthMultiplier*maxWorldWidth,heightMultiplier*maxWorldHeight)
+            
+            return size
+        }
+    }
     
     //Player Characteristics
     var playerMaxHealth: Int = 20
@@ -108,7 +120,9 @@ class GameValues: NSObject {
         return self.factoryLocations
     }
     
-    
+        
+        
+        
     
     
 }
