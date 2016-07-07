@@ -103,7 +103,6 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
             return loadedWorldSettings
         } catch {
             fatalError("Failed to fetch person: \(error)")
-            return nil
         }
     }
     

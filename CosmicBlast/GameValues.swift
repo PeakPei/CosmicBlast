@@ -56,6 +56,9 @@ class GameValues: NSObject {
     
     //Player Characteristics
     var playerMaxHealth: Int = 20
+    
+    var playerMaxSpeed: Float = 300
+    
     var playerColor: UIColor = UIColor.brownColor()
     var playerSize: CGSize = CGSizeMake(20, 40)
     var playerAccelerationCoefficient: Int = 60

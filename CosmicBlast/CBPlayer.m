@@ -35,6 +35,7 @@
     player.maxHealth = (int)[gameValues playerMaxHealth];
     player.health = player.maxHealth;
     player.dead = NO;
+    player.maxSpeed = gameValues.playerMaxSpeed;
     
 //    SKEmitterNode * emitter = [[SKEmitterNode alloc] init];
 //    [emitter setParticleSize:CGSizeMake(1,1)];
@@ -65,8 +66,20 @@
     //CGVector worldMotion = CGVectorMake(playerMotion.dx*(-1.0), playerMotion.dy*(-1.0));
 
     
-    
     [self.physicsBody applyForce:playerMotion];
+    
+    
+    
+    CGPoint velocityPoint = CGPointMake(self.physicsBody.velocity.dx, self.physicsBody.velocity.dy);
+    CGFloat playerSpeed = [CBVectorMath cbVectorLength:velocityPoint];
+    NSLog(@"playerSpeed: %f", playerSpeed);
+    if (playerSpeed > self.maxSpeed) {
+        CGPoint direction = [CBVectorMath cbVectorNormalize:velocityPoint];
+        CGPoint newVelocityPoint = [CBVectorMath cbVectorMultFirst:direction Value:self.maxSpeed];
+        CGVector newVelocity = CGVectorMake(newVelocityPoint.x, newVelocityPoint.y);
+        self.physicsBody.velocity = newVelocity;
+    }
+    
     
     double parentOffsetX = self.parent.parent.frame.size.width/2.0;
     double parentOffsetY = self.parent.parent.frame.size.height/2.0;

@@ -12,6 +12,9 @@
 @property int maxHealth;
 @property int health;
 @property BOOL dead;
+@property CGFloat maxSpeed;
+
+
 
 //properties for stats
 @property int kills;
