@@ -89,6 +89,15 @@ CMMotionManager *_motionManager;
         
         
         //Set up button bar
+        
+        NSLog(@"self.frame.width: %f,  self.frame.height: %f",self.frame.size.width, self.frame.size.height);
+        
+        NSLog(@"self.view.bounds.size.width: %f,  self.view.bounds.size.height: %f",self.view.bounds.size.width, self.view.bounds.size.height);
+        
+        CGSize screenSize = [UIScreen mainScreen].bounds.size;
+       
+        NSLog(@"screenSize: %f,  screenSize.height: %f",screenSize.width, screenSize.height);
+        //self.buttonBar = [CBButtonBar buttonBarWithSize:screenSize buttonDelegate:self];
         self.buttonBar = [CBButtonBar buttonBarWithFrame:self.frame buttonDelegate:self];
         [self addChild:self.buttonBar];
         

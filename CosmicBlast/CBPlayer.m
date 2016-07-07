@@ -72,7 +72,7 @@
     
     CGPoint velocityPoint = CGPointMake(self.physicsBody.velocity.dx, self.physicsBody.velocity.dy);
     CGFloat playerSpeed = [CBVectorMath cbVectorLength:velocityPoint];
-    NSLog(@"playerSpeed: %f", playerSpeed);
+ //   NSLog(@"playerSpeed: %f", playerSpeed);
     if (playerSpeed > self.maxSpeed) {
         CGPoint direction = [CBVectorMath cbVectorNormalize:velocityPoint];
         CGPoint newVelocityPoint = [CBVectorMath cbVectorMultFirst:direction Value:self.maxSpeed];

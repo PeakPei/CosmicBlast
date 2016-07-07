@@ -40,8 +40,9 @@ class GameValues: NSObject {
     //        }
     
 //    var maxWorldSize: CGSize = CGSizeMake(2000, 2000)
-    let maxWorldWidth: CGFloat = 1000
-    let maxWorldHeight: CGFloat = 1000
+    let maxWorldWidth: CGFloat = 500
+    let maxWorldHeight: CGFloat = 500
+    
     var worldSize: CGSize{
         get {
             let manager = DatabaseManager()
@@ -55,7 +56,7 @@ class GameValues: NSObject {
     }
     
     //Player Characteristics
-    var playerMaxHealth: Int = 20
+    var playerMaxHealth: Int = 80
     
     var playerMaxSpeed: Float = 300
     

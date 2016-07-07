@@ -15,10 +15,6 @@
     
     
     
-    
-    
-    
-    
     CGFloat healthBarRatio = 15;
     CGSize mySize = CGSizeMake(frame.size.width, frame.size.height/healthBarRatio);
     CBHealthBar * healthBar = [CBHealthBar spriteNodeWithColor:[UIColor blueColor] size:(mySize)];
@@ -51,7 +47,7 @@
         //NSLog(@"Width:%f",deadWidth);
         CGSize deadSize = CGSizeMake(deadWidth, self.size.height);
         SKSpriteNode * deadBar = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:deadSize];
-        CGPoint deadPosition = CGPointMake(self.size.width-deadBar.size.width, 0);
+        CGPoint deadPosition = CGPointMake((self.size.width-deadBar.size.width)/2, 0);
     
         [deadBar setPosition:deadPosition];
         [self removeAllChildren];
