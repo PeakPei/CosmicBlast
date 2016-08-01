@@ -31,101 +31,94 @@ CMMotionManager *_motionManager;
 
 -(instancetype)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
-        
-        
-        
-        
-        //Initialize word
-        GameValues *gameValues = [[GameValues alloc] init];
-        self.backgroundColor = [gameValues backgroundColor];
-        //self.currentWorld = [CBWorld worldWithImageNamed:@"Background" position:CGPointZero];
-        //self.currentWorld.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
-        self.currentWorld = [CBWorld world];
-        [self addChild: self.currentWorld];
-        
-        
-        //Initialize player
-        //self.player = [CBPlayer playerWithImageNamed:@"player"];
-        self.player = [CBPlayer playerWithColor:[gameValues playerColor] size:[gameValues playerSize]];
-        [self.currentWorld addChild: self.player];
-        
-        
-        //
- 
-        
-
-        //add physics body for player
-        self.player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.player.size];
-        self.player.physicsBody.dynamic = YES;
-        self.player.physicsBody.categoryBitMask = playerCategory;
-        self.player.physicsBody.contactTestBitMask = monsterCategory;
-        self.player.physicsBody.collisionBitMask = edgeCategory;
-        self.player.physicsBody.usesPreciseCollisionDetection = YES;
-        
-        
-        //add physics body for currentWorld
-       //CGRect  adjustedWorld = CGRectMake(self.currentWorld.frame.origin.x - (self.currentWorld.frame.size.width/2.0), self.currentWorld.frame.origin.y - (self.currentWorld.frame.size.height/2.0), self.currentWorld.frame.size.width, self.currentWorld.frame.size.height);
-        
-        //self.currentWorld.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:adjustedWorld];
-        
-        self.currentWorld.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.currentWorld.frame];
-        
-        self.currentWorld.physicsBody.dynamic = NO;
-        self.currentWorld.physicsBody.categoryBitMask = edgeCategory;
-        self.currentWorld.physicsBody.contactTestBitMask = projectileCategory;
-        self.currentWorld.physicsBody.collisionBitMask = 0;
-        
-        
-
-        
-        self.factories = [[NSMutableArray alloc] init];
-        
-        _motionManager = [[CMMotionManager alloc] init];
-        [self startMonitoringAcceleration];
-        
-        
-        //Set up Statistics collecting object
-        [self setStats:[CBStats stats]];
-        
-        
-        //Set up button bar
-        
-        NSLog(@"self.frame.width: %f,  self.frame.height: %f",self.frame.size.width, self.frame.size.height);
-        
-        NSLog(@"self.view.bounds.size.width: %f,  self.view.bounds.size.height: %f",self.view.bounds.size.width, self.view.bounds.size.height);
-        
-        CGSize screenSize = [UIScreen mainScreen].bounds.size;
-       
-        NSLog(@"screenSize: %f,  screenSize.height: %f",screenSize.width, screenSize.height);
-        //self.buttonBar = [CBButtonBar buttonBarWithSize:screenSize buttonDelegate:self];
-        self.buttonBar = [CBButtonBar buttonBarWithFrame:self.frame buttonDelegate:self];
-        [self addChild:self.buttonBar];
-        
-        
-        //Set up health bar
-        self.healthBar = [CBHealthBar healthBarWithFrame:self.frame player:self.player];
-        [self addChild:self.healthBar];
-        
-        
-         
-        
-        
-        //set up factories        
-        //Change this depending on levels
-        //NSArray array[] = [gameValues fa]
-        NSArray * array = [gameValues getFactoryLocations];
-        for (NSValue * point in array){
-            [self placeFactoryAtPosition:[point CGPointValue]];
-        }
-
-
-
-        self.physicsWorld.gravity = CGVectorMake(0, 0);
-        self.physicsWorld.contactDelegate = self;
+        NSLog(@"InitWithSizeCalled on CBMYScene");
+        [self prepareForDisplay];
     }
     return self;
+}
+
+-(void)prepareForDisplay {
+    NSLog(@"PREPARE FOR DISPLAY IN CBMyScene");
+    [self setWorldValues];
+    [self setPlayerValues];
+    [self setPhysicsValues];
+    [self setUIValues];
+    [self setEnemyValues];
+}
+
+
+-(void)setPlayerValues {
+    GameValues *gameValues = [[GameValues alloc] init];
+    self.player = [CBPlayer playerWithColor:[gameValues playerColor] size:[gameValues playerSize]];
+    [self.currentWorld addChild: self.player];
+    //Set up Statistics collecting object
+    [self setStats:[CBStats stats]];
+}
+
+
+-(void)setWorldValues {
+    GameValues *gameValues = [[GameValues alloc] init];
+    self.backgroundColor = [gameValues backgroundColor];
+    //self.currentWorld = [CBWorld worldWithImageNamed:@"Background" position:CGPointZero];
+    //self.currentWorld.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    self.currentWorld = [CBWorld world];
+    NSLog(@"about to add the world as a child");
+    [self addChild: self.currentWorld];
+}
+
+-(void)setPhysicsValues {
+    //physics body for player
+    self.player.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.player.size.height/2];
+    self.player.physicsBody.mass = 0.05;
+    self.player.physicsBody.dynamic = YES;
+    self.player.physicsBody.categoryBitMask = playerCategory;
+    self.player.physicsBody.contactTestBitMask = monsterCategory;
+    self.player.physicsBody.collisionBitMask = edgeCategory;
+    self.player.physicsBody.usesPreciseCollisionDetection = YES;
+    
+    self.currentWorld.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.currentWorld.frame];
+    self.currentWorld.physicsBody.dynamic = NO;
+    self.currentWorld.physicsBody.categoryBitMask = edgeCategory;
+    self.currentWorld.physicsBody.contactTestBitMask = projectileCategory;
+    self.currentWorld.physicsBody.collisionBitMask = 0;
+    
+    
+    self.factories = [[NSMutableArray alloc] init];
+    
+    _motionManager = [[CMMotionManager alloc] init];
+    [self startMonitoringAcceleration];
+    self.physicsWorld.gravity = CGVectorMake(0, 0);
+    self.physicsWorld.contactDelegate = self;
     
 }
+
+-(void)setUIValues {
+    //Set up button bar
+    self.buttonBar = [CBButtonBar buttonBarWithFrame:self.frame buttonDelegate:self];
+    NSLog(@"self.frame.width = %f self.frame.height = %f",self.frame.size.width,self.frame.size.height);
+    [self addChild:self.buttonBar];
+    
+    
+    //Set up health bar
+    self.healthBar = [CBHealthBar healthBarWithFrame:self.frame player:self.player];
+    [self addChild:self.healthBar];
+    
+}
+
+-(void)setEnemyValues {
+    GameValues *gameValues = [[GameValues alloc] init];
+    //set up factories
+    //Change this depending on levels
+    NSArray * array = [gameValues getFactoryLocations];
+    for (NSValue * point in array){
+        [self placeFactoryAtPosition:[point CGPointValue]];
+    }
+    
+}
+
+
+
+
 
 -(void)startMonitoringAcceleration{
     
