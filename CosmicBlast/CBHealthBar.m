@@ -15,7 +15,7 @@
     
     
     
-    CGFloat healthBarRatio = 15;
+    CGFloat healthBarRatio = 5;
     CGSize mySize = CGSizeMake(frame.size.width, frame.size.height/healthBarRatio);
     CBHealthBar * healthBar = [CBHealthBar spriteNodeWithColor:[UIColor blueColor] size:(mySize)];
     [healthBar setPosition:CGPointMake(frame.size.width/2, frame.size.height)];

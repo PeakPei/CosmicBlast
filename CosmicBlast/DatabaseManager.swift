@@ -42,14 +42,16 @@ class DatabaseManager: NSObject {
     
     
     func maybeInitializeWorldSettings() {
+        print("maybeInitializeWorldSettingsCalled")
         let worldSettingsFetch = NSFetchRequest(entityName: "WorldSettings")
         do {
             var fetchedWorldSettingsList = try moc.executeFetchRequest(worldSettingsFetch) as! [WorldSettings]
             if (fetchedWorldSettingsList.count < 1){
                 let entity = NSEntityDescription.insertNewObjectForEntityForName("WorldSettings", inManagedObjectContext: moc) as! WorldSettings
                 // add our data
-                entity.setValue(0.0, forKey: "worldWidth")
-                entity.setValue(0.0, forKey: "worldHeight")
+                print("about to set values for keys")
+                entity.setValue(1.0, forKey: "worldWidth")
+                entity.setValue(1.0, forKey: "worldHeight")
             } else  {
                 while(fetchedWorldSettingsList.count > 1) {
                     print("**************Error world settings has more than one entity Error******************")

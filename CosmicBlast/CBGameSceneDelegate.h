@@ -10,5 +10,7 @@
 
 -(void)launchMenuScreen;
 -(void)launchGameScreen;
+-(void)returnToParentMenu;
+
 
 @end

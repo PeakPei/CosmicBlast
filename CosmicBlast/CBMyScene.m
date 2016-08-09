@@ -12,7 +12,6 @@
 #import "CBEnemy.h"
 #import "CBPlayer.h"
 #import "CBEnemyFactory.h"
-#import "CBButtonBar.h"
 #import "CBVectorMath.h"
 #import "CBMenuScene.h"
 #import "CBShuriken.h"
@@ -39,6 +38,7 @@ CMMotionManager *_motionManager;
 
 -(void)prepareForDisplay {
     NSLog(@"PREPARE FOR DISPLAY IN CBMyScene");
+    
     [self setWorldValues];
     [self setPlayerValues];
     [self setPhysicsValues];
@@ -200,7 +200,6 @@ CMMotionManager *_motionManager;
 -(void)addMonster {
     //Create Sprite
     for (CBEnemyFactory *factory in self.factories) {
-        
     
         CBWalker * monster = [factory createWalker];
     
@@ -305,7 +304,7 @@ CMMotionManager *_motionManager;
         
         if (self.player.dead) {
             
-            [self returnToMenuScreen];
+            [self returnToParentMenu];
             
             
         }
@@ -315,14 +314,13 @@ CMMotionManager *_motionManager;
 }
 
 
--(void)returnToMenuScreen {
+-(void)returnToParentMenu {
     [self.gameDelegate launchMenuScreen];
 //    SKView * skView = (SKView *)self.view;
 //    SKScene * menuScene = [CBMenuScene sceneWithSize:skView.bounds.size];
 //    menuScene.scaleMode = SKSceneScaleModeAspectFill;
 //    [skView presentScene:menuScene];
     [self.stats saveTotalKills];
-    
 }
 
 -(void)pause{
@@ -331,7 +329,7 @@ CMMotionManager *_motionManager;
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    
+    NSLog(@"touches ended");
     //  This is going to need to be changed.  Will need to split behavior of different items up somehow
     //
     

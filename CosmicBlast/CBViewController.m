@@ -8,7 +8,7 @@
 
 #import "CBViewController.h"
 #import "CBMyScene.h"
-
+#import "CBAppDelegate.h"
 
 @implementation CBViewController 
 
@@ -18,7 +18,6 @@
     
     //Set up for menuScene
 //    [self setMenuScene: true];
-    
     // Configure the view.
     SKView * skView = (SKView *)self.view;
     if (!skView.scene) {
@@ -29,9 +28,7 @@
         
         
         // Create and configure the scene.
-        NSLog(@"\n*\n ****************INIT WITH SIZE ABOUT TO BE CALLED\n*\n");
         CBMenuScene * menuScene = [CBMenuScene sceneWithSize:skView.bounds.size];
-        NSLog(@"\n*\n ****************INIT WITH SIZE ABOUT TO BE CALLED\n*\n");
         [menuScene setGameDelegate:self];
         menuScene.scaleMode = SKSceneScaleModeAspectFill;
         [skView presentScene:menuScene];
@@ -41,6 +38,17 @@
     
     
 }
+
+
+- (IBAction)unwindToMainMenu:(UIStoryboardSegue*)sender
+{
+
+    NSLog(@"unwindToMainMenu called IBACTION");
+    //UIViewController *sourceViewController = sender.sourceViewController;
+    // Pull any data from the view controller which initiated the unwind segue.
+}
+
+
 
 - (BOOL)shouldAutorotate
 {
@@ -58,7 +66,7 @@
 
 -(void)launchGameScreen {
     
-
+    NSLog(@"LAUNCH GAME SCENE CALLED");
     SKView * skView = (SKView *)self.view;
     CBMyScene * gameScene = [CBMyScene sceneWithSize:skView.bounds.size];
     //SKScene * random = [SKScene sceneWithSize:skView.bounds.size];
@@ -74,15 +82,21 @@
 
 -(void)launchMenuScreen {
     SKView * skView = (SKView *)self.view;
-    NSLog(@"about to init");
     CBMenuScene * menuScene = [CBMenuScene sceneWithSize:skView.bounds.size];
-    NSLog(@"inited");
     menuScene.gameDelegate = self;
     menuScene.scaleMode = SKSceneScaleModeAspectFill;
     menuScene.gameDelegate = self;
     [skView presentScene:menuScene transition:[SKTransition crossFadeWithDuration:0.2]];
 }
 
-
+- (void)returnToParentMenu
+{
+    //SKView * skView = (SKView *)self.view;
+    //[skView presentScene:nil];
+    CBAppDelegate * appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate resetWindowToInitialView];
+    //[self performSegueWithIdentifier:@"unwindToMainMenu" sender:self];
+    //[self performSegueWithIdentifier:@"returnToParentMenu" sender:self];
+}
 
 @end

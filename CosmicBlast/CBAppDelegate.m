@@ -11,9 +11,12 @@
 
 
 @implementation CBAppDelegate
+UIStoryboard* _initalStoryboard;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    _initalStoryboard = self.window.rootViewController.storyboard;
     DatabaseManager * manager = [[DatabaseManager alloc] init];
     [manager maybeInitializeDatabase];
     // Override point for customization after application launch.
@@ -39,12 +42,25 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previous ly in the background, optionally refresh the user interface.
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (void)resetWindowToInitialView
+{
+    for (UIView* view in self.window.subviews)
+    {
+        [view removeFromSuperview];
+    }
+    
+    UIViewController* initialScene = [_initalStoryboard instantiateInitialViewController];
+    self.window.rootViewController = initialScene;
+}
+
+
 
 @end

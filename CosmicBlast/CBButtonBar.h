@@ -18,6 +18,6 @@
 
 +(id)buttonBarWithFrame:(CGRect)frame buttonDelegate:(id <CBButtonDelegate>)delegate;
 
-+(id)buttonBarWithSize:(CGSize)size buttonDelegate:(id <CBButtonDelegate>)delegate;
+//+(id)buttonBarWithSize:(CGSize)size buttonDelegate:(id <CBButtonDelegate>)delegate;
 
 @end

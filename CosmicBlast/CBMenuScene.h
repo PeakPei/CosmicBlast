@@ -8,12 +8,16 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "CBViewController.h"
+#import "CBButtonDelegate.h"
 #import "CBGameSceneDelegate.h"
-@interface CBMenuScene : SKScene
+#import "CBButtonBar.h"
 
 
-@property id <CBGameSceneDelegate> gameDelegate;
-@property UIViewController * viewController;
+@interface CBMenuScene : SKScene <CBButtonDelegate>
+
+@property (nonatomic) CBButtonBar * buttonBar;
+@property (weak) id <CBGameSceneDelegate> gameDelegate;
+//@property UIViewController * viewController;
 
 
 

@@ -13,6 +13,7 @@
 @implementation CBButton
 
 
+
 +(id)buttonWithColor:(SKColor *)color size:(CGSize)size title:(NSString *)buttonTitle{
     
     CBButton *button = [CBButton spriteNodeWithColor:color size:size];
@@ -38,7 +39,6 @@
 
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    
     
     [self.handler handleButton:self];
     [self description];
@@ -70,7 +70,7 @@
     {
         [self pause];
     }
-    [self.delegate returnToMenuScreen];
+    [self.delegate returnToParentMenu];
 }
 
 

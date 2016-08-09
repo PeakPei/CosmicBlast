@@ -30,7 +30,7 @@
 
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
--(void)returnToMenuScreen;
+-(void)returnToParentMenu;
 
 
 

@@ -14,11 +14,7 @@
 
 
 @interface CBViewController : UIViewController <CBGameSceneDelegate>
-
-//@property (nonatomic) BOOL menuScene;
-
 @property CBMyScene * gameScene;
-//@property CBMenuScene * menuScene;
-
+- (void)returnToParentMenu;
 
 @end

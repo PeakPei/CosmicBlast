@@ -24,23 +24,36 @@ CMMotionManager * _motionManager;
         
         [self startMonitoringAcceleration];
         NSLog(@"started monitoring");
-        
-        SKLabelNode * label  = [SKLabelNode labelNodeWithText:@"tap the screen to start"];
-        
-//        CGPoint centerPoint = CGPointMake(self.frame.origin.x , self.frame.origin.y);
+        [self setUIValues];
 
-//        label setPosition:[self poin]
-        [label setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/2))];
-        [self addChild:label];
-//        [label setPosition:centerPoint];
         
     }
     return self;
 };
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.gameDelegate launchGameScreen];
+
+-(void)setUIValues {
+    //set up label
+    NSLog(@"SetUIValuesCalled in CBMenuScene");
+    SKLabelNode * label  = [SKLabelNode labelNodeWithText:@"tap the screen to start"];
+    [label setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/2))];
+    [self addChild:label];
+    //Set up button bar
+    self.buttonBar = [CBButtonBar buttonBarWithFrame:self.frame buttonDelegate:self];
+    [self addChild:self.buttonBar];
+    
 }
+
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    //[self.gameDelegate returnToParentMenu];
+    
+    [self.gameDelegate launchGameScreen];
+    NSLog(@"touchesEnded in CBMenuScene");
+}
+
+
+
 
 
 
@@ -61,6 +74,16 @@ CMMotionManager * _motionManager;
     //NSLog(@"menu data.acceleration.x = %f, menu data.acceleration.y = %f, menu data.acceleration.z = %f",data.acceleration.x, data.acceleration.y, data.acceleration.z);
 }
 
+
+-(void)returnToParentMenu {
+    //[self removeFromParent];
+    [self.gameDelegate returnToParentMenu];
+    
+}
+
+-(void)pause {
+    NSLog(@"Pause called on CBMenuScene,  RETHINK THIS");
+}
 
         
         

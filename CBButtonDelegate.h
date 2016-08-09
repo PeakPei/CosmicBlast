@@ -8,7 +8,7 @@
 
 @protocol CBButtonDelegate <NSObject>
 
--(void)returnToMenuScreen;
+-(void)returnToParentMenu;
 
 -(void)pause;
 
