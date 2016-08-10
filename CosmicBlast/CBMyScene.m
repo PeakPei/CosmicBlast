@@ -329,7 +329,6 @@ CMMotionManager *_motionManager;
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    NSLog(@"touches ended");
     //  This is going to need to be changed.  Will need to split behavior of different items up somehow
     //
     

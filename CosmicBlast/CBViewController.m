@@ -10,11 +10,19 @@
 #import "CBMyScene.h"
 #import "CBAppDelegate.h"
 
-@implementation CBViewController 
+@implementation CBViewController
+
 
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
+    
+    NSInteger currentLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"currentLevel"];
+    if (currentLevel == 0) {
+        NSLog(@"currentLevel NSUserDefualt returned 0");
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey: @"currentLevel"];
+
+    }
     
     //Set up for menuScene
 //    [self setMenuScene: true];

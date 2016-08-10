@@ -17,12 +17,8 @@
 +(id)buttonWithColor:(SKColor *)color size:(CGSize)size title:(NSString *)buttonTitle{
     
     CBButton *button = [CBButton spriteNodeWithColor:color size:size];
-    
-   
-    
     button.title = buttonTitle;
     button.userInteractionEnabled = YES;
-    
     
     return button;
     

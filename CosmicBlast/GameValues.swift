@@ -108,15 +108,26 @@ class GameValues: NSObject {
     
     
     
-    var factoryLocations: NSMutableArray
+    var factoryLocations: [NSValue]
         {
         get {
-            let pointArray = NSMutableArray()
-            pointArray.addObject(NSValue(CGPoint: CGPointMake(200, 150)))
-            pointArray.addObject(NSValue(CGPoint: CGPointMake(-200, 150)))
-            pointArray.addObject(NSValue(CGPoint: CGPointMake(200, -150)))
-            pointArray.addObject(NSValue(CGPoint: CGPointMake(-200, -150)))
-            return pointArray
+            let manager = DatabaseManager()
+            if let worldSettings = manager.fetchSavedWorldSettings(){
+                
+                let locations = worldSettings.factoryPositions ?? [NSValue]()
+                return locations
+            } else {
+                return [NSValue]()
+            }
+            
+            
+//            let pointArray = NSMutableArray()
+//            pointArray.addObject(NSValue(CGPoint: CGPointMake(200, 150)))
+//            pointArray.addObject(NSValue(CGPoint: CGPointMake(-200, 150)))
+//            pointArray.addObject(NSValue(CGPoint: CGPointMake(200, -150)))
+//            pointArray.addObject(NSValue(CGPoint: CGPointMake(-200, -150)))
+//            return pointArray
+            
         }
     }
     

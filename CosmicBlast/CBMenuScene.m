@@ -14,6 +14,10 @@
 @implementation CBMenuScene
 
 CMMotionManager * _motionManager;
+SKLabelNode * instructionLabel;
+SKLabelNode * levelInfoLabel;
+
+
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -35,9 +39,17 @@ CMMotionManager * _motionManager;
 -(void)setUIValues {
     //set up label
     NSLog(@"SetUIValuesCalled in CBMenuScene");
-    SKLabelNode * label  = [SKLabelNode labelNodeWithText:@"tap the screen to start"];
-    [label setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/2))];
-    [self addChild:label];
+    
+    instructionLabel = [SKLabelNode labelNodeWithText:@"tap the screen to start"];
+    [instructionLabel setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/2))];
+    [self addChild:instructionLabel];
+    
+    long currentLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"currentLevel"];
+    NSString * levelString = [NSString stringWithFormat:@"Current Level: %ld", currentLevel];
+    levelInfoLabel = [SKLabelNode labelNodeWithText:levelString];
+    [levelInfoLabel setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/1.5))];
+    [self addChild:levelInfoLabel];
+    
     //Set up button bar
     self.buttonBar = [CBButtonBar buttonBarWithFrame:self.frame buttonDelegate:self];
     [self addChild:self.buttonBar];
