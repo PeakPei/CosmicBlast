@@ -8,10 +8,6 @@
 
 @protocol CBButtonDelegate <NSObject>
 
--(void)returnToParentMenu;
-
--(void)pause;
-
-
+-(void)executeButtonFunction:(NSString *)function;
 
 @end

@@ -8,16 +8,19 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "CBButtonDelegate.h"
+#import "CBButton.h"
 @interface CBButtonBar : SKSpriteNode
 
 
-@property (nonatomic) NSArray * buttons;
+@property (nonatomic) NSArray<CBButton*> * buttons;
 
 
 
 
 +(id)buttonBarWithFrame:(CGRect)frame buttonDelegate:(id <CBButtonDelegate>)delegate;
 
++(instancetype)menuButtonBarWithFrame:(CGRect)frame buttonDelegate:(id <CBButtonDelegate>)delegate;
++(instancetype)gameButtonBarWithFrame:(CGRect)frame buttonDelegate:(id <CBButtonDelegate>)delegate;
 //+(id)buttonBarWithSize:(CGSize)size buttonDelegate:(id <CBButtonDelegate>)delegate;
 
 @end

@@ -23,7 +23,15 @@ class DatabaseManager: NSObject {
         let worldSettingsFetch = NSFetchRequest(entityName: "WorldSettings")
         do {
             var fetchedWorldSettingsList = try moc.executeFetchRequest(worldSettingsFetch) as! [WorldSettings]
-            fetchedWorldSettingsList.sortInPlace({ $0.levelNumber?.intValue > $1.levelNumber?.intValue })
+            //print(fetchedWorldSettingsList[0].levelNumber?.intValue)
+            print("fetched settings 0 levelNumber \(fetchedWorldSettingsList[0].levelNumber)");
+            let sortedSettingsList = fetchedWorldSettingsList.sort({ $0.levelNumber?.intValue < $1.levelNumber?.intValue})
+            for settings in sortedSettingsList{
+                print(settings.worldWidth)
+            }
+            print("Sorting happened, \(sortedSettingsList[0].levelNumber)")
+            
+            
 //            while(fetchedWorldSettingsList.count > 1) {
 //                print("**************Error world settings has more than one entity Error******************")
 //                fetchedWorldSettingsList.removeFirst()
@@ -33,7 +41,12 @@ class DatabaseManager: NSObject {
 //            } catch {
 //                fatalError("Failure to save context in fetch: \(error)")
 //            }
-            let loadedWorldSettings = fetchedWorldSettingsList.last!
+            let currentLevel = NSUserDefaults().integerForKey("currentLevel")
+            
+            print("currentLevel about to be loaded.  number = \(currentLevel)")
+            
+            let loadedWorldSettings = sortedSettingsList[currentLevel-1]
+
             print("fetchedWorldSettings.count: \(fetchedWorldSettingsList.count)")
             return loadedWorldSettings
         } catch {

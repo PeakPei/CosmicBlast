@@ -9,35 +9,19 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "CBItem.h"
-#import "CBButtonHandler.h"
 #import "CBButtonDelegate.h"
 
-@class CBButtonHandler;
 
 @interface CBButton : SKSpriteNode
 
 @property NSString * summary;
 @property NSString * title;
 @property (weak) id <CBButtonDelegate> delegate;
-@property CBButtonHandler * handler;
 
 
-+(id)buttonWithColor:(SKColor *)color size:(CGSize)size title:(NSString *)buttonTitle;
++(id)buttonWithColor:(SKColor *)color size:(CGSize)size;
 
-
-
-
-
-
--(void)pause;
--(void)restart;
-
--(void)switchToItem:(CBItem *)newItem;
-
--(void)heal;
-
--(void)block;
-
+-(void)updateLabelAndSetTitle:(NSString *)myTitle;
 
 -(NSString *)description;
 

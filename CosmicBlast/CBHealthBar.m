@@ -13,12 +13,10 @@
 +(instancetype)healthBarWithFrame:(CGRect)frame player:(CBPlayer *)myPlayer
 {
     
-    
-    
-    CGFloat healthBarRatio = 5;
+    CGFloat healthBarRatio = 10;
     CGSize mySize = CGSizeMake(frame.size.width, frame.size.height/healthBarRatio);
     CBHealthBar * healthBar = [CBHealthBar spriteNodeWithColor:[UIColor blueColor] size:(mySize)];
-    [healthBar setPosition:CGPointMake(frame.size.width/2, frame.size.height)];
+    [healthBar setPosition:CGPointMake(frame.size.width/2, frame.size.height-(healthBar.size.height/2))];
     [healthBar setPlayer:myPlayer];
     [healthBar updateHealthBar];
     

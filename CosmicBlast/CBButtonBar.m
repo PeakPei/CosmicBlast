@@ -7,61 +7,114 @@
 //
 
 #import "CBButtonBar.h"
-#import "CBButton.h"
+
 #import "EnumConstants.h"
-#import "CBButtonHandler.h"
+#import <CosmicBlast-Swift.h>
 
 @implementation CBButtonBar : SKSpriteNode
+
+CGFloat buttonRatio;
+CGRect sceneFrame;
+
 
 
 
 +(id)buttonBarWithFrame:(CGRect)frame buttonDelegate:(id <CBButtonDelegate>)delegate {
-    
-    CGFloat buttonRatio = 5;
-    CGSize mySize = CGSizeMake(frame.size.width, frame.size.height/buttonRatio);
     //CGSize mySize = CGSizeMake(frame.size.width, frame.size.height/buttonRatio);
-    CBButtonBar * buttonBar = [CBButtonBar spriteNodeWithColor:[UIColor blackColor] size:(mySize)];
-    [buttonBar setPosition:CGPointMake(frame.size.width/2, 0)];
-    CBButton * farLeftButton, * leftButton, * rightButton, * farRightButton;
+    CBButtonBar * buttonBar = [CBButtonBar emptyBarWithFrame:frame];
     
-    
-    //create handler for buttons
-    CBButtonHandler * handler = [CBButtonHandler buttonHandler];
-    
-    //createButtons
-    farLeftButton = [CBButton buttonWithColor:[UIColor blueColor] size:CGSizeMake(frame.size.width/4, frame.size.height/buttonRatio) title:[CBButtonHandler getFarLeftButtonName]];
-    
-    leftButton = [CBButton buttonWithColor:[UIColor redColor] size:CGSizeMake(frame.size.width/4, frame.size.height/buttonRatio) title:[CBButtonHandler getLeftButtonName]];
-    
-    rightButton = [CBButton buttonWithColor:[UIColor blackColor] size:CGSizeMake(frame.size.width/4, frame.size.height/buttonRatio) title:[CBButtonHandler  getRightButtonName]];
-    
-    farRightButton = [CBButton buttonWithColor:[UIColor greenColor] size:CGSizeMake(frame.size.width/4, frame.size.height/buttonRatio) title:[CBButtonHandler getFarRightButtonName]];
-
-    [farLeftButton setPosition:CGPointMake(-farLeftButton.size.width*1.5, farLeftButton.position.y)];
-    [leftButton setPosition:CGPointMake(-leftButton.size.width/2, leftButton.position.y)];
-    [rightButton setPosition:CGPointMake(rightButton.size.width/2, rightButton.position.y)];
-    [farRightButton setPosition:CGPointMake(farRightButton.size.width*1.5, farRightButton.position.y)];
-    
-    
-    
-    
-    
-    buttonBar.buttons = [NSArray arrayWithObjects:farLeftButton, leftButton, rightButton, farRightButton, nil];
+    [buttonBar setButtonValues];
     for (CBButton * button in buttonBar.buttons){
         button.delegate = delegate;
     }
-    
-    for (CBButton * button in buttonBar.buttons){
-        
-        [buttonBar addChild:button];
-        [button setHandler:handler];
-    }
-    
-    handler.buttonMap = [NSMutableDictionary dictionaryWithObjectsAndKeys:[CBButtonHandler pauseTaskName] , [CBButtonHandler getFarLeftButtonName], [CBButtonHandler restartTaskName] , [CBButtonHandler getFarRightButtonName],nil];
-//    NSLog(@"selfWidth %f", buttonBar.size.width);
     return buttonBar;
+}
+
+
+
+
++(instancetype)menuButtonBarWithFrame:(CGRect)frame buttonDelegate:(id <CBButtonDelegate>)delegate{
+    CBButtonBar * buttonBar = [CBButtonBar emptyBarWithFrame:frame];
+    
+    [buttonBar setButtonValues];
+    for (CBButton * button in buttonBar.buttons){
+        button.delegate = delegate;
+    }
+    [buttonBar setButtonTitles:[CBButtonBar getMenuButtonTitles]];
+    return buttonBar;
+}
++(instancetype)gameButtonBarWithFrame:(CGRect)frame buttonDelegate:(id <CBButtonDelegate>)delegate{
+    CBButtonBar * buttonBar = [CBButtonBar emptyBarWithFrame:frame];
+    
+    [buttonBar setButtonValues];
+    for (CBButton * button in buttonBar.buttons){
+        button.delegate = delegate;
+    }
+    [buttonBar setButtonTitles:[CBButtonBar getGameButtonTitles]];
+    return buttonBar;
+}
+
+
++(instancetype)emptyBarWithFrame:(CGRect)frame{
+    buttonRatio = [[[GameValues alloc] init] uiRatio];
+    sceneFrame = frame;
+    CGSize mySize = CGSizeMake(sceneFrame.size.width, sceneFrame.size.height/buttonRatio);
+    CBButtonBar * buttonBar = [CBButtonBar spriteNodeWithColor:[UIColor blackColor] size:(mySize)];
+    return buttonBar;
+}
+
++(NSArray<CBButton*> *)getMenuButtonTitles{
+    return [NSArray arrayWithObjects:@"<-", @"->", @"3", @"4", nil];
+}
+
++(NSArray<CBButton*> *)getGameButtonTitles{
+    return [NSMutableArray arrayWithObjects:@"5", @"pause", @"7", @"menu", nil];
+}
+
+
+
+
+-(void)setButtonTitles:(NSArray *)titles {
+    for (int i = 0; i<titles.count; i++){
+        [[self.buttons objectAtIndex:i] updateLabelAndSetTitle:[titles objectAtIndex:i]];
+        
+    }
+
+    
     
 }
 
 
+-(void)setButtonValues{
+
+    [self setPosition:CGPointMake(sceneFrame.size.width/2, 0)];
+    CBButton * farLeftButton, * leftButton, * rightButton, * farRightButton;
+    
+
+    
+    farLeftButton = [CBButton buttonWithColor:[UIColor blueColor] size:CGSizeMake(sceneFrame.size.width/4, sceneFrame.size.height/buttonRatio)];
+    
+    leftButton = [CBButton buttonWithColor:[UIColor redColor] size:CGSizeMake(sceneFrame.size.width/4, sceneFrame.size.height/buttonRatio)];
+    
+    rightButton = [CBButton buttonWithColor:[UIColor blackColor] size:CGSizeMake(sceneFrame.size.width/4, sceneFrame.size.height/buttonRatio)];
+    
+    farRightButton = [CBButton buttonWithColor:[UIColor greenColor] size:CGSizeMake(sceneFrame.size.width/4, sceneFrame.size.height/buttonRatio)];
+    
+    [farLeftButton setPosition:CGPointMake(-farLeftButton.size.width*1.5, farLeftButton.size.height/2)];
+    [leftButton setPosition:CGPointMake(-leftButton.size.width/2, leftButton.size.height/2)];
+    [rightButton setPosition:CGPointMake(rightButton.size.width/2, rightButton.size.height/2)];
+    [farRightButton setPosition:CGPointMake(farRightButton.size.width*1.5, farRightButton.size.height/2)];
+    
+    
+    self.buttons = [NSArray arrayWithObjects:farLeftButton, leftButton, rightButton, farRightButton, nil];
+
+    
+    for (CBButton * button in self.buttons){
+        
+        [self addChild:button];
+    }
+    
+
+
+}
 @end

@@ -51,7 +51,7 @@ SKLabelNode * levelInfoLabel;
     [self addChild:levelInfoLabel];
     
     //Set up button bar
-    self.buttonBar = [CBButtonBar buttonBarWithFrame:self.frame buttonDelegate:self];
+    self.buttonBar = [CBButtonBar menuButtonBarWithFrame:self.frame buttonDelegate:self];
     [self addChild:self.buttonBar];
     
 }
@@ -65,7 +65,14 @@ SKLabelNode * levelInfoLabel;
 }
 
 
-
+-(void)setLevelNumber:(int)number{
+    //NSInteger currentLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"currentLevel"];
+    [[NSUserDefaults standardUserDefaults] setInteger:number forKey: @"currentLevel"];
+    NSString * levelString = [NSString stringWithFormat:@"Current Level: %d", number];
+    //levelInfoLabel = [SKLabelNode labelNodeWithText:levelString];
+    [levelInfoLabel setText:levelString];
+    
+}
 
 
 
@@ -97,6 +104,34 @@ SKLabelNode * levelInfoLabel;
     NSLog(@"Pause called on CBMenuScene,  RETHINK THIS");
 }
 
-        
+
+
+-(void)executeButtonFunction:(NSString *)function{
+    if([function isEqualToString:@"<-"]){
+        [self previousLevel];
+    } else if ([function isEqualToString:@"->"]){
+        [self nextLevel];
+    }
+    
+    NSLog(@"executeButtonFunction Called in CBMenuScene.m,: %@",function);
+}
+
+-(void)nextLevel{
+    NSInteger currentLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"currentLevel"];
+    if (currentLevel < [[NSUserDefaults standardUserDefaults] integerForKey:@"availableLevels"]){
+        [self setLevelNumber:currentLevel+1.0];
+    }
+    
+}
+-(void)previousLevel{
+    NSInteger currentLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"currentLevel"];
+    if (currentLevel >1){
+        [self setLevelNumber:currentLevel-1.0];
+    }
+}
+
+
+
+
         
 @end

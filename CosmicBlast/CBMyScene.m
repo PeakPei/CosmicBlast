@@ -94,7 +94,7 @@ CMMotionManager *_motionManager;
 
 -(void)setUIValues {
     //Set up button bar
-    self.buttonBar = [CBButtonBar buttonBarWithFrame:self.frame buttonDelegate:self];
+    self.buttonBar = [CBButtonBar gameButtonBarWithFrame:self.frame buttonDelegate:self];
     NSLog(@"self.frame.width = %f self.frame.height = %f",self.frame.size.width,self.frame.size.height);
     [self addChild:self.buttonBar];
     
@@ -315,6 +315,9 @@ CMMotionManager *_motionManager;
 
 
 -(void)returnToParentMenu {
+    if (self.view.paused){
+        [self pause];
+    }
     [self.gameDelegate launchMenuScreen];
 //    SKView * skView = (SKView *)self.view;
 //    SKScene * menuScene = [CBMenuScene sceneWithSize:skView.bounds.size];
@@ -324,7 +327,14 @@ CMMotionManager *_motionManager;
 }
 
 -(void)pause{
-    NSLog(@"\n*\n pause Called on CBMyScene not implemented \n*\n");
+    if(self.view.paused)
+    {
+        self.view.paused = NO;
+    }
+    else
+    {
+        self.view.paused = YES;
+    }
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -412,10 +422,17 @@ CMMotionManager *_motionManager;
         [factory removeFromParent];
         [self.factories removeObject:factory];
     }
-    
 }
 
-
+-(void)executeButtonFunction:(NSString *)function{
+    
+    if([function isEqualToString:@"menu"]){
+        [self returnToParentMenu];
+    } else if ([function isEqualToString:@"pause"]){
+        [self pause];
+    }
+    NSLog(@"executeButtonFunction Called in CBMyScene.m,: %@",function);
+}
 
 
 

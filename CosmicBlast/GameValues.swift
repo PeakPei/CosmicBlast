@@ -15,8 +15,9 @@ import CoreData
 //
 //This Object allows you to access the game's variables
 class GameValues: NSObject {
+
     
-    
+    var uiRatio = 10
     
     //var archiver: NSKeyedArchiver = NSKeyedArchiver()
     //GamePlay Characteristics
@@ -104,7 +105,7 @@ class GameValues: NSObject {
         //                return newImage;
         //        }
     }
-    
+
     
     
     
