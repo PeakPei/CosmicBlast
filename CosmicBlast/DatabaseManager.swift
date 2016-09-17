@@ -9,6 +9,18 @@
 import CoreData
 
 
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l < r
+    case (nil, _?):
+        return true
+    default:
+        return false
+    }
+}
+
+
 class DatabaseManager: NSObject {
     let moc = DataController().managedObjectContext
     
@@ -20,34 +32,12 @@ class DatabaseManager: NSObject {
     
     //This will need to take a level as an argument
     func fetchSavedWorldSettings() -> WorldSettings? {
-        let worldSettingsFetch = NSFetchRequest(entityName: "WorldSettings")
+        let worldSettingsFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "WorldSettings")
         do {
-            var fetchedWorldSettingsList = try moc.executeFetchRequest(worldSettingsFetch) as! [WorldSettings]
-            //print(fetchedWorldSettingsList[0].levelNumber?.intValue)
-            print("fetched settings 0 levelNumber \(fetchedWorldSettingsList[0].levelNumber)");
-            let sortedSettingsList = fetchedWorldSettingsList.sort({ $0.levelNumber?.intValue < $1.levelNumber?.intValue})
-            for settings in sortedSettingsList{
-                print(settings.worldWidth)
-            }
-            print("Sorting happened, \(sortedSettingsList[0].levelNumber)")
-            
-            
-//            while(fetchedWorldSettingsList.count > 1) {
-//                print("**************Error world settings has more than one entity Error******************")
-//                fetchedWorldSettingsList.removeFirst()
-//            }
-//            do{
-//                try moc.save()
-//            } catch {
-//                fatalError("Failure to save context in fetch: \(error)")
-//            }
-            let currentLevel = NSUserDefaults().integerForKey("currentLevel")
-            
-            print("currentLevel about to be loaded.  number = \(currentLevel)")
-            
+            let fetchedWorldSettingsList = try moc.fetch(worldSettingsFetch) as! [WorldSettings]
+            let sortedSettingsList = fetchedWorldSettingsList.sorted(by: { $0.levelNumber?.int32Value < $1.levelNumber?.int32Value})
+            let currentLevel = UserDefaults().integer(forKey: "currentLevel")
             let loadedWorldSettings = sortedSettingsList[currentLevel-1]
-
-            print("fetchedWorldSettings.count: \(fetchedWorldSettingsList.count)")
             return loadedWorldSettings
         } catch {
             fatalError("Failed to fetch worldSettings: \(error)")
@@ -58,22 +48,21 @@ class DatabaseManager: NSObject {
     
     func maybeInitializeWorldSettings() {
         print("maybeInitializeWorldSettingsCalled")
-        let worldSettingsFetch = NSFetchRequest(entityName: "WorldSettings")
+        let worldSettingsFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "WorldSettings")
         do {
             let
-            fetchedWorldSettingsList = try moc.executeFetchRequest(worldSettingsFetch) as! [WorldSettings]
+            fetchedWorldSettingsList = try moc.fetch(worldSettingsFetch) as! [WorldSettings]
             if (fetchedWorldSettingsList.count < 1){
                 
                 let levelData = LevelData()
                 for level in levelData.levels {
-                    let entity = NSEntityDescription.insertNewObjectForEntityForName("WorldSettings", inManagedObjectContext: moc) as! WorldSettings
+                    let entity = NSEntityDescription.insertNewObject(forEntityName: "WorldSettings", into: moc) as! WorldSettings
                     // add our data
                     print("about to set values for keys")
                     
                     entity.setValue(level.worldWidth, forKey: "worldWidth")
                     entity.setValue(level.worldHeight, forKey: "worldHeight")
-                
-                    print("\(level.factoryLocations)")
+                    entity.setValue(level.levelNumber, forKey:"levelNumber")
                     entity.setValue(level.factoryLocations, forKey: "factoryPositions")
                     
                 }

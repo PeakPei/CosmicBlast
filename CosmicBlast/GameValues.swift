@@ -26,7 +26,7 @@ class GameValues: NSObject {
     
     
     //World Characteristics
-    var backgroundColor: UIColor = UIColor.blackColor()
+    var backgroundColor: UIColor = UIColor.black
     //var worldColor: UIColor = UIColor.greenColor()
     var worldColor = UIColor(patternImage: UIImage(named: "Background.png")!)
     var worldImageName = "checker.png"
@@ -50,7 +50,7 @@ class GameValues: NSObject {
             let worldSettings = manager.fetchSavedWorldSettings()
             let heightMultiplier = CGFloat(worldSettings!.worldHeight!)
             let widthMultiplier = CGFloat(worldSettings!.worldWidth!)
-            let size = CGSizeMake(widthMultiplier*maxWorldWidth,heightMultiplier*maxWorldHeight)
+            let size = CGSize(width: widthMultiplier*maxWorldWidth,height: heightMultiplier*maxWorldHeight)
             
             return size
         }
@@ -61,19 +61,19 @@ class GameValues: NSObject {
     
     var playerMaxSpeed: Float = 300
     
-    var playerColor: UIColor = UIColor.brownColor()
-    var playerSize: CGSize = CGSizeMake(20, 40)
+    var playerColor: UIColor = UIColor.brown
+    var playerSize: CGSize = CGSize(width: 20, height: 40)
     var playerAccelerationCoefficient: Int = 60
     
-    var shotSize: CGSize = CGSizeMake(8,8)
-    var shotColor: UIColor = UIColor.orangeColor()
+    var shotSize: CGSize = CGSize(width: 8,height: 8)
+    var shotColor: UIColor = UIColor.orange
     var playerShotSpeed: Int = 1000
     
     //Enemy Characteristics
-    var walkerColor:UIColor = UIColor.darkGrayColor()
-    var walkerSize: CGSize = CGSizeMake(15,15)
-    var factoryColor:UIColor = UIColor.redColor()
-    var factorySize: CGSize = CGSizeMake(30,30)
+    var walkerColor:UIColor = UIColor.darkGray
+    var walkerSize: CGSize = CGSize(width: 15,height: 15)
+    var factoryColor:UIColor = UIColor.red
+    var factorySize: CGSize = CGSize(width: 30,height: 30)
     var factoryMaxHealth: Int
         {
         get {
@@ -133,7 +133,7 @@ class GameValues: NSObject {
     }
     
     func getFactoryLocations() -> NSArray{
-        return self.factoryLocations
+        return self.factoryLocations as NSArray
     }
     
         

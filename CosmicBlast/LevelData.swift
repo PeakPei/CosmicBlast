@@ -22,7 +22,7 @@ class LevelValues: NSObject, NSCopying{
         levelNumber = levNum
     }
     
-    func copyWithZone(zone: NSZone) -> AnyObject {
+    func copy(with zone: NSZone?) -> Any {
         return self
     }
     
@@ -36,18 +36,25 @@ class LevelData {
     
     func populateLevelsDictionary(){
         //Need to adjust when we add more levels
-        NSUserDefaults().setInteger(2, forKey: "availableLevels")
+        UserDefaults().set(3, forKey: "availableLevels")
         
         var pointArray1 = [NSValue]()
-        pointArray1.append(NSValue.init(CGPoint: CGPointMake(200,150)));
-        let level1 = LevelValues(width: 0.5, height: 0.5, facLocs:pointArray1, levNum: 1)
+        pointArray1.append(NSValue.init(cgPoint: CGPoint(x: 0,y: 0)));
+        let level1 = LevelValues(width: 1.0, height: 1.0, facLocs:pointArray1, levNum: 1.0)
         levels.append(level1)
         
         var pointArray2 = [NSValue]()
-        pointArray2.append(NSValue.init(CGPoint: CGPointMake(200,150)));
-        pointArray2.append(NSValue.init(CGPoint: CGPointMake(-200,-150)));
-        let level2 = LevelValues(width: 1.0, height: 0.5, facLocs:pointArray2, levNum: 2)
+        pointArray2.append(NSValue.init(cgPoint: CGPoint(x: 200,y: 150)));
+        pointArray2.append(NSValue.init(cgPoint: CGPoint(x: -200,y: -150)));
+        let level2 = LevelValues(width: 1.5, height: 1.0, facLocs:pointArray2, levNum: 2.0)
         levels.append(level2)
+        
+        var pointArray3 = [NSValue]()
+        pointArray3.append(NSValue.init(cgPoint: CGPoint(x: 200,y: 190)));
+        pointArray3.append(NSValue.init(cgPoint: CGPoint(x: 200,y: 150)));
+        pointArray3.append(NSValue.init(cgPoint: CGPoint(x: 20,y: 190)));
+        let level3 = LevelValues(width: 1.0, height: 1.5, facLocs:pointArray3, levNum: 3.0)
+        levels.append(level3)
     }
     
     

@@ -20,7 +20,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var worldHeightSlider: UISlider!
 
     
-    @IBAction func save(sender: UIButton) {
+    @IBAction func save(_ sender: UIButton) {
         do {
             try saveWorldSize()
         } catch {
@@ -73,9 +73,10 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     
     
     func fetch() -> WorldSettings? {
-        let worldSettingsFetch = NSFetchRequest(entityName: "WorldSettings")
+        
+        let worldSettingsFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "WorldSettings")
         do {
-            var fetchedWorldSettingsList = try moc.executeFetchRequest(worldSettingsFetch) as! [WorldSettings]
+            var fetchedWorldSettingsList = try moc.fetch(worldSettingsFetch) as! [WorldSettings]
             while(fetchedWorldSettingsList.count > 1) {
                 print("**************Error world settings has more than one entity Error******************")
                 fetchedWorldSettingsList.removeFirst()
