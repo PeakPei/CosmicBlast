@@ -22,6 +22,9 @@ SKLabelNode * levelInfoLabel;
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
     //TODO make Background Color game values
+        
+        long highestBeatenLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"highestBeatenLevel"];
+        NSLog(@"Highest Beaten Level: %ld",highestBeatenLevel);
         [self setBackgroundColor: [UIColor redColor]];
         
         _motionManager = [[CMMotionManager alloc] init];
@@ -118,7 +121,7 @@ SKLabelNode * levelInfoLabel;
 
 -(void)nextLevel{
     NSInteger currentLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"currentLevel"];
-    if (currentLevel < [[NSUserDefaults standardUserDefaults] integerForKey:@"availableLevels"]){
+    if (currentLevel <= [[NSUserDefaults standardUserDefaults] integerForKey:@"highestBeatenLevel"] && currentLevel < [[NSUserDefaults standardUserDefaults] integerForKey:@"availableLevels"]){
         [self setLevelNumber:currentLevel+1.0];
     }
     

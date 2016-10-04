@@ -186,7 +186,7 @@ CMMotionManager *_motionManager;
     
     int randx = arc4random_uniform(self.currentWorld.size.width)-self.currentWorld.size.width/2;
     int randy = arc4random_uniform(self.currentWorld.size.height)-self.currentWorld.size.height/2;
-    
+    [self removeAllActions];
     SKAction * actionMove = [SKAction moveTo:CGPointMake(randx,randy) duration:actualDuration];
     
 //    SKAction * actionMoveDone = [SKAction  ];
@@ -206,7 +206,7 @@ CMMotionManager *_motionManager;
     
         //Set up monster physics body (may want to make a class to do this later)
         monster.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:monster.size];
-        monster.physicsBody.dynamic = YES;
+        monster.physicsBody.dynamic = NO;
         monster.physicsBody.categoryBitMask = monsterCategory;
         monster.physicsBody.contactTestBitMask = projectileCategory;
         monster.physicsBody.collisionBitMask = 0;
@@ -356,7 +356,6 @@ CMMotionManager *_motionManager;
     //SKSpriteNode * projectile = [SKSpriteNode spriteNodeWithImageNamed:@"projectile"];
     SKSpriteNode * projectile = [CBShuriken shuriken];
     projectile.position = self.player.position;
-    
     projectile.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:projectile.size.width/2];
     projectile.physicsBody.dynamic = YES;
     projectile.physicsBody.categoryBitMask = projectileCategory;
@@ -421,6 +420,31 @@ CMMotionManager *_motionManager;
         NSLog(@"factoryDead");
         [factory removeFromParent];
         [self.factories removeObject:factory];
+    }
+    if (self.factories.count == 0) {
+        SKLabelNode * instructionLabel1 = [SKLabelNode labelNodeWithText:@"You Win!"];
+        SKLabelNode * instructionLabel2 = [SKLabelNode labelNodeWithText:@"Press Green to Return"];
+        [instructionLabel1 setFontColor:[UIColor purpleColor]];
+        [instructionLabel2 setFontColor:[UIColor purpleColor]];
+        [instructionLabel1 setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height*0.66))];
+        [instructionLabel2 setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height*0.33))];
+        [instructionLabel1 setFontName:@"Arial"];
+        [instructionLabel2 setFontName:@"Arial"];
+        [self addChild:instructionLabel1];
+        [self addChild:instructionLabel2];
+        long currentLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"currentLevel"];
+        long highestBeatenLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"highestBeatenLevel"];
+        if (currentLevel > highestBeatenLevel) {
+            [[NSUserDefaults standardUserDefaults] setInteger:currentLevel forKey:@"highestBeatenLevel"];
+        }
+        
+        if( currentLevel < [[NSUserDefaults standardUserDefaults] integerForKey:@"availableLevels"]){
+            currentLevel += 1;
+            [[NSUserDefaults standardUserDefaults] setInteger:(currentLevel) forKey:@"currentLevel"];
+        }
+        
+        
+        
     }
 }
 

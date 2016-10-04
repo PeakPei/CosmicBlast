@@ -40,8 +40,9 @@
     enemyFactory.health = enemyFactory.maxHealth;
     enemyFactory.dead = NO;
     return enemyFactory;
-
 }
+
+
 
 //CreateWalker in same position as factory
 -(CBWalker *)createWalker{
@@ -66,11 +67,29 @@
 
 -(void)factoryHitWithDamageAmount:(int)damage
 {
+    float ratio = (float)self.health/(float)self.maxHealth;
+    NSLog(@"Ratio:%f", ratio);
+    float red, green;
+    red = 1-ratio;
+    green = ratio;
+    
+    
+    SKColor * newColor = [SKColor colorWithRed:red green:green blue:0.5 alpha:1];
+    SKAction *changeColorAction = [SKAction colorizeWithColor:newColor colorBlendFactor:1.0 duration:0.5];
+    [self runAction:changeColorAction];
+    
     if (self.health>0){
         [self setHealth:self.health-damage];
+        
     }
     else{
+        
         self.dead = YES;
+    
+        
+        
+        
+        
     }
 }
 

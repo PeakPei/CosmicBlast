@@ -52,23 +52,9 @@
     
     CBWorld * world = [CBWorld spriteNodeWithTexture:texture];
     
-    
     return world;
-    
-    
-    
-    
-    
-    
 
-    CBWorld * myWorld = [CBWorld worldWithImageNamed:@"checker.png"];
-    myWorld.position = CGPointZero;
-
-    return myWorld;
-    
 }
-
-
 
 
 @end

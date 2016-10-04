@@ -57,7 +57,7 @@ class GameValues: NSObject {
     }
     
     //Player Characteristics
-    var playerMaxHealth: Int = 80
+    var playerMaxHealth: Int = 800
     
     var playerMaxSpeed: Float = 300
     
@@ -72,12 +72,12 @@ class GameValues: NSObject {
     //Enemy Characteristics
     var walkerColor:UIColor = UIColor.darkGray
     var walkerSize: CGSize = CGSize(width: 15,height: 15)
-    var factoryColor:UIColor = UIColor.red
+    var factoryColor:UIColor = UIColor.green
     var factorySize: CGSize = CGSize(width: 30,height: 30)
     var factoryMaxHealth: Int
         {
         get {
-            return 10
+            return 100
             //let readValue = Int(archiver.decodeIntForKey("factoryMaxHealth"))
             //return readValue
             
