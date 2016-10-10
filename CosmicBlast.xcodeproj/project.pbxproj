@@ -35,6 +35,7 @@
 		6566BEBD1980387400602447 /* background-music-aac.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6566BEBA1980387400602447 /* background-music-aac.caf */; };
 		6566BEBE1980387400602447 /* pew-pew-lei.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6566BEBB1980387400602447 /* pew-pew-lei.caf */; };
 		6566BEBF1980387400602447 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 6566BEBC1980387400602447 /* sprites.atlas */; };
+		656ADE781DA47F1700766DB4 /* CBInstructionScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 656ADE771DA47F1700766DB4 /* CBInstructionScene.m */; };
 		657432D71CEBEEA900EB6864 /* Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 657432D61CEBEEA900EB6864 /* Level1.sks */; };
 		6579700F19BE43CE00E2B9D9 /* CBButtonBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6579700E19BE43CE00E2B9D9 /* CBButtonBar.m */; };
 		6579701219BE43E200E2B9D9 /* CBButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6579701119BE43E200E2B9D9 /* CBButton.m */; };
@@ -110,6 +111,8 @@
 		6566BEBA1980387400602447 /* background-music-aac.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "background-music-aac.caf"; sourceTree = "<group>"; };
 		6566BEBB1980387400602447 /* pew-pew-lei.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pew-pew-lei.caf"; sourceTree = "<group>"; };
 		6566BEBC1980387400602447 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
+		656ADE761DA47F1700766DB4 /* CBInstructionScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBInstructionScene.h; sourceTree = "<group>"; };
+		656ADE771DA47F1700766DB4 /* CBInstructionScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBInstructionScene.m; sourceTree = "<group>"; };
 		657432D61CEBEEA900EB6864 /* Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1.sks; sourceTree = "<group>"; };
 		6579700D19BE43CE00E2B9D9 /* CBButtonBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBButtonBar.h; sourceTree = "<group>"; };
 		6579700E19BE43CE00E2B9D9 /* CBButtonBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBButtonBar.m; sourceTree = "<group>"; };
@@ -205,6 +208,7 @@
 				6529D9711D061A0300A31762 /* checker.png */,
 				650790091B9CD7DA00F9931F /* Background.png */,
 				65977D551CD5232400BFEAB9 /* LaunchScreen.storyboard */,
+				656ADE791DA47F8F00766DB4 /* MainMenu */,
 				6579701719BE458F00E2B9D9 /* App */,
 				658FE4C51D236B5B0057D641 /* DataModel */,
 				6579701419BE44BE00E2B9D9 /* WorldScene */,
@@ -266,6 +270,17 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		656ADE791DA47F8F00766DB4 /* MainMenu */ = {
+			isa = PBXGroup;
+			children = (
+				6507E14E1A5117DD00A3FADB /* CBMenuScene.h */,
+				6507E14D1A5117DD00A3FADB /* CBMenuScene.m */,
+				656ADE761DA47F1700766DB4 /* CBInstructionScene.h */,
+				656ADE771DA47F1700766DB4 /* CBInstructionScene.m */,
+			);
+			name = MainMenu;
+			sourceTree = "<group>";
+		};
 		6579701319BE447800E2B9D9 /* InGameUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,9 +298,6 @@
 		6579701419BE44BE00E2B9D9 /* WorldScene */ = {
 			isa = PBXGroup;
 			children = (
-				6599EC711D02374C00DE1693 /* CBGameSceneDelegate.h */,
-				6507E14E1A5117DD00A3FADB /* CBMenuScene.h */,
-				6507E14D1A5117DD00A3FADB /* CBMenuScene.m */,
 				6566BE9719802D5D00602447 /* CBMyScene.m */,
 				6566BE9619802D5D00602447 /* CBMyScene.h */,
 				657432D61CEBEEA900EB6864 /* Level1.sks */,
@@ -322,6 +334,7 @@
 		6579701719BE458F00E2B9D9 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				6599EC711D02374C00DE1693 /* CBGameSceneDelegate.h */,
 				6566BE8D19802D5D00602447 /* CBAppDelegate.h */,
 				6566BE8E19802D5D00602447 /* CBAppDelegate.m */,
 				6566BE9319802D5D00602447 /* CBViewController.h */,
@@ -497,6 +510,7 @@
 				65BA8A8419B8E187003DCDD9 /* CBWalker.m in Sources */,
 				658FE4BF1D2217AD0057D641 /* WorldSettings+CoreDataProperties.swift in Sources */,
 				658FE4BC1D22170E0057D641 /* GameDataModel.xcdatamodeld in Sources */,
+				656ADE781DA47F1700766DB4 /* CBInstructionScene.m in Sources */,
 				65EBF13719A97AD400F0BA37 /* CBWorld.m in Sources */,
 				65D9B93F1CFFC1BE00A808BD /* GameValues.swift in Sources */,
 				658FE4C21D2218010057D641 /* DataController.swift in Sources */,

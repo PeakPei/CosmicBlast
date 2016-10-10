@@ -23,8 +23,7 @@ SKLabelNode * levelInfoLabel;
     if (self = [super initWithSize:size]) {
     //TODO make Background Color game values
         
-        long highestBeatenLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"highestBeatenLevel"];
-        NSLog(@"Highest Beaten Level: %ld",highestBeatenLevel);
+        //long highestBeatenLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"highestBeatenLevel"];
         [self setBackgroundColor: [UIColor redColor]];
         
         _motionManager = [[CMMotionManager alloc] init];
@@ -114,6 +113,9 @@ SKLabelNode * levelInfoLabel;
         [self previousLevel];
     } else if ([function isEqualToString:@"->"]){
         [self nextLevel];
+    } else if([function isEqualToString:@"?"]){
+        [self.gameDelegate launchInstructionScreen];
+        NSLog(@"[self launchInstructionScene]");
     }
     
     NSLog(@"executeButtonFunction Called in CBMenuScene.m,: %@",function);
@@ -132,6 +134,9 @@ SKLabelNode * levelInfoLabel;
         [self setLevelNumber:currentLevel-1.0];
     }
 }
+
+
+
 
 
 

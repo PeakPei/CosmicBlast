@@ -64,7 +64,7 @@ CGRect sceneFrame;
 }
 
 +(NSArray<CBButton*> *)getMenuButtonTitles{
-    return [NSArray arrayWithObjects:@"<-", @"->", @"3", @"4", nil];
+    return [NSArray arrayWithObjects:@"<-", @"->", @"?", @"4", nil];
 }
 
 +(NSArray<CBButton*> *)getGameButtonTitles{

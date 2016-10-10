@@ -8,6 +8,7 @@
 
 #import "CBViewController.h"
 #import "CBMyScene.h"
+#import "CBInstructionScene.h"
 #import "CBAppDelegate.h"
 
 @implementation CBViewController
@@ -95,16 +96,28 @@
     CBMenuScene * menuScene = [CBMenuScene sceneWithSize:skView.bounds.size];
     menuScene.gameDelegate = self;
     menuScene.scaleMode = SKSceneScaleModeAspectFill;
-    menuScene.gameDelegate = self;
+    //menuScene.gameDelegate = self;
     [skView presentScene:menuScene transition:[SKTransition crossFadeWithDuration:0.2]];
 }
+
+-(void)launchInstructionScreen {
+    NSLog(@"LaunchInstructionScreen Called in CBViewController!");
+    SKView * skView = (SKView *)self.view;
+    CBInstructionScene * instructionScene = [CBInstructionScene sceneWithSize:skView.bounds.size];
+    instructionScene.gameDelegate = self;
+    instructionScene.scaleMode = SKSceneScaleModeAspectFill;
+    //instructionScene.gameDelegate = self;
+    [skView presentScene:instructionScene transition:[SKTransition crossFadeWithDuration:0.2]];
+}
+
+
 
 - (void)returnToParentMenu
 {
     //SKView * skView = (SKView *)self.view;
     //[skView presentScene:nil];
-    CBAppDelegate * appDelegate = [[UIApplication sharedApplication] delegate];
-    [appDelegate resetWindowToInitialView];
+    //CBAppDelegate * appDelegate = [[UIApplication sharedApplication] delegate];
+    //[appDelegate resetWindowToInitialView];
     //[self performSegueWithIdentifier:@"unwindToMainMenu" sender:self];
     //[self performSegueWithIdentifier:@"returnToParentMenu" sender:self];
 }

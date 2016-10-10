@@ -10,6 +10,8 @@
 
 -(void)launchMenuScreen;
 -(void)launchGameScreen;
+-(void)launchInstructionScreen;
+
 -(void)returnToParentMenu;
 
 
