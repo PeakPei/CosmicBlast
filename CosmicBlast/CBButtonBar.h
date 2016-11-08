@@ -22,5 +22,5 @@
 +(instancetype)menuButtonBarWithFrame:(CGRect)frame buttonDelegate:(id <CBButtonDelegate>)delegate;
 +(instancetype)gameButtonBarWithFrame:(CGRect)frame buttonDelegate:(id <CBButtonDelegate>)delegate;
 //+(id)buttonBarWithSize:(CGSize)size buttonDelegate:(id <CBButtonDelegate>)delegate;
-
++(instancetype)emptyBarWithFrame:(CGRect)frame;
 @end

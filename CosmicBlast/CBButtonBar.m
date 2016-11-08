@@ -23,7 +23,7 @@ CGRect sceneFrame;
     //CGSize mySize = CGSizeMake(frame.size.width, frame.size.height/buttonRatio);
     CBButtonBar * buttonBar = [CBButtonBar emptyBarWithFrame:frame];
     
-    [buttonBar setButtonValues];
+    //[buttonBar setButtonValues];
     for (CBButton * button in buttonBar.buttons){
         button.delegate = delegate;
     }
@@ -36,7 +36,7 @@ CGRect sceneFrame;
 +(instancetype)menuButtonBarWithFrame:(CGRect)frame buttonDelegate:(id <CBButtonDelegate>)delegate{
     CBButtonBar * buttonBar = [CBButtonBar emptyBarWithFrame:frame];
     
-    [buttonBar setButtonValues];
+    //[buttonBar setButtonValues];
     for (CBButton * button in buttonBar.buttons){
         button.delegate = delegate;
     }
@@ -46,7 +46,7 @@ CGRect sceneFrame;
 +(instancetype)gameButtonBarWithFrame:(CGRect)frame buttonDelegate:(id <CBButtonDelegate>)delegate{
     CBButtonBar * buttonBar = [CBButtonBar emptyBarWithFrame:frame];
     
-    [buttonBar setButtonValues];
+    //[buttonBar setButtonValues];
     for (CBButton * button in buttonBar.buttons){
         button.delegate = delegate;
     }
@@ -60,6 +60,7 @@ CGRect sceneFrame;
     sceneFrame = frame;
     CGSize mySize = CGSizeMake(sceneFrame.size.width, sceneFrame.size.height/buttonRatio);
     CBButtonBar * buttonBar = [CBButtonBar spriteNodeWithColor:[UIColor blackColor] size:(mySize)];
+    [buttonBar setButtonValues];
     return buttonBar;
 }
 
