@@ -20,8 +20,9 @@
     
 }
 +(id)walker{
-    GameValues * gameValues = [[GameValues alloc] init];
-     CBWalker * walker = [CBWalker spriteNodeWithColor:[gameValues walkerColor] size:[gameValues walkerSize]];
+    //GameValues * gameValues = [[GameValues alloc] init];
+    CBWalker * walker = [CBWalker walkerWithImageNamed:@"EnemyShot"];
+    //CBWalker * walker = [CBWalker spriteNodeWithColor:[gameValues walkerColor] size:[gameValues walkerSize]];
     return walker;
 }
 

@@ -48,8 +48,8 @@ CMMotionManager *_motionManager;
 
 
 -(void)setPlayerValues {
-    GameValues *gameValues = [[GameValues alloc] init];
-    self.player = [CBPlayer playerWithColor:[gameValues playerColor] size:[gameValues playerSize]];
+//    GameValues *gameValues = [[GameValues alloc] init];
+    self.player = [CBPlayer player];
     [self.currentWorld addChild: self.player];
     //Set up Statistics collecting object
     [self setStats:[CBStats stats]];

@@ -26,6 +26,8 @@
 
 +(id)playerWithColor:(UIColor *)color size:(CGSize)size;
 
++(id)player;
+
 -(void)movePlayerWithAccelerationXvalue:(double)x yValue:(double)y speed:(int)speed;
 
 

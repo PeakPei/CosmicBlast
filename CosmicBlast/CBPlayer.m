@@ -15,6 +15,10 @@
 
 @implementation CBPlayer
 
+
+
+
+
 +(id)playerWithImageNamed:(NSString *)name{
     
     CBPlayer * player = [CBPlayer spriteNodeWithImageNamed:name];
@@ -29,6 +33,13 @@
     [CBPlayer setPlayerGameValues:player];
     return player;
 }
+
++(id)player {
+    return [CBPlayer playerWithImageNamed:@"Player"];
+}
+
+
+
 
 +(void)setPlayerGameValues:(CBPlayer *)player{
     GameValues * gameValues = [[GameValues alloc] init];

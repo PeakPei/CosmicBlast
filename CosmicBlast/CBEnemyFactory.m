@@ -32,15 +32,25 @@
     
 }
 
-
 +(id)enemyFactory{
     GameValues * gameValues = [[GameValues alloc] init];
-    CBEnemyFactory * enemyFactory = [CBEnemyFactory spriteNodeWithColor:[gameValues factoryColor] size:[gameValues factorySize]];
+    CBEnemyFactory * enemyFactory = [CBEnemyFactory enemyFactoryWithImageNamed:@"Factory"];
     enemyFactory.maxHealth = (int)[gameValues factoryMaxHealth];
     enemyFactory.health = enemyFactory.maxHealth;
     enemyFactory.dead = NO;
     return enemyFactory;
 }
+
+
+
+//+(id)enemyFactory{
+//    GameValues * gameValues = [[GameValues alloc] init];
+//    CBEnemyFactory * enemyFactory = [CBEnemyFactory spriteNodeWithColor:[gameValues factoryColor] size:[gameValues factorySize]];
+//    enemyFactory.maxHealth = (int)[gameValues factoryMaxHealth];
+//    enemyFactory.health = enemyFactory.maxHealth;
+//    enemyFactory.dead = NO;
+//    return enemyFactory;
+//}
 
 
 

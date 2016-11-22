@@ -18,8 +18,8 @@
 }
 
 +(id)shuriken {
-    GameValues * gameValues = [[GameValues alloc] init];
-    return [CBShuriken spriteNodeWithColor:[gameValues shotColor] size:[gameValues shotSize]];
+    //GameValues * gameValues = [[GameValues alloc] init];
+    return [CBShuriken shurikenWithImageNamed:@"Shot"];
 }
 
 
