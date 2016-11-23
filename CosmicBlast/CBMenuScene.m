@@ -8,6 +8,7 @@
 
 #import "CBMenuScene.h"
 #import "CBLogger.h"
+#import "CBTiltVisualizer.h"
 @import CoreMotion;
 
 
@@ -16,7 +17,7 @@
 CMMotionManager * _motionManager;
 SKLabelNode * instructionLabel;
 SKLabelNode * levelInfoLabel;
-
+CBTiltVisualizer * visualizer;
 
 
 -(id)initWithSize:(CGSize)size {
@@ -56,6 +57,11 @@ SKLabelNode * levelInfoLabel;
     self.buttonBar = [CBButtonBar menuButtonBarWithFrame:self.frame buttonDelegate:self];
     [self addChild:self.buttonBar];
     
+    
+    visualizer = [CBTiltVisualizer tiltVisualizerWithMotionManager:_motionManager];
+    [visualizer setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/2))];
+    [self addChild:visualizer];
+    
 }
 
 
@@ -91,6 +97,7 @@ SKLabelNode * levelInfoLabel;
 }
 
 -(void)update:(NSTimeInterval)currentTime{
+    [visualizer update];
     //CMAccelerometerData* data = _motionManager.accelerometerData;
     //NSLog(@"menu data.acceleration.x = %f, menu data.acceleration.y = %f, menu data.acceleration.z = %f",data.acceleration.x, data.acceleration.y, data.acceleration.z);
 }
