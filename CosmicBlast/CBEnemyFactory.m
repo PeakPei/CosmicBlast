@@ -86,7 +86,7 @@
     
     SKColor * newColor = [SKColor colorWithRed:red green:green blue:0.5 alpha:1];
     SKAction *changeColorAction = [SKAction colorizeWithColor:newColor colorBlendFactor:1.0 duration:0.5];
-    [self runAction:changeColorAction];
+    //[self runAction:changeColorAction];
     
     if (self.health>0){
         [self setHealth:self.health-damage];
