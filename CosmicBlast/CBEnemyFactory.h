@@ -9,12 +9,19 @@
 #import <SpriteKit/SpriteKit.h>
 #import "CBWalker.h"
 
+typedef enum {
+    BehaviorType_Random,
+    BehaviorType_Aggressive
+} BehaviorType;
+
+
 
 @interface CBEnemyFactory : CBEnemy
 @property int maxHealth;
 @property int health;
 @property BOOL dead;
-
+@property BehaviorType shootingBehavior;
+@property BehaviorType movementBehavior;
 
 +(id)enemyFactoryWithImageNamed:(NSString *)name;
 
@@ -23,6 +30,8 @@
 +(id)enemyFactory;
 
 -(void)setFactoryPosition:(CGPoint)position;
+
+-(void)updateWithPlayerPosition:(CGPoint)playerPosition;
 
 -(void)factoryHit;
 

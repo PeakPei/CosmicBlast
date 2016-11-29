@@ -164,6 +164,7 @@ CMMotionManager *_motionManager;
     double zeroY = zeroAcceleration.y;
 //    double zeroZ = zeroAcceleration.z;
     [self.player movePlayerWithAccelerationXvalue:(data.acceleration.x-zeroX) yValue:(data.acceleration.y-zeroY) speed:speed];
+    
     //NSLog(@"data.acceleration.x = %f, data.acceleration.y = %f",data.acceleration.x, data.acceleration.y);
     
     
@@ -177,12 +178,14 @@ CMMotionManager *_motionManager;
     CBEnemyFactory * factory = [CBEnemyFactory enemyFactory];
     
     [factory setPosition:position];
-    factory.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:factory.size];
+    //factory.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:factory.size];
+    factory.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:factory.size.height];
     factory.physicsBody.dynamic = YES;
     factory.physicsBody.mass = 0.05;
+    factory.physicsBody.linearDamping = 0;
     factory.physicsBody.categoryBitMask = enemyFactoryCategory;
     factory.physicsBody.contactTestBitMask = projectileCategory;
-    factory.physicsBody.collisionBitMask = playerCategory | edgeCategory | projectileCategory;
+    factory.physicsBody.collisionBitMask = edgeCategory | projectileCategory;
     factory.physicsBody.usesPreciseCollisionDetection = NO;
     
     [self.currentWorld addChild:factory];
@@ -247,6 +250,12 @@ CMMotionManager *_motionManager;
 }
 
 -(void)updateWithTimeSinceLastUpdate: (CFTimeInterval) timeSinceLast{
+    
+    
+    //Need to update how enemies behave here
+    for (CBEnemyFactory *factory in self.factories) {
+        [factory updateWithPlayerPosition:self.player.position];
+    }
     
     self.lastSpawnTimeInterval += timeSinceLast;
     if (self.lastSpawnTimeInterval > 0.5) {
@@ -375,7 +384,7 @@ CMMotionManager *_motionManager;
     projectile.physicsBody.categoryBitMask = projectileCategory;
     projectile.physicsBody.contactTestBitMask = monsterCategory;
     projectile.physicsBody.collisionBitMask = 0;
-    projectile.physicsBody.usesPreciseCollisionDetection = YES;
+    projectile.physicsBody.usesPreciseCollisionDetection = NO;
     
     
     

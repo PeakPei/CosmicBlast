@@ -7,7 +7,9 @@
 //
 
 #import "CBEnemyFactory.h"
+#import "CBVectorMath.h"
 #import <CosmicBlast-Swift.h>
+
 
 @implementation CBEnemyFactory
 
@@ -38,6 +40,7 @@
     enemyFactory.maxHealth = (int)[gameValues factoryMaxHealth];
     enemyFactory.health = enemyFactory.maxHealth;
     enemyFactory.dead = NO;
+    enemyFactory.movementBehavior = BehaviorType_Aggressive;
     return enemyFactory;
 }
 
@@ -68,7 +71,18 @@
     self.position = position;
     
 }
-
+-(void)updateWithPlayerPosition:(CGPoint)playerPosition{
+    CGPoint rawVector = CGPointMake(playerPosition.x-self.position.x,playerPosition.y-self.position.y);
+    CGPoint normalizedVector = [CBVectorMath cbVectorNormalize:rawVector];
+    switch (_movementBehavior){
+        case BehaviorType_Random:
+            [self.physicsBody applyForce:CGVectorMake(10,10)];
+        case BehaviorType_Aggressive:
+            [self.physicsBody applyForce:CGVectorMake(normalizedVector.x,normalizedVector.y)];
+        default:
+            break;
+    }
+}
 
 -(void)factoryHit
 {
