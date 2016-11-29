@@ -13,28 +13,35 @@
 
 
 
-@implementation CBPlayer
+@implementation CBPlayer{
+    NSMutableArray * pastXData;
+    NSMutableArray * pastYData;
+    int accelerometerDataMemoryLength;
+}
 
 
 
 
 
-+(id)playerWithImageNamed:(NSString *)name{
++(instancetype)playerWithImageNamed:(NSString *)name{
     
     CBPlayer * player = [CBPlayer spriteNodeWithImageNamed:name];
     [CBPlayer setPlayerGameValues:player];
+    player -> pastXData = [[NSMutableArray alloc] init];
+    player -> pastYData = [[NSMutableArray alloc] init];
+    player -> accelerometerDataMemoryLength = (int)[[[GameValues alloc] init] accelerometerDataMemoryLength];
     return player;
 }
 
 
 
-+(id)playerWithColor:(UIColor *)color size:(CGSize)size{
++(instancetype)playerWithColor:(UIColor *)color size:(CGSize)size{
     CBPlayer * player = [CBPlayer spriteNodeWithColor:color size:size];
     [CBPlayer setPlayerGameValues:player];
     return player;
 }
 
-+(id)player {
++(instancetype)player {
     return [CBPlayer playerWithImageNamed:@"Player"];
 }
 
@@ -69,11 +76,38 @@
 -(void)movePlayerWithAccelerationXvalue:(double)x yValue:(double)y speed:(int)speed{
     
     
+    //X data first
+    NSNumber * lineXData = [NSNumber numberWithFloat:roundf(x*200.0)/200.0];
+    [self->pastXData addObject:lineXData];
+    if([pastXData count] > self->accelerometerDataMemoryLength) {
+        [pastXData removeObjectAtIndex:0];
+    }
+    float xTotal = 0.0;
+    for (NSNumber * x in pastXData) {
+        xTotal += [x floatValue];
+    }
+    float moveX = xTotal/[pastXData count];
+    
+    
+    //Then Y Data
+    NSNumber * lineYData = [NSNumber numberWithFloat:roundf(y*200.0)/200.0];
+    [self->pastYData addObject:lineYData];
+    if([pastYData count] > self->accelerometerDataMemoryLength) {
+        [pastYData removeObjectAtIndex:0];
+    }
+    float yTotal = 0.0;
+    for (NSNumber * y in pastYData) {
+        yTotal += [y floatValue];
+    }
+    float moveY = yTotal/[pastYData count];
+    
+    
+    
     GameValues * gameValues = [[GameValues alloc] init];
     
     float coefficient = [gameValues playerAccelerationCoefficient];
 
-    CGVector playerMotion = CGVectorMake(x*coefficient, y*coefficient);
+    CGVector playerMotion = CGVectorMake(moveX*coefficient, moveY*coefficient);
     //CGVector worldMotion = CGVectorMake(playerMotion.dx*(-1.0), playerMotion.dy*(-1.0));
 
     

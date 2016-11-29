@@ -15,6 +15,7 @@
 #import "CBVectorMath.h"
 #import "CBMenuScene.h"
 #import "CBShuriken.h"
+#import "CBTiltVisualizer.h"
 #import <CosmicBlast-Swift.h>
 
 static const uint32_t projectileCategory = 0x1 << 0;
@@ -26,6 +27,7 @@ static const uint32_t enemyFactoryCategory = 0x1 << 4;
 
 @implementation CBMyScene
 
+CBTiltVisualizer * tiltVisualizer;
 CMMotionManager *_motionManager;
 
 -(instancetype)initWithSize:(CGSize)size {
@@ -69,14 +71,17 @@ CMMotionManager *_motionManager;
 -(void)setPhysicsValues {
     //physics body for player
     self.player.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.player.size.height/2];
+    //self.player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.frame.size];
     self.player.physicsBody.mass = 0.05;
     self.player.physicsBody.dynamic = YES;
     self.player.physicsBody.categoryBitMask = playerCategory;
     self.player.physicsBody.contactTestBitMask = monsterCategory;
-    self.player.physicsBody.collisionBitMask = edgeCategory;
+    self.player.physicsBody.collisionBitMask = edgeCategory | monsterCategory;
     self.player.physicsBody.usesPreciseCollisionDetection = YES;
     
     self.currentWorld.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.currentWorld.frame];
+    //self.currentWorld.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:<#(nonnull CGPathRef)#>]
+    
     self.currentWorld.physicsBody.dynamic = NO;
     self.currentWorld.physicsBody.categoryBitMask = edgeCategory;
     self.currentWorld.physicsBody.contactTestBitMask = projectileCategory;
@@ -98,10 +103,17 @@ CMMotionManager *_motionManager;
     NSLog(@"self.frame.width = %f self.frame.height = %f",self.frame.size.width,self.frame.size.height);
     [self addChild:self.buttonBar];
     
+
     
     //Set up health bar
     self.healthBar = [CBHealthBar healthBarWithFrame:self.frame player:self.player];
     [self addChild:self.healthBar];
+    
+    
+    
+    tiltVisualizer = [CBTiltVisualizer tiltVisualizerWithMotionManager:_motionManager];
+    [tiltVisualizer setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/2))];
+    [self addChild:tiltVisualizer];
     
 }
 
@@ -142,7 +154,7 @@ CMMotionManager *_motionManager;
 
 
 -(void)updatePositionFromMotionManager{
-
+    [tiltVisualizer update];
     CMAccelerometerData* data = _motionManager.accelerometerData;
     int speed = 0;
     GameValues * gameValues = [[GameValues alloc] init];
@@ -166,9 +178,11 @@ CMMotionManager *_motionManager;
     
     [factory setPosition:position];
     factory.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:factory.size];
-    factory.physicsBody.dynamic = NO;
+    factory.physicsBody.dynamic = YES;
+    factory.physicsBody.mass = 0.05;
     factory.physicsBody.categoryBitMask = enemyFactoryCategory;
     factory.physicsBody.contactTestBitMask = projectileCategory;
+    factory.physicsBody.collisionBitMask = playerCategory | edgeCategory | projectileCategory;
     factory.physicsBody.usesPreciseCollisionDetection = NO;
     
     [self.currentWorld addChild:factory];
@@ -191,7 +205,7 @@ CMMotionManager *_motionManager;
     
 //    SKAction * actionMoveDone = [SKAction  ];
     
-    [factory runAction:actionMove];
+//    [factory runAction:actionMove];
 }
 
 
@@ -206,7 +220,7 @@ CMMotionManager *_motionManager;
     
         //Set up monster physics body (may want to make a class to do this later)
         monster.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:monster.size];
-        monster.physicsBody.dynamic = NO;
+        monster.physicsBody.dynamic = YES;
         monster.physicsBody.categoryBitMask = monsterCategory;
         monster.physicsBody.contactTestBitMask = projectileCategory;
         monster.physicsBody.collisionBitMask = 0;

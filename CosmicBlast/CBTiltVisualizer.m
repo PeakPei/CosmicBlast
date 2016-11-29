@@ -7,6 +7,7 @@
 //
 
 #import "CBTiltVisualizer.h"
+#import <CosmicBlast-Swift.h>
 
 @implementation CBTiltVisualizer{
     CMMotionManager * motionManager;
@@ -22,7 +23,7 @@
     visualizer -> motionManager = manager;
     visualizer -> pastXData = [[NSMutableArray alloc] init];
     visualizer -> pastYData = [[NSMutableArray alloc] init];
-    visualizer -> accelerometerDataMemoryLength = 9;
+    visualizer -> accelerometerDataMemoryLength = (int)[[[GameValues alloc] init] accelerometerDataMemoryLength];
 //    SKSpriteNode * line = [SKSpriteNode spriteNodeWithColor:[UIColor blackColor] size:CGSizeMake(10, 40)];
 //    [visualizer addChild:line];
     return visualizer;
@@ -64,7 +65,9 @@
     CGPathMoveToPoint(pathToDraw, NULL, 0.0, 0.0);
     CGPathAddLineToPoint(pathToDraw, NULL, lineX, lineY);
     yourline.path = pathToDraw;
-    [yourline setStrokeColor:[SKColor blueColor]];
+    UIColor * lineColor = [UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:0.5];
+    [yourline setStrokeColor:lineColor];
+    
     [yourline setLineWidth:5];
     //[yourline setGlowWidth:2];
     [yourline setLineCap:kCGLineCapRound];
