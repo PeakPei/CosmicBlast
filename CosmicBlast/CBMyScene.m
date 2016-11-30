@@ -70,14 +70,14 @@ CMMotionManager *_motionManager;
 
 -(void)setPhysicsValues {
     //physics body for player
-    self.player.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.player.size.height/2];
-    //self.player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.frame.size];
+    //self.player.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.player.size.height/2];
+    self.player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.player.frame.size];
     self.player.physicsBody.mass = 0.05;
     self.player.physicsBody.dynamic = YES;
     self.player.physicsBody.categoryBitMask = playerCategory;
     self.player.physicsBody.contactTestBitMask = monsterCategory;
-    self.player.physicsBody.collisionBitMask = edgeCategory | monsterCategory;
-    self.player.physicsBody.usesPreciseCollisionDetection = YES;
+    self.player.physicsBody.collisionBitMask = enemyFactoryCategory | edgeCategory | monsterCategory;
+    self.player.physicsBody.usesPreciseCollisionDetection = NO;
     
     self.currentWorld.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.currentWorld.frame];
     //self.currentWorld.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:<#(nonnull CGPathRef)#>]
@@ -178,14 +178,14 @@ CMMotionManager *_motionManager;
     CBEnemyFactory * factory = [CBEnemyFactory enemyFactory];
     
     [factory setPosition:position];
-    //factory.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:factory.size];
-    factory.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:factory.size.height];
+    factory.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:factory.size];
+    //factory.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:factory.size.height];
     factory.physicsBody.dynamic = YES;
     factory.physicsBody.mass = 0.05;
-    factory.physicsBody.linearDamping = 0;
+    //factory.physicsBody.linearDamping = 0;
     factory.physicsBody.categoryBitMask = enemyFactoryCategory;
     factory.physicsBody.contactTestBitMask = projectileCategory;
-    factory.physicsBody.collisionBitMask = edgeCategory | projectileCategory;
+    factory.physicsBody.collisionBitMask = playerCategory | edgeCategory | enemyFactoryCategory;
     factory.physicsBody.usesPreciseCollisionDetection = NO;
     
     [self.currentWorld addChild:factory];
@@ -380,10 +380,11 @@ CMMotionManager *_motionManager;
     SKSpriteNode * projectile = [CBShuriken shuriken];
     projectile.position = self.player.position;
     projectile.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:projectile.size.width/2];
+    projectile.physicsBody.mass = 4;
     projectile.physicsBody.dynamic = YES;
     projectile.physicsBody.categoryBitMask = projectileCategory;
     projectile.physicsBody.contactTestBitMask = monsterCategory;
-    projectile.physicsBody.collisionBitMask = 0;
+    projectile.physicsBody.collisionBitMask = enemyFactoryCategory;
     projectile.physicsBody.usesPreciseCollisionDetection = NO;
     
     
@@ -437,7 +438,7 @@ CMMotionManager *_motionManager;
 -(void)projectile:(SKSpriteNode *)projectile didCollideWithEnemyFactory:(CBEnemyFactory *)factory {
     [projectile removeFromParent];
     [factory factoryHit];
-    [self moveFactory:factory];
+    //[self moveFactory:factory];
     
     if(factory.dead){
         NSLog(@"factoryDead");
