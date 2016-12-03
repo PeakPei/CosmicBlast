@@ -9,6 +9,7 @@
 #import "CBMenuScene.h"
 #import "CBLogger.h"
 #import "CBTiltVisualizer.h"
+#import "CosmicBlast-Swift.h"
 @import CoreMotion;
 
 
@@ -32,8 +33,12 @@ CBTiltVisualizer * visualizer;
         [self startMonitoringAcceleration];
         NSLog(@"started monitoring");
         [self setUIValues];
-
+        //GameValues * gv = [[GameValues alloc] init];
         
+        [LevelData jsonTest]
+        ;
+        
+        //[[[LevelValues alloc] init] jsonTest];
     }
     return self;
 };

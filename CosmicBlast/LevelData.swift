@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreGraphics
+import SwiftyJSON
 
 //this class stores the values for a specific level
 class LevelValues: NSObject, NSCopying{
@@ -28,14 +29,31 @@ class LevelValues: NSObject, NSCopying{
     
 }
 
-class LevelData {
+class LevelData:NSObject {
     var levels = [LevelValues]()
-    init(){
+    
+    override init() {
+        super.init()
         populateLevelsDictionary()
     }
     
-    func populateLevelsDictionary(){
+    class func jsonTest() {
+        let bundle = Bundle.main
+        if let resourceUrl = bundle.url(forResource: "LevelsJSON", withExtension: "txt") {
+            do {
+                let fileContents = try String(contentsOf: resourceUrl)
+                print("contents of file = \(fileContents)")
+            } catch {
+                print("error")
+            }
+        }
+    }
+    
+    
+    
+    func populateLevelsDictionary() {
         //Need to adjust when we add more levels
+        //var levels = [LevelValues]()
         UserDefaults().set(3, forKey: "availableLevels")
         
         var pointArray1 = [NSValue]()

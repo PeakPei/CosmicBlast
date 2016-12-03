@@ -11,6 +11,7 @@
 		6507E14F1A5117DD00A3FADB /* CBMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6507E14D1A5117DD00A3FADB /* CBMenuScene.m */; };
 		6515FAD419AFB6DE00E82568 /* CBVectorMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 6515FAD319AFB6DE00E82568 /* CBVectorMath.m */; };
 		6515FAD719AFD25800E82568 /* CBPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6515FAD619AFD25800E82568 /* CBPlayer.m */; };
+		65171B421DF0F012001F58E7 /* LevelsJSON.txt in Resources */ = {isa = PBXBuildFile; fileRef = 65171B411DF0F012001F58E7 /* LevelsJSON.txt */; };
 		6529D9721D061A0300A31762 /* checker.png in Resources */ = {isa = PBXBuildFile; fileRef = 6529D9711D061A0300A31762 /* checker.png */; };
 		65545A8319C1443B005F1073 /* CBItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 65545A8219C1443B005F1073 /* CBItem.m */; };
 		65545A8619C14650005F1073 /* CBShuriken.m in Sources */ = {isa = PBXBuildFile; fileRef = 65545A8519C14650005F1073 /* CBShuriken.m */; };
@@ -57,6 +58,7 @@
 		65EBF13719A97AD400F0BA37 /* CBWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EBF13619A97AD400F0BA37 /* CBWorld.m */; };
 		65F42C301AB7B79B001DA12A /* CBLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F42C2F1AB7B79B001DA12A /* CBLogger.m */; };
 		65FDF3B119A996B200D4269C /* CBEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FDF3B019A996B200D4269C /* CBEnemy.m */; };
+		E70971E4EA9DFBF36DBFB0A9 /* Pods_CosmicBlast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DC601E5481EB2FCFC7F565 /* Pods_CosmicBlast.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50C347D2E87466F5C9AFE141 /* Pods-CosmicBlast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CosmicBlast.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CosmicBlast/Pods-CosmicBlast.debug.xcconfig"; sourceTree = "<group>"; };
 		650790091B9CD7DA00F9931F /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
 		6507E14D1A5117DD00A3FADB /* CBMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBMenuScene.m; sourceTree = "<group>"; };
 		6507E14E1A5117DD00A3FADB /* CBMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBMenuScene.h; sourceTree = "<group>"; };
@@ -77,6 +80,7 @@
 		6515FAD319AFB6DE00E82568 /* CBVectorMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBVectorMath.m; sourceTree = "<group>"; };
 		6515FAD519AFD25800E82568 /* CBPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBPlayer.h; sourceTree = "<group>"; };
 		6515FAD619AFD25800E82568 /* CBPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBPlayer.m; sourceTree = "<group>"; };
+		65171B411DF0F012001F58E7 /* LevelsJSON.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LevelsJSON.txt; sourceTree = "<group>"; };
 		6529D9711D061A0300A31762 /* checker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checker.png; sourceTree = "<group>"; };
 		652D56701D01017500AF13C3 /* CBButtonDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CBButtonDelegate.h; path = ../CBButtonDelegate.h; sourceTree = "<group>"; };
 		65545A8119C1443B005F1073 /* CBItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBItem.h; sourceTree = "<group>"; };
@@ -147,6 +151,9 @@
 		65F42C2F1AB7B79B001DA12A /* CBLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CBLogger.m; path = ../CBLogger.m; sourceTree = "<group>"; };
 		65FDF3AF19A996B200D4269C /* CBEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBEnemy.h; sourceTree = "<group>"; };
 		65FDF3B019A996B200D4269C /* CBEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBEnemy.m; sourceTree = "<group>"; };
+		A4ACAAD1F1B102D2450CF41D /* Pods_CosmicBlastTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CosmicBlastTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4DC601E5481EB2FCFC7F565 /* Pods_CosmicBlast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CosmicBlast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD8D894523EA832DF45A5AA3 /* Pods-CosmicBlast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CosmicBlast.release.xcconfig"; path = "Pods/Target Support Files/Pods-CosmicBlast/Pods-CosmicBlast.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +165,7 @@
 				6566BE8119802D5D00602447 /* UIKit.framework in Frameworks */,
 				6566BE8319802D5D00602447 /* SpriteKit.framework in Frameworks */,
 				6566BE7D19802D5D00602447 /* Foundation.framework in Frameworks */,
+				E70971E4EA9DFBF36DBFB0A9 /* Pods_CosmicBlast.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,13 +182,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65171B401DF0EE78001F58E7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				65171B411DF0F012001F58E7 /* LevelsJSON.txt */,
+			);
+			name = Resources;
+			path = CosmicBlast/Resources;
+			sourceTree = "<group>";
+		};
 		6566BE7019802D5D00602447 = {
 			isa = PBXGroup;
 			children = (
+				65171B401DF0EE78001F58E7 /* Resources */,
 				6566BE8419802D5D00602447 /* CosmicBlast */,
 				6566BEA819802D5D00602447 /* CosmicBlastTests */,
 				6566BE7B19802D5D00602447 /* Frameworks */,
 				6566BE7A19802D5D00602447 /* Products */,
+				F3CA62840DF9A2892D49E6DF /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -201,6 +220,8 @@
 				6566BE8019802D5D00602447 /* UIKit.framework */,
 				6566BE8219802D5D00602447 /* SpriteKit.framework */,
 				6566BEA219802D5D00602447 /* XCTest.framework */,
+				A4DC601E5481EB2FCFC7F565 /* Pods_CosmicBlast.framework */,
+				A4ACAAD1F1B102D2450CF41D /* Pods_CosmicBlastTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -215,7 +236,7 @@
 				6579701719BE458F00E2B9D9 /* App */,
 				658FE4C51D236B5B0057D641 /* DataModel */,
 				6579701419BE44BE00E2B9D9 /* WorldScene */,
-				6579701819BE45C300E2B9D9 /* Rescources */,
+				6579701819BE45C300E2B9D9 /* Utilities */,
 				6579701619BE455D00E2B9D9 /* Player */,
 				6579701519BE450A00E2B9D9 /* Enemies */,
 				6579701319BE447800E2B9D9 /* InGameUI */,
@@ -352,7 +373,7 @@
 			name = App;
 			sourceTree = "<group>";
 		};
-		6579701819BE45C300E2B9D9 /* Rescources */ = {
+		6579701819BE45C300E2B9D9 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				658FE4C11D2218010057D641 /* DataController.swift */,
@@ -369,7 +390,7 @@
 				655D4D4C1B7955550055FEB1 /* CBStats.h */,
 				655D4D4D1B7955550055FEB1 /* CBStats.m */,
 			);
-			name = Rescources;
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		658FE4C51D236B5B0057D641 /* DataModel */ = {
@@ -385,6 +406,15 @@
 			name = DataModel;
 			sourceTree = "<group>";
 		};
+		F3CA62840DF9A2892D49E6DF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				50C347D2E87466F5C9AFE141 /* Pods-CosmicBlast.debug.xcconfig */,
+				CD8D894523EA832DF45A5AA3 /* Pods-CosmicBlast.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -392,9 +422,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6566BEB219802D5D00602447 /* Build configuration list for PBXNativeTarget "CosmicBlast" */;
 			buildPhases = (
+				6C67F60BF3D542708F828EC1 /* [CP] Check Pods Manifest.lock */,
 				6566BE7519802D5D00602447 /* Sources */,
 				6566BE7619802D5D00602447 /* Frameworks */,
 				6566BE7719802D5D00602447 /* Resources */,
+				2CE99E9817018223CD3430C9 /* [CP] Embed Pods Frameworks */,
+				B8DD64E3D98E803B122EB6C9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -470,6 +503,7 @@
 				6566BEBF1980387400602447 /* sprites.atlas in Resources */,
 				6529D9721D061A0300A31762 /* checker.png in Resources */,
 				65977D561CD5232400BFEAB9 /* LaunchScreen.storyboard in Resources */,
+				65171B421DF0F012001F58E7 /* LevelsJSON.txt in Resources */,
 				657432D71CEBEEA900EB6864 /* Level1.sks in Resources */,
 				6566BEBD1980387400602447 /* background-music-aac.caf in Resources */,
 				6566BE8919802D5D00602447 /* InfoPlist.strings in Resources */,
@@ -489,6 +523,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2CE99E9817018223CD3430C9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CosmicBlast/Pods-CosmicBlast-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6C67F60BF3D542708F828EC1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B8DD64E3D98E803B122EB6C9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CosmicBlast/Pods-CosmicBlast-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6566BE7519802D5D00602447 /* Sources */ = {
@@ -659,6 +741,7 @@
 		};
 		6566BEB319802D5D00602447 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50C347D2E87466F5C9AFE141 /* Pods-CosmicBlast.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -684,6 +767,7 @@
 		};
 		6566BEB419802D5D00602447 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD8D894523EA832DF45A5AA3 /* Pods-CosmicBlast.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

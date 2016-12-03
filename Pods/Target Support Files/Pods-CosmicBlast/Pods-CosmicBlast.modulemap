@@ -1,0 +1,6 @@
+framework module Pods_CosmicBlast {
+  umbrella header "Pods-CosmicBlast-umbrella.h"
+
+  export *
+  module * { export * }
+}
