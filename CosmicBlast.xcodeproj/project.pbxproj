@@ -13,6 +13,7 @@
 		6515FAD719AFD25800E82568 /* CBPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6515FAD619AFD25800E82568 /* CBPlayer.m */; };
 		65171B421DF0F012001F58E7 /* LevelsJSON.txt in Resources */ = {isa = PBXBuildFile; fileRef = 65171B411DF0F012001F58E7 /* LevelsJSON.txt */; };
 		6529D9721D061A0300A31762 /* checker.png in Resources */ = {isa = PBXBuildFile; fileRef = 6529D9711D061A0300A31762 /* checker.png */; };
+		654DC4151DFB5D860005002E /* CBWall.m in Sources */ = {isa = PBXBuildFile; fileRef = 654DC4141DFB5D860005002E /* CBWall.m */; };
 		65545A8319C1443B005F1073 /* CBItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 65545A8219C1443B005F1073 /* CBItem.m */; };
 		65545A8619C14650005F1073 /* CBShuriken.m in Sources */ = {isa = PBXBuildFile; fileRef = 65545A8519C14650005F1073 /* CBShuriken.m */; };
 		655D4D4E1B7955550055FEB1 /* CBStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 655D4D4D1B7955550055FEB1 /* CBStats.m */; };
@@ -83,6 +84,8 @@
 		65171B411DF0F012001F58E7 /* LevelsJSON.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LevelsJSON.txt; sourceTree = "<group>"; };
 		6529D9711D061A0300A31762 /* checker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checker.png; sourceTree = "<group>"; };
 		652D56701D01017500AF13C3 /* CBButtonDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CBButtonDelegate.h; path = ../CBButtonDelegate.h; sourceTree = "<group>"; };
+		654DC4131DFB5D860005002E /* CBWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWall.h; sourceTree = "<group>"; };
+		654DC4141DFB5D860005002E /* CBWall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWall.m; sourceTree = "<group>"; };
 		65545A8119C1443B005F1073 /* CBItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBItem.h; sourceTree = "<group>"; };
 		65545A8219C1443B005F1073 /* CBItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBItem.m; sourceTree = "<group>"; };
 		65545A8419C14650005F1073 /* CBShuriken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBShuriken.h; sourceTree = "<group>"; };
@@ -324,6 +327,8 @@
 		6579701419BE44BE00E2B9D9 /* WorldScene */ = {
 			isa = PBXGroup;
 			children = (
+				654DC4131DFB5D860005002E /* CBWall.h */,
+				654DC4141DFB5D860005002E /* CBWall.m */,
 				6566BE9719802D5D00602447 /* CBMyScene.m */,
 				6566BE9619802D5D00602447 /* CBMyScene.h */,
 				657432D61CEBEEA900EB6864 /* Level1.sks */,
@@ -377,8 +382,8 @@
 			isa = PBXGroup;
 			children = (
 				658FE4C11D2218010057D641 /* DataController.swift */,
-				658FE4B11D21FBDA0057D641 /* StringUtilities.swift */,
 				65D9BC681B2651EE005A5324 /* EnumConstants.h */,
+				658FE4B11D21FBDA0057D641 /* StringUtilities.swift */,
 				65F42C2E1AB7B79B001DA12A /* CBLogger.h */,
 				65F42C2F1AB7B79B001DA12A /* CBLogger.m */,
 				65545A8419C14650005F1073 /* CBShuriken.h */,
@@ -601,6 +606,7 @@
 				65EBF13719A97AD400F0BA37 /* CBWorld.m in Sources */,
 				65D9B93F1CFFC1BE00A808BD /* GameValues.swift in Sources */,
 				65E620961DE6288F0089602A /* CBTiltVisualizer.m in Sources */,
+				654DC4151DFB5D860005002E /* CBWall.m in Sources */,
 				658FE4C21D2218010057D641 /* DataController.swift in Sources */,
 				658FE4B21D21FBDA0057D641 /* StringUtilities.swift in Sources */,
 				655D4D511B7ADC5D0055FEB1 /* CBDataBase.m in Sources */,

@@ -16,6 +16,7 @@
 #import "CBMenuScene.h"
 #import "CBShuriken.h"
 #import "CBTiltVisualizer.h"
+#import "CBWall.h"
 #import <CosmicBlast-Swift.h>
 
 static const uint32_t projectileCategory = 0x1 << 0;
@@ -23,7 +24,7 @@ static const uint32_t monsterCategory = 0x1 << 1;
 static const uint32_t playerCategory = 0x1 << 2;
 static const uint32_t edgeCategory = 0x1 << 3;
 static const uint32_t enemyFactoryCategory = 0x1 << 4;
-
+static const uint32_t wallCategory = 0x1 << 5;
 
 @implementation CBMyScene
 
@@ -43,6 +44,7 @@ CMMotionManager *_motionManager;
     
     [self setWorldValues];
     [self setPlayerValues];
+    [self setWallsValues];
     [self setPhysicsValues];
     [self setUIValues];
     [self setEnemyValues];
@@ -68,15 +70,33 @@ CMMotionManager *_motionManager;
     [self addChild: self.currentWorld];
 }
 
+
+-(void)setWallsValues {
+    CBWall * wall = [CBWall wall];
+    [wall setPosition:CGPointMake(50, 0)];
+    wall.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:wall.size.width/2];
+    //factory.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:factory.size.height];
+    wall.physicsBody.dynamic = NO;
+    //factory.physicsBody.linearDamping = 0;
+    wall.physicsBody.categoryBitMask = wallCategory;
+    wall.physicsBody.collisionBitMask = playerCategory | projectileCategory | enemyFactoryCategory | monsterCategory;
+    wall.physicsBody.usesPreciseCollisionDetection = NO;
+    
+    [self.currentWorld addChild:wall];
+    
+    [self.walls addObject:wall];
+    
+}
+
 -(void)setPhysicsValues {
     //physics body for player
-    //self.player.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.player.size.height/2];
-    self.player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.player.frame.size];
+    self.player.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.player.size.height/2];
+    //self.player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.player.frame.size];
     self.player.physicsBody.mass = 0.05;
     self.player.physicsBody.dynamic = YES;
     self.player.physicsBody.categoryBitMask = playerCategory;
     self.player.physicsBody.contactTestBitMask = monsterCategory;
-    self.player.physicsBody.collisionBitMask = enemyFactoryCategory | edgeCategory | monsterCategory;
+    self.player.physicsBody.collisionBitMask = enemyFactoryCategory | edgeCategory | monsterCategory | wallCategory;
     self.player.physicsBody.usesPreciseCollisionDetection = NO;
     
     self.currentWorld.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.currentWorld.frame];
@@ -89,7 +109,7 @@ CMMotionManager *_motionManager;
     
     
     self.factories = [[NSMutableArray alloc] init];
-    
+    self.walls = [[NSMutableArray alloc] init];
     _motionManager = [[CMMotionManager alloc] init];
     [self startMonitoringAcceleration];
     self.physicsWorld.gravity = CGVectorMake(0, 0);
@@ -185,13 +205,15 @@ CMMotionManager *_motionManager;
     //factory.physicsBody.linearDamping = 0;
     factory.physicsBody.categoryBitMask = enemyFactoryCategory;
     factory.physicsBody.contactTestBitMask = projectileCategory;
-    factory.physicsBody.collisionBitMask = playerCategory | edgeCategory | enemyFactoryCategory;
+    factory.physicsBody.collisionBitMask = playerCategory | edgeCategory | enemyFactoryCategory | wallCategory;
     factory.physicsBody.usesPreciseCollisionDetection = NO;
     
     [self.currentWorld addChild:factory];
     [self.factories addObject:factory];
 }
 
+
+//NOT CURRENTLY BEING USED
 -(void)moveFactory:(CBEnemyFactory *)factory {
     int minDuration = 2.0;
     int maxDuration = 4.0;
@@ -208,7 +230,7 @@ CMMotionManager *_motionManager;
     
 //    SKAction * actionMoveDone = [SKAction  ];
     
-//    [factory runAction:actionMove];
+    [factory runAction:actionMove];
 }
 
 
@@ -226,7 +248,7 @@ CMMotionManager *_motionManager;
         monster.physicsBody.dynamic = YES;
         monster.physicsBody.categoryBitMask = monsterCategory;
         monster.physicsBody.contactTestBitMask = projectileCategory;
-        monster.physicsBody.collisionBitMask = 0;
+        monster.physicsBody.collisionBitMask = wallCategory;
         [self.currentWorld addChild:monster];
     
         int minDuration = 2.0;
@@ -364,7 +386,7 @@ CMMotionManager *_motionManager;
     
     //  This is going to need to be changed.  Will need to split behavior of different items up somehow
     //
-    
+    GameValues * gameValues = [[GameValues alloc] init];
     
     //  VVV OK UNTIL  VVV
     //chose a touch to work with
@@ -384,9 +406,10 @@ CMMotionManager *_motionManager;
     projectile.physicsBody.dynamic = YES;
     projectile.physicsBody.categoryBitMask = projectileCategory;
     projectile.physicsBody.contactTestBitMask = monsterCategory;
-    projectile.physicsBody.collisionBitMask = enemyFactoryCategory;
+    projectile.physicsBody.collisionBitMask = enemyFactoryCategory | wallCategory | edgeCategory;
     projectile.physicsBody.usesPreciseCollisionDetection = NO;
-    
+    projectile.physicsBody.restitution = 0.5;
+    projectile.physicsBody.friction = 0;
     
     
     
@@ -403,24 +426,26 @@ CMMotionManager *_motionManager;
 
     
     //Create shot vector
-    CGPoint shotVector = [CBVectorMath cbVectorMultFirst:direction Value:350];
-    
+    CGPoint shotPoint = [CBVectorMath cbVectorMultFirst:direction Value:[gameValues playerShotSpeed]];
+    CGVector shotVector = CGVectorMake(shotPoint.x, shotPoint.y);
+    projectile.physicsBody.velocity = shotVector;
     //Add shot vector to current position
-    CGPoint realDest = [CBVectorMath cbVectorAddFirst:shotVector Second:projectile.position];
     
-    GameValues * gameValues = [[GameValues alloc] init];
+    
     
     //Create actions
-    float velocity = [gameValues playerShotSpeed];
-    float realMoveDuration = self.size.width / velocity;
+
     
-    SKAction * actionMove = [SKAction moveTo:realDest duration: realMoveDuration];
+    
+    //SKAction * actionMove = [SKAction moveTo:realDest duration: realMoveDuration];
+    
+    SKAction * actionWait = [SKAction waitForDuration:1];
     
     SKAction * actionMoveDone = [SKAction removeFromParent];
     
     
     
-    [projectile runAction:[SKAction sequence:@[actionMove, actionMoveDone]]];
+    [projectile runAction:[SKAction sequence:@[actionWait, actionMoveDone]]];
     
     //^^^ end add to CBShuriken
     
