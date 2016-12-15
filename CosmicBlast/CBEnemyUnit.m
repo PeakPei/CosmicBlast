@@ -45,18 +45,6 @@
 }
 
 
-
-//+(id)enemyUnit{
-//    GameValues * gameValues = [[GameValues alloc] init];
-//    CBEnemyUnit * enemyUnit = [CBEnemyUnit spriteNodeWithColor:[gameValues unitColor] size:[gameValues unitSize]];
-//    enemyUnit.maxHealth = (int)[gameValues unitMaxHealth];
-//    enemyUnit.health = enemyUnit.maxHealth;
-//    enemyUnit.dead = NO;
-//    return enemyUnit;
-//}
-
-
-
 //CreateWalker in same position as unit
 -(CBWalker *)createWalker{
     CBWalker * walker = [CBWalker walker];
