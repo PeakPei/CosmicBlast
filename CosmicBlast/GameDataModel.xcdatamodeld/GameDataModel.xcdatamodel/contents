@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="15G31" minimumToolsVersion="Xcode 7.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="WorldSettings" representedClassName=".WorldSettings" syncable="YES">
-        <attribute name="factoryPositions" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="levelNumber" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="worldHeight" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="worldWidth" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="levelNumber" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="unitPositions" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="worldHeight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="worldWidth" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="WorldSettings" positionX="-45" positionY="0" width="128" height="105"/>
+        <element name="WorldSettings" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

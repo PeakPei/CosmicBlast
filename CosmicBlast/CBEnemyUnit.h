@@ -1,5 +1,5 @@
 //
-//  CBEnemyFactory.h
+//  CBEnemyUnit.h
 //  CosmicBlast
 //
 //  Created by Teddy Kitchen on 9/4/14.
@@ -16,24 +16,24 @@ typedef enum {
 
 
 
-@interface CBEnemyFactory : CBEnemy
+@interface CBEnemyUnit : CBEnemy
 @property int maxHealth;
 @property int health;
 @property BOOL dead;
 @property BehaviorType shootingBehavior;
 @property BehaviorType movementBehavior;
 
-+(id)enemyFactoryWithImageNamed:(NSString *)name;
++(id)enemyUnitWithImageNamed:(NSString *)name;
 
-+(id)enemyFactoryWithColor:(SKColor *)color size:(CGSize)size;
++(id)enemyUnitWithColor:(SKColor *)color size:(CGSize)size;
 
-+(id)enemyFactory;
++(id)enemyUnit;
 
--(void)setFactoryPosition:(CGPoint)position;
+-(void)setUnitPosition:(CGPoint)position;
 
 -(void)updateWithPlayerPosition:(CGPoint)playerPosition;
 
--(void)factoryHit;
+-(void)unitHit;
 
 -(CBWalker *)createWalker;
 

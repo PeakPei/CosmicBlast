@@ -63,7 +63,7 @@ class DatabaseManager: NSObject {
                     entity.setValue(level.worldWidth, forKey: "worldWidth")
                     entity.setValue(level.worldHeight, forKey: "worldHeight")
                     entity.setValue(level.levelNumber, forKey:"levelNumber")
-                    entity.setValue(level.factoryLocations, forKey: "factoryPositions")
+                    entity.setValue(level.unitLocations, forKey: "unitPositions")
                     
                 }
                 
@@ -76,9 +76,9 @@ class DatabaseManager: NSObject {
 //                entity.setValue(1.0, forKey: "worldWidth")
 //                entity.setValue(1.0, forKey: "worldHeight")
 //                let gameValues = GameValues()
-//                let factoryPositions = gameValues.factoryLocations
-//                print("\(factoryPositions)")
-//                entity.setValue(factoryPositions, forKey: "factoryPositions")
+//                let unitPositions = gameValues.unitLocations
+//                print("\(unitPositions)")
+//                entity.setValue(unitPositions, forKey: "unitPositions")
 
             } else  {
                 print("Database has data")

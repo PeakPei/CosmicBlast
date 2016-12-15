@@ -14,12 +14,12 @@ import SwiftyJSON
 class LevelValues: NSObject, NSCopying{
     let worldWidth: NSNumber
     let worldHeight: NSNumber
-    let factoryLocations: [NSValue]
+    let unitLocations: [NSValue]
     let levelNumber: NSNumber
     required init(width: NSNumber, height: NSNumber, facLocs: [NSValue], levNum: NSNumber) {
         worldWidth = width
         worldHeight = height
-        factoryLocations = facLocs
+        unitLocations = facLocs
         levelNumber = levNum
     }
     
@@ -68,15 +68,15 @@ class LevelData:NSObject {
                     var pointArray = [NSValue]()
                     let levelNumber = NSNumber(integerLiteral: level["number"].intValue)
                    
-                    for (_,factory):(String, JSON) in level["factories"] {
-                        let facX = factory["x"].intValue
-                        let facY = factory["y"].intValue
+                    for (_,unit):(String, JSON) in level["Units"] {
+                        let facX = unit["x"].intValue
+                        let facY = unit["y"].intValue
                         pointArray.append(NSValue.init(cgPoint: CGPoint(x: facX, y: facY)))
                         //Do something you want
                     }
                     levels.append(LevelValues(width: 1.5, height: 1.5, facLocs: pointArray, levNum: levelNumber))
-//                    for (_,factory) in jsonLevel["factories"] {
-//                        pointArray.append(NSValue.init(cgPoint: CGPoint(x: factory["x"], y: factory["y"])))
+//                    for (_,unit) in jsonLevel["Units"] {
+//                        pointArray.append(NSValue.init(cgPoint: CGPoint(x: unit["x"], y: unit["y"])))
 //                    }
 //                    let level = LevelValues(width: 1.0, height: 1.0, facLocs:pointArray1, levNum: 1.0)
                 }

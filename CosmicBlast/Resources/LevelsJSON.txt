@@ -1,19 +1,19 @@
 {
     "levels": [
         {
-            "number": 19,
+            "number": 1,
             "imageName": "checker.png",
-            "factories": [{"movement": "none","attack": "random","x": 100,"y": 100},{"movement": "none","attack": "random","x": -100,"y": -100}]
+            "Units": [{"movement": "none","attack": "random","x": 100,"y": 100},{"movement": "none","attack": "random","x": -100,"y": -100}]
         },
         {
             "number": 2,
             "imageName": "Background.png",
-            "factories": [{"movement": "random","attack": "random","x": 300,"y": 300}, {"movement": "random","attack": "random","x": -100,"y": -100}]
+            "Units": [{"movement": "random","attack": "random","x": 100,"y": 100}, {"movement": "random","attack": "random","x": 100,"y": -100}]
         },
         {
             "number": 3,
             "imageName": "checker.png",
-            "factories": [{"movement": "aggressive","attack": "aggressive","x": 600,"y": 400},{"movement": "aggressive","attack": "aggressive","x": 400,"y": 600}]
+            "Units": [{"movement": "aggressive","attack": "aggressive","x": 50,"y": 50},{"movement": "aggressive","attack": "aggressive","x": 50,"y": 50},{"movement": "aggressive","attack": "aggressive","x": 50,"y": 50}+]
         }
     ]
 }

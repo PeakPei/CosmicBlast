@@ -18,8 +18,8 @@ extension WorldSettings {
     @NSManaged var levelNumber: NSNumber?
     @NSManaged var worldWidth: NSNumber?
     @NSManaged var worldHeight: NSNumber?
-    @NSManaged var factoryPositions: [NSValue]?
-    //@NSManaged var factoryPositions: [NSNumber]?
+    @NSManaged var unitPositions: [NSValue]?
+    //@NSManaged var unitPositions: [NSNumber]?
     
     
 }

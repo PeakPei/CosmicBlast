@@ -1,63 +1,63 @@
 //
-//  CBEnemyFactory.m
+//  CBEnemyUnit.m
 //  CosmicBlast
 //
 //  Created by Teddy Kitchen on 9/4/14.
 //  Copyright (c) 2014 Teddy Kitchen. All rights reserved.
 //
 
-#import "CBEnemyFactory.h"
+#import "CBEnemyUnit.h"
 #import "CBVectorMath.h"
 #import <CosmicBlast-Swift.h>
 
 
-@implementation CBEnemyFactory
+@implementation CBEnemyUnit
 
 
 
 
-//CreateEnemyFactory
-+(id)enemyFactoryWithImageNamed:(NSString *)name{
-    CBEnemyFactory * enemyFactory = [CBEnemyFactory spriteNodeWithImageNamed:name];
-    return enemyFactory;
+//CreateEnemyUnit
++(id)enemyUnitWithImageNamed:(NSString *)name{
+    CBEnemyUnit * enemyUnit = [CBEnemyUnit spriteNodeWithImageNamed:name];
+    return enemyUnit;
 }
 
 
-+(id)enemyFactoryWithColor:(SKColor *)color size:(CGSize)size{
++(id)enemyUnitWithColor:(SKColor *)color size:(CGSize)size{
     
     GameValues * gameValues = [[GameValues alloc] init];
-    CBEnemyFactory * enemyFactory = [CBEnemyFactory spriteNodeWithColor:color size:size];
-    enemyFactory.maxHealth = (int)[gameValues factoryMaxHealth];
-    enemyFactory.health = enemyFactory.maxHealth;
-    enemyFactory.dead = NO;
-    return enemyFactory;
+    CBEnemyUnit * enemyUnit = [CBEnemyUnit spriteNodeWithColor:color size:size];
+    enemyUnit.maxHealth = (int)[gameValues unitMaxHealth];
+    enemyUnit.health = enemyUnit.maxHealth;
+    enemyUnit.dead = NO;
+    return enemyUnit;
     
 }
 
-+(id)enemyFactory{
++(id)enemyUnit{
     GameValues * gameValues = [[GameValues alloc] init];
-    CBEnemyFactory * enemyFactory = [CBEnemyFactory enemyFactoryWithImageNamed:@"Factory"];
-    enemyFactory.maxHealth = (int)[gameValues factoryMaxHealth];
-    enemyFactory.health = enemyFactory.maxHealth;
-    enemyFactory.dead = NO;
-    enemyFactory.movementBehavior = BehaviorType_Aggressive;
-    return enemyFactory;
+    CBEnemyUnit * enemyUnit = [CBEnemyUnit enemyUnitWithImageNamed:@"EnemyUnit"];
+    enemyUnit.maxHealth = (int)[gameValues unitMaxHealth];
+    enemyUnit.health = enemyUnit.maxHealth;
+    enemyUnit.dead = NO;
+    enemyUnit.movementBehavior = BehaviorType_Aggressive;
+    return enemyUnit;
 }
 
 
 
-//+(id)enemyFactory{
+//+(id)enemyUnit{
 //    GameValues * gameValues = [[GameValues alloc] init];
-//    CBEnemyFactory * enemyFactory = [CBEnemyFactory spriteNodeWithColor:[gameValues factoryColor] size:[gameValues factorySize]];
-//    enemyFactory.maxHealth = (int)[gameValues factoryMaxHealth];
-//    enemyFactory.health = enemyFactory.maxHealth;
-//    enemyFactory.dead = NO;
-//    return enemyFactory;
+//    CBEnemyUnit * enemyUnit = [CBEnemyUnit spriteNodeWithColor:[gameValues unitColor] size:[gameValues unitSize]];
+//    enemyUnit.maxHealth = (int)[gameValues unitMaxHealth];
+//    enemyUnit.health = enemyUnit.maxHealth;
+//    enemyUnit.dead = NO;
+//    return enemyUnit;
 //}
 
 
 
-//CreateWalker in same position as factory
+//CreateWalker in same position as unit
 -(CBWalker *)createWalker{
     CBWalker * walker = [CBWalker walker];
     [walker setEnemyPosition:self.position];
@@ -66,7 +66,7 @@
 }
 
 
--(void)setFactoryPosition:(CGPoint)position{
+-(void)setUnitPosition:(CGPoint)position{
     
     self.position = position;
     
@@ -84,12 +84,12 @@
     }
 }
 
--(void)factoryHit
+-(void)unitHit
 {
-    [self factoryHitWithDamageAmount:10];
+    [self unitHitWithDamageAmount:10];
 }
 
--(void)factoryHitWithDamageAmount:(int)damage
+-(void)unitHitWithDamageAmount:(int)damage
 {
 //    float ratio = (float)self.health/(float)self.maxHealth;
 //    NSLog(@"Ratio:%f", ratio);

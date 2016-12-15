@@ -22,7 +22,7 @@
 
 @property (nonatomic) CBPlayer * player;
 @property (nonatomic) CBWorld * currentWorld;
-@property (nonatomic) NSMutableArray * factories;
+@property (nonatomic) NSMutableArray * Units;
 @property (nonatomic) NSMutableArray * walls;
 @property (nonatomic) CBButtonBar * buttonBar;
 @property(nonatomic) CBHealthBar * healthBar;

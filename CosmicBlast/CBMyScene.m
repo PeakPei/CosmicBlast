@@ -11,7 +11,7 @@
 #import "CBMyScene.h"
 #import "CBEnemy.h"
 #import "CBPlayer.h"
-#import "CBEnemyFactory.h"
+#import "CBEnemyUnit.h"
 #import "CBVectorMath.h"
 #import "CBMenuScene.h"
 #import "CBShuriken.h"
@@ -23,7 +23,7 @@ static const uint32_t projectileCategory = 0x1 << 0;
 static const uint32_t monsterCategory = 0x1 << 1;
 static const uint32_t playerCategory = 0x1 << 2;
 static const uint32_t edgeCategory = 0x1 << 3;
-static const uint32_t enemyFactoryCategory = 0x1 << 4;
+static const uint32_t enemyUnitCategory = 0x1 << 4;
 static const uint32_t wallCategory = 0x1 << 5;
 
 @implementation CBMyScene
@@ -75,11 +75,10 @@ CMMotionManager *_motionManager;
     CBWall * wall = [CBWall wall];
     [wall setPosition:CGPointMake(50, 0)];
     wall.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:wall.size.width/2];
-    //factory.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:factory.size.height];
+    //unit.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:unit.size.height];
     wall.physicsBody.dynamic = NO;
-    //factory.physicsBody.linearDamping = 0;
     wall.physicsBody.categoryBitMask = wallCategory;
-    wall.physicsBody.collisionBitMask = playerCategory | projectileCategory | enemyFactoryCategory | monsterCategory;
+    wall.physicsBody.collisionBitMask = playerCategory | projectileCategory | enemyUnitCategory | monsterCategory;
     wall.physicsBody.usesPreciseCollisionDetection = NO;
     
     [self.currentWorld addChild:wall];
@@ -96,7 +95,7 @@ CMMotionManager *_motionManager;
     self.player.physicsBody.dynamic = YES;
     self.player.physicsBody.categoryBitMask = playerCategory;
     self.player.physicsBody.contactTestBitMask = monsterCategory;
-    self.player.physicsBody.collisionBitMask = enemyFactoryCategory | edgeCategory | monsterCategory | wallCategory;
+    self.player.physicsBody.collisionBitMask = enemyUnitCategory | edgeCategory | monsterCategory | wallCategory;
     self.player.physicsBody.usesPreciseCollisionDetection = NO;
     
     self.currentWorld.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.currentWorld.frame];
@@ -108,7 +107,7 @@ CMMotionManager *_motionManager;
     self.currentWorld.physicsBody.collisionBitMask = 0;
     
     
-    self.factories = [[NSMutableArray alloc] init];
+    self.Units = [[NSMutableArray alloc] init];
     self.walls = [[NSMutableArray alloc] init];
     _motionManager = [[CMMotionManager alloc] init];
     [self startMonitoringAcceleration];
@@ -139,11 +138,11 @@ CMMotionManager *_motionManager;
 
 -(void)setEnemyValues {
     GameValues *gameValues = [[GameValues alloc] init];
-    //set up factories
+    //set up Units
     //Change this depending on levels
-    NSArray * array = [gameValues getFactoryLocations];
+    NSArray * array = [gameValues getUnitLocations];
     for (NSValue * point in array){
-        [self placeFactoryAtPosition:[point CGPointValue]];
+        [self placeUnitAtPosition:[point CGPointValue]];
     }
     
 }
@@ -194,27 +193,27 @@ CMMotionManager *_motionManager;
 
 
 //Fix hardcoding.  need to figur out world configuration
--(void)placeFactoryAtPosition:(CGPoint)position{
-    CBEnemyFactory * factory = [CBEnemyFactory enemyFactory];
+-(void)placeUnitAtPosition:(CGPoint)position{
+    CBEnemyUnit * unit = [CBEnemyUnit enemyUnit];
     
-    [factory setPosition:position];
-    factory.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:factory.size];
-    //factory.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:factory.size.height];
-    factory.physicsBody.dynamic = YES;
-    factory.physicsBody.mass = 0.05;
-    //factory.physicsBody.linearDamping = 0;
-    factory.physicsBody.categoryBitMask = enemyFactoryCategory;
-    factory.physicsBody.contactTestBitMask = projectileCategory;
-    factory.physicsBody.collisionBitMask = playerCategory | edgeCategory | enemyFactoryCategory | wallCategory;
-    factory.physicsBody.usesPreciseCollisionDetection = NO;
+    [unit setPosition:position];
+    unit.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:unit.size.width/2];
+    //unit.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:unit.size.height];
+    unit.physicsBody.dynamic = YES;
+    unit.physicsBody.mass = 0.05;
+    //unit.physicsBody.linearDamping = 0;
+    unit.physicsBody.categoryBitMask = enemyUnitCategory;
+    unit.physicsBody.contactTestBitMask = projectileCategory;
+    unit.physicsBody.collisionBitMask = playerCategory | edgeCategory | enemyUnitCategory | wallCategory;
+    unit.physicsBody.usesPreciseCollisionDetection = NO;
     
-    [self.currentWorld addChild:factory];
-    [self.factories addObject:factory];
+    [self.currentWorld addChild:unit];
+    [self.Units addObject:unit];
 }
 
 
 //NOT CURRENTLY BEING USED
--(void)moveFactory:(CBEnemyFactory *)factory {
+-(void)moveUnit:(CBEnemyUnit *)unit {
     int minDuration = 2.0;
     int maxDuration = 4.0;
     int rangeDuration = maxDuration - minDuration;
@@ -230,7 +229,7 @@ CMMotionManager *_motionManager;
     
 //    SKAction * actionMoveDone = [SKAction  ];
     
-    [factory runAction:actionMove];
+    [unit runAction:actionMove];
 }
 
 
@@ -238,9 +237,9 @@ CMMotionManager *_motionManager;
 //This belongs in another class
 -(void)addMonster {
     //Create Sprite
-    for (CBEnemyFactory *factory in self.factories) {
+    for (CBEnemyUnit *unit in self.Units) {
     
-        CBWalker * monster = [factory createWalker];
+        CBWalker * monster = [unit createWalker];
     
     
         //Set up monster physics body (may want to make a class to do this later)
@@ -275,8 +274,8 @@ CMMotionManager *_motionManager;
     
     
     //Need to update how enemies behave here
-    for (CBEnemyFactory *factory in self.factories) {
-        [factory updateWithPlayerPosition:self.player.position];
+    for (CBEnemyUnit *unit in self.Units) {
+        [unit updateWithPlayerPosition:self.player.position];
     }
     
     self.lastSpawnTimeInterval += timeSinceLast;
@@ -329,10 +328,10 @@ CMMotionManager *_motionManager;
         [self.stats killDidHappen];
     }
     
-    //factory hit by projectile
-    if ((firstBody.categoryBitMask & projectileCategory) != 0 &&(secondBody.categoryBitMask & enemyFactoryCategory) != 0){
-        //if ([secondBody isKindOfClass:[CBEnemyFactory class]]){
-                [self projectile:(SKSpriteNode *) firstBody.node didCollideWithEnemyFactory:(CBEnemyFactory*) secondBody.node];
+    //unit hit by projectile
+    if ((firstBody.categoryBitMask & projectileCategory) != 0 &&(secondBody.categoryBitMask & enemyUnitCategory) != 0){
+        //if ([secondBody isKindOfClass:[CBEnemyUnit class]]){
+                [self projectile:(SKSpriteNode *) firstBody.node didCollideWithEnemyUnit:(CBEnemyUnit*) secondBody.node];
         //}
         
 
@@ -406,7 +405,7 @@ CMMotionManager *_motionManager;
     projectile.physicsBody.dynamic = YES;
     projectile.physicsBody.categoryBitMask = projectileCategory;
     projectile.physicsBody.contactTestBitMask = monsterCategory;
-    projectile.physicsBody.collisionBitMask = enemyFactoryCategory | wallCategory | edgeCategory;
+    projectile.physicsBody.collisionBitMask = enemyUnitCategory | wallCategory | edgeCategory;
     projectile.physicsBody.usesPreciseCollisionDetection = NO;
     projectile.physicsBody.restitution = 0.5;
     projectile.physicsBody.friction = 0;
@@ -460,17 +459,17 @@ CMMotionManager *_motionManager;
     
 }
 
--(void)projectile:(SKSpriteNode *)projectile didCollideWithEnemyFactory:(CBEnemyFactory *)factory {
+-(void)projectile:(SKSpriteNode *)projectile didCollideWithEnemyUnit:(CBEnemyUnit *)unit {
     [projectile removeFromParent];
-    [factory factoryHit];
-    //[self moveFactory:factory];
+    [unit unitHit];
+    //[self moveUnit:unit];
     
-    if(factory.dead){
-        NSLog(@"factoryDead");
-        [factory removeFromParent];
-        [self.factories removeObject:factory];
+    if(unit.dead){
+        NSLog(@"unitDead");
+        [unit removeFromParent];
+        [self.Units removeObject:unit];
     }
-    if (self.factories.count == 0) {
+    if (self.Units.count == 0) {
         SKLabelNode * instructionLabel1 = [SKLabelNode labelNodeWithText:@"You Win!"];
         SKLabelNode * instructionLabel2 = [SKLabelNode labelNodeWithText:@"Press Green to Return"];
         [instructionLabel1 setFontColor:[UIColor purpleColor]];

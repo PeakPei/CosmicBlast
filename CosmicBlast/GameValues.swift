@@ -77,13 +77,13 @@ class GameValues: NSObject {
     //Enemy Characteristics
     var walkerColor:UIColor = UIColor.darkGray
     var walkerSize: CGSize = CGSize(width: 15,height: 15)
-    var factoryColor:UIColor = UIColor.green
-    var factorySize: CGSize = CGSize(width: 30,height: 30)
-    var factoryMaxHealth: Int
+    var unitColor:UIColor = UIColor.green
+    var unitSize: CGSize = CGSize(width: 30,height: 30)
+    var unitMaxHealth: Int
         {
         get {
             return 100
-            //let readValue = Int(archiver.decodeIntForKey("factoryMaxHealth"))
+            //let readValue = Int(archiver.decodeIntForKey("unitMaxHealth"))
             //return readValue
             
         }
@@ -94,13 +94,13 @@ class GameValues: NSObject {
     
     
     
-    var factoryLocations: [NSValue]
+    var unitLocations: [NSValue]
         {
         get {
             let manager = DatabaseManager()
             if let worldSettings = manager.fetchSavedWorldSettings(){
                 
-                let locations = worldSettings.factoryPositions ?? [NSValue]()
+                let locations = worldSettings.unitPositions ?? [NSValue]()
                 return locations
             } else {
                 return [NSValue]()
@@ -117,8 +117,8 @@ class GameValues: NSObject {
         }
     }
     
-    func getFactoryLocations() -> NSArray{
-        return self.factoryLocations as NSArray
+    func getUnitLocations() -> NSArray{
+        return self.unitLocations as NSArray
     }
     
         
