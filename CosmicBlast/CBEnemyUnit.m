@@ -71,7 +71,7 @@
     self.position = position;
     
 }
--(void)updateWithPlayerPosition:(CGPoint)playerPosition{
+-(void)updateWithPlayerPosition:(CGPoint)playerPosition timeSinceLastUpdate:(CFTimeInterval)timeSinceLast{
     CGPoint rawVector = CGPointMake(playerPosition.x-self.position.x,playerPosition.y-self.position.y);
     CGPoint normalizedVector = [CBVectorMath cbVectorNormalize:rawVector];
     switch (_movementBehavior){

@@ -107,7 +107,7 @@ CMMotionManager *_motionManager;
     self.currentWorld.physicsBody.collisionBitMask = 0;
     
     
-    self.Units = [[NSMutableArray alloc] init];
+    self.units = [[NSMutableArray alloc] init];
     self.walls = [[NSMutableArray alloc] init];
     _motionManager = [[CMMotionManager alloc] init];
     [self startMonitoringAcceleration];
@@ -208,7 +208,7 @@ CMMotionManager *_motionManager;
     unit.physicsBody.usesPreciseCollisionDetection = NO;
     
     [self.currentWorld addChild:unit];
-    [self.Units addObject:unit];
+    [self.units addObject:unit];
 }
 
 
@@ -237,7 +237,7 @@ CMMotionManager *_motionManager;
 //This belongs in another class
 -(void)addMonster {
     //Create Sprite
-    for (CBEnemyUnit *unit in self.Units) {
+    for (CBEnemyUnit *unit in self.units) {
     
         CBWalker * monster = [unit createWalker];
     
@@ -274,8 +274,8 @@ CMMotionManager *_motionManager;
     
     
     //Need to update how enemies behave here
-    for (CBEnemyUnit *unit in self.Units) {
-        [unit updateWithPlayerPosition:self.player.position];
+    for (CBEnemyUnit *unit in self.units) {
+        [unit updateWithPlayerPosition:self.player.position timeSinceLastUpdate:timeSinceLast];
     }
     
     self.lastSpawnTimeInterval += timeSinceLast;
@@ -467,9 +467,9 @@ CMMotionManager *_motionManager;
     if(unit.dead){
         NSLog(@"unitDead");
         [unit removeFromParent];
-        [self.Units removeObject:unit];
+        [self.units removeObject:unit];
     }
-    if (self.Units.count == 0) {
+    if (self.units.count == 0) {
         SKLabelNode * instructionLabel1 = [SKLabelNode labelNodeWithText:@"You Win!"];
         SKLabelNode * instructionLabel2 = [SKLabelNode labelNodeWithText:@"Press Green to Return"];
         [instructionLabel1 setFontColor:[UIColor purpleColor]];

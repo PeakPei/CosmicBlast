@@ -31,7 +31,7 @@ typedef enum {
 
 -(void)setUnitPosition:(CGPoint)position;
 
--(void)updateWithPlayerPosition:(CGPoint)playerPosition;
+-(void)updateWithPlayerPosition:(CGPoint)playerPosition timeSinceLastUpdate:(CFTimeInterval)timeSinceLast;
 
 -(void)unitHit;
 
