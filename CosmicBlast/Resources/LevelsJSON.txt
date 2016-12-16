@@ -13,7 +13,7 @@
         {
             "number": 3,
             "imageName": "checker.png",
-            "Units": [{"movement": "aggressive","attack": "aggressive","x": 50,"y": 50},{"movement": "aggressive","attack": "aggressive","x": 50,"y": 50},{"movement": "aggressive","attack": "aggressive","x": 50,"y": 50}+]
+            "Units": [{"movement": "aggressive","attack": "aggressive","x": 50,"y": 50},{"movement": "aggressive","attack": "aggressive","x": 50,"y": 50},{"movement": "aggressive","attack": "aggressive","x": 50,"y": 50}]
         }
     ]
 }

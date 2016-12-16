@@ -37,6 +37,8 @@ class DatabaseManager: NSObject {
             let fetchedWorldSettingsList = try moc.fetch(worldSettingsFetch) as! [WorldSettings]
             let sortedSettingsList = fetchedWorldSettingsList.sorted(by: { $0.levelNumber?.int32Value < $1.levelNumber?.int32Value})
             let currentLevel = UserDefaults().integer(forKey: "currentLevel")
+            print(currentLevel)
+            print(sortedSettingsList)
             let loadedWorldSettings = sortedSettingsList[currentLevel-1]
             return loadedWorldSettings
         } catch {

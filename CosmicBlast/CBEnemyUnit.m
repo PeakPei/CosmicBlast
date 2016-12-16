@@ -11,7 +11,9 @@
 #import <CosmicBlast-Swift.h>
 
 
-@implementation CBEnemyUnit
+@implementation CBEnemyUnit{
+    CGVector directionToPlayer;
+}
 
 
 
@@ -53,6 +55,42 @@
     return walker;
 }
 
+-(CBWalker *)maybeAttack {
+    if (self.lastSpawnTimeInterval > 0.5) {
+        self.lastSpawnTimeInterval = 0;
+        
+        
+        CBWalker * monster = [self createWalker];
+        
+        
+        //Set up monster physics body (may want to make a class to do this later)
+        monster.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:monster.size];
+        monster.physicsBody.dynamic = YES;
+        GameValues * gameValues = [[GameValues alloc] init];
+        [gameValues playerShotSpeed];
+        CGVector shotVector = [CBVectorMath vectorMult:directionToPlayer Value:[gameValues playerShotSpeed]];
+        monster.physicsBody.velocity = shotVector;
+
+
+        
+        //Create the actions
+        
+
+        
+    SKAction * actionWait = [SKAction waitForDuration:1];
+        
+        SKAction * actionMoveDone = [SKAction removeFromParent];
+        
+        [monster runAction:[SKAction sequence:@[actionWait, actionMoveDone]]];
+        
+        
+        
+        
+        return monster;
+    }
+    return nil;
+}
+
 
 -(void)setUnitPosition:(CGPoint)position{
     
@@ -60,17 +98,35 @@
     
 }
 -(void)updateWithPlayerPosition:(CGPoint)playerPosition timeSinceLastUpdate:(CFTimeInterval)timeSinceLast{
+    //update direction to player with updated player coordinates
     CGPoint rawVector = CGPointMake(playerPosition.x-self.position.x,playerPosition.y-self.position.y);
     CGPoint normalizedVector = [CBVectorMath cbVectorNormalize:rawVector];
+    directionToPlayer = CGVectorMake(normalizedVector.x,normalizedVector.y);
+    
+    //update last spawnTimeInterval
+    self.lastSpawnTimeInterval += timeSinceLast;
+
+    
+
+
+    
+    
+    [self applyMovement];
+}
+
+-(void)applyMovement {
     switch (_movementBehavior){
         case BehaviorType_Random:
             [self.physicsBody applyForce:CGVectorMake(10,10)];
         case BehaviorType_Aggressive:
-            [self.physicsBody applyForce:CGVectorMake(normalizedVector.x,normalizedVector.y)];
+            [self.physicsBody applyForce:directionToPlayer];
         default:
             break;
     }
 }
+
+
+
 
 -(void)unitHit
 {

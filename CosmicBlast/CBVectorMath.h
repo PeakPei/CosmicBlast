@@ -21,5 +21,6 @@
 
 +(CGPoint)cbVectorNormalize:(CGPoint)a;
 
++(CGVector)vectorMult:(CGVector)vector Value:(float)multiplier;
 
 @end

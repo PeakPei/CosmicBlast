@@ -22,6 +22,7 @@ typedef enum {
 @property BOOL dead;
 @property BehaviorType shootingBehavior;
 @property BehaviorType movementBehavior;
+@property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 
 +(id)enemyUnitWithImageNamed:(NSString *)name;
 
@@ -36,6 +37,8 @@ typedef enum {
 -(void)unitHit;
 
 -(CBWalker *)createWalker;
+
+-(CBWalker *)maybeAttack;
 
 
 

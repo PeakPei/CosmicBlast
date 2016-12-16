@@ -164,12 +164,6 @@ CMMotionManager *_motionManager;
 }
 
 
-//- (void)stopMonitoringAcceleration{
-//    if (_motionManager.accelerometerAvailable && _motionManager.accelerometerActive) {
-//        [_motionManager stopAccelerometerUpdates];
-//        NSLog(@"accelerometer updates off...");
-//    }
-//}
 
 
 -(void)updatePositionFromMotionManager{
@@ -276,15 +270,25 @@ CMMotionManager *_motionManager;
     //Need to update how enemies behave here
     for (CBEnemyUnit *unit in self.units) {
         [unit updateWithPlayerPosition:self.player.position timeSinceLastUpdate:timeSinceLast];
+        CBWalker * shot = [unit maybeAttack];
+        if (shot==nil) {
+            NSLog(@"SHOT IS NIL");
+        } else {
+            shot.physicsBody.categoryBitMask = monsterCategory;
+            shot.physicsBody.contactTestBitMask = projectileCategory;
+            shot.physicsBody.collisionBitMask = wallCategory;
+            [self.currentWorld addChild:shot];
+        }
+
     }
     
-    self.lastSpawnTimeInterval += timeSinceLast;
-    if (self.lastSpawnTimeInterval > 0.5) {
-        self.lastSpawnTimeInterval = 0;
-        
-        //uncomment to enable monsters
-        [self addMonster];
-    }
+//    self.lastSpawnTimeInterval += timeSinceLast;
+//    if (self.lastSpawnTimeInterval > 0.5) {
+//        self.lastSpawnTimeInterval = 0;
+//        
+//        //uncomment to enable monsters
+//        [self addMonster];
+//    }
     [self updatePositionFromMotionManager];
     
     

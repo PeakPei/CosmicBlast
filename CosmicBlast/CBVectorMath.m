@@ -26,6 +26,11 @@
     return CGPointMake(a.x * b, a.y * b);
 }
 
++(CGVector)vectorMult:(CGVector)vector Value:(float)multiplier{
+    return CGVectorMake(vector.dx * multiplier, vector.dy * multiplier);
+}
+
+
 ///Vector Length
 +(float)cbVectorLength:(CGPoint)a{
     return sqrtf(a.x*a.x + a.y * a.y);
