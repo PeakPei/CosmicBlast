@@ -198,7 +198,7 @@ CMMotionManager *_motionManager;
     //unit.physicsBody.linearDamping = 0;
     unit.physicsBody.categoryBitMask = enemyUnitCategory;
     unit.physicsBody.contactTestBitMask = projectileCategory;
-    unit.physicsBody.collisionBitMask = playerCategory | edgeCategory | enemyUnitCategory | wallCategory;
+    unit.physicsBody.collisionBitMask = playerCategory | projectileCategory | edgeCategory | enemyUnitCategory | wallCategory;
     unit.physicsBody.usesPreciseCollisionDetection = NO;
     
     [self.currentWorld addChild:unit];
@@ -228,42 +228,6 @@ CMMotionManager *_motionManager;
 
 
 
-//This belongs in another class
--(void)addMonster {
-    //Create Sprite
-    for (CBEnemyUnit *unit in self.units) {
-    
-        CBWalker * monster = [unit createWalker];
-    
-    
-        //Set up monster physics body (may want to make a class to do this later)
-        monster.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:monster.size];
-        monster.physicsBody.dynamic = YES;
-        monster.physicsBody.categoryBitMask = monsterCategory;
-        monster.physicsBody.contactTestBitMask = projectileCategory;
-        monster.physicsBody.collisionBitMask = wallCategory;
-        [self.currentWorld addChild:monster];
-    
-        int minDuration = 2.0;
-        int maxDuration = 4.0;
-        int rangeDuration = maxDuration - minDuration;
-        int actualDuration = (arc4random() % rangeDuration) + minDuration;
-    
-    
-        //Create the actions
-        
-        int randx = arc4random_uniform(self.currentWorld.size.width)-self.currentWorld.size.width/2;
-        int randy = arc4random_uniform(self.currentWorld.size.height)-self.currentWorld.size.height/2;
-        
-        SKAction * actionMove = [SKAction moveTo:CGPointMake(randx,randy) duration:actualDuration];
-    
-        SKAction * actionMoveDone = [SKAction removeFromParent];
-    
-        [monster runAction:[SKAction sequence:@[actionMove, actionMoveDone]]];
-    }
-    
-}
-
 -(void)updateWithTimeSinceLastUpdate: (CFTimeInterval) timeSinceLast{
     
     
@@ -272,11 +236,15 @@ CMMotionManager *_motionManager;
         [unit updateWithPlayerPosition:self.player.position timeSinceLastUpdate:timeSinceLast];
         CBWalker * shot = [unit maybeAttack];
         if (shot==nil) {
-            NSLog(@"SHOT IS NIL");
+            //NSLog(@"SHOT IS NIL");
+            
+            //DO NOTHING IF SHOT IS NILL
+            
         } else {
             shot.physicsBody.categoryBitMask = monsterCategory;
             shot.physicsBody.contactTestBitMask = projectileCategory;
-            shot.physicsBody.collisionBitMask = wallCategory;
+            shot.physicsBody.collisionBitMask = wallCategory | playerCategory | edgeCategory;
+            shot.physicsBody.mass = 0.02;
             [self.currentWorld addChild:shot];
         }
 
@@ -405,7 +373,7 @@ CMMotionManager *_motionManager;
     SKSpriteNode * projectile = [CBShuriken shuriken];
     projectile.position = self.player.position;
     projectile.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:projectile.size.width/2];
-    projectile.physicsBody.mass = 4;
+    projectile.physicsBody.mass = 0.02;
     projectile.physicsBody.dynamic = YES;
     projectile.physicsBody.categoryBitMask = projectileCategory;
     projectile.physicsBody.contactTestBitMask = monsterCategory;
@@ -431,7 +399,9 @@ CMMotionManager *_motionManager;
     //Create shot vector
     CGPoint shotPoint = [CBVectorMath cbVectorMultFirst:direction Value:[gameValues playerShotSpeed]];
     CGVector shotVector = CGVectorMake(shotPoint.x, shotPoint.y);
-    projectile.physicsBody.velocity = shotVector;
+    
+    //projectile.physicsBody.velocity = shotVector;
+    projectile.physicsBody.velocity = [CBVectorMath vectorAddFirst:shotVector second:self.player.physicsBody.velocity];
     //Add shot vector to current position
     
     
@@ -460,11 +430,10 @@ CMMotionManager *_motionManager;
 -(void)projectile:(SKSpriteNode *)projectile didCollideWithMonster:(SKSpriteNode *)monster {
     [projectile removeFromParent];
     [monster removeFromParent];
-    
 }
 
 -(void)projectile:(SKSpriteNode *)projectile didCollideWithEnemyUnit:(CBEnemyUnit *)unit {
-    [projectile removeFromParent];
+    //[projectile removeFromParent];
     [unit unitHit];
     //[self moveUnit:unit];
     
