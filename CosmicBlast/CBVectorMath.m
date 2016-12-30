@@ -30,6 +30,10 @@
     return CGVectorMake(v1.dx+v2.dx, v1.dy+v2.dy);
 }
 
++(CGVector)vectorSubFirst:(CGVector)v1 second:(CGVector)v2{
+    return CGVectorMake(v1.dx-v2.dx, v1.dy-v2.dy);
+}
+
 +(CGVector)vectorMult:(CGVector)vector Value:(float)multiplier{
     return CGVectorMake(vector.dx * multiplier, vector.dy * multiplier);
 }

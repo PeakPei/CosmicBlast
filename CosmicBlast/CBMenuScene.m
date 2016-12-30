@@ -133,6 +133,13 @@ CBTiltVisualizer * visualizer;
     NSLog(@"executeButtonFunction Called in CBMenuScene.m,: %@",function);
 }
 
+-(void)buttonReleased:(NSString *)function{
+
+}
+
+
+
+
 -(void)nextLevel{
     NSInteger currentLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"currentLevel"];
     if (currentLevel <= [[NSUserDefaults standardUserDefaults] integerForKey:@"highestBeatenLevel"] && currentLevel < [[NSUserDefaults standardUserDefaults] integerForKey:@"availableLevels"]){

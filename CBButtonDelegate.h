@@ -10,4 +10,7 @@
 
 -(void)executeButtonFunction:(NSString *)function;
 
+-(void)buttonReleased:(NSString *)function;
+
+
 @end

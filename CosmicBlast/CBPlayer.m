@@ -17,6 +17,7 @@
     NSMutableArray * pastXData;
     NSMutableArray * pastYData;
     int accelerometerDataMemoryLength;
+    BOOL breaking;
 }
 
 
@@ -106,8 +107,13 @@
     GameValues * gameValues = [[GameValues alloc] init];
     
     float coefficient = [gameValues playerAccelerationCoefficient];
-
-    CGVector playerMotion = CGVectorMake(moveX*coefficient, moveY*coefficient);
+    CGVector playerMotion;
+    if (breaking) {
+        playerMotion = [CBVectorMath vectorSubFirst:CGVectorMake(0, 0) second:self.physicsBody.velocity];
+    } else{
+        playerMotion = CGVectorMake(moveX*coefficient, moveY*coefficient);
+    }
+    
     //CGVector worldMotion = CGVectorMake(playerMotion.dx*(-1.0), playerMotion.dy*(-1.0));
 
     
@@ -139,11 +145,20 @@
 
 
 
+-(void)startBreaking{
+
+    breaking = true;
+    
+    
+}
+
+-(void)endBreaking{
+    breaking = false;
+}
 
 
--(void)playerHit
-{
-    [self playerHitWithDamageAmount:10];
+-(void)playerHit{
+    [self playerHitWithDamageAmount:20];
 }
 
 -(void)playerHitWithDamageAmount:(int)damage

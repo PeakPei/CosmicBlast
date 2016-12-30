@@ -69,7 +69,7 @@ CGRect sceneFrame;
 }
 
 +(NSArray<CBButton*> *)getGameButtonTitles{
-    return [NSMutableArray arrayWithObjects:@"5", @"pause", @"7", @"menu", nil];
+    return [NSMutableArray arrayWithObjects:@"break", @"pause", @"7", @"menu", nil];
 }
 
 

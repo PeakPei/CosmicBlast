@@ -30,6 +30,9 @@
 
 -(void)movePlayerWithAccelerationXvalue:(double)x yValue:(double)y speed:(int)speed;
 
+-(void)startBreaking;
+
+-(void)endBreaking;
 
 -(void)playerHit;
 

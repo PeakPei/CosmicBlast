@@ -46,11 +46,11 @@
     [self description];
     [self.delegate executeButtonFunction:self.title];
     
-    
-    
 }
 
-
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.delegate buttonReleased:self.title];
+}
 
 -(NSString *)description{
     return self.summary;

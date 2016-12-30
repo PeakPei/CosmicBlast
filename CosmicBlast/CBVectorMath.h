@@ -15,6 +15,9 @@
 
 +(CGVector)vectorAddFirst:(CGVector)v1 second:(CGVector)v2;
 
++(CGVector)vectorSubFirst:(CGVector)v1 second:(CGVector)v2;
+
+
 +(CGPoint)cbVectorSubFirst:(CGPoint)a Second:(CGPoint)b;
 
 +(CGPoint)cbVectorMultFirst:(CGPoint)a Value:(float)b;

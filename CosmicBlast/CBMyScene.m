@@ -471,16 +471,30 @@ CMMotionManager *_motionManager;
 
 -(void)executeButtonFunction:(NSString *)function{
     
+    
     if([function isEqualToString:@"menu"]){
         [self returnToParentMenu];
     } else if ([function isEqualToString:@"pause"]){
         [self pause];
+    } else if ([function isEqualToString:@"break"]){
+        [self.player startBreaking];
     }
     NSLog(@"executeButtonFunction Called in CBMyScene.m,: %@",function);
 }
 
 
-
+-(void)buttonReleased:(NSString *)function{
+    
+    
+    if([function isEqualToString:@"menu"]){
+        [self returnToParentMenu];
+    } else if ([function isEqualToString:@"pause"]){
+        [self pause];
+    } else if ([function isEqualToString:@"break"]){
+        [self.player endBreaking];
+    }
+    NSLog(@"executeButtonFunction Called in CBMyScene.m,: %@",function);
+}
 
 
 
