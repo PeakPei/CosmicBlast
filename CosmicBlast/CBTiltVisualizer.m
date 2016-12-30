@@ -65,7 +65,7 @@
     CGPathMoveToPoint(pathToDraw, NULL, 0.0, 0.0);
     CGPathAddLineToPoint(pathToDraw, NULL, lineX, lineY);
     yourline.path = pathToDraw;
-    UIColor * lineColor = [UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:0.5];
+    UIColor * lineColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.4];
     [yourline setStrokeColor:lineColor];
     
     [yourline setLineWidth:5];

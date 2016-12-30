@@ -244,7 +244,7 @@ CMMotionManager *_motionManager;
             shot.physicsBody.categoryBitMask = monsterCategory;
             shot.physicsBody.contactTestBitMask = projectileCategory;
             shot.physicsBody.collisionBitMask = wallCategory | playerCategory | edgeCategory;
-            shot.physicsBody.mass = 0.02;
+            shot.physicsBody.mass = 0.008;
             [self.currentWorld addChild:shot];
         }
 
@@ -373,7 +373,7 @@ CMMotionManager *_motionManager;
     SKSpriteNode * projectile = [CBShuriken shuriken];
     projectile.position = self.player.position;
     projectile.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:projectile.size.width/2];
-    projectile.physicsBody.mass = 0.02;
+    projectile.physicsBody.mass = 0.008;
     projectile.physicsBody.dynamic = YES;
     projectile.physicsBody.categoryBitMask = projectileCategory;
     projectile.physicsBody.contactTestBitMask = monsterCategory;

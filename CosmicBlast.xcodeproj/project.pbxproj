@@ -190,14 +190,12 @@
 			children = (
 				65171B411DF0F012001F58E7 /* LevelsJSON.txt */,
 			);
-			name = Resources;
-			path = CosmicBlast/Resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		6566BE7019802D5D00602447 = {
 			isa = PBXGroup;
 			children = (
-				65171B401DF0EE78001F58E7 /* Resources */,
 				6566BE8419802D5D00602447 /* CosmicBlast */,
 				6566BEA819802D5D00602447 /* CosmicBlastTests */,
 				6566BE7B19802D5D00602447 /* Frameworks */,
@@ -232,6 +230,7 @@
 		6566BE8419802D5D00602447 /* CosmicBlast */ = {
 			isa = PBXGroup;
 			children = (
+				65171B401DF0EE78001F58E7 /* Resources */,
 				6529D9711D061A0300A31762 /* checker.png */,
 				650790091B9CD7DA00F9931F /* Background.png */,
 				65977D551CD5232400BFEAB9 /* LaunchScreen.storyboard */,
