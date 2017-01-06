@@ -142,7 +142,8 @@ CMMotionManager *_motionManager;
     //Change this depending on levels
     NSArray * array = [gameValues getUnitLocations];
     for (NSValue * point in array){
-        [self placeUnitAtPosition:[point CGPointValue]];
+        CBEnemyUnit * newUnit = [self placeUnitAtPosition:[point CGPointValue]];
+        [newUnit setUnitMovementBehavior:BehaviorType_None];
     }
     
 }
@@ -187,7 +188,7 @@ CMMotionManager *_motionManager;
 
 
 //Fix hardcoding.  need to figur out world configuration
--(void)placeUnitAtPosition:(CGPoint)position{
+-(CBEnemyUnit *)placeUnitAtPosition:(CGPoint)position{
     CBEnemyUnit * unit = [CBEnemyUnit enemyUnit];
     
     [unit setPosition:position];
@@ -203,6 +204,7 @@ CMMotionManager *_motionManager;
     
     [self.currentWorld addChild:unit];
     [self.units addObject:unit];
+    return unit;
 }
 
 

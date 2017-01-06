@@ -19,7 +19,7 @@ extension WorldSettings {
     @NSManaged var worldWidth: NSNumber?
     @NSManaged var worldHeight: NSNumber?
     @NSManaged var unitPositions: [NSValue]?
-    //@NSManaged var unitPositions: [NSNumber]?
+    @NSManaged var unitBehaviors: [NSValue]?
     
     
 }

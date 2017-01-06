@@ -105,20 +105,31 @@ class GameValues: NSObject {
             } else {
                 return [NSValue]()
             }
-            
-            
-//            let pointArray = NSMutableArray()
-//            pointArray.addObject(NSValue(CGPoint: CGPointMake(200, 150)))
-//            pointArray.addObject(NSValue(CGPoint: CGPointMake(-200, 150)))
-//            pointArray.addObject(NSValue(CGPoint: CGPointMake(200, -150)))
-//            pointArray.addObject(NSValue(CGPoint: CGPointMake(-200, -150)))
-//            return pointArray
-            
         }
     }
     
+    var unitBehaviors: [NSValue]
+        {
+        get {
+            let manager = DatabaseManager()
+            if let worldSettings = manager.fetchSavedWorldSettings(){
+                
+                let behaviors = worldSettings.unitBehaviors ?? [NSValue]()
+                return behaviors
+            } else {
+                return [NSValue]()
+            }
+        }
+    }
+    
+    
+    
     func getUnitLocations() -> NSArray{
         return self.unitLocations as NSArray
+    }
+    
+    func getUnitBehaviors() -> NSArray{
+        return self.unitBehaviors as NSArray
     }
     
         

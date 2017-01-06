@@ -25,6 +25,9 @@
 }
 
 
+
+
+
 +(id)enemyUnitWithColor:(SKColor *)color size:(CGSize)size{
     
     GameValues * gameValues = [[GameValues alloc] init];
@@ -44,6 +47,10 @@
     enemyUnit.dead = NO;
     enemyUnit.movementBehavior = BehaviorType_Aggressive;
     return enemyUnit;
+}
+
+-(void)setUnitMovementBehavior:(BehaviorType)behavior{
+    self.movementBehavior = behavior;
 }
 
 
@@ -92,11 +99,11 @@
 }
 
 
--(void)setUnitPosition:(CGPoint)position{
-    
-    self.position = position;
-    
-}
+//-(void)setUnitPosition:(CGPoint)position{
+//    
+//    self.position = position;
+//    
+//}
 -(void)updateWithPlayerPosition:(CGPoint)playerPosition timeSinceLastUpdate:(CFTimeInterval)timeSinceLast{
     //update direction to player with updated player coordinates
     CGPoint rawVector = CGPointMake(playerPosition.x-self.position.x,playerPosition.y-self.position.y);
@@ -120,6 +127,8 @@
             [self.physicsBody applyForce:CGVectorMake(10,10)];
         case BehaviorType_Aggressive:
             [self.physicsBody applyForce:directionToPlayer];
+        case BehaviorType_None:
+            break;
         default:
             break;
     }

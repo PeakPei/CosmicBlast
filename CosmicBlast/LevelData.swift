@@ -15,11 +15,13 @@ class LevelValues: NSObject, NSCopying{
     let worldWidth: NSNumber
     let worldHeight: NSNumber
     let unitLocations: [NSValue]
+    let unitBehaviors: [NSValue]
     let levelNumber: NSNumber
-    required init(width: NSNumber, height: NSNumber, facLocs: [NSValue], levNum: NSNumber) {
+    required init(width: NSNumber, height: NSNumber, locations: [NSValue], behaviors: [NSValue], levNum: NSNumber) {
         worldWidth = width
         worldHeight = height
-        unitLocations = facLocs
+        unitLocations = locations
+        unitBehaviors = behaviors
         levelNumber = levNum
     }
     
@@ -66,15 +68,21 @@ class LevelData:NSObject {
             
                 for (_,level):(String, JSON)in json["levels"] {
                     var pointArray = [NSValue]()
+                    var behaviorArray = [NSValue]()
                     let levelNumber = NSNumber(integerLiteral: level["number"].intValue)
                    
                     for (_,unit):(String, JSON) in level["Units"] {
-                        let facX = unit["x"].intValue
-                        let facY = unit["y"].intValue
-                        pointArray.append(NSValue.init(cgPoint: CGPoint(x: facX, y: facY)))
+                        let unitX = unit["x"].intValue
+                        let unitY = unit["y"].intValue
+                        pointArray.append(NSValue.init(cgPoint: CGPoint(x: unitX, y: unitY)))
+                        
+                        let unitMove = unit["movement"].intValue
+                        let unitAttack = unit["attack"].intValue
+                        behaviorArray.append(NSValue.init(cgPoint: CGPoint(x: unitMove, y: unitAttack)))
                         //Do something you want
                     }
-                    levels.append(LevelValues(width: 1.5, height: 1.5, facLocs: pointArray, levNum: levelNumber))
+                    
+                    levels.append(LevelValues(width: 1.5, height: 1.5, locations: pointArray, behaviors: behaviorArray,  levNum: levelNumber))
 //                    for (_,unit) in jsonLevel["Units"] {
 //                        pointArray.append(NSValue.init(cgPoint: CGPoint(x: unit["x"], y: unit["y"])))
 //                    }

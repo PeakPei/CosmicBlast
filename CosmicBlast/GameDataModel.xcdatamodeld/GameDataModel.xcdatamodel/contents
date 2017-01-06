@@ -2,11 +2,12 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="15G31" minimumToolsVersion="Xcode 7.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="WorldSettings" representedClassName=".WorldSettings" syncable="YES">
         <attribute name="levelNumber" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="unitBehaviors" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="unitPositions" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="worldHeight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="worldWidth" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="WorldSettings" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="WorldSettings" positionX="0" positionY="0" width="128" height="120"/>
     </elements>
 </model>

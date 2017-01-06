@@ -11,7 +11,8 @@
 
 typedef enum {
     BehaviorType_Random,
-    BehaviorType_Aggressive
+    BehaviorType_Aggressive,
+    BehaviorType_None
 } BehaviorType;
 
 
@@ -24,13 +25,17 @@ typedef enum {
 @property BehaviorType movementBehavior;
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 
-+(id)enemyUnitWithImageNamed:(NSString *)name;
-
-+(id)enemyUnitWithColor:(SKColor *)color size:(CGSize)size;
+//+(id)enemyUnitWithImageNamed:(NSString *)name;
+//
+//+(id)enemyUnitWithColor:(SKColor *)color size:(CGSize)size;
 
 +(id)enemyUnit;
 
--(void)setUnitPosition:(CGPoint)position;
+//-(void)setUnitPosition:(CGPoint)position;
+
+-(void)setUnitMovementBehavior:(BehaviorType)behavior;
+
+//-(void)setUnitAttackBehavior:(BehaviorType)behavior;
 
 -(void)updateWithPlayerPosition:(CGPoint)playerPosition timeSinceLastUpdate:(CFTimeInterval)timeSinceLast;
 
