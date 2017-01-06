@@ -140,11 +140,21 @@ CMMotionManager *_motionManager;
     GameValues *gameValues = [[GameValues alloc] init];
     //set up Units
     //Change this depending on levels
-    NSArray * array = [gameValues getUnitLocations];
-    for (NSValue * point in array){
+    NSArray * locationArray = [gameValues getUnitLocations];
+    NSArray * behaviorArray = [gameValues getUnitBehaviors];
+    //locations and behaviors should be of the same length
+    
+    for (int i = 0; i < locationArray.count; i++){
+        NSValue * point = locationArray[i];
+        NSValue * behaviorPair = behaviorArray[i];
         CBEnemyUnit * newUnit = [self placeUnitAtPosition:[point CGPointValue]];
-        [newUnit setUnitMovementBehavior:BehaviorType_None];
+        [newUnit setUnitAttackBehavior:[behaviorPair CGPointValue].x];
+        [newUnit setUnitAttackBehavior:[behaviorPair CGPointValue].y];
     }
+//    for (NSValue * point in array){
+//        CBEnemyUnit * newUnit = [self placeUnitAtPosition:[point CGPointValue]];
+//        [newUnit setUnitMovementBehavior:BehaviorType_None];
+//    }
     
 }
 

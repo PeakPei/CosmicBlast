@@ -24,10 +24,6 @@
     return enemyUnit;
 }
 
-
-
-
-
 +(id)enemyUnitWithColor:(SKColor *)color size:(CGSize)size{
     
     GameValues * gameValues = [[GameValues alloc] init];
@@ -49,9 +45,28 @@
     return enemyUnit;
 }
 
--(void)setUnitMovementBehavior:(BehaviorType)behavior{
-    self.movementBehavior = behavior;
+-(BehaviorType)getBehaviorTypeFromInt:(int)behaviorInt {
+    switch (behaviorInt) {
+        case 0:
+            return BehaviorType_None;
+        case 1:
+            return BehaviorType_Random;
+        case 2:
+            return BehaviorType_Aggressive;
+        default:
+            return BehaviorType_None;
+    }
 }
+
+
+-(void)setUnitMovementBehavior:(int)behavior{
+    self.movementBehavior = [self getBehaviorTypeFromInt:behavior];
+}
+
+-(void)setUnitAttackBehavior:(int)behavior{
+    self.attackBehavior = [self getBehaviorTypeFromInt:behavior];
+}
+
 
 
 //CreateWalker in same position as unit

@@ -21,7 +21,7 @@ typedef enum {
 @property int maxHealth;
 @property int health;
 @property BOOL dead;
-@property BehaviorType shootingBehavior;
+@property BehaviorType attackBehavior;
 @property BehaviorType movementBehavior;
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 
@@ -33,9 +33,9 @@ typedef enum {
 
 //-(void)setUnitPosition:(CGPoint)position;
 
--(void)setUnitMovementBehavior:(BehaviorType)behavior;
+-(void)setUnitMovementBehavior:(int)behavior;
 
-//-(void)setUnitAttackBehavior:(BehaviorType)behavior;
+-(void)setUnitAttackBehavior:(int)behavior;
 
 -(void)updateWithPlayerPosition:(CGPoint)playerPosition timeSinceLastUpdate:(CFTimeInterval)timeSinceLast;
 
