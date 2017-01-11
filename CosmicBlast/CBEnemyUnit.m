@@ -70,8 +70,8 @@
 
 
 
-//CreateWalker in same position as unit
--(CBWalker *)createWalker{
+//createProjectile in same position as unit
+-(CBWalker *)createProjectile{
     
     CBWalker * walker = [CBWalker walker];
     [walker setEnemyPosition:self.position];
@@ -82,46 +82,50 @@
 -(CBWalker *)maybeAttack {
     if (self.lastSpawnTimeInterval > 0.5) {
         self.lastSpawnTimeInterval = 0;
-        
-        
-        
-        
-//        switch (_attackBehavior){
-//            case BehaviorType_None:
-//                NSLog(@"applying none movement behavior type");
-//                self.physicsBody.dynamic = NO;
-//                break;
-//            case BehaviorType_Random:
-//                NSLog(@"applying random movement behavior type");
-//                //[self.physicsBody applyForce:CGVectorMake(10,10)];
-//                break;
-//            case BehaviorType_Aggressive:
-//                    CBWalker * monster = [self createWalker];
-//                
-//                
-//                    //Set up monster physics body (may want to make a class to do this later)
-//                    monster.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:monster.size];
-//                    monster.physicsBody.dynamic = YES;
-//                    GameValues * gameValues = [[GameValues alloc] init];
-//                    [gameValues playerShotSpeed];
-//                    CGVector shotVector = [CBVectorMath vectorMult:directionToPlayer Value:[gameValues playerShotSpeed]];
-//                    monster.physicsBody.velocity = shotVector;
-//                    break;
-//            default:
-//                break;
-//        }
-        
-        
-        CBWalker * monster = [self createWalker];
-        
-        
-        //Set up monster physics body (may want to make a class to do this later)
-        monster.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:monster.size];
-        monster.physicsBody.dynamic = YES;
+        CBWalker * projectile;
         GameValues * gameValues = [[GameValues alloc] init];
-        [gameValues playerShotSpeed];
-        CGVector shotVector = [CBVectorMath vectorMult:directionToPlayer Value:[gameValues playerShotSpeed]];
-        monster.physicsBody.velocity = shotVector;
+        projectile = [self createProjectile];
+        projectile.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:projectile.size];
+        projectile.physicsBody.dynamic = YES;
+        
+        switch (_attackBehavior){
+            case BehaviorType_None:
+                NSLog(@"applying none attack behavior type");
+                return nil;
+                break;
+            case BehaviorType_Random:
+                NSLog(@"applying random attack behavior type");
+                float x = ((float)rand() / RAND_MAX)-0.5;
+                float y = ((float)rand() / RAND_MAX)-0.5;
+                
+                CGVector randomVector = CGVectorMake(x, y);
+                //int x = rand();
+                NSLog(@"randomVector = x: %f, y: %f",randomVector.dx,randomVector.dy);
+                CGVector randomDirection = [CBVectorMath vectorNormalize:randomVector];
+                NSLog(@"randomDirection = x: %f, y: %f",randomDirection.dx,randomDirection.dy);
+                CGVector shotVector = [CBVectorMath vectorMult:randomDirection Value:[gameValues playerShotSpeed]];
+                projectile.physicsBody.velocity = shotVector;
+                break;
+            case BehaviorType_Aggressive:
+            {
+                CGVector shotVector = [CBVectorMath vectorMult:directionToPlayer Value:[gameValues playerShotSpeed]];
+                projectile.physicsBody.velocity = shotVector;
+                break;
+            }
+            default:
+                return nil;
+                break;
+        }
+        
+        
+//        CBWalker * monster = [self createProjectile];
+//        
+//        
+//        //Set up monster physics body (may want to make a class to do this later)
+//        monster.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:monster.size];
+//        monster.physicsBody.dynamic = YES;
+//        CGVector shotVector = [CBVectorMath vectorMult:directionToPlayer Value:[gameValues playerShotSpeed]];
+//        monster.physicsBody.velocity = shotVector;
 
 
         
@@ -133,12 +137,12 @@
         
         SKAction * actionMoveDone = [SKAction removeFromParent];
         
-        [monster runAction:[SKAction sequence:@[actionWait, actionMoveDone]]];
+        [projectile runAction:[SKAction sequence:@[actionWait, actionMoveDone]]];
         
         
         
         
-        return monster;
+        return projectile;
     }
     return nil;
 }

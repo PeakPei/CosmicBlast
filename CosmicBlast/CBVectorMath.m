@@ -38,6 +38,14 @@
     return CGVectorMake(vector.dx * multiplier, vector.dy * multiplier);
 }
 
++(CGVector)vectorNormalize:(CGVector)a{
+    float length = [CBVectorMath vectorLength:a];
+    return CGVectorMake(a.dx / length, a.dy / length);
+}
+
++(float)vectorLength:(CGVector)a{
+    return sqrtf(a.dx*a.dx + a.dy * a.dy);
+}
 
 ///Vector Length
 +(float)cbVectorLength:(CGPoint)a{

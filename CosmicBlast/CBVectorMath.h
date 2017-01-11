@@ -28,4 +28,6 @@
 
 +(CGVector)vectorMult:(CGVector)vector Value:(float)multiplier;
 
++(CGVector)vectorNormalize:(CGVector)a;
+
 @end

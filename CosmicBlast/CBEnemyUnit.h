@@ -41,7 +41,7 @@ typedef enum {
 
 -(void)unitHit;
 
--(CBWalker *)createWalker;
+-(CBWalker *)createProjectile;
 
 -(CBWalker *)maybeAttack;
 
