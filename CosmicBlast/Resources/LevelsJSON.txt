@@ -16,7 +16,7 @@
             "Units": [{"movement": 2,"attack": 2,"x": 100, "y": -100}]
         },
         {
-            "number": 3,
+            "number": 4,
             "imageName": "checker.png",
             "Units": [{"movement": 2,"attack": 2,"x": 100, "y": -100}]
         }

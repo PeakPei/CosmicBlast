@@ -148,7 +148,7 @@ CMMotionManager *_motionManager;
         NSValue * point = locationArray[i];
         NSValue * behaviorPair = behaviorArray[i];
         CBEnemyUnit * newUnit = [self placeUnitAtPosition:[point CGPointValue]];
-        [newUnit setUnitAttackBehavior:[behaviorPair CGPointValue].x];
+        [newUnit setUnitMovementBehavior:[behaviorPair CGPointValue].x];
         [newUnit setUnitAttackBehavior:[behaviorPair CGPointValue].y];
     }
 //    for (NSValue * point in array){

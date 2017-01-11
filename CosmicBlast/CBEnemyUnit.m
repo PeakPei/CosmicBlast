@@ -61,6 +61,7 @@
 
 -(void)setUnitMovementBehavior:(int)behavior{
     self.movementBehavior = [self getBehaviorTypeFromInt:behavior];
+    NSLog(@"movementBehavior number = %d",behavior);
 }
 
 -(void)setUnitAttackBehavior:(int)behavior{
@@ -71,6 +72,7 @@
 
 //CreateWalker in same position as unit
 -(CBWalker *)createWalker{
+    
     CBWalker * walker = [CBWalker walker];
     [walker setEnemyPosition:self.position];
     
@@ -80,6 +82,34 @@
 -(CBWalker *)maybeAttack {
     if (self.lastSpawnTimeInterval > 0.5) {
         self.lastSpawnTimeInterval = 0;
+        
+        
+        
+        
+//        switch (_attackBehavior){
+//            case BehaviorType_None:
+//                NSLog(@"applying none movement behavior type");
+//                self.physicsBody.dynamic = NO;
+//                break;
+//            case BehaviorType_Random:
+//                NSLog(@"applying random movement behavior type");
+//                //[self.physicsBody applyForce:CGVectorMake(10,10)];
+//                break;
+//            case BehaviorType_Aggressive:
+//                    CBWalker * monster = [self createWalker];
+//                
+//                
+//                    //Set up monster physics body (may want to make a class to do this later)
+//                    monster.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:monster.size];
+//                    monster.physicsBody.dynamic = YES;
+//                    GameValues * gameValues = [[GameValues alloc] init];
+//                    [gameValues playerShotSpeed];
+//                    CGVector shotVector = [CBVectorMath vectorMult:directionToPlayer Value:[gameValues playerShotSpeed]];
+//                    monster.physicsBody.velocity = shotVector;
+//                    break;
+//            default:
+//                break;
+//        }
         
         
         CBWalker * monster = [self createWalker];
@@ -138,11 +168,17 @@
 
 -(void)applyMovement {
     switch (_movementBehavior){
-        case BehaviorType_Random:
-            [self.physicsBody applyForce:CGVectorMake(10,10)];
-        case BehaviorType_Aggressive:
-            [self.physicsBody applyForce:directionToPlayer];
         case BehaviorType_None:
+            NSLog(@"applying none movement behavior type");
+            self.physicsBody.dynamic = NO;
+            break;
+        case BehaviorType_Random:
+            NSLog(@"applying random movement behavior type");
+            //[self.physicsBody applyForce:CGVectorMake(10,10)];
+            break;
+        case BehaviorType_Aggressive:
+            NSLog(@"applying aggressive movement behavior type");
+            [self.physicsBody applyForce:directionToPlayer];
             break;
         default:
             break;
