@@ -34,7 +34,7 @@ class GameValues: NSObject {
     var backgroundColor: UIColor = UIColor.black
     //var worldColor: UIColor = UIColor.greenColor()
     var worldColor = UIColor(patternImage: UIImage(named: "Background.png")!)
-    var worldImageName = "checker.png"
+    var worldImageName = "GrassWorld"
     //    lazy var worldImage: () -> UIImage = {
     //
     //        var baseImage = UIImage(named: "Background.png")!
