@@ -68,7 +68,6 @@ class DatabaseManager: NSObject {
                     entity.setValue(level.levelNumber, forKey:"levelNumber")
                     entity.setValue(level.unitLocations, forKey: "unitPositions")
                     entity.setValue(level.unitBehaviors, forKey: "unitBehaviors")
-                    
                 }
                 
                 
