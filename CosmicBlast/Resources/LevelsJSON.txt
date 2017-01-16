@@ -7,17 +7,17 @@
         },
         {
             "number": 2,
-            "imageName": "GrassWorld.png",
+            "imageName": "RockWorld.png",
             "Units": [{"movement": 1,"attack": 1,"x": -100, "y": 100}]
         },
         {
             "number": 3,
-            "imageName": "RockWorld.png",
+            "imageName": "IceWorld.png",
             "Units": [{"movement": 2,"attack": 2,"x": 100, "y": -100}]
         },
         {
             "number": 4,
-            "imageName": "RockWorld.png",
+            "imageName": "IceWorldWorld.png",
             "Units": [{"movement": 2,"attack": 2,"x": 100, "y": -100},{"movement": 2,"attack": 2,"x": 100, "y": -100},{"movement": 2,"attack": 2,"x": 100, "y": -100},{"movement": 2,"attack": 2,"x": 100, "y": -100}]
         }
     ]

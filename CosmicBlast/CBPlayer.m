@@ -158,6 +158,17 @@
 
 
 -(void)playerHit{
+    
+    SKAction * fade = [SKAction fadeAlphaTo:0.2 duration: 0.05];
+    SKAction * unfade = [SKAction fadeAlphaTo:1 duration: 0.05];
+    
+    
+    SKAction *sequence = [SKAction sequence:@[fade, unfade, fade, unfade, fade, unfade]];
+    
+    
+    [self runAction:sequence];
+    
+    
     [self playerHitWithDamageAmount:20];
 }
 

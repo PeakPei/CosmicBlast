@@ -219,17 +219,9 @@
         
         SKAction * fade = [SKAction fadeAlphaTo:0.2 duration: 0.05];
         SKAction * unfade = [SKAction fadeAlphaTo:1 duration: 0.05];
-        //SKAction alpha
         
-//        SKAction *moveUp = [SKAction moveByX:0 y:100.0 duration:1.0];
-//        SKAction *zoom = [SKAction scaleTo:2.0 duration:0.25];
-//        SKAction *wait = [SKAction waitForDuration: 0.5];
-//        SKAction *fadeAway = [SKAction fadeOutWithDuration:0.25];
-//        SKAction *removeNode = [SKAction removeFromParent];
         
         SKAction *sequence = [SKAction sequence:@[fade, unfade, fade, unfade, fade, unfade]];
-        [self runAction: sequence];
-        
         
         
         [self runAction:sequence];
