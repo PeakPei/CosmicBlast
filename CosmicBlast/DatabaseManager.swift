@@ -63,8 +63,9 @@ class DatabaseManager: NSObject {
                     // add our data
                     print("about to set values for keys")
                     print(level.unitBehaviors)
-                    entity.setValue(level.worldWidth, forKey: "worldWidth")
-                    entity.setValue(level.worldHeight, forKey: "worldHeight")
+                    
+                
+                    
                     entity.setValue(level.levelNumber, forKey:"levelNumber")
                     entity.setValue(level.unitLocations, forKey: "unitPositions")
                     entity.setValue(level.unitBehaviors, forKey: "unitBehaviors")

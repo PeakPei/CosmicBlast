@@ -17,7 +17,7 @@
         },
         {
             "number": 4,
-            "imageName": "IceWorldWorld.png",
+            "imageName": "Mothership.png",
             "Units": [{"movement": 2,"attack": 2,"x": 100, "y": -100},{"movement": 2,"attack": 2,"x": 100, "y": -100},{"movement": 2,"attack": 2,"x": 100, "y": -100},{"movement": 2,"attack": 2,"x": 100, "y": -100}]
         }
     ]

@@ -35,7 +35,7 @@ CBTiltVisualizer * visualizer;
         [self setUIValues];
         //GameValues * gv = [[GameValues alloc] init];
         
-        [LevelData jsonTest]
+
         ;
         
         //[[[LevelValues alloc] init] jsonTest];

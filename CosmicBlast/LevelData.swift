@@ -12,11 +12,13 @@ import SwiftyJSON
 
 //this class stores the values for a specific level
 class LevelValues: NSObject, NSCopying{
+    
     let worldWidth: NSNumber
     let worldHeight: NSNumber
     let unitLocations: [NSValue]
     let unitBehaviors: [NSValue]
     let levelNumber: NSNumber
+    
     required init(width: NSNumber, height: NSNumber, locations: [NSValue], behaviors: [NSValue], levNum: NSNumber) {
         worldWidth = width
         worldHeight = height
