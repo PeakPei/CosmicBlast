@@ -51,6 +51,7 @@ class GameValues: NSObject {
     
     var worldSize: CGSize{
         get {
+            
             let manager = DatabaseManager()
             let worldSettings = manager.fetchSavedWorldSettings()
             let heightMultiplier = CGFloat(worldSettings!.worldHeight!)
