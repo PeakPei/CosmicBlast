@@ -16,15 +16,15 @@ class LevelValues: NSObject, NSCopying{
     //let worldWidth: NSNumber
     //let worldHeight: NSNumber
     let imageName: String
-    let circleShape: Bool
+    let shape: String
     let unitLocations: [NSValue]
     let unitBehaviors: [NSValue]
     let levelNumber: NSNumber
     
-    required init(image: String, isCircle: Bool, locations: [NSValue], behaviors: [NSValue], levNum: NSNumber) {
+    required init(image: String, worldShape: String, locations: [NSValue], behaviors: [NSValue], levNum: NSNumber) {
         
         imageName = image
-        circleShape = isCircle
+        shape = worldShape
         unitLocations = locations
         unitBehaviors = behaviors
         levelNumber = levNum
@@ -75,7 +75,7 @@ class LevelData:NSObject {
                     var pointArray = [NSValue]()
                     var behaviorArray = [NSValue]()
                     let levelNumber = NSNumber(integerLiteral: level["number"].intValue)
-                    let circleShape = level["roundEdges"].boolValue
+                    let shape = level["shape"].stringValue
                     let imageName = level["imageName"].stringValue
                     
                     
@@ -90,7 +90,7 @@ class LevelData:NSObject {
                         behaviorArray.append(NSValue.init(cgPoint: CGPoint(x: unitMove, y: unitAttack)))
                         //Do something you want
                     }
-                    levels.append(LevelValues(image: imageName, isCircle: circleShape, locations: pointArray, behaviors: behaviorArray, levNum: levelNumber))
+                    levels.append(LevelValues(image: imageName, worldShape: shape, locations: pointArray, behaviors: behaviorArray, levNum: levelNumber))
                     //levels.append(LevelValues(: 1.5, height: 1.5, locations: pointArray, behaviors: behaviorArray,  levNum: levelNumber))
 //                    for (_,unit) in jsonLevel["Units"] {
 //                        pointArray.append(NSValue.init(cgPoint: CGPoint(x: unit["x"], y: unit["y"])))

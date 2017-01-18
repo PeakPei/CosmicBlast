@@ -21,11 +21,11 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
 
     
     @IBAction func save(_ sender: UIButton) {
-        do {
-            try saveWorldSize()
-        } catch {
-            fatalError("Failure to saveWorldSize: \(error)")
-        }
+//        do {
+//            try saveWorldSize()
+//        } catch {
+//            fatalError("Failure to saveWorldSize: \(error)")
+//        }
     }
     
     let moc = DataController().managedObjectContext
@@ -68,7 +68,7 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initializeUI()
+//        initializeUI()
     }
     
     
@@ -108,23 +108,23 @@ class GameSettingsViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    func initializeUI() {
-        if let worldValues = fetch() {
-            if worldHeightSlider != nil {
-                if let worldHeight = worldValues.worldHeight {
-                    worldHeightSlider.value = Float(worldHeight)
-                }
-            }
-            if worldWidthSlider != nil {
-                if let worldWidth = worldValues.worldWidth {
-                    worldWidthSlider.value = Float(worldWidth)
-                }
-            }
-        } else {
-            worldHeightSlider.value = 0.5
-            worldWidthSlider.value = 0.5
-        }
-    }
+//    func initializeUI() {
+//        if let worldValues = fetch() {
+//            if worldHeightSlider != nil {
+//                if let worldHeight = worldValues.worldHeight {
+//                    worldHeightSlider.value = Float(worldHeight)
+//                }
+//            }
+//            if worldWidthSlider != nil {
+//                if let worldWidth = worldValues.worldWidth {
+//                    worldWidthSlider.value = Float(worldWidth)
+//                }
+//            }
+//        } else {
+//            worldHeightSlider.value = 0.5
+//            worldWidthSlider.value = 0.5
+//        }
+//    }
 
     func updateUI() {
         self.view.setNeedsDisplay()

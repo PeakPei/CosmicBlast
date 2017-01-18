@@ -54,7 +54,6 @@ class DatabaseManager: NSObject {
         do {
             let
             fetchedWorldSettingsList = try moc.fetch(worldSettingsFetch) as! [WorldSettings]
-            print()
             if (fetchedWorldSettingsList.count < 1){
                 
                 let levelData = LevelData()
@@ -65,7 +64,8 @@ class DatabaseManager: NSObject {
                     print(level.unitBehaviors)
                     
                 
-                    
+                    entity.setValue(level.shape, forKey:"shape")
+                    entity.setValue(level.imageName, forKey:"imageName")
                     entity.setValue(level.levelNumber, forKey:"levelNumber")
                     entity.setValue(level.unitLocations, forKey: "unitPositions")
                     entity.setValue(level.unitBehaviors, forKey: "unitBehaviors")

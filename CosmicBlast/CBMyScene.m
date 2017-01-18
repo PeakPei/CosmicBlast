@@ -88,6 +88,8 @@ CMMotionManager *_motionManager;
 }
 
 -(void)setPhysicsValues {
+    GameValues * gameValues = [[GameValues alloc] init];
+    
     //physics body for player
     self.player.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.player.size.height/2];
     //self.player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.player.frame.size];
@@ -98,12 +100,20 @@ CMMotionManager *_motionManager;
     self.player.physicsBody.collisionBitMask = enemyUnitCategory | edgeCategory | monsterCategory | wallCategory;
     self.player.physicsBody.usesPreciseCollisionDetection = NO;
     
-    self.currentWorld.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.currentWorld.frame];
     
-    //Uncomment for circular level
-    UIBezierPath * circlePath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(0, 0) radius:self.currentWorld.frame.size.width/2 startAngle:0 endAngle:M_PI*2 clockwise:false];
+    if([[gameValues worldShape]  isEqual: @"circle"]){
+        //Uncomment for circular level
+        UIBezierPath * circlePath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(0, 0) radius:self.currentWorld.frame.size.width/2 startAngle:0 endAngle:M_PI*2 clockwise:false];
+        self.currentWorld.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:circlePath.CGPath];
+    } else if ([[gameValues worldShape]  isEqual: @"square"]){
+        self.currentWorld.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.currentWorld.frame];
+    } else {
+        NSLog(@"ERROR: no shape recognized for world physics body");
+    }
     
-    self.currentWorld.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:circlePath.CGPath];
+    
+    
+
     
     self.currentWorld.physicsBody.dynamic = NO;
     self.currentWorld.physicsBody.categoryBitMask = edgeCategory;

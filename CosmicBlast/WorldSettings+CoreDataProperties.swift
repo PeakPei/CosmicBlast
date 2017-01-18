@@ -16,8 +16,8 @@ import SpriteKit
 extension WorldSettings {
 
     @NSManaged var levelNumber: NSNumber?
-    @NSManaged var worldWidth: NSNumber?
-    @NSManaged var worldHeight: NSNumber?
+    @NSManaged var shape: String?
+    @NSManaged var imageName: String?
     @NSManaged var unitPositions: [NSValue]?
     @NSManaged var unitBehaviors: [NSValue]?
     

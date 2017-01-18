@@ -32,9 +32,36 @@ class GameValues: NSObject {
     
     //World Characteristics
     var backgroundColor: UIColor = UIColor.black
-    //var worldColor: UIColor = UIColor.greenColor()
     var worldColor = UIColor(patternImage: UIImage(named: "Background.png")!)
-    var worldImageName = "Mothership"
+    
+    var worldImageName: String
+        {
+        get {
+            let manager = DatabaseManager()
+            if let worldSettings = manager.fetchSavedWorldSettings(){
+                let name = worldSettings.imageName ?? String()
+                return name
+            } else {
+                return String()
+            }
+        }
+    }
+    
+    var worldShape: String
+        {
+        get {
+            let manager = DatabaseManager()
+            if let worldSettings = manager.fetchSavedWorldSettings(){
+                let shape = worldSettings.shape ?? String()
+                return shape
+            } else {
+                return String()
+            }
+        }
+    }
+    
+        
+    
     //    lazy var worldImage: () -> UIImage = {
     //
     //        var baseImage = UIImage(named: "Background.png")!
@@ -49,18 +76,18 @@ class GameValues: NSObject {
     let maxWorldWidth: CGFloat = 500
     let maxWorldHeight: CGFloat = 500
     
-    var worldSize: CGSize{
-        get {
-            
-            let manager = DatabaseManager()
-            let worldSettings = manager.fetchSavedWorldSettings()
-            let heightMultiplier = CGFloat(worldSettings!.worldHeight!)
-            let widthMultiplier = CGFloat(worldSettings!.worldWidth!)
-            let size = CGSize(width: widthMultiplier*maxWorldWidth,height: heightMultiplier*maxWorldHeight)
-            
-            return size
-        }
-    }
+//    var worldSize: CGSize{
+//        get {
+//            
+//            let manager = DatabaseManager()
+//            let worldSettings = manager.fetchSavedWorldSettings()
+//            let heightMultiplier = CGFloat(worldSettings!.worldHeight!)
+//            let widthMultiplier = CGFloat(worldSettings!.worldWidth!)
+//            let size = CGSize(width: widthMultiplier*maxWorldWidth,height: heightMultiplier*maxWorldHeight)
+//            
+//            return size
+//        }
+//    }
     
     //Player Characteristics
     var playerMaxHealth: Int = 800
