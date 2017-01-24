@@ -79,7 +79,11 @@
     
     NSLog(@"LAUNCH GAME SCENE CALLED");
     SKView * skView = (SKView *)self.view;
-    CBMyScene * gameScene = [CBMyScene sceneWithSize:skView.bounds.size];
+    CBMyScene * gameScene = [CBMyScene unarchiveFromFile:@"GrassWorld" withSize:skView.bounds.size];
+    //[gameScene prepareForDisplay];
+
+    //[CBMyScene sceneWithSize:skView.bounds.size];
+    
     //SKScene * random = [SKScene sceneWithSize:skView.bounds.size];
     self.gameScene = gameScene;
     gameScene.gameDelegate = self;

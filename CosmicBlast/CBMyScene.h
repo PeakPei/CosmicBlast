@@ -31,9 +31,14 @@
 
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
+
++(instancetype)unarchiveFromFile:(NSString *)file withSize:(CGSize)size;
+
+
+
 -(void)returnToParentMenu;
 
-
+-(void)prepareForDisplay;
 
 
 @end

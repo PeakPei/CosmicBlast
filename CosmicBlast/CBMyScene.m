@@ -26,18 +26,54 @@ static const uint32_t edgeCategory = 0x1 << 3;
 static const uint32_t enemyUnitCategory = 0x1 << 4;
 static const uint32_t wallCategory = 0x1 << 5;
 
-@implementation CBMyScene
+@implementation CBMyScene{
+    NSMutableArray * wallPositions;
+
+}
 
 CBTiltVisualizer * tiltVisualizer;
 CMMotionManager *_motionManager;
 
+
++(instancetype)unarchiveFromFile:(NSString *)file withSize:(CGSize)size{
+    // get file path for scene that we are using
+    NSString * nodePath = [[NSBundle mainBundle] pathForResource:file ofType:@".sks"];
+    //Unarchive file to CBMyScene object
+    NSData * data = [NSData dataWithContentsOfFile:nodePath options:NSDataReadingMappedIfSafe error:nil];
+    NSKeyedUnarchiver * arch = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+    [arch setClass:CBMyScene.class forClassName:@"SKScene"];
+    CBMyScene * dummyScene = [arch decodeObjectForKey:NSKeyedArchiveRootObjectKey];
+    [dummyScene setSize:size];
+    [arch finishDecoding];
+    int number = dummyScene.children.count;
+    CBMyScene * myScene = [CBMyScene sceneWithSize:size];
+    myScene->wallPositions = [[NSMutableArray alloc] init];
+    for (SKSpriteNode * child in dummyScene.children) {
+        if ([child.name isEqualToString:@"wall"]){
+            NSLog(@"child Name is equal to wall");
+            [myScene->wallPositions addObject:[NSValue valueWithCGPoint:child.position]];
+        } else if([child.name isEqualToString:@"unit"]){
+            NSLog(@"child Name is equal to unit");
+        } else {
+            NSLog(@"child Name unknown");
+        }
+    }
+    NSLog(@"GameScene.children.count = %d", number);
+    [myScene prepareForDisplay];
+    return myScene;
+}
+
+
 -(instancetype)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         NSLog(@"InitWithSizeCalled on CBMYScene");
-        [self prepareForDisplay];
+        
     }
     return self;
 }
+
+
+
 
 -(void)prepareForDisplay {
     NSLog(@"PREPARE FOR DISPLAY IN CBMyScene");
@@ -72,18 +108,23 @@ CMMotionManager *_motionManager;
 
 
 -(void)setWallsValues {
-    CBWall * wall = [CBWall wall];
-    [wall setPosition:CGPointMake(50, 0)];
-    wall.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:wall.size.width/2];
-    //unit.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:unit.size.height];
-    wall.physicsBody.dynamic = NO;
-    wall.physicsBody.categoryBitMask = wallCategory;
-    wall.physicsBody.collisionBitMask = playerCategory | projectileCategory | enemyUnitCategory | monsterCategory;
-    wall.physicsBody.usesPreciseCollisionDetection = NO;
-    
-    [self.currentWorld addChild:wall];
-    
-    [self.walls addObject:wall];
+    CGSize frameSize = self.currentWorld.frame.size;
+    for (NSValue * pointValue in self->wallPositions){
+        NSLog(@"SETTING WALS VALUES FOR A WALL");
+        CBWall * wall = [CBWall wall];
+        CGPoint wallPosition = [pointValue CGPointValue];
+        [wall setPosition:wallPosition];
+        wall.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:wall.size.width/2];
+        wall.physicsBody.dynamic = NO;
+        wall.physicsBody.categoryBitMask = wallCategory;
+        wall.physicsBody.collisionBitMask = playerCategory | projectileCategory | enemyUnitCategory | monsterCategory;
+        wall.physicsBody.usesPreciseCollisionDetection = NO;
+        
+        [self.currentWorld addChild:wall];
+        
+        [self.walls addObject:wall];
+        
+    }
     
 }
 
