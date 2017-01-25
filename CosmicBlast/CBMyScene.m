@@ -28,7 +28,7 @@ static const uint32_t wallCategory = 0x1 << 5;
 
 @implementation CBMyScene{
     NSMutableArray * wallPositions;
-
+    NSMutableArray * unitDescriptions;
 }
 
 CBTiltVisualizer * tiltVisualizer;
@@ -48,17 +48,42 @@ CMMotionManager *_motionManager;
     int number = dummyScene.children.count;
     CBMyScene * myScene = [CBMyScene sceneWithSize:size];
     myScene->wallPositions = [[NSMutableArray alloc] init];
+    myScene->unitDescriptions = [[NSMutableArray alloc] init];
     for (SKSpriteNode * child in dummyScene.children) {
         if ([child.name isEqualToString:@"wall"]){
             NSLog(@"child Name is equal to wall");
             [myScene->wallPositions addObject:[NSValue valueWithCGPoint:child.position]];
         } else if([child.name isEqualToString:@"unit"]){
-            NSLog(@"child Name is equal to unit");
+            CGPoint position = child.position;
+            //int movement = [child.userData valueForKey:@"movement"];
+            int attack = [[child.userData valueForKey:@"attack"] intValue];
+            NSLog(@"attack = %d", attack);
+            int movement = [[child.userData valueForKey:@"movement"] intValue];
+            NSLog(@"movement = %d", movement);
+            struct UnitDescription description;
+            description.attack = attack;
+            description.movement = movement;
+            description.position = position;
+            
+//            for(NSString *key in [child.userData allKeys]) {
+//                
+//                NSLog(@"%@",[child.userData objectForKey:key]);
+//            }
+            
+//            UnitDescription unit =
+            //myScene->unitDescriptions addObject:
+            NSValue * value = [NSValue valueWithBytes:&description objCType:@encode(struct UnitDescription)];
+            //NSValue * value = [NSValue valueWithPointer:&description];
+            [myScene->unitDescriptions addObject:value];
+            NSLog(@"myScene->unitDescriptions.count (in loop) = %d", (int)myScene->unitDescriptions.count);
+            
+            NSLog(@"child Name is equal to unit.  struct value added to dictionary");
         } else {
             NSLog(@"child Name unknown");
         }
+    
     }
-    NSLog(@"GameScene.children.count = %d", number);
+    NSLog(@"myScene->unitDescriptions.count (out loop) = %d", (int)myScene->unitDescriptions.count);
     [myScene prepareForDisplay];
     return myScene;
 }
@@ -195,17 +220,28 @@ CMMotionManager *_motionManager;
     GameValues *gameValues = [[GameValues alloc] init];
     //set up Units
     //Change this depending on levels
-    NSArray * locationArray = [gameValues getUnitLocations];
-    NSArray * behaviorArray = [gameValues getUnitBehaviors];
-    //locations and behaviors should be of the same length
+//    NSArray * locationArray = [gameValues getUnitLocations];
+//    NSArray * behaviorArray = [gameValues getUnitBehaviors];
     
-    for (int i = 0; i < locationArray.count; i++){
-        NSValue * point = locationArray[i];
-        NSValue * behaviorPair = behaviorArray[i];
-        CBEnemyUnit * newUnit = [self placeUnitAtPosition:[point CGPointValue]];
-        [newUnit setUnitMovementBehavior:[behaviorPair CGPointValue].x];
-        [newUnit setUnitAttackBehavior:[behaviorPair CGPointValue].y];
+    //locations and behaviors should be of the same length
+    NSLog(@"self->unitDescriptions.count = %d", (int)self->unitDescriptions.count);
+    for (NSValue * description in self->unitDescriptions){
+        struct UnitDescription structValue;
+        [description getValue:&structValue];
+        NSLog(@"structValue.Attack = %d",structValue.attack);
+        CBEnemyUnit * newUnit = [self placeUnitAtPosition:structValue.position];
+        [newUnit setUnitMovementBehavior:structValue.movement];
+        [newUnit setUnitAttackBehavior:structValue.attack];
     }
+    
+//    
+//    for (int i = 0; i < locationArray.count; i++){
+//        NSValue * point = locationArray[i];
+//        NSValue * behaviorPair = behaviorArray[i];
+//        CBEnemyUnit * newUnit = [self placeUnitAtPosition:[point CGPointValue]];
+//        [newUnit setUnitMovementBehavior:[behaviorPair CGPointValue].x];
+//        [newUnit setUnitAttackBehavior:[behaviorPair CGPointValue].y];
+//    }
 //    for (NSValue * point in array){
 //        CBEnemyUnit * newUnit = [self placeUnitAtPosition:[point CGPointValue]];
 //        [newUnit setUnitMovementBehavior:BehaviorType_None];
@@ -563,6 +599,11 @@ CMMotionManager *_motionManager;
     NSLog(@"executeButtonFunction Called in CBMyScene.m,: %@",function);
 }
 
+struct UnitDescription{
+    CGPoint position;
+    int movement;
+    int attack;
+};
 
 
 @end

@@ -140,7 +140,7 @@
     float newDirection = atan2(-directionVector.x, directionVector.y);
     self.zRotation = newDirection;
     self.parent.position = newParentPosition;
-    
+    //self.parent.parent.zRotation = newDirection*-1;
 }
 
 
