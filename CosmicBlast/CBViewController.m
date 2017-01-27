@@ -79,7 +79,11 @@
     
     NSLog(@"LAUNCH GAME SCENE CALLED");
     SKView * skView = (SKView *)self.view;
-    CBMyScene * gameScene = [CBMyScene unarchiveFromFile:@"GrassWorld" withSize:skView.bounds.size];
+    int currentLevel = (int)[[NSUserDefaults standardUserDefaults] integerForKey: @"currentLevel"];
+
+    NSString * fileName = [NSString stringWithFormat:@"Level-%d", currentLevel];
+    
+    CBMyScene * gameScene = [CBMyScene unarchiveFromFile:fileName withSize:skView.bounds.size];
     //[gameScene prepareForDisplay];
 
     //[CBMyScene sceneWithSize:skView.bounds.size];

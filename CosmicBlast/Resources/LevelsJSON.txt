@@ -2,8 +2,8 @@
     "levels": [
         {
             "number": 1,
-            "imageName": "Mothership.png",
-            "shape": "circle",
+            "imageName": "GrassWorld.png",
+            "shape": "square",
             "Units": [{"movement": 0,"attack": 0,"x": 100, "y": 100}]
         },
         {

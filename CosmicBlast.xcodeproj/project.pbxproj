@@ -12,7 +12,7 @@
 		6515FAD419AFB6DE00E82568 /* CBVectorMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 6515FAD319AFB6DE00E82568 /* CBVectorMath.m */; };
 		6515FAD719AFD25800E82568 /* CBPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6515FAD619AFD25800E82568 /* CBPlayer.m */; };
 		65171B421DF0F012001F58E7 /* LevelsJSON.txt in Resources */ = {isa = PBXBuildFile; fileRef = 65171B411DF0F012001F58E7 /* LevelsJSON.txt */; };
-		651A9EA61E36F88400BE254E /* GrassWorld.sks in Resources */ = {isa = PBXBuildFile; fileRef = 651A9EA51E36F88400BE254E /* GrassWorld.sks */; };
+		651A9EA61E36F88400BE254E /* Level-1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 651A9EA51E36F88400BE254E /* Level-1.sks */; };
 		6529D9721D061A0300A31762 /* checker.png in Resources */ = {isa = PBXBuildFile; fileRef = 6529D9711D061A0300A31762 /* checker.png */; };
 		654DC4151DFB5D860005002E /* CBWall.m in Sources */ = {isa = PBXBuildFile; fileRef = 654DC4141DFB5D860005002E /* CBWall.m */; };
 		65545A8319C1443B005F1073 /* CBItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 65545A8219C1443B005F1073 /* CBItem.m */; };
@@ -51,6 +51,9 @@
 		658FE4C21D2218010057D641 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FE4C11D2218010057D641 /* DataController.swift */; };
 		658FE4C41D236B540057D641 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FE4C31D236B540057D641 /* DatabaseManager.swift */; };
 		65977D561CD5232400BFEAB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65977D551CD5232400BFEAB9 /* LaunchScreen.storyboard */; };
+		65AF0B7A1E3AD6B8008DDE91 /* Level-2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65AF0B791E3AD6B8008DDE91 /* Level-2.sks */; };
+		65AF0B7D1E3AD9BB008DDE91 /* Level-3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65AF0B7C1E3AD9BB008DDE91 /* Level-3.sks */; };
+		65AF0B7F1E3ADA40008DDE91 /* Level-4.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65AF0B7E1E3ADA40008DDE91 /* Level-4.sks */; };
 		65B792EC1CD6CDAE00FC7A28 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B792EB1CD6CDAE00FC7A28 /* MainMenuViewController.swift */; };
 		65BA8A8419B8E187003DCDD9 /* CBWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8A8319B8E187003DCDD9 /* CBWalker.m */; };
 		65BA8A8719B8E4B6003DCDD9 /* CBEnemyUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8A8619B8E4B6003DCDD9 /* CBEnemyUnit.m */; };
@@ -83,7 +86,7 @@
 		6515FAD519AFD25800E82568 /* CBPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBPlayer.h; sourceTree = "<group>"; };
 		6515FAD619AFD25800E82568 /* CBPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBPlayer.m; sourceTree = "<group>"; };
 		65171B411DF0F012001F58E7 /* LevelsJSON.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LevelsJSON.txt; sourceTree = "<group>"; };
-		651A9EA51E36F88400BE254E /* GrassWorld.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GrassWorld.sks; sourceTree = "<group>"; };
+		651A9EA51E36F88400BE254E /* Level-1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-1.sks"; sourceTree = "<group>"; };
 		6529D9711D061A0300A31762 /* checker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checker.png; sourceTree = "<group>"; };
 		652D56701D01017500AF13C3 /* CBButtonDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CBButtonDelegate.h; path = ../CBButtonDelegate.h; sourceTree = "<group>"; };
 		654DC4131DFB5D860005002E /* CBWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWall.h; sourceTree = "<group>"; };
@@ -139,6 +142,9 @@
 		658FE4C31D236B540057D641 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		65977D551CD5232400BFEAB9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6599EC711D02374C00DE1693 /* CBGameSceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBGameSceneDelegate.h; sourceTree = "<group>"; };
+		65AF0B791E3AD6B8008DDE91 /* Level-2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-2.sks"; sourceTree = "<group>"; };
+		65AF0B7C1E3AD9BB008DDE91 /* Level-3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-3.sks"; sourceTree = "<group>"; };
+		65AF0B7E1E3ADA40008DDE91 /* Level-4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-4.sks"; sourceTree = "<group>"; };
 		65B792EA1CD6CDAE00FC7A28 /* CosmicBlast-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CosmicBlast-Bridging-Header.h"; sourceTree = "<group>"; };
 		65B792EB1CD6CDAE00FC7A28 /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		65BA8A8219B8E187003DCDD9 /* CBWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWalker.h; sourceTree = "<group>"; };
@@ -236,7 +242,7 @@
 				6529D9711D061A0300A31762 /* checker.png */,
 				650790091B9CD7DA00F9931F /* Background.png */,
 				65977D551CD5232400BFEAB9 /* LaunchScreen.storyboard */,
-				651A9EA51E36F88400BE254E /* GrassWorld.sks */,
+				65AF0B7B1E3AD842008DDE91 /* Levels */,
 				656ADE791DA47F8F00766DB4 /* MainMenu */,
 				6579701719BE458F00E2B9D9 /* App */,
 				658FE4C51D236B5B0057D641 /* DataModel */,
@@ -413,6 +419,17 @@
 			name = DataModel;
 			sourceTree = "<group>";
 		};
+		65AF0B7B1E3AD842008DDE91 /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				651A9EA51E36F88400BE254E /* Level-1.sks */,
+				65AF0B791E3AD6B8008DDE91 /* Level-2.sks */,
+				65AF0B7C1E3AD9BB008DDE91 /* Level-3.sks */,
+				65AF0B7E1E3ADA40008DDE91 /* Level-4.sks */,
+			);
+			name = Levels;
+			sourceTree = "<group>";
+		};
 		F3CA62840DF9A2892D49E6DF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -507,15 +524,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65AF0B7A1E3AD6B8008DDE91 /* Level-2.sks in Resources */,
 				6566BEBF1980387400602447 /* sprites.atlas in Resources */,
 				6529D9721D061A0300A31762 /* checker.png in Resources */,
+				65AF0B7F1E3ADA40008DDE91 /* Level-4.sks in Resources */,
 				65977D561CD5232400BFEAB9 /* LaunchScreen.storyboard in Resources */,
 				65171B421DF0F012001F58E7 /* LevelsJSON.txt in Resources */,
 				657432D71CEBEEA900EB6864 /* Level1.sks in Resources */,
-				651A9EA61E36F88400BE254E /* GrassWorld.sks in Resources */,
+				651A9EA61E36F88400BE254E /* Level-1.sks in Resources */,
 				6566BEBD1980387400602447 /* background-music-aac.caf in Resources */,
 				6566BE8919802D5D00602447 /* InfoPlist.strings in Resources */,
 				6507900A1B9CD7DA00F9931F /* Background.png in Resources */,
+				65AF0B7D1E3AD9BB008DDE91 /* Level-3.sks in Resources */,
 				6566BE9C19802D5D00602447 /* Images.xcassets in Resources */,
 				6566BE9219802D5D00602447 /* Main.storyboard in Resources */,
 				6566BEBE1980387400602447 /* pew-pew-lei.caf in Resources */,
