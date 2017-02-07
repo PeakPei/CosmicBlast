@@ -341,7 +341,7 @@ CMMotionManager *_motionManager;
         if (shot==nil) {
             //NSLog(@"SHOT IS NIL");
             
-            //DO NOTHING IF SHOT IS NILL
+            //DO NOTHING IF SHOT IS NIL
             
         } else {
             shot.physicsBody.categoryBitMask = monsterCategory;
@@ -456,7 +456,10 @@ CMMotionManager *_motionManager;
     }
 }
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+
+
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     //  This is going to need to be changed.  Will need to split behavior of different items up somehow
     //
@@ -569,8 +572,12 @@ CMMotionManager *_motionManager;
         
         
         
+        
     }
 }
+
+
+
 
 -(void)executeButtonFunction:(NSString *)function{
     

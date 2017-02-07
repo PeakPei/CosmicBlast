@@ -69,13 +69,7 @@
 }
 
 
-
-
-
-
-//should handle player movement and map movement
--(void)movePlayerWithAccelerationXvalue:(double)x yValue:(double)y speed:(int)speed{
-    
+-(CGVector)dampenMovementVectorWith:(double)x :(double)y{
     
     //X data first
     NSNumber * lineXData = [NSNumber numberWithFloat:roundf(x*200.0)/200.0];
@@ -101,6 +95,34 @@
         yTotal += [y floatValue];
     }
     float moveY = yTotal/[pastYData count];
+    
+    return CGVectorMake(moveX, moveY);
+}
+
+
+
+//should handle player movement and map movement
+-(void)movePlayerWithAccelerationXvalue:(double)x yValue:(double)y speed:(int)speed{
+    
+    
+    
+    CGVector move = [self dampenMovementVectorWith:x :y];
+    
+    float moveX = move.dx;
+    float moveY = move.dy;
+    
+//    NSLog(@"self.velocity = %f moveY = %f", moveX, moveY);
+//    [self endBreaking];
+//    if ([CBVectorMath vectorLength:move]<0.05){
+//        [self startBreaking];
+//    } else if ([CBVectorMath vectorLength:move] < 0.1) {
+//        moveY = 0;
+//        moveX = 0;
+//    } else {
+//        
+//    }
+
+    
     
     
     

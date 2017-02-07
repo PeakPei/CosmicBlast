@@ -30,4 +30,6 @@
 
 +(CGVector)vectorNormalize:(CGVector)a;
 
++(float)vectorLength:(CGVector)a;
+
 @end

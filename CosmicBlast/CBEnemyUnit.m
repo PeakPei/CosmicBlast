@@ -103,12 +103,12 @@
                 NSLog(@"randomVector = x: %f, y: %f",randomVector.dx,randomVector.dy);
                 CGVector randomDirection = [CBVectorMath vectorNormalize:randomVector];
                 NSLog(@"randomDirection = x: %f, y: %f",randomDirection.dx,randomDirection.dy);
-                CGVector shotVector = [CBVectorMath vectorMult:randomDirection Value:[gameValues playerShotSpeed]];
+                CGVector shotVector = [CBVectorMath vectorMult:randomDirection Value:[gameValues unitShotSpeed]];
                 projectile.physicsBody.velocity = shotVector;
                 break;
             case BehaviorType_Aggressive:
             {
-                CGVector shotVector = [CBVectorMath vectorMult:directionToPlayer Value:[gameValues playerShotSpeed]];
+                CGVector shotVector = [CBVectorMath vectorMult:directionToPlayer Value:[gameValues unitShotSpeed]];
                 projectile.physicsBody.velocity = shotVector;
                 break;
             }
@@ -175,18 +175,17 @@
     //GameValues * gameValues = [[GameValues alloc] init];
     switch (_movementBehavior){
         case BehaviorType_None:
-            NSLog(@"applying none movement behavior type");
             self.physicsBody.dynamic = NO;
             break;
         case BehaviorType_Random:
-            NSLog(@"applying random movement behavior type");
             //[self.physicsBody applyForce:CGVectorMake(10,10)];
+            
             break;
-        case BehaviorType_Aggressive:
-            NSLog(@"applying aggressive movement behavior type");
+        case BehaviorType_Aggressive:{
             CGVector movementVector = [CBVectorMath vectorMult:directionToPlayer Value:10];
             [self.physicsBody applyForce:movementVector];
             break;
+        }
         default:
             break;
     }

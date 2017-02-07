@@ -56,8 +56,9 @@
 +(CGPoint)cbVectorNormalize:(CGPoint)a{
     float length = [CBVectorMath cbVectorLength:a];
     return CGPointMake(a.x / length, a.y/length);
-    
 }
+
+
 
 
 @end
