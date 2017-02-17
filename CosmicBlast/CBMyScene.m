@@ -140,6 +140,8 @@ CMMotionManager *_motionManager;
         CGPoint wallPosition = [pointValue CGPointValue];
         [wall setPosition:wallPosition];
         wall.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:wall.size.width/2];
+        wall.physicsBody.restitution = 1
+        ;
         wall.physicsBody.dynamic = NO;
         wall.physicsBody.categoryBitMask = wallCategory;
         wall.physicsBody.collisionBitMask = playerCategory | projectileCategory | enemyUnitCategory | monsterCategory;
@@ -157,7 +159,13 @@ CMMotionManager *_motionManager;
     GameValues * gameValues = [[GameValues alloc] init];
     
     //physics body for player
-    self.player.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.player.size.height/2];
+    
+    //self.player.physicsBody = [SKPhysicsBody bodyWithTexture: self.player.texture alphaThreshold: 0.1 size:self.player.size];
+    self.player.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.player.size.width/2];
+    //self.player.physicsBody.
+    
+    
+    //[SKPhysicsBody bodyWithCircleOfRadius:self.player.size.height/2];
     //self.player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.player.frame.size];
     self.player.physicsBody.mass = 0.05;
     self.player.physicsBody.dynamic = YES;
@@ -165,7 +173,9 @@ CMMotionManager *_motionManager;
     self.player.physicsBody.contactTestBitMask = monsterCategory;
     self.player.physicsBody.collisionBitMask = enemyUnitCategory | edgeCategory | monsterCategory | wallCategory;
     self.player.physicsBody.usesPreciseCollisionDetection = NO;
-    
+    self.player.physicsBody.restitution = 0;
+    self.player.physicsBody.linearDamping = 3;
+    self.player.physicsBody.allowsRotation = NO;
     
     if([[gameValues worldShape]  isEqual: @"circle"]){
         //Uncomment for circular level
@@ -481,12 +491,14 @@ CMMotionManager *_motionManager;
     projectile.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:projectile.size.width/2];
     projectile.physicsBody.mass = 0.008;
     projectile.physicsBody.dynamic = YES;
+
     projectile.physicsBody.categoryBitMask = projectileCategory;
     projectile.physicsBody.contactTestBitMask = monsterCategory;
     projectile.physicsBody.collisionBitMask = enemyUnitCategory | wallCategory | edgeCategory;
     projectile.physicsBody.usesPreciseCollisionDetection = NO;
-    projectile.physicsBody.restitution = 0.5;
+    projectile.physicsBody.restitution = 1;
     projectile.physicsBody.friction = 0;
+    
     
     
     

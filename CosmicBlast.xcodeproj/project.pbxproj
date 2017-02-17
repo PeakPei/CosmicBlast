@@ -51,6 +51,7 @@
 		658FE4C21D2218010057D641 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FE4C11D2218010057D641 /* DataController.swift */; };
 		658FE4C41D236B540057D641 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FE4C31D236B540057D641 /* DatabaseManager.swift */; };
 		65977D561CD5232400BFEAB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65977D551CD5232400BFEAB9 /* LaunchScreen.storyboard */; };
+		65A70F761E4E1E54007D3CC4 /* DSMultilineLabelNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A70F751E4E1E54007D3CC4 /* DSMultilineLabelNode.m */; };
 		65AF0B7A1E3AD6B8008DDE91 /* Level-2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65AF0B791E3AD6B8008DDE91 /* Level-2.sks */; };
 		65AF0B7D1E3AD9BB008DDE91 /* Level-3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65AF0B7C1E3AD9BB008DDE91 /* Level-3.sks */; };
 		65AF0B7F1E3ADA40008DDE91 /* Level-4.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65AF0B7E1E3ADA40008DDE91 /* Level-4.sks */; };
@@ -142,6 +143,8 @@
 		658FE4C31D236B540057D641 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		65977D551CD5232400BFEAB9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6599EC711D02374C00DE1693 /* CBGameSceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBGameSceneDelegate.h; sourceTree = "<group>"; };
+		65A70F741E4E1E54007D3CC4 /* DSMultilineLabelNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSMultilineLabelNode.h; sourceTree = "<group>"; };
+		65A70F751E4E1E54007D3CC4 /* DSMultilineLabelNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSMultilineLabelNode.m; sourceTree = "<group>"; };
 		65AF0B791E3AD6B8008DDE91 /* Level-2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-2.sks"; sourceTree = "<group>"; };
 		65AF0B7C1E3AD9BB008DDE91 /* Level-3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-3.sks"; sourceTree = "<group>"; };
 		65AF0B7E1E3ADA40008DDE91 /* Level-4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-4.sks"; sourceTree = "<group>"; };
@@ -402,6 +405,8 @@
 				655D4D501B7ADC5D0055FEB1 /* CBDataBase.m */,
 				655D4D4C1B7955550055FEB1 /* CBStats.h */,
 				655D4D4D1B7955550055FEB1 /* CBStats.m */,
+				65A70F741E4E1E54007D3CC4 /* DSMultilineLabelNode.h */,
+				65A70F751E4E1E54007D3CC4 /* DSMultilineLabelNode.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -637,6 +642,7 @@
 				6579700F19BE43CE00E2B9D9 /* CBButtonBar.m in Sources */,
 				658FE4C01D2217AD0057D641 /* WorldSettings.swift in Sources */,
 				6515FAD719AFD25800E82568 /* CBPlayer.m in Sources */,
+				65A70F761E4E1E54007D3CC4 /* DSMultilineLabelNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

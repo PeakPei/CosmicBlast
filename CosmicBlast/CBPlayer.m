@@ -146,8 +146,9 @@
     CGPoint velocityPoint = CGPointMake(self.physicsBody.velocity.dx, self.physicsBody.velocity.dy);
     CGFloat playerSpeed = [CBVectorMath cbVectorLength:velocityPoint];
  //   NSLog(@"playerSpeed: %f", playerSpeed);
+    CGPoint direction = [CBVectorMath cbVectorNormalize:velocityPoint];
     if (playerSpeed > self.maxSpeed) {
-        CGPoint direction = [CBVectorMath cbVectorNormalize:velocityPoint];
+        
         CGPoint newVelocityPoint = [CBVectorMath cbVectorMultFirst:direction Value:self.maxSpeed];
         CGVector newVelocity = CGVectorMake(newVelocityPoint.x, newVelocityPoint.y);
         self.physicsBody.velocity = newVelocity;
@@ -159,8 +160,13 @@
     CGPoint newParentPosition = CGPointMake((-self.position.x)+parentOffsetX, (-self.position.y)+parentOffsetY);
     CGPoint directionVector = [CBVectorMath cbVectorSubFirst:newParentPosition Second:self.parent.position];
     directionVector = [CBVectorMath cbVectorNormalize:directionVector];
+    
+
+    
     float newDirection = atan2(-directionVector.x, directionVector.y);
+    //float newDirection = atan2(direction.x, -direction.y);
     self.zRotation = newDirection;
+    //self.zRotation = direction;
     self.parent.position = newParentPosition;
     //self.parent.parent.zRotation = newDirection*-1;
 }
