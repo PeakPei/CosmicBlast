@@ -16,6 +16,7 @@
 
 
 
+
 //properties for stats
 @property int kills;
 
@@ -36,6 +37,6 @@
 
 -(void)playerHit;
 
-
+-(BOOL)weaponRecharged;
 
 @end

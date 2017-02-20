@@ -4,25 +4,21 @@
             "number": 1,
             "imageName": "GrassWorld.png",
             "shape": "square",
-            "Units": [{"movement": 0,"attack": 0,"x": 100, "y": 100}]
         },
         {
             "number": 2,
             "imageName": "RockWorld.png",
             "shape": "square",
-            "Units": [{"movement": 1,"attack": 1,"x": -100, "y": 100}]
         },
         {
             "number": 3,
             "imageName": "IceWorld.png",
             "shape": "square",
-            "Units": [{"movement": 2,"attack": 2,"x": 100, "y": -100}]
         },
         {
             "number": 4,
             "imageName": "Mothership.png",
             "shape": "circle",
-            "Units": [{"movement": 2,"attack": 2,"x": 100, "y": -100},{"movement": 2,"attack": 2,"x": 100, "y": -100},{"movement": 2,"attack": 2,"x": 100, "y": -100},{"movement": 2,"attack": 2,"x": 100, "y": -100}]
         }
     ]
 }

@@ -486,60 +486,66 @@ CMMotionManager *_motionManager;
     //VVV Should be moved to CBShuriken VVV
     //set up initial location
     //SKSpriteNode * projectile = [SKSpriteNode spriteNodeWithImageNamed:@"projectile"];
-    SKSpriteNode * projectile = [CBShuriken shuriken];
-    projectile.position = self.player.position;
-    projectile.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:projectile.size.width/2];
-    projectile.physicsBody.mass = 0.008;
-    projectile.physicsBody.dynamic = YES;
+    if([self.player weaponRecharged]){
+        
+        
+        SKSpriteNode * projectile = [CBShuriken shuriken];
+        projectile.position = self.player.position;
+        projectile.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:projectile.size.width/2];
+        projectile.physicsBody.mass = 0.008;
+        projectile.physicsBody.dynamic = YES;
+        projectile.physicsBody.usesPreciseCollisionDetection = NO;
+        projectile.physicsBody.restitution = 1;
+        projectile.physicsBody.friction = 0;
+    
+    
 
-    projectile.physicsBody.categoryBitMask = projectileCategory;
-    projectile.physicsBody.contactTestBitMask = monsterCategory;
-    projectile.physicsBody.collisionBitMask = enemyUnitCategory | wallCategory | edgeCategory;
-    projectile.physicsBody.usesPreciseCollisionDetection = NO;
-    projectile.physicsBody.restitution = 1;
-    projectile.physicsBody.friction = 0;
-    
-    
-    
-    
-    //configure offset
-    CGPoint offset = [CBVectorMath cbVectorSubFirst:location Second:projectile.position];
-    
-    
-    
-    //Add the projectile
-    [self.currentWorld addChild:projectile];
-    
-    //Get shooting direction
-    CGPoint direction = [CBVectorMath cbVectorNormalize:offset];
-
-    
-    //Create shot vector
-    CGPoint shotPoint = [CBVectorMath cbVectorMultFirst:direction Value:[gameValues playerShotSpeed]];
-    CGVector shotVector = CGVectorMake(shotPoint.x, shotPoint.y);
-    
-    //projectile.physicsBody.velocity = shotVector;
-    projectile.physicsBody.velocity = [CBVectorMath vectorAddFirst:shotVector second:self.player.physicsBody.velocity];
-    //Add shot vector to current position
-    
-    
-    
-    //Create actions
+        projectile.physicsBody.categoryBitMask = projectileCategory;
+        projectile.physicsBody.contactTestBitMask = monsterCategory;
+        projectile.physicsBody.collisionBitMask = enemyUnitCategory | wallCategory | edgeCategory;
 
     
     
-    //SKAction * actionMove = [SKAction moveTo:realDest duration: realMoveDuration];
-    
-    SKAction * actionWait = [SKAction waitForDuration:1];
-    
-    SKAction * actionMoveDone = [SKAction removeFromParent];
     
     
+        //configure offset
+        CGPoint offset = [CBVectorMath cbVectorSubFirst:location Second:projectile.position];
     
-    [projectile runAction:[SKAction sequence:@[actionWait, actionMoveDone]]];
     
-    //^^^ end add to CBShuriken
     
+        //Add the projectile
+        [self.currentWorld addChild:projectile];
+    
+        //Get shooting direction
+        CGPoint direction = [CBVectorMath cbVectorNormalize:offset];
+
+    
+        //Create shot vector
+        CGPoint shotPoint = [CBVectorMath cbVectorMultFirst:direction Value:[gameValues playerShotSpeed]];
+        CGVector shotVector = CGVectorMake(shotPoint.x, shotPoint.y);
+    
+        //projectile.physicsBody.velocity = shotVector;
+        projectile.physicsBody.velocity = [CBVectorMath vectorAddFirst:shotVector second:self.player.physicsBody.velocity];
+        //Add shot vector to current position
+    
+    
+    
+        //Create actions
+
+    
+    
+        //SKAction * actionMove = [SKAction moveTo:realDest duration: realMoveDuration];
+    
+        SKAction * actionWait = [SKAction waitForDuration:1];
+    
+        SKAction * actionMoveDone = [SKAction removeFromParent];
+    
+    
+    
+        [projectile runAction:[SKAction sequence:@[actionWait, actionMoveDone]]];
+    
+        //^^^ end add to CBShuriken
+    }
 }
 
 

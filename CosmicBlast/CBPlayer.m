@@ -5,7 +5,7 @@
 //  Created by Teddy Kitchen on 8/28/14.
 //  Copyright (c) 2014 Teddy Kitchen. All rights reserved.
 //
-
+#import <QuartzCore/QuartzCore.h>
 #import "CBPlayer.h"
 #import "CBLogger.h"
 #import "CBVectorMath.h"
@@ -18,6 +18,8 @@
     NSMutableArray * pastYData;
     int accelerometerDataMemoryLength;
     BOOL breaking;
+    CFTimeInterval lastShotTime;
+
 }
 
 
@@ -31,6 +33,9 @@
     player -> pastXData = [[NSMutableArray alloc] init];
     player -> pastYData = [[NSMutableArray alloc] init];
     player -> accelerometerDataMemoryLength = (int)[[[GameValues alloc] init] accelerometerDataMemoryLength];
+
+    player -> lastShotTime = 0;
+    // perform some action
     return player;
 }
 
@@ -63,7 +68,7 @@
 //    [emitter setParticleColor:[UIColor greenColor]];
 //    [emitter setParticleLifetime:100];
 //    [emitter setEmissionAngleRange:(2*M_PI)];
-//    //[emitter setEmissionAngle:];
+//    [emitter setEmissionAngle:player.zRotation];
 //    [player addChild:emitter];
     
 }
@@ -171,6 +176,20 @@
     //self.parent.parent.zRotation = newDirection*-1;
 }
 
+
+
+-(BOOL)weaponRecharged{
+    CFTimeInterval shotWaitTime = [[[GameValues alloc] init] playerShotRechargeTime];
+    CFTimeInterval elapsedTime = CACurrentMediaTime() - lastShotTime;
+    
+    if(elapsedTime > shotWaitTime){
+        self->lastShotTime = CACurrentMediaTime();
+        return true;
+    } else {
+        return false;
+    }
+    
+}
 
 
 -(void)startBreaking{

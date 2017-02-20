@@ -100,7 +100,9 @@ class GameValues: NSObject {
     
     var shotSize: CGSize = CGSize(width: 8,height: 8)
     var shotColor: UIColor = UIColor.orange
-    var playerShotSpeed: Int = 700
+    var playerShotSpeed: Int = 600
+    var playerShotRechargeTime = 0.3
+    
     
     //Enemy Characteristics
     var walkerColor:UIColor = UIColor.darkGray
