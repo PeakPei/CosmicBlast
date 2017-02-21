@@ -43,6 +43,22 @@
 		6579700F19BE43CE00E2B9D9 /* CBButtonBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6579700E19BE43CE00E2B9D9 /* CBButtonBar.m */; };
 		6579701219BE43E200E2B9D9 /* CBButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6579701119BE43E200E2B9D9 /* CBButton.m */; };
 		65869F7B1A3A8C260076B9D4 /* CBHealthBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 65869F7A1A3A8C260076B9D4 /* CBHealthBar.m */; };
+		658BE5D91E5B9DCD00601C95 /* Level-5.sks in Resources */ = {isa = PBXBuildFile; fileRef = 658BE5D81E5B9DCD00601C95 /* Level-5.sks */; };
+		658BE5DB1E5BAB7A00601C95 /* Level-6.sks in Resources */ = {isa = PBXBuildFile; fileRef = 658BE5DA1E5BAB7A00601C95 /* Level-6.sks */; };
+		658BE5DD1E5BAB8900601C95 /* Level-7.sks in Resources */ = {isa = PBXBuildFile; fileRef = 658BE5DC1E5BAB8900601C95 /* Level-7.sks */; };
+		658BE5DF1E5BAB9D00601C95 /* Level-8.sks in Resources */ = {isa = PBXBuildFile; fileRef = 658BE5DE1E5BAB9D00601C95 /* Level-8.sks */; };
+		658BE5E11E5BABAE00601C95 /* Level-9.sks in Resources */ = {isa = PBXBuildFile; fileRef = 658BE5E01E5BABAE00601C95 /* Level-9.sks */; };
+		658BE5E31E5BABB800601C95 /* Level-10.sks in Resources */ = {isa = PBXBuildFile; fileRef = 658BE5E21E5BABB800601C95 /* Level-10.sks */; };
+		658BE5E51E5BABCA00601C95 /* Level-11.sks in Resources */ = {isa = PBXBuildFile; fileRef = 658BE5E41E5BABCA00601C95 /* Level-11.sks */; };
+		658BE5E71E5BABD400601C95 /* Level-12.sks in Resources */ = {isa = PBXBuildFile; fileRef = 658BE5E61E5BABD400601C95 /* Level-12.sks */; };
+		658BE5E91E5BABDF00601C95 /* Level-13.sks in Resources */ = {isa = PBXBuildFile; fileRef = 658BE5E81E5BABDF00601C95 /* Level-13.sks */; };
+		658BE5EB1E5BABE800601C95 /* Level-14.sks in Resources */ = {isa = PBXBuildFile; fileRef = 658BE5EA1E5BABE800601C95 /* Level-14.sks */; };
+		658BE5ED1E5BABF000601C95 /* Level-15.sks in Resources */ = {isa = PBXBuildFile; fileRef = 658BE5EC1E5BABF000601C95 /* Level-15.sks */; };
+		658BE5EF1E5BABF800601C95 /* Level-16.sks in Resources */ = {isa = PBXBuildFile; fileRef = 658BE5EE1E5BABF800601C95 /* Level-16.sks */; };
+		658BE5F11E5BAC0200601C95 /* Level-17.sks in Resources */ = {isa = PBXBuildFile; fileRef = 658BE5F01E5BAC0200601C95 /* Level-17.sks */; };
+		658BE5F31E5BAC0C00601C95 /* Level-18.sks in Resources */ = {isa = PBXBuildFile; fileRef = 658BE5F21E5BAC0C00601C95 /* Level-18.sks */; };
+		658BE5F51E5BAC1500601C95 /* Level-19.sks in Resources */ = {isa = PBXBuildFile; fileRef = 658BE5F41E5BAC1500601C95 /* Level-19.sks */; };
+		658BE5F71E5BAC1B00601C95 /* Level-20.sks in Resources */ = {isa = PBXBuildFile; fileRef = 658BE5F61E5BAC1B00601C95 /* Level-20.sks */; };
 		658FE4B01D21FB8B0057D641 /* GameSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FE4AF1D21FB8B0057D641 /* GameSettingsViewController.swift */; };
 		658FE4B21D21FBDA0057D641 /* StringUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FE4B11D21FBDA0057D641 /* StringUtilities.swift */; };
 		658FE4BC1D22170E0057D641 /* GameDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 658FE4BA1D22170E0057D641 /* GameDataModel.xcdatamodeld */; };
@@ -134,6 +150,22 @@
 		6579701119BE43E200E2B9D9 /* CBButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBButton.m; sourceTree = "<group>"; };
 		65869F791A3A8C260076B9D4 /* CBHealthBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHealthBar.h; sourceTree = "<group>"; };
 		65869F7A1A3A8C260076B9D4 /* CBHealthBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHealthBar.m; sourceTree = "<group>"; };
+		658BE5D81E5B9DCD00601C95 /* Level-5.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-5.sks"; sourceTree = "<group>"; };
+		658BE5DA1E5BAB7A00601C95 /* Level-6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-6.sks"; sourceTree = "<group>"; };
+		658BE5DC1E5BAB8900601C95 /* Level-7.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-7.sks"; sourceTree = "<group>"; };
+		658BE5DE1E5BAB9D00601C95 /* Level-8.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-8.sks"; sourceTree = "<group>"; };
+		658BE5E01E5BABAE00601C95 /* Level-9.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-9.sks"; sourceTree = "<group>"; };
+		658BE5E21E5BABB800601C95 /* Level-10.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-10.sks"; sourceTree = "<group>"; };
+		658BE5E41E5BABCA00601C95 /* Level-11.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-11.sks"; sourceTree = "<group>"; };
+		658BE5E61E5BABD400601C95 /* Level-12.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-12.sks"; sourceTree = "<group>"; };
+		658BE5E81E5BABDF00601C95 /* Level-13.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-13.sks"; sourceTree = "<group>"; };
+		658BE5EA1E5BABE800601C95 /* Level-14.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-14.sks"; sourceTree = "<group>"; };
+		658BE5EC1E5BABF000601C95 /* Level-15.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-15.sks"; sourceTree = "<group>"; };
+		658BE5EE1E5BABF800601C95 /* Level-16.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-16.sks"; sourceTree = "<group>"; };
+		658BE5F01E5BAC0200601C95 /* Level-17.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-17.sks"; sourceTree = "<group>"; };
+		658BE5F21E5BAC0C00601C95 /* Level-18.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-18.sks"; sourceTree = "<group>"; };
+		658BE5F41E5BAC1500601C95 /* Level-19.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-19.sks"; sourceTree = "<group>"; };
+		658BE5F61E5BAC1B00601C95 /* Level-20.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-20.sks"; sourceTree = "<group>"; };
 		658FE4AF1D21FB8B0057D641 /* GameSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSettingsViewController.swift; sourceTree = "<group>"; };
 		658FE4B11D21FBDA0057D641 /* StringUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtilities.swift; sourceTree = "<group>"; };
 		658FE4BB1D22170E0057D641 /* GameDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GameDataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -431,6 +463,22 @@
 				65AF0B791E3AD6B8008DDE91 /* Level-2.sks */,
 				65AF0B7C1E3AD9BB008DDE91 /* Level-3.sks */,
 				65AF0B7E1E3ADA40008DDE91 /* Level-4.sks */,
+				658BE5D81E5B9DCD00601C95 /* Level-5.sks */,
+				658BE5DA1E5BAB7A00601C95 /* Level-6.sks */,
+				658BE5DC1E5BAB8900601C95 /* Level-7.sks */,
+				658BE5DE1E5BAB9D00601C95 /* Level-8.sks */,
+				658BE5E01E5BABAE00601C95 /* Level-9.sks */,
+				658BE5E21E5BABB800601C95 /* Level-10.sks */,
+				658BE5E41E5BABCA00601C95 /* Level-11.sks */,
+				658BE5E61E5BABD400601C95 /* Level-12.sks */,
+				658BE5E81E5BABDF00601C95 /* Level-13.sks */,
+				658BE5EA1E5BABE800601C95 /* Level-14.sks */,
+				658BE5EC1E5BABF000601C95 /* Level-15.sks */,
+				658BE5EE1E5BABF800601C95 /* Level-16.sks */,
+				658BE5F01E5BAC0200601C95 /* Level-17.sks */,
+				658BE5F21E5BAC0C00601C95 /* Level-18.sks */,
+				658BE5F41E5BAC1500601C95 /* Level-19.sks */,
+				658BE5F61E5BAC1B00601C95 /* Level-20.sks */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -529,21 +577,37 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				658BE5F11E5BAC0200601C95 /* Level-17.sks in Resources */,
+				658BE5ED1E5BABF000601C95 /* Level-15.sks in Resources */,
+				658BE5EF1E5BABF800601C95 /* Level-16.sks in Resources */,
+				658BE5F31E5BAC0C00601C95 /* Level-18.sks in Resources */,
 				65AF0B7A1E3AD6B8008DDE91 /* Level-2.sks in Resources */,
 				6566BEBF1980387400602447 /* sprites.atlas in Resources */,
+				658BE5DB1E5BAB7A00601C95 /* Level-6.sks in Resources */,
 				6529D9721D061A0300A31762 /* checker.png in Resources */,
+				658BE5E91E5BABDF00601C95 /* Level-13.sks in Resources */,
+				658BE5EB1E5BABE800601C95 /* Level-14.sks in Resources */,
+				658BE5F51E5BAC1500601C95 /* Level-19.sks in Resources */,
 				65AF0B7F1E3ADA40008DDE91 /* Level-4.sks in Resources */,
+				658BE5D91E5B9DCD00601C95 /* Level-5.sks in Resources */,
+				658BE5F71E5BAC1B00601C95 /* Level-20.sks in Resources */,
+				658BE5E51E5BABCA00601C95 /* Level-11.sks in Resources */,
 				65977D561CD5232400BFEAB9 /* LaunchScreen.storyboard in Resources */,
+				658BE5E31E5BABB800601C95 /* Level-10.sks in Resources */,
 				65171B421DF0F012001F58E7 /* LevelsJSON.txt in Resources */,
+				658BE5E11E5BABAE00601C95 /* Level-9.sks in Resources */,
 				657432D71CEBEEA900EB6864 /* Level1.sks in Resources */,
 				651A9EA61E36F88400BE254E /* Level-1.sks in Resources */,
 				6566BEBD1980387400602447 /* background-music-aac.caf in Resources */,
 				6566BE8919802D5D00602447 /* InfoPlist.strings in Resources */,
+				658BE5DD1E5BAB8900601C95 /* Level-7.sks in Resources */,
 				6507900A1B9CD7DA00F9931F /* Background.png in Resources */,
 				65AF0B7D1E3AD9BB008DDE91 /* Level-3.sks in Resources */,
 				6566BE9C19802D5D00602447 /* Images.xcassets in Resources */,
 				6566BE9219802D5D00602447 /* Main.storyboard in Resources */,
 				6566BEBE1980387400602447 /* pew-pew-lei.caf in Resources */,
+				658BE5DF1E5BAB9D00601C95 /* Level-8.sks in Resources */,
+				658BE5E71E5BABD400601C95 /* Level-12.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

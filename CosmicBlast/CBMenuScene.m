@@ -128,6 +128,8 @@ CBTiltVisualizer * visualizer;
     } else if([function isEqualToString:@"?"]){
         [self.gameDelegate launchInstructionScreen];
         NSLog(@"[self launchInstructionScene]");
+    } else if([function isEqualToString:@"4"]){
+        [[NSUserDefaults standardUserDefaults] setInteger:20 forKey:@"highestBeatenLevel"];
     }
     
     NSLog(@"executeButtonFunction Called in CBMenuScene.m,: %@",function);

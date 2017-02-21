@@ -7,16 +7,96 @@
         },
         {
             "number": 2,
-            "imageName": "RockWorld.png",
+            "imageName": "GrassWorld.png",
             "shape": "square",
         },
         {
             "number": 3,
-            "imageName": "IceWorld.png",
+            "imageName": "GrassWorld.png",
             "shape": "square",
         },
         {
             "number": 4,
+            "imageName": "GrassWorld.png",
+            "shape": "square",
+        },
+        {
+            "number": 5,
+            "imageName": "GrassWorld.png",
+            "shape": "square",
+        },
+        {
+            "number": 6,
+            "imageName": "RockWorld.png",
+            "shape": "square",
+        },
+        {
+            "number": 7,
+            "imageName": "RockWorld.png",
+            "shape": "square",
+        },
+        {
+            "number": 8,
+            "imageName": "RockWorld.png",
+            "shape": "square",
+        },
+        {
+            "number": 9,
+            "imageName": "RockWorld.png",
+            "shape": "square",
+        },
+        {
+            "number": 10,
+            "imageName": "RockWorld.png",
+            "shape": "square",
+        },
+                {
+            "number": 11,
+            "imageName": "IceWorld.png",
+            "shape": "square",
+        },
+        {
+            "number": 12,
+            "imageName": "IceWorld.png",
+            "shape": "square",
+        },
+        {
+            "number": 13,
+            "imageName": "IceWorld.png",
+            "shape": "square",
+        },
+        {
+            "number": 14,
+            "imageName": "IceWorld.png",
+            "shape": "square",
+        },
+        {
+            "number": 15,
+            "imageName": "IceWorld.png",
+            "shape": "square",
+        },
+        {
+            "number": 16,
+            "imageName": "Mothership.png",
+            "shape": "circle",
+        },
+        {
+            "number": 17,
+            "imageName": "Mothership.png",
+            "shape": "circle",
+        },
+        {
+            "number": 18,
+            "imageName": "Mothership.png",
+            "shape": "circle",
+        },
+        {
+            "number": 19,
+            "imageName": "Mothership.png",
+            "shape": "circle",
+        },
+        {
+            "number": 20,
             "imageName": "Mothership.png",
             "shape": "circle",
         }
