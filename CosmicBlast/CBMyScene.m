@@ -17,6 +17,7 @@
 #import "CBShuriken.h"
 #import "CBTiltVisualizer.h"
 #import "CBWall.h"
+#import "CBTrap.h"
 #import <CosmicBlast-Swift.h>
 
 static const uint32_t projectileCategory = 0x1 << 0;
@@ -25,9 +26,11 @@ static const uint32_t playerCategory = 0x1 << 2;
 static const uint32_t edgeCategory = 0x1 << 3;
 static const uint32_t enemyUnitCategory = 0x1 << 4;
 static const uint32_t wallCategory = 0x1 << 5;
+static const uint32_t trapCategory = 0x1 << 6;
 
 @implementation CBMyScene{
     NSMutableArray * wallPositions;
+    NSMutableArray * trapPositions;
     NSMutableArray * unitDescriptions;
 }
 
@@ -48,11 +51,23 @@ CMMotionManager *_motionManager;
     int number = dummyScene.children.count;
     CBMyScene * myScene = [CBMyScene sceneWithSize:size];
     myScene->wallPositions = [[NSMutableArray alloc] init];
+    myScene->trapPositions = [[NSMutableArray alloc] init];
     myScene->unitDescriptions = [[NSMutableArray alloc] init];
+    
     for (SKSpriteNode * child in dummyScene.children) {
         if ([child.name isEqualToString:@"wall"]){
-            NSLog(@"child Name is equal to wall");
+            NSLog(@"wall position =( %f, %f )",child.position.x,child.position.y);
             [myScene->wallPositions addObject:[NSValue valueWithCGPoint:child.position]];
+        } else if([child.name isEqualToString:@"trap"]){
+            
+            NSLog(@"trap position =( %f, %f )",child.position.x,child.position.y);
+            
+            
+            
+            [myScene->trapPositions addObject:[NSValue valueWithCGPoint:child.position]];
+            NSLog(@"trapPositions.count =  %f ",myScene->trapPositions.count);
+            
+            
         } else if([child.name isEqualToString:@"unit"]){
             CGPoint position = child.position;
             //int movement = [child.userData valueForKey:@"movement"];
@@ -105,7 +120,7 @@ CMMotionManager *_motionManager;
     
     [self setWorldValues];
     [self setPlayerValues];
-    [self setWallsValues];
+    [self setObstacleValues];
     [self setPhysicsValues];
     [self setUIValues];
     [self setEnemyValues];
@@ -132,10 +147,9 @@ CMMotionManager *_motionManager;
 }
 
 
--(void)setWallsValues {
+-(void)setObstacleValues {
     CGSize frameSize = self.currentWorld.frame.size;
     for (NSValue * pointValue in self->wallPositions){
-        NSLog(@"SETTING WALS VALUES FOR A WALL");
         CBWall * wall = [CBWall wall];
         CGPoint wallPosition = [pointValue CGPointValue];
         [wall setPosition:wallPosition];
@@ -150,6 +164,23 @@ CMMotionManager *_motionManager;
         [self.currentWorld addChild:wall];
         
         [self.walls addObject:wall];
+        
+    }
+    for (NSValue * pointValue in self->trapPositions){
+        CBTrap * trap = [CBTrap trap];
+        CGPoint trapPosition = [pointValue CGPointValue];
+        [trap setPosition:trapPosition];
+        trap.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:trap.size.width/2];
+        trap.physicsBody.restitution = 15;
+        trap.physicsBody.dynamic = NO;
+        trap.physicsBody.categoryBitMask = trapCategory;
+        trap.physicsBody.contactTestBitMask = playerCategory;
+        trap.physicsBody.collisionBitMask = enemyUnitCategory | monsterCategory | playerCategory;
+        trap.physicsBody.usesPreciseCollisionDetection = NO;
+        
+        [self.currentWorld addChild:trap];
+        
+        [self.traps addObject:trap];
         
     }
     
@@ -170,8 +201,8 @@ CMMotionManager *_motionManager;
     self.player.physicsBody.mass = 0.05;
     self.player.physicsBody.dynamic = YES;
     self.player.physicsBody.categoryBitMask = playerCategory;
-    self.player.physicsBody.contactTestBitMask = monsterCategory;
-    self.player.physicsBody.collisionBitMask = enemyUnitCategory | edgeCategory | monsterCategory | wallCategory;
+    self.player.physicsBody.contactTestBitMask = monsterCategory | trapCategory;
+    self.player.physicsBody.collisionBitMask = enemyUnitCategory | edgeCategory | monsterCategory | wallCategory | trapCategory;
     self.player.physicsBody.usesPreciseCollisionDetection = NO;
     self.player.physicsBody.restitution = 0;
     self.player.physicsBody.linearDamping = 3;
@@ -199,6 +230,7 @@ CMMotionManager *_motionManager;
     
     self.units = [[NSMutableArray alloc] init];
     self.walls = [[NSMutableArray alloc] init];
+    self.traps = [[NSMutableArray alloc] init];
     _motionManager = [[CMMotionManager alloc] init];
     [self startMonitoringAcceleration];
     self.physicsWorld.gravity = CGVectorMake(0, 0);
@@ -418,15 +450,10 @@ CMMotionManager *_motionManager;
         //if ([secondBody isKindOfClass:[CBEnemyUnit class]]){
                 [self projectile:(SKSpriteNode *) firstBody.node didCollideWithEnemyUnit:(CBEnemyUnit*) secondBody.node];
         //}
-        
-
     }
     
-    //Player hit by monster
-    if((firstBody.categoryBitMask & monsterCategory) != 0){
-    
-        
-        
+    if ((firstBody.categoryBitMask & playerCategory) != 0 &&(secondBody.categoryBitMask & trapCategory) != 0){
+
         [self.player playerHit];
         [self.healthBar updateHealthBar];
         //NSLog(@"player hit by enemy!!!");
@@ -435,11 +462,22 @@ CMMotionManager *_motionManager;
             
             [self returnToParentMenu];
             
-            
         }
-    
     }
     
+    //Player hit by monster
+    if((firstBody.categoryBitMask & monsterCategory) != 0){
+    
+        [self.player playerHit];
+        [self.healthBar updateHealthBar];
+        //NSLog(@"player hit by enemy!!!");
+        
+        if (self.player.dead) {
+            
+            [self returnToParentMenu];
+            
+        }
+    }
 }
 
 

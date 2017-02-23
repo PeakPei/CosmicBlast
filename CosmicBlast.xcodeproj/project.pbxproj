@@ -14,6 +14,7 @@
 		65171B421DF0F012001F58E7 /* LevelsJSON.txt in Resources */ = {isa = PBXBuildFile; fileRef = 65171B411DF0F012001F58E7 /* LevelsJSON.txt */; };
 		651A9EA61E36F88400BE254E /* Level-1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 651A9EA51E36F88400BE254E /* Level-1.sks */; };
 		6529D9721D061A0300A31762 /* checker.png in Resources */ = {isa = PBXBuildFile; fileRef = 6529D9711D061A0300A31762 /* checker.png */; };
+		653761361E5DD3D400757AA8 /* CBTrap.m in Sources */ = {isa = PBXBuildFile; fileRef = 653761351E5DD3D400757AA8 /* CBTrap.m */; };
 		654DC4151DFB5D860005002E /* CBWall.m in Sources */ = {isa = PBXBuildFile; fileRef = 654DC4141DFB5D860005002E /* CBWall.m */; };
 		65545A8319C1443B005F1073 /* CBItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 65545A8219C1443B005F1073 /* CBItem.m */; };
 		65545A8619C14650005F1073 /* CBShuriken.m in Sources */ = {isa = PBXBuildFile; fileRef = 65545A8519C14650005F1073 /* CBShuriken.m */; };
@@ -106,6 +107,8 @@
 		651A9EA51E36F88400BE254E /* Level-1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-1.sks"; sourceTree = "<group>"; };
 		6529D9711D061A0300A31762 /* checker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checker.png; sourceTree = "<group>"; };
 		652D56701D01017500AF13C3 /* CBButtonDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CBButtonDelegate.h; path = ../CBButtonDelegate.h; sourceTree = "<group>"; };
+		653761341E5DD3D400757AA8 /* CBTrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTrap.h; sourceTree = "<group>"; };
+		653761351E5DD3D400757AA8 /* CBTrap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTrap.m; sourceTree = "<group>"; };
 		654DC4131DFB5D860005002E /* CBWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWall.h; sourceTree = "<group>"; };
 		654DC4141DFB5D860005002E /* CBWall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWall.m; sourceTree = "<group>"; };
 		65545A8119C1443B005F1073 /* CBItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBItem.h; sourceTree = "<group>"; };
@@ -377,6 +380,8 @@
 				657432D61CEBEEA900EB6864 /* Level1.sks */,
 				65EBF13519A97AD400F0BA37 /* CBWorld.h */,
 				65EBF13619A97AD400F0BA37 /* CBWorld.m */,
+				653761341E5DD3D400757AA8 /* CBTrap.h */,
+				653761351E5DD3D400757AA8 /* CBTrap.m */,
 			);
 			name = WorldScene;
 			sourceTree = "<group>";
@@ -687,6 +692,7 @@
 				6566BE9519802D5D00602447 /* CBViewController.m in Sources */,
 				65E01BC61D5A736500AF5AAD /* LevelData.swift in Sources */,
 				65FDF3B119A996B200D4269C /* CBEnemy.m in Sources */,
+				653761361E5DD3D400757AA8 /* CBTrap.m in Sources */,
 				6566BE9819802D5D00602447 /* CBMyScene.m in Sources */,
 				6515FAD419AFB6DE00E82568 /* CBVectorMath.m in Sources */,
 				65BA8A8719B8E4B6003DCDD9 /* CBEnemyUnit.m in Sources */,

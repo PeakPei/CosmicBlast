@@ -10,9 +10,7 @@
 
 @implementation CBWall
 
-+(id)wallWithImageNamed:(NSString *)name{
-    return nil;
-}
+
 
 +(id)wall{
     

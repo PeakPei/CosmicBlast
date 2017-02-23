@@ -24,6 +24,7 @@
 @property (nonatomic) CBWorld * currentWorld;
 @property (nonatomic) NSMutableArray * units;
 @property (nonatomic) NSMutableArray * walls;
+@property (nonatomic) NSMutableArray * traps;
 @property (nonatomic) CBButtonBar * buttonBar;
 @property(nonatomic) CBHealthBar * healthBar;
 @property(nonatomic) CBStats * stats;

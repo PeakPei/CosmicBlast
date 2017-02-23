@@ -10,7 +10,7 @@
 
 @interface CBWall : SKSpriteNode
 
-+(instancetype)wallWithImageNamed:(NSString *)name;
+
 
 +(instancetype)wall;
 
