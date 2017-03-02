@@ -37,7 +37,6 @@ static const uint32_t trapCategory = 0x1 << 6;
 CBTiltVisualizer * tiltVisualizer;
 CMMotionManager *_motionManager;
 
-
 +(instancetype)unarchiveFromFile:(NSString *)file withSize:(CGSize)size{
     // get file path for scene that we are using
     NSString * nodePath = [[NSBundle mainBundle] pathForResource:file ofType:@".sks"];
@@ -55,47 +54,40 @@ CMMotionManager *_motionManager;
     myScene->unitDescriptions = [[NSMutableArray alloc] init];
     
     for (SKSpriteNode * child in dummyScene.children) {
-        if ([child.name isEqualToString:@"wall"]){
-            NSLog(@"wall position =( %f, %f )",child.position.x,child.position.y);
-            [myScene->wallPositions addObject:[NSValue valueWithCGPoint:child.position]];
-        } else if([child.name isEqualToString:@"trap"]){
-            
-            NSLog(@"trap position =( %f, %f )",child.position.x,child.position.y);
-            
-            
-            
-            [myScene->trapPositions addObject:[NSValue valueWithCGPoint:child.position]];
-            NSLog(@"trapPositions.count =  %f ",myScene->trapPositions.count);
-            
-            
-        } else if([child.name isEqualToString:@"unit"]){
-            CGPoint position = child.position;
-            //int movement = [child.userData valueForKey:@"movement"];
-            int attack = [[child.userData valueForKey:@"attack"] intValue];
-            NSLog(@"attack = %d", attack);
-            int movement = [[child.userData valueForKey:@"movement"] intValue];
-            NSLog(@"movement = %d", movement);
-            struct UnitDescription description;
-            description.attack = attack;
-            description.movement = movement;
-            description.position = position;
-            
-//            for(NSString *key in [child.userData allKeys]) {
-//                
-//                NSLog(@"%@",[child.userData objectForKey:key]);
-//            }
-            
-//            UnitDescription unit =
-            //myScene->unitDescriptions addObject:
-            NSValue * value = [NSValue valueWithBytes:&description objCType:@encode(struct UnitDescription)];
-            //NSValue * value = [NSValue valueWithPointer:&description];
-            [myScene->unitDescriptions addObject:value];
-            NSLog(@"myScene->unitDescriptions.count (in loop) = %d", (int)myScene->unitDescriptions.count);
-            
-            NSLog(@"child Name is equal to unit.  struct value added to dictionary");
-        } else {
-            NSLog(@"child Name unknown");
-        }
+        [myScene handleDummyChild:child];
+//        if ([child.name isEqualToString:@"wall"]){
+//            NSLog(@"wall position =( %f, %f )",child.position.x,child.position.y);
+//            [myScene->wallPositions addObject:[NSValue valueWithCGPoint:child.position]];
+//        } else if([child.name isEqualToString:@"trap"]){
+//            
+//            NSLog(@"trap position =( %f, %f )",child.position.x,child.position.y);
+//            
+//            
+//            
+//            [myScene->trapPositions addObject:[NSValue valueWithCGPoint:child.position]];
+//            NSLog(@"trapPositions.count =  %f ",myScene->trapPositions.count);
+//            
+//            
+//        } else if([child.name isEqualToString:@"unit"]){
+//            CGPoint position = child.position;
+//            //int movement = [child.userData valueForKey:@"movement"];
+//            int attack = [[child.userData valueForKey:@"attack"] intValue];
+//            NSLog(@"attack = %d", attack);
+//            int movement = [[child.userData valueForKey:@"movement"] intValue];
+//            NSLog(@"movement = %d", movement);
+//            struct UnitDescription description;
+//            description.attack = attack;
+//            description.movement = movement;
+//            description.position = position;
+//            NSValue * value = [NSValue valueWithBytes:&description objCType:@encode(struct UnitDescription)];
+//            //NSValue * value = [NSValue valueWithPointer:&description];
+//            [myScene->unitDescriptions addObject:value];
+//            NSLog(@"myScene->unitDescriptions.count (in loop) = %d", (int)myScene->unitDescriptions.count);
+//            
+//            NSLog(@"child Name is equal to unit.  struct value added to dictionary");
+//        } else {
+//            NSLog(@"child Name unknown");
+//        }
     
     }
     NSLog(@"myScene->unitDescriptions.count (out loop) = %d", (int)myScene->unitDescriptions.count);
@@ -103,6 +95,45 @@ CMMotionManager *_motionManager;
     return myScene;
 }
 
+
+
+-(void)handleDummyChild:(SKSpriteNode *)child {
+    if (child.children.count>0) {
+        for(SKSpriteNode * subChild in child.children) {
+            subChild.position = [CBVectorMath cbVectorAddFirst:child.position Second:subChild.position];
+            [self handleDummyChild: subChild];
+        }
+    } else if ([child.name isEqualToString:@"wall"]){
+        NSLog(@"wall position =( %f, %f )",child.position.x,child.position.y);
+        [self->wallPositions addObject:[NSValue valueWithCGPoint:child.position]];
+    } else if([child.name isEqualToString:@"trap"]){
+        
+        NSLog(@"trap position =( %f, %f )",child.position.x,child.position.y);
+        
+        
+        
+        [self->trapPositions addObject:[NSValue valueWithCGPoint:child.position]];
+        NSLog(@"trapPositions.count =  %f ",self->trapPositions.count);
+        
+        
+    } else if([child.name isEqualToString:@"unit"]){
+        CGPoint position = child.position;
+        int attack = [[child.userData valueForKey:@"attack"] intValue];
+        int movement = [[child.userData valueForKey:@"movement"] intValue];
+        struct UnitDescription description;
+        description.attack = attack;
+        description.movement = movement;
+        description.position = position;
+        NSValue * value = [NSValue valueWithBytes:&description objCType:@encode(struct UnitDescription)];
+        //NSValue * value = [NSValue valueWithPointer:&description];
+        [self->unitDescriptions addObject:value];
+        NSLog(@"myScene->unitDescriptions.count (in loop) = %d", (int)self->unitDescriptions.count);
+        
+        NSLog(@"child Name is equal to unit.  struct value added to dictionary");
+    } else {
+        NSLog(@"child Name unknown");
+    }
+}
 
 -(instancetype)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -153,9 +184,10 @@ CMMotionManager *_motionManager;
         CBWall * wall = [CBWall wall];
         CGPoint wallPosition = [pointValue CGPointValue];
         [wall setPosition:wallPosition];
-        wall.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:wall.size.width/2];
-        wall.physicsBody.restitution = 1
-        ;
+        //wall.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:wall.size.width/2];
+        wall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:wall.size];
+        
+        wall.physicsBody.restitution = 1;
         wall.physicsBody.dynamic = NO;
         wall.physicsBody.categoryBitMask = wallCategory;
         wall.physicsBody.collisionBitMask = playerCategory | projectileCategory | enemyUnitCategory | monsterCategory;

@@ -43,6 +43,7 @@
 		657432D71CEBEEA900EB6864 /* Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 657432D61CEBEEA900EB6864 /* Level1.sks */; };
 		6579700F19BE43CE00E2B9D9 /* CBButtonBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6579700E19BE43CE00E2B9D9 /* CBButtonBar.m */; };
 		6579701219BE43E200E2B9D9 /* CBButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6579701119BE43E200E2B9D9 /* CBButton.m */; };
+		657F2EA61E67AB0500351A13 /* VerticlaWall.sks in Resources */ = {isa = PBXBuildFile; fileRef = 657F2EA51E67AB0500351A13 /* VerticlaWall.sks */; };
 		65869F7B1A3A8C260076B9D4 /* CBHealthBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 65869F7A1A3A8C260076B9D4 /* CBHealthBar.m */; };
 		658BE5D91E5B9DCD00601C95 /* Level-5.sks in Resources */ = {isa = PBXBuildFile; fileRef = 658BE5D81E5B9DCD00601C95 /* Level-5.sks */; };
 		658BE5DB1E5BAB7A00601C95 /* Level-6.sks in Resources */ = {isa = PBXBuildFile; fileRef = 658BE5DA1E5BAB7A00601C95 /* Level-6.sks */; };
@@ -69,6 +70,7 @@
 		658FE4C41D236B540057D641 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658FE4C31D236B540057D641 /* DatabaseManager.swift */; };
 		65977D561CD5232400BFEAB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65977D551CD5232400BFEAB9 /* LaunchScreen.storyboard */; };
 		65A70F761E4E1E54007D3CC4 /* DSMultilineLabelNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A70F751E4E1E54007D3CC4 /* DSMultilineLabelNode.m */; };
+		65ADBEE71E66593200DD50B8 /* HorizontalWall.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65ADBEE61E66593200DD50B8 /* HorizontalWall.sks */; };
 		65AF0B7A1E3AD6B8008DDE91 /* Level-2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65AF0B791E3AD6B8008DDE91 /* Level-2.sks */; };
 		65AF0B7D1E3AD9BB008DDE91 /* Level-3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65AF0B7C1E3AD9BB008DDE91 /* Level-3.sks */; };
 		65AF0B7F1E3ADA40008DDE91 /* Level-4.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65AF0B7E1E3ADA40008DDE91 /* Level-4.sks */; };
@@ -151,6 +153,7 @@
 		6579700E19BE43CE00E2B9D9 /* CBButtonBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBButtonBar.m; sourceTree = "<group>"; };
 		6579701019BE43E200E2B9D9 /* CBButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBButton.h; sourceTree = "<group>"; };
 		6579701119BE43E200E2B9D9 /* CBButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBButton.m; sourceTree = "<group>"; };
+		657F2EA51E67AB0500351A13 /* VerticlaWall.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = VerticlaWall.sks; sourceTree = "<group>"; };
 		65869F791A3A8C260076B9D4 /* CBHealthBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHealthBar.h; sourceTree = "<group>"; };
 		65869F7A1A3A8C260076B9D4 /* CBHealthBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHealthBar.m; sourceTree = "<group>"; };
 		658BE5D81E5B9DCD00601C95 /* Level-5.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-5.sks"; sourceTree = "<group>"; };
@@ -180,6 +183,7 @@
 		6599EC711D02374C00DE1693 /* CBGameSceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBGameSceneDelegate.h; sourceTree = "<group>"; };
 		65A70F741E4E1E54007D3CC4 /* DSMultilineLabelNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSMultilineLabelNode.h; sourceTree = "<group>"; };
 		65A70F751E4E1E54007D3CC4 /* DSMultilineLabelNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSMultilineLabelNode.m; sourceTree = "<group>"; };
+		65ADBEE61E66593200DD50B8 /* HorizontalWall.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HorizontalWall.sks; sourceTree = "<group>"; };
 		65AF0B791E3AD6B8008DDE91 /* Level-2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-2.sks"; sourceTree = "<group>"; };
 		65AF0B7C1E3AD9BB008DDE91 /* Level-3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-3.sks"; sourceTree = "<group>"; };
 		65AF0B7E1E3ADA40008DDE91 /* Level-4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-4.sks"; sourceTree = "<group>"; };
@@ -465,6 +469,8 @@
 			isa = PBXGroup;
 			children = (
 				651A9EA51E36F88400BE254E /* Level-1.sks */,
+				65ADBEE61E66593200DD50B8 /* HorizontalWall.sks */,
+				657F2EA51E67AB0500351A13 /* VerticlaWall.sks */,
 				65AF0B791E3AD6B8008DDE91 /* Level-2.sks */,
 				65AF0B7C1E3AD9BB008DDE91 /* Level-3.sks */,
 				65AF0B7E1E3ADA40008DDE91 /* Level-4.sks */,
@@ -593,6 +599,7 @@
 				658BE5E91E5BABDF00601C95 /* Level-13.sks in Resources */,
 				658BE5EB1E5BABE800601C95 /* Level-14.sks in Resources */,
 				658BE5F51E5BAC1500601C95 /* Level-19.sks in Resources */,
+				65ADBEE71E66593200DD50B8 /* HorizontalWall.sks in Resources */,
 				65AF0B7F1E3ADA40008DDE91 /* Level-4.sks in Resources */,
 				658BE5D91E5B9DCD00601C95 /* Level-5.sks in Resources */,
 				658BE5F71E5BAC1B00601C95 /* Level-20.sks in Resources */,
@@ -607,6 +614,7 @@
 				6566BE8919802D5D00602447 /* InfoPlist.strings in Resources */,
 				658BE5DD1E5BAB8900601C95 /* Level-7.sks in Resources */,
 				6507900A1B9CD7DA00F9931F /* Background.png in Resources */,
+				657F2EA61E67AB0500351A13 /* VerticlaWall.sks in Resources */,
 				65AF0B7D1E3AD9BB008DDE91 /* Level-3.sks in Resources */,
 				6566BE9C19802D5D00602447 /* Images.xcassets in Resources */,
 				6566BE9219802D5D00602447 /* Main.storyboard in Resources */,
