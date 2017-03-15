@@ -30,7 +30,6 @@
 //    }
     //get available name
     NSString *totalKillsFileName = [NSString stringWithFormat:@"%d.totalKills", fileNumber];
-    NSLog(@"NextTotalKillsDocPath %@",[documentsDirectory stringByAppendingPathComponent:totalKillsFileName]);
     return [documentsDirectory stringByAppendingPathComponent:totalKillsFileName];
     
 }

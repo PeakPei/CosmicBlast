@@ -59,13 +59,13 @@ CGRect sceneFrame;
     buttonRatio = [[[GameValues alloc] init] uiRatio];
     sceneFrame = frame;
     CGSize mySize = CGSizeMake(sceneFrame.size.width, sceneFrame.size.height/buttonRatio);
-    CBButtonBar * buttonBar = [CBButtonBar spriteNodeWithColor:[UIColor blackColor] size:(mySize)];
+    CBButtonBar * buttonBar = [CBButtonBar spriteNodeWithColor:[UIColor clearColor] size:(mySize)];
     [buttonBar setButtonValues];
     return buttonBar;
 }
 
 +(NSArray<CBButton*> *)getMenuButtonTitles{
-    return [NSArray arrayWithObjects:@"<-", @"->", @"?", @"4", nil];
+    return [NSArray arrayWithObjects:@"Previous\nLevel", @"Next\nLevel", @"Tutorial", @"Start\nGame", nil];
 }
 
 +(NSArray<CBButton*> *)getGameButtonTitles{
@@ -93,13 +93,13 @@ CGRect sceneFrame;
     
 
     
-    farLeftButton = [CBButton buttonWithColor:[UIColor blueColor] size:CGSizeMake(sceneFrame.size.width/4, sceneFrame.size.height/buttonRatio)];
+    farLeftButton = [CBButton buttonWithColor:[UIColor clearColor] size:CGSizeMake(sceneFrame.size.width/4, sceneFrame.size.height/buttonRatio)];
     
-    leftButton = [CBButton buttonWithColor:[UIColor redColor] size:CGSizeMake(sceneFrame.size.width/4, sceneFrame.size.height/buttonRatio)];
+    leftButton = [CBButton buttonWithColor:[UIColor clearColor] size:CGSizeMake(sceneFrame.size.width/4, sceneFrame.size.height/buttonRatio)];
     
-    rightButton = [CBButton buttonWithColor:[UIColor blackColor] size:CGSizeMake(sceneFrame.size.width/4, sceneFrame.size.height/buttonRatio)];
+    rightButton = [CBButton buttonWithColor:[UIColor clearColor] size:CGSizeMake(sceneFrame.size.width/4, sceneFrame.size.height/buttonRatio)];
     
-    farRightButton = [CBButton buttonWithColor:[UIColor greenColor] size:CGSizeMake(sceneFrame.size.width/4, sceneFrame.size.height/buttonRatio)];
+    farRightButton = [CBButton buttonWithColor:[UIColor clearColor] size:CGSizeMake(sceneFrame.size.width/4, sceneFrame.size.height/buttonRatio)];
     
     [farLeftButton setPosition:CGPointMake(-farLeftButton.size.width*1.5, farLeftButton.size.height/2)];
     [leftButton setPosition:CGPointMake(-leftButton.size.width/2, leftButton.size.height/2)];

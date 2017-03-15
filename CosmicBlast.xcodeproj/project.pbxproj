@@ -284,6 +284,7 @@
 				6529D9711D061A0300A31762 /* checker.png */,
 				650790091B9CD7DA00F9931F /* Background.png */,
 				65977D551CD5232400BFEAB9 /* LaunchScreen.storyboard */,
+				65D71CA51E6DE89200852C9E /* New Group */,
 				65AF0B7B1E3AD842008DDE91 /* Levels */,
 				656ADE791DA47F8F00766DB4 /* MainMenu */,
 				6579701719BE458F00E2B9D9 /* App */,
@@ -469,8 +470,6 @@
 			isa = PBXGroup;
 			children = (
 				651A9EA51E36F88400BE254E /* Level-1.sks */,
-				65ADBEE61E66593200DD50B8 /* HorizontalWall.sks */,
-				657F2EA51E67AB0500351A13 /* VerticlaWall.sks */,
 				65AF0B791E3AD6B8008DDE91 /* Level-2.sks */,
 				65AF0B7C1E3AD9BB008DDE91 /* Level-3.sks */,
 				65AF0B7E1E3ADA40008DDE91 /* Level-4.sks */,
@@ -492,6 +491,15 @@
 				658BE5F61E5BAC1B00601C95 /* Level-20.sks */,
 			);
 			name = Levels;
+			sourceTree = "<group>";
+		};
+		65D71CA51E6DE89200852C9E /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				657F2EA51E67AB0500351A13 /* VerticlaWall.sks */,
+				65ADBEE61E66593200DD50B8 /* HorizontalWall.sks */,
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		F3CA62840DF9A2892D49E6DF /* Pods */ = {

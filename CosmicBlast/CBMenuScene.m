@@ -121,14 +121,14 @@ CBTiltVisualizer * visualizer;
 
 
 -(void)executeButtonFunction:(NSString *)function{
-    if([function isEqualToString:@"<-"]){
+    if([function isEqualToString:@"Previous\nLevel"]){
         [self previousLevel];
-    } else if ([function isEqualToString:@"->"]){
+    } else if ([function isEqualToString:@"Next\nLevel"]){
         [self nextLevel];
-    } else if([function isEqualToString:@"?"]){
+    } else if([function isEqualToString:@"Tutorial"]){
         [self.gameDelegate launchInstructionScreen];
         NSLog(@"[self launchInstructionScene]");
-    } else if([function isEqualToString:@"4"]){
+    } else if([function isEqualToString:@"Start/nGame"]){
         [[NSUserDefaults standardUserDefaults] setInteger:20 forKey:@"highestBeatenLevel"];
     }
     

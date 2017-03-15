@@ -9,6 +9,8 @@
 #import "CBButton.h"
 #import "EnumConstants.h"
 #import "CBButtonDelegate.h"
+#import "DSMultilineLabelNode.h"
+
 
 @implementation CBButton
 
@@ -28,10 +30,16 @@
 
 -(void)updateLabelAndSetTitle:(NSString *)myTitle{
     self.title = myTitle;
-    SKLabelNode * label = [SKLabelNode labelNodeWithText:myTitle];
+    SKSpriteNode * buttonImage = [SKSpriteNode spriteNodeWithImageNamed:@"StartLevelButton"];
+    [self addChild:buttonImage];
+    DSMultilineLabelNode * label = [[DSMultilineLabelNode alloc] init];
+    label.text = self.title;
+    [label setFontSize:12];
+    
+
     //[label setFontSize:22]
     ;
-    [label setPosition:CGPointMake(0, label.frame.size.height*-0.5)];
+    [label setPosition:CGPointMake(0, 0)];
     [self addChild:label];
 }
 
