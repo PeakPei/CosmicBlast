@@ -10,13 +10,14 @@
 #import "CBLogger.h"
 #import "CBTiltVisualizer.h"
 #import "CosmicBlast-Swift.h"
+#import "DSMultilineLabelNode.h"
 @import CoreMotion;
 
 
 @implementation CBMenuScene
 
 CMMotionManager * _motionManager;
-SKLabelNode * instructionLabel;
+DSMultilineLabelNode * instructionLabel;
 SKLabelNode * levelInfoLabel;
 CBTiltVisualizer * visualizer;
 
@@ -26,8 +27,12 @@ CBTiltVisualizer * visualizer;
     //TODO make Background Color game values
         
         //long highestBeatenLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"highestBeatenLevel"];
-        [self setBackgroundColor: [UIColor redColor]];
-        
+        //[self setBackgroundColor: [UIColor redColor]];
+        SKSpriteNode * menuLogo = [SKSpriteNode spriteNodeWithImageNamed:@"MenuLogo"];
+        [self addChild:menuLogo];
+        CGPoint logoPosition = CGPointMake(self.frame.size.width/2,self.frame.size.height/2);
+        [menuLogo setPosition:logoPosition];
+        //[menuIcon setPosition:self.position];
         _motionManager = [[CMMotionManager alloc] init];
         
         [self startMonitoringAcceleration];
@@ -46,17 +51,15 @@ CBTiltVisualizer * visualizer;
 
 -(void)setUIValues {
     //set up label
-    NSLog(@"SetUIValuesCalled in CBMenuScene");
-    
-    instructionLabel = [SKLabelNode labelNodeWithText:@"tap the screen to start"];
-    [instructionLabel setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/2))];
-    [self addChild:instructionLabel];
+    instructionLabel = [[DSMultilineLabelNode alloc] init];
     
     long currentLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"currentLevel"];
-    NSString * levelString = [NSString stringWithFormat:@"Current Level: %ld", currentLevel];
-    levelInfoLabel = [SKLabelNode labelNodeWithText:levelString];
-    [levelInfoLabel setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/1.5))];
-    [self addChild:levelInfoLabel];
+    NSString * levelString = [NSString stringWithFormat:@"Tap Screen to Start\n Current Level: %ld", currentLevel];
+    
+    instructionLabel.text = levelString;
+    [instructionLabel setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/1.25))];
+    [self addChild:instructionLabel];
+
     
     //Set up button bar
     self.buttonBar = [CBButtonBar menuButtonBarWithFrame:self.frame buttonDelegate:self];

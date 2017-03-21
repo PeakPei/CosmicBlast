@@ -32,9 +32,8 @@
     if (!skView.scene) {
         
         
-        skView.showsFPS = YES;
-        skView.showsNodeCount = YES;
-        
+        //skView.showsFPS = YES;
+        //skView.showsNodeCount = YES;
         
         // Create and configure the scene.
         CBMenuScene * menuScene = [CBMenuScene sceneWithSize:skView.bounds.size];
