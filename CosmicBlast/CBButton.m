@@ -35,10 +35,11 @@
     DSMultilineLabelNode * label = [[DSMultilineLabelNode alloc] init];
     label.text = self.title;
     [label setFontSize:12];
+    [label setFontColor:[UIColor yellowColor]];
     
 
-    //[label setFontSize:22]
-    ;
+    //[label setFontSize:22];
+    
     [label setPosition:CGPointMake(0, 0)];
     [self addChild:label];
 }
