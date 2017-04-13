@@ -47,7 +47,6 @@ CMMotionManager *_motionManager;
     CBMyScene * dummyScene = [arch decodeObjectForKey:NSKeyedArchiveRootObjectKey];
     [dummyScene setSize:size];
     [arch finishDecoding];
-    int number = dummyScene.children.count;
     CBMyScene * myScene = [CBMyScene sceneWithSize:size];
     myScene->wallPositions = [[NSMutableArray alloc] init];
     myScene->trapPositions = [[NSMutableArray alloc] init];
@@ -108,12 +107,7 @@ CMMotionManager *_motionManager;
         [self->wallPositions addObject:[NSValue valueWithCGPoint:child.position]];
     } else if([child.name isEqualToString:@"trap"]){
         
-        NSLog(@"trap position =( %f, %f )",child.position.x,child.position.y);
-        
-        
-        
         [self->trapPositions addObject:[NSValue valueWithCGPoint:child.position]];
-        NSLog(@"trapPositions.count =  %f ",self->trapPositions.count);
         
         
     } else if([child.name isEqualToString:@"unit"]){
@@ -179,7 +173,6 @@ CMMotionManager *_motionManager;
 
 
 -(void)setObstacleValues {
-    CGSize frameSize = self.currentWorld.frame.size;
     for (NSValue * pointValue in self->wallPositions){
         CBWall * wall = [CBWall wall];
         CGPoint wallPosition = [pointValue CGPointValue];
@@ -291,11 +284,6 @@ CMMotionManager *_motionManager;
 }
 
 -(void)setEnemyValues {
-    GameValues *gameValues = [[GameValues alloc] init];
-    //set up Units
-    //Change this depending on levels
-//    NSArray * locationArray = [gameValues getUnitLocations];
-//    NSArray * behaviorArray = [gameValues getUnitBehaviors];
     
     //locations and behaviors should be of the same length
     NSLog(@"self->unitDescriptions.count = %d", (int)self->unitDescriptions.count);

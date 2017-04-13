@@ -52,11 +52,8 @@ CBTiltVisualizer * visualizer;
 -(void)setUIValues {
     //set up label
     instructionLabel = [[DSMultilineLabelNode alloc] init];
-    
-    long currentLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"currentLevel"];
-    NSString * levelString = [NSString stringWithFormat:@"Tap Screen to Start\n Current Level: %ld", currentLevel];
-    
-    instructionLabel.text = levelString;
+    [self updateInstructionLabel];
+
     [instructionLabel setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/1.25))];
     [self addChild:instructionLabel];
 
@@ -82,12 +79,19 @@ CBTiltVisualizer * visualizer;
 
 
 -(void)setLevelNumber:(int)number{
-    //NSInteger currentLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"currentLevel"];
     [[NSUserDefaults standardUserDefaults] setInteger:number forKey: @"currentLevel"];
-    NSString * levelString = [NSString stringWithFormat:@"Current Level: %d", number];
-    //levelInfoLabel = [SKLabelNode labelNodeWithText:levelString];
-    [levelInfoLabel setText:levelString];
+    NSString * levelString = [NSString stringWithFormat:@"Tap Screen to Start\n Current Level: %d", number];
+    instructionLabel.text = levelString;
     
+}
+
+
+
+-(void)updateInstructionLabel{
+    long currentLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"currentLevel"];
+    NSString * levelString = [NSString stringWithFormat:@"Tap Screen to Start\n Current Level: %ld", currentLevel];
+    
+    instructionLabel.text = levelString;
 }
 
 
