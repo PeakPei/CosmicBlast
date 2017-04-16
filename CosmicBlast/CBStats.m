@@ -47,21 +47,6 @@
     //IMPLEMENT
 }
 
-//-(BOOL)createDataPath{
-//    if ([self docPath] == nil)
-//    {
-//        _docPath = [CBDatabase totalKillsDocPath];
-//    }
-//    
-//    NSError *error;
-//    BOOL success = [[NSFileManager defaultManager] createDirectoryAtPath:[self docPath] withIntermediateDirectories:YES attributes:nil error:&error];
-//    if (!success)
-//    {
-//        NSLog(@"Error creating data path: %@", [error localizedDescription]);
-//    }
-//    NSLog(@"creatingDataPath %@",[self docPath]);
-//    return success;
-//}
 
 
 - (NSNumber *)totalKills{

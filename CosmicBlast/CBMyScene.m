@@ -514,6 +514,7 @@ CMMotionManager *_motionManager;
 }
 
 -(void)pause{
+    NSLog(@"****PAUSE CALLED*****");
     if(self.view.paused)
     {
         self.view.paused = NO;

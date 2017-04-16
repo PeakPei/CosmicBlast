@@ -23,27 +23,14 @@ CBTiltVisualizer * visualizer;
 
 
 -(id)initWithSize:(CGSize)size {
-    if (self = [super initWithSize:size]) {
-    //TODO make Background Color game values
-        
-        //long highestBeatenLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"highestBeatenLevel"];
-        //[self setBackgroundColor: [UIColor redColor]];
+    if (self = [super initWithSize:size]) {        
         SKSpriteNode * menuLogo = [SKSpriteNode spriteNodeWithImageNamed:@"MenuLogo"];
         [self addChild:menuLogo];
         CGPoint logoPosition = CGPointMake(self.frame.size.width/2,self.frame.size.height/2);
         [menuLogo setPosition:logoPosition];
-        //[menuIcon setPosition:self.position];
         _motionManager = [[CMMotionManager alloc] init];
-        
         [self startMonitoringAcceleration];
-        NSLog(@"started monitoring");
         [self setUIValues];
-        //GameValues * gv = [[GameValues alloc] init];
-        
-
-        ;
-        
-        //[[[LevelValues alloc] init] jsonTest];
     }
     return self;
 };
@@ -73,7 +60,7 @@ CBTiltVisualizer * visualizer;
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     //[self.gameDelegate returnToParentMenu];
     
-    [self.gameDelegate launchGameScreen];
+
     NSLog(@"touchesEnded in CBMenuScene");
 }
 
@@ -135,8 +122,9 @@ CBTiltVisualizer * visualizer;
     } else if([function isEqualToString:@"Tutorial"]){
         [self.gameDelegate launchInstructionScreen];
         NSLog(@"[self launchInstructionScene]");
-    } else if([function isEqualToString:@"Start/nGame"]){
-        [[NSUserDefaults standardUserDefaults] setInteger:20 forKey:@"highestBeatenLevel"];
+    } else if([function isEqualToString:@"Start\nGame"]){
+        [self.gameDelegate launchGameScreen];
+        //[[NSUserDefaults standardUserDefaults] setInteger:20 forKey:@"highestBeatenLevel"];
     }
     
     NSLog(@"executeButtonFunction Called in CBMenuScene.m,: %@",function);
