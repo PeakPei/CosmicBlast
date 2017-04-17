@@ -24,16 +24,12 @@
     visualizer -> pastXData = [[NSMutableArray alloc] init];
     visualizer -> pastYData = [[NSMutableArray alloc] init];
     visualizer -> accelerometerDataMemoryLength = (int)[[[GameValues alloc] init] accelerometerDataMemoryLength];
-//    SKSpriteNode * line = [SKSpriteNode spriteNodeWithColor:[UIColor blackColor] size:CGSizeMake(10, 40)];
-//    [visualizer addChild:line];
     return visualizer;
     
 }
 
 -(void)update{
     CMAccelerometerData* data = motionManager.accelerometerData;
-//    NSLog(@"menu data.acceleration.x = %f, menu data.acceleration.y = %f, menu data.acceleration.z = %f",data.acceleration.x, data.acceleration.y, data.acceleration.z);
-    
     //X data first
     NSNumber * lineXData = [NSNumber numberWithFloat:roundf( data.acceleration.x*200.0)];
     [self->pastXData addObject:lineXData];
@@ -69,7 +65,6 @@
     [yourline setStrokeColor:lineColor];
     
     [yourline setLineWidth:5];
-    //[yourline setGlowWidth:2];
     [yourline setLineCap:kCGLineCapRound];
     [self->indicatorLine removeFromParent];
     self->indicatorLine = yourline;

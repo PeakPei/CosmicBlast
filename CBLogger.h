@@ -9,14 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface CBLogger : NSObject
-
-
-+(id)createLogger;
-
-
-
-+(void)logData:(NSString*)data :(NSString*)dataSource;
-
-@property BOOL verbose;
+//THIS FILE IS NOT USED AND SHOULD BE DELETED
 
 @end

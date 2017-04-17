@@ -61,7 +61,6 @@
 
 -(void)setUnitMovementBehavior:(int)behavior{
     self.movementBehavior = [self getBehaviorTypeFromInt:behavior];
-    NSLog(@"movementBehavior number = %d",behavior);
 }
 
 -(void)setUnitAttackBehavior:(int)behavior{
@@ -90,19 +89,16 @@
         
         switch (_attackBehavior){
             case BehaviorType_None:
-                NSLog(@"applying none attack behavior type");
                 return nil;
                 break;
             case BehaviorType_Random:
-                NSLog(@"applying random attack behavior type");
+                //need to have this statement here or it won't compile.  WTF.
+                NSLog(@"");
                 float x = ((float)rand() / RAND_MAX)-0.5;
                 float y = ((float)rand() / RAND_MAX)-0.5;
                 
                 CGVector randomVector = CGVectorMake(x, y);
-                //int x = rand();
-                NSLog(@"randomVector = x: %f, y: %f",randomVector.dx,randomVector.dy);
                 CGVector randomDirection = [CBVectorMath vectorNormalize:randomVector];
-                NSLog(@"randomDirection = x: %f, y: %f",randomDirection.dx,randomDirection.dy);
                 CGVector shotVector = [CBVectorMath vectorMult:randomDirection Value:[gameValues unitShotSpeed]];
                 projectile.physicsBody.velocity = shotVector;
                 break;
@@ -201,28 +197,11 @@
 
 -(void)unitHitWithDamageAmount:(int)damage
 {
-//    float ratio = (float)self.health/(float)self.maxHealth;
-//    NSLog(@"Ratio:%f", ratio);
-//    float red, green;
-//    red = 1-ratio;
-//    green = ratio;
-//    
-//    
-//    SKColor * newColor = [SKColor colorWithRed:red green:green blue:0.5 alpha:1];
-//    SKAction *changeColorAction = [SKAction colorizeWithColor:newColor colorBlendFactor:1.0 duration:0.5];
-//    [self runAction:changeColorAction];
-    
     if (self.health>0){
         [self setHealth:self.health-damage];
-        //SKAction * hitAction1 = [SKAction colorizeWithColorBlendFactor:0.5 duration:1];
-        
         SKAction * fade = [SKAction fadeAlphaTo:0.2 duration: 0.05];
         SKAction * unfade = [SKAction fadeAlphaTo:1 duration: 0.05];
-        
-        
         SKAction *sequence = [SKAction sequence:@[fade, unfade, fade, unfade, fade, unfade]];
-        
-        
         [self runAction:sequence];
     }
     else{

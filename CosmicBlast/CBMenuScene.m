@@ -7,7 +7,6 @@
 //
 
 #import "CBMenuScene.h"
-#import "CBLogger.h"
 #import "CBTiltVisualizer.h"
 #import "CosmicBlast-Swift.h"
 #import "DSMultilineLabelNode.h"
@@ -53,23 +52,14 @@ CBTiltVisualizer * visualizer;
     visualizer = [CBTiltVisualizer tiltVisualizerWithMotionManager:_motionManager];
     [visualizer setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/2))];
     [self addChild:visualizer];
-    
 }
 
-
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    //[self.gameDelegate returnToParentMenu];
-    
-
-    NSLog(@"touchesEnded in CBMenuScene");
-}
 
 
 -(void)setLevelNumber:(int)number{
     [[NSUserDefaults standardUserDefaults] setInteger:number forKey: @"currentLevel"];
     NSString * levelString = [NSString stringWithFormat:@"Tap Screen to Start\n Current Level: %d", number];
     instructionLabel.text = levelString;
-    
 }
 
 
@@ -85,25 +75,20 @@ CBTiltVisualizer * visualizer;
 
 -(void)startMonitoringAcceleration{
     
-    NSLog(@"Starting to monitor in method");
     if(_motionManager.accelerometerAvailable){
         [_motionManager startAccelerometerUpdates];
-        //NSLog(@"accelerometer updates on...");
     }
     else{
-        //NSLog(@"motionManager.accelerometerAvailable is false");
+        NSLog(@"motionManager.accelerometerAvailable is false");
     }
 }
 
 -(void)update:(NSTimeInterval)currentTime{
     [visualizer update];
-    //CMAccelerometerData* data = _motionManager.accelerometerData;
-    //NSLog(@"menu data.acceleration.x = %f, menu data.acceleration.y = %f, menu data.acceleration.z = %f",data.acceleration.x, data.acceleration.y, data.acceleration.z);
 }
 
 
 -(void)returnToParentMenu {
-    //[self removeFromParent];
     [self.gameDelegate returnToParentMenu];
     
 }
@@ -118,16 +103,14 @@ CBTiltVisualizer * visualizer;
     if([function isEqualToString:@"Previous\nLevel"]){
         [self previousLevel];
     } else if ([function isEqualToString:@"Next\nLevel"]){
+        //Remove this for production we want to limit the highest accessible level
+        [[NSUserDefaults standardUserDefaults] setInteger:20 forKey:@"highestBeatenLevel"];
         [self nextLevel];
     } else if([function isEqualToString:@"Tutorial"]){
         [self.gameDelegate launchInstructionScreen];
-        NSLog(@"[self launchInstructionScene]");
     } else if([function isEqualToString:@"Start\nGame"]){
         [self.gameDelegate launchGameScreen];
-        //[[NSUserDefaults standardUserDefaults] setInteger:20 forKey:@"highestBeatenLevel"];
     }
-    
-    NSLog(@"executeButtonFunction Called in CBMenuScene.m,: %@",function);
 }
 
 -(void)buttonReleased:(NSString *)function{

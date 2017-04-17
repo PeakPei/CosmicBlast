@@ -44,13 +44,9 @@ NSMutableArray * pages;
 -(void)setUIValues {
     //set up label
     [self initializeInstructionText];
-    NSLog(@"SetUIValuesCalled in CBInstructionScene");
-    //instructionsStrings = @[@"Wselcome to Cosmic Blast", @"Overview", @"Movement", @"Buttons", @"Enemies"];
     currentPage = 0;
-    //instructionLabel1 = [[DSMultilineLabelNode alloc] init];
     
     instructionLabel1 = [[DSMultilineLabelNode alloc] init];
-  //                       labelNodeWithText:pages[currentPage][0]];
     instructionLabel1.text = pages[currentPage];
     [instructionLabel1 setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height*0.5))];
     instructionLabel1.paragraphWidth = self.frame.size.width;
@@ -60,11 +56,6 @@ NSMutableArray * pages;
 
     self.buttonBar = [CBButtonBar emptyBarWithFrame:self.frame];
     [self addChild:self.buttonBar];
-    
-    UITextView * testView = [[UITextView alloc] init];
-    testView.text = @"hello fuckers";
-    
-    
     
 }
 
@@ -80,9 +71,7 @@ NSMutableArray * pages;
 
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    //[self.gameDelegate returnToParentMenu];
     [self nextInstructionStep];
-    //NSLog(@"touchesEnded in CBMenuScene");
 }
 
 

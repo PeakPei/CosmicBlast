@@ -5,7 +5,6 @@
 //  Created by Teddy Kitchen on 8/10/15.
 //  Copyright (c) 2015 Teddy Kitchen. All rights reserved.
 //
-#import "CBDatabase.h"
 #import "CBStats.h"
 @implementation CBStats
 
@@ -20,7 +19,6 @@
     [newStats setKills: 0];
     if([newStats totalKills] == nil){
         [newStats setTotalKills:[NSNumber numberWithInt:0]];
-    NSLog(@"retrieving total kills; value: %@",[newStats totalKills]);
     }
     return newStats;
 }
@@ -72,14 +70,10 @@
 
 -(void)saveTotalKills{
     if([self totalKills] == nil) {
-        NSLog(@"total kills is nil");
         return;
     }
-    
     int intTotalKills = [[self totalKills] intValue];
     [[NSUserDefaults standardUserDefaults] setInteger: intTotalKills forKey: @"totalKills"];
-
-    
 }
 
 

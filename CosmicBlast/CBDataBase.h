@@ -9,11 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface CBDatabase : NSObject
-
-
-+(NSString *)totalKillsDocPath;
-
-
-+(NSNumber *)loadTotalKillDocs;
-
+//THIS FILE IS NOT USED AND SHOULD BE DELETED
 @end

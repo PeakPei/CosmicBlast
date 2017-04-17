@@ -7,7 +7,6 @@
 //
 #import <QuartzCore/QuartzCore.h>
 #import "CBPlayer.h"
-#import "CBLogger.h"
 #import "CBVectorMath.h"
 #import <CosmicBlast-Swift.h>
 
@@ -108,31 +107,12 @@
 
 //should handle player movement and map movement
 -(void)movePlayerWithAccelerationXvalue:(double)x yValue:(double)y speed:(int)speed{
-    
-    
-    
+
     CGVector move = [self dampenMovementVectorWith:x :y];
-    
     float moveX = move.dx;
     float moveY = move.dy;
     
-//    NSLog(@"self.velocity = %f moveY = %f", moveX, moveY);
-//    [self endBreaking];
-//    if ([CBVectorMath vectorLength:move]<0.05){
-//        [self startBreaking];
-//    } else if ([CBVectorMath vectorLength:move] < 0.1) {
-//        moveY = 0;
-//        moveX = 0;
-//    } else {
-//        
-//    }
-
-    
-    
-    
-    
     GameValues * gameValues = [[GameValues alloc] init];
-    
     float coefficient = [gameValues playerAccelerationCoefficient];
     CGVector playerMotion;
     if (breaking) {
@@ -140,17 +120,10 @@
     } else{
         playerMotion = CGVectorMake(moveX*coefficient, moveY*coefficient);
     }
-    
-    //CGVector worldMotion = CGVectorMake(playerMotion.dx*(-1.0), playerMotion.dy*(-1.0));
-
-    
     [self.physicsBody applyForce:playerMotion];
-    
-    
-    
+
     CGPoint velocityPoint = CGPointMake(self.physicsBody.velocity.dx, self.physicsBody.velocity.dy);
     CGFloat playerSpeed = [CBVectorMath cbVectorLength:velocityPoint];
- //   NSLog(@"playerSpeed: %f", playerSpeed);
     CGPoint direction = [CBVectorMath cbVectorNormalize:velocityPoint];
     if (playerSpeed > self.maxSpeed) {
         
@@ -159,44 +132,31 @@
         self.physicsBody.velocity = newVelocity;
     }
     
-    
     double parentOffsetX = self.parent.parent.frame.size.width/2.0;
     double parentOffsetY = self.parent.parent.frame.size.height/2.0;
     CGPoint newParentPosition = CGPointMake((-self.position.x)+parentOffsetX, (-self.position.y)+parentOffsetY);
     CGPoint directionVector = [CBVectorMath cbVectorSubFirst:newParentPosition Second:self.parent.position];
     directionVector = [CBVectorMath cbVectorNormalize:directionVector];
     
-
-    
     float newDirection = atan2(-directionVector.x, directionVector.y);
-    //float newDirection = atan2(direction.x, -direction.y);
     self.zRotation = newDirection;
-    //self.zRotation = direction;
     self.parent.position = newParentPosition;
-    //self.parent.parent.zRotation = newDirection*-1;
 }
-
-
 
 -(BOOL)weaponRecharged{
     CFTimeInterval shotWaitTime = [[[GameValues alloc] init] playerShotRechargeTime];
     CFTimeInterval elapsedTime = CACurrentMediaTime() - lastShotTime;
-    
     if(elapsedTime > shotWaitTime){
         self->lastShotTime = CACurrentMediaTime();
         return true;
     } else {
         return false;
     }
-    
 }
 
 
 -(void)startBreaking{
-
     breaking = true;
-    
-    
 }
 
 -(void)endBreaking{
@@ -205,17 +165,11 @@
 
 
 -(void)playerHit{
-    
     SKAction * fade = [SKAction fadeAlphaTo:0.2 duration: 0.05];
     SKAction * unfade = [SKAction fadeAlphaTo:1 duration: 0.05];
-    
-    
     SKAction *sequence = [SKAction sequence:@[fade, unfade, fade, unfade, fade, unfade]];
     
-    
     [self runAction:sequence];
-    
-    
     [self playerHitWithDamageAmount:20];
 }
 

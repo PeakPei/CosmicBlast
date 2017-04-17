@@ -10,35 +10,6 @@
 
 @implementation CBLogger
 
-static bool verbose = YES;
-
-+(id)createLogger{
-    
-    
-    
-    CBLogger * logger = [[CBLogger alloc] init];
-    
-    
-    
-    
-    return logger;
-}
-
-//For now just log out the String
-+(void)logData:(NSString *)data :(NSString*)dataSource{
-    
-    if (verbose) {
-        NSLog(@"Data Source:\n");
-        NSLog(@"%@",dataSource);
-        NSLog(@"\n\n");
-    }
-    
-    NSLog(@"collisions:\n");
-    NSLog(@"%@",data);
-    NSLog(@"\n\n");
-    
-
-}
-
+//THIS FILE IS NOT USED AND SHOULD BE DELETED
 
 @end
