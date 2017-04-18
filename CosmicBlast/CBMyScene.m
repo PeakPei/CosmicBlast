@@ -465,11 +465,7 @@ CMMotionManager *_motionManager;
 
 
 -(void)executeButtonFunction:(NSString *)function{
-    if([function isEqualToString:@"menu"]){
-        [self returnToParentMenu];
-    } else if ([function isEqualToString:@"pause"]){
-        [self pause];
-    } else if ([function isEqualToString:@"break"]){
+    if ([function isEqualToString:@"break"]){
         [self.player startBreaking];
     }
 }
