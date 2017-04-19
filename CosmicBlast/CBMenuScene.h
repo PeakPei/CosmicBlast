@@ -18,7 +18,7 @@
 
 @property (nonatomic) CBButtonBar * buttonBar;
 @property (weak) id <CBGameSceneDelegate> gameDelegate;
-//@property UIViewController * viewController;
+
 
 
 

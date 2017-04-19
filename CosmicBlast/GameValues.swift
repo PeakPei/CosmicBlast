@@ -11,17 +11,10 @@ import CoreMotion
 import CoreData
 import SwiftyJSON
 
-//TODO MAKE ALL PROPERTIES LAZY AND READ FROM DISK
-//
-//
+
 //This Object allows you to access the game's variables
 class GameValues: NSObject {
 
-
-    
-    
-    
-    
     var uiRatio = 10
     
     //var archiver: NSKeyedArchiver = NSKeyedArchiver()
@@ -46,6 +39,23 @@ class GameValues: NSObject {
             }
         }
     }
+    
+    func getWorldImageDescription() -> String{
+        switch self.worldImageName {
+            case "GrassWorld.png":
+                return "Grass World"
+            case "RockWorld.png":
+                return "Rock World"
+            case "IceWorld.png":
+                return "Ice World"
+            case "Mothership.png":
+                return "Mothership"
+            default:
+                return "Unkown"
+        }
+    }
+    
+    
     
     var worldShape: String
         {

@@ -32,6 +32,7 @@ static const uint32_t trapCategory = 0x1 << 6;
     NSMutableArray * wallPositions;
     NSMutableArray * trapPositions;
     NSMutableArray * unitDescriptions;
+    CGPoint playerStartingLocation;
 }
 
 CBTiltVisualizer * tiltVisualizer;
@@ -52,6 +53,7 @@ CMMotionManager *_motionManager;
     myScene->trapPositions = [[NSMutableArray alloc] init];
     myScene->unitDescriptions = [[NSMutableArray alloc] init];
     
+
     for (SKSpriteNode * child in dummyScene.children) {
         [myScene handleDummyChild:child];
     }
@@ -82,7 +84,10 @@ CMMotionManager *_motionManager;
         NSValue * value = [NSValue valueWithBytes:&description objCType:@encode(struct UnitDescription)];
         //NSValue * value = [NSValue valueWithPointer:&description];
         [self->unitDescriptions addObject:value];
-    } else {
+    } else if([child.name isEqualToString:@"player"]){
+        self->playerStartingLocation = child.position;
+    }
+        else {
         NSLog(@"child Name unknown make sure it is defined");
     }
 }
@@ -114,6 +119,7 @@ CMMotionManager *_motionManager;
     self.player = [CBPlayer player];
     [self.currentWorld addChild: self.player];
     //Set up Statistics collecting object
+    self.player.position = self->playerStartingLocation;
     [self setStats:[CBStats stats]];
 }
 
@@ -229,7 +235,6 @@ CMMotionManager *_motionManager;
 -(void)setEnemyValues {
     
     //locations and behaviors should be of the same length
-    NSLog(@"self->unitDescriptions.count = %d", (int)self->unitDescriptions.count);
     for (NSValue * description in self->unitDescriptions){
         struct UnitDescription structValue;
         [description getValue:&structValue];
@@ -440,8 +445,8 @@ CMMotionManager *_motionManager;
         [self.units removeObject:unit];
     }
     if (self.units.count == 0) {
-        SKLabelNode * instructionLabel1 = [SKLabelNode labelNodeWithText:@"You Win!"];
-        SKLabelNode * instructionLabel2 = [SKLabelNode labelNodeWithText:@"Press Green to Return"];
+        SKLabelNode * instructionLabel1 = [SKLabelNode labelNodeWithText:@"Level Complete!"];
+        SKLabelNode * instructionLabel2 = [SKLabelNode labelNodeWithText:@"Tap Menu to Return"];
         [instructionLabel1 setFontColor:[UIColor purpleColor]];
         [instructionLabel2 setFontColor:[UIColor purpleColor]];
         [instructionLabel1 setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height*0.66))];

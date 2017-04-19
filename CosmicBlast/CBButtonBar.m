@@ -65,7 +65,7 @@ CGRect sceneFrame;
 }
 
 +(NSArray<CBButton*> *)getMenuButtonTitles{
-    return [NSArray arrayWithObjects:@"Previous\nLevel", @"Next\nLevel", @"Tutorial", @"Start\nGame", nil];
+    return [NSArray arrayWithObjects:@"Previous\nLevel", @"Next\nLevel", @"Tutorial", @"Start\nLevel", nil];
 }
 
 +(NSArray<CBButton*> *)getGameButtonTitles{

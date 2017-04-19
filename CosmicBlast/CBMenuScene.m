@@ -58,17 +58,18 @@ CBTiltVisualizer * visualizer;
 
 -(void)setLevelNumber:(int)number{
     [[NSUserDefaults standardUserDefaults] setInteger:number forKey: @"currentLevel"];
-    NSString * levelString = [NSString stringWithFormat:@"Tap Screen to Start\n Current Level: %d", number];
+    NSString * levelLocation =  [[[GameValues alloc] init] getWorldImageDescription];
+    NSString * levelString = [NSString stringWithFormat:@"Current Level: %d\nLocation: %@\nPress Start Level", number, levelLocation];
     instructionLabel.text = levelString;
 }
 
 
 
 -(void)updateInstructionLabel{
-    long currentLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"currentLevel"];
-    NSString * levelString = [NSString stringWithFormat:@"Tap Screen to Start\n Current Level: %ld", currentLevel];
+    int currentLevel = (int)[[NSUserDefaults standardUserDefaults] integerForKey: @"currentLevel"];
+    [self setLevelNumber:currentLevel];
     
-    instructionLabel.text = levelString;
+
 }
 
 
@@ -108,7 +109,7 @@ CBTiltVisualizer * visualizer;
         [self nextLevel];
     } else if([function isEqualToString:@"Tutorial"]){
         [self.gameDelegate launchInstructionScreen];
-    } else if([function isEqualToString:@"Start\nGame"]){
+    } else if([function isEqualToString:@"Start\nLevel"]){
         [self.gameDelegate launchGameScreen];
     }
 }

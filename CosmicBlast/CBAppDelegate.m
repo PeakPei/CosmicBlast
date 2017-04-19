@@ -19,6 +19,7 @@ UIStoryboard* _initalStoryboard;
     _initalStoryboard = self.window.rootViewController.storyboard;
     DatabaseManager * manager = [[DatabaseManager alloc] init];
     [manager maybeInitializeDatabase];
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
     // Override point for customization after application launch.
     return YES;
 }
