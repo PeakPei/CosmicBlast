@@ -14,7 +14,5 @@
 
 +(id)walker;
 
--(void)handleMovement;
-
 
 @end

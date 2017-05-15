@@ -15,24 +15,16 @@
 +(id)walkerWithImageNamed:(NSString *)name{
     
     CBWalker * walker = [CBWalker spriteNodeWithImageNamed:name];
-    
     return walker;
-    
 }
+
+
 +(id)walker{
     //GameValues * gameValues = [[GameValues alloc] init];
     CBWalker * walker = [CBWalker walkerWithImageNamed:@"EnemyShot"];
     //CBWalker * walker = [CBWalker spriteNodeWithColor:[gameValues walkerColor] size:[gameValues walkerSize]];
     return walker;
 }
-
-
--(void)handleMovement{
-    
-    
-    
-}
-
 
 
 @end

@@ -25,9 +25,7 @@ typedef enum {
 @property BehaviorType movementBehavior;
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 
-//+(id)enemyUnitWithImageNamed:(NSString *)name;
-//
-//+(id)enemyUnitWithColor:(SKColor *)color size:(CGSize)size;
+
 
 +(id)enemyUnit;
 

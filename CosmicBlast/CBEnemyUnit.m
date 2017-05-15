@@ -113,42 +113,16 @@
                 break;
         }
         
-        
-//        CBWalker * monster = [self createProjectile];
-//        
-//        
-//        //Set up monster physics body (may want to make a class to do this later)
-//        monster.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:monster.size];
-//        monster.physicsBody.dynamic = YES;
-//        CGVector shotVector = [CBVectorMath vectorMult:directionToPlayer Value:[gameValues playerShotSpeed]];
-//        monster.physicsBody.velocity = shotVector;
-
 
         
-        //Create the actions
-        
-
-        
-    SKAction * actionWait = [SKAction waitForDuration:1];
-        
+        SKAction * actionWait = [SKAction waitForDuration:1];
         SKAction * actionMoveDone = [SKAction removeFromParent];
-        
         [projectile runAction:[SKAction sequence:@[actionWait, actionMoveDone]]];
-        
-        
-        
-        
         return projectile;
     }
     return nil;
 }
 
-
-//-(void)setUnitPosition:(CGPoint)position{
-//    
-//    self.position = position;
-//    
-//}
 -(void)updateWithPlayerPosition:(CGPoint)playerPosition timeSinceLastUpdate:(CFTimeInterval)timeSinceLast{
     //update direction to player with updated player coordinates
     CGPoint rawVector = CGPointMake(playerPosition.x-self.position.x,playerPosition.y-self.position.y);
@@ -158,10 +132,6 @@
     //update last spawnTimeInterval
     self.lastSpawnTimeInterval += timeSinceLast;
 
-    
-
-
-    
     
     [self applyMovement];
 }
@@ -205,17 +175,9 @@
         [self runAction:sequence];
     }
     else{
-        
         self.dead = YES;
-        
     }
-    
-    
 }
-
-
-
-
 
 
 @end

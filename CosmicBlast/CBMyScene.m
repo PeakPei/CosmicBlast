@@ -154,7 +154,7 @@ CMMotionManager *_motionManager;
         CGPoint trapPosition = [pointValue CGPointValue];
         [trap setPosition:trapPosition];
         trap.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:trap.size.width/2];
-        trap.physicsBody.restitution = 15;
+        trap.physicsBody.restitution = 1;
         trap.physicsBody.dynamic = NO;
         trap.physicsBody.categoryBitMask = trapCategory;
         trap.physicsBody.contactTestBitMask = playerCategory;
@@ -282,7 +282,7 @@ CMMotionManager *_motionManager;
     unit.physicsBody.mass = 0.05;
     unit.physicsBody.categoryBitMask = enemyUnitCategory;
     unit.physicsBody.contactTestBitMask = projectileCategory;
-    unit.physicsBody.collisionBitMask = playerCategory | projectileCategory | edgeCategory | enemyUnitCategory | wallCategory;
+    unit.physicsBody.collisionBitMask = playerCategory | projectileCategory | edgeCategory | enemyUnitCategory | wallCategory | trapCategory;
     unit.physicsBody.usesPreciseCollisionDetection = NO;
     
     [self.currentWorld addChild:unit];
