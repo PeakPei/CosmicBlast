@@ -7,12 +7,21 @@
 //
 
 #import "CBEnemyUnitBoss.h"
+#import <CosmicBlast-Swift.h>
+
+
 
 @implementation CBEnemyUnitBoss
 
 
-+(instancetype)enemyUnitBoss{
-    return [CBEnemyUnit enemyUnit];
++ (instancetype)enemyUnitBoss{
+    CBEnemyUnitBoss * boss = [CBEnemyUnitBoss spriteNodeWithImageNamed:@"EnemyBoss"];
+    GameValues * gameValues = [[GameValues alloc] init];
+    
+    boss.maxHealth = (int)[gameValues unitMaxHealth];
+    boss.health = boss.maxHealth;
+    boss.dead = NO;
+    return boss;
 }
 
 -(void)updateWithPlayerPosition:(CGPoint)playerPosition timeSinceLastUpdate:(CFTimeInterval)timeSinceLast{

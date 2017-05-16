@@ -12,6 +12,7 @@
 #import "CBEnemy.h"
 #import "CBPlayer.h"
 #import "CBEnemyUnit.h"
+#import "CBEnemyUnitBoss.h"
 #import "CBVectorMath.h"
 #import "CBMenuScene.h"
 #import "CBShuriken.h"
@@ -31,6 +32,7 @@ static const uint32_t trapCategory = 0x1 << 6;
 @implementation CBMyScene{
     NSMutableArray * wallPositions;
     NSMutableArray * trapPositions;
+    NSMutableArray * bossPositions;
     NSMutableArray * unitDescriptions;
     CGPoint playerStartingLocation;
 }
@@ -52,7 +54,7 @@ CMMotionManager *_motionManager;
     myScene->wallPositions = [[NSMutableArray alloc] init];
     myScene->trapPositions = [[NSMutableArray alloc] init];
     myScene->unitDescriptions = [[NSMutableArray alloc] init];
-    
+    myScene->bossPositions= [[NSMutableArray alloc] init];
 
     for (SKSpriteNode * child in dummyScene.children) {
         [myScene handleDummyChild:child];
@@ -86,6 +88,8 @@ CMMotionManager *_motionManager;
         [self->unitDescriptions addObject:value];
     } else if([child.name isEqualToString:@"player"]){
         self->playerStartingLocation = child.position;
+    } else if([child.name isEqualToString:@"boss"]){
+        [self->bossPositions addObject:[NSValue valueWithCGPoint:child.position]];
     }
         else {
         NSLog(@"child Name unknown make sure it is defined");
@@ -242,8 +246,45 @@ CMMotionManager *_motionManager;
         [newUnit setUnitMovementBehavior:structValue.movement];
         [newUnit setUnitAttackBehavior:structValue.attack];
     }
+    for (NSValue * pointValue in self->bossPositions){
+        [self placeUnitBossAtPosition:[pointValue CGPointValue]];
+    }
 }
 
+
+
+-(void)placeUnitBossAtPosition:(CGPoint)position{
+    CBEnemyUnitBoss * boss = [CBEnemyUnitBoss enemyUnitBoss];
+    [boss setPosition:position];
+    [self setupEnemyPhysicsBody:boss];
+    [self.currentWorld addChild:boss];
+    [self.units addObject:boss];
+    //Create a boss and place it at the correct position
+}
+
+
+
+-(CBEnemyUnit *)placeUnitAtPosition:(CGPoint)position{
+    CBEnemyUnit * unit = [CBEnemyUnit enemyUnit];
+    
+    [unit setPosition:position];
+    [self setupEnemyPhysicsBody:unit];
+    [self.currentWorld addChild:unit];
+    [self.units addObject:unit];
+    return unit;
+}
+
+
+
+-(void)setupEnemyPhysicsBody:(CBEnemy *)enemy {
+    enemy.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:enemy.size.width/2];
+    enemy.physicsBody.dynamic = YES;
+    enemy.physicsBody.mass = 0.05;
+    enemy.physicsBody.categoryBitMask = enemyUnitCategory;
+    enemy.physicsBody.contactTestBitMask = projectileCategory;
+    enemy.physicsBody.collisionBitMask = playerCategory | projectileCategory | edgeCategory | enemyUnitCategory | wallCategory | trapCategory;
+    enemy.physicsBody.usesPreciseCollisionDetection = NO;
+}
 
 
 
@@ -273,22 +314,7 @@ CMMotionManager *_motionManager;
 }
 
 
--(CBEnemyUnit *)placeUnitAtPosition:(CGPoint)position{
-    CBEnemyUnit * unit = [CBEnemyUnit enemyUnit];
-    
-    [unit setPosition:position];
-    unit.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:unit.size.width/2];
-    unit.physicsBody.dynamic = YES;
-    unit.physicsBody.mass = 0.05;
-    unit.physicsBody.categoryBitMask = enemyUnitCategory;
-    unit.physicsBody.contactTestBitMask = projectileCategory;
-    unit.physicsBody.collisionBitMask = playerCategory | projectileCategory | edgeCategory | enemyUnitCategory | wallCategory | trapCategory;
-    unit.physicsBody.usesPreciseCollisionDetection = NO;
-    
-    [self.currentWorld addChild:unit];
-    [self.units addObject:unit];
-    return unit;
-}
+
 
 
 -(void)updateWithTimeSinceLastUpdate: (CFTimeInterval) timeSinceLast{
