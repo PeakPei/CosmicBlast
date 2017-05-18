@@ -31,15 +31,24 @@ typedef enum {
 
 //-(void)setUnitPosition:(CGPoint)position;
 
+
+
 -(void)setUnitMovementBehavior:(int)behavior;
 
 -(void)setUnitAttackBehavior:(int)behavior;
+
+
+-(void)applyMovement;
 
 -(void)updateWithPlayerPosition:(CGPoint)playerPosition timeSinceLastUpdate:(CFTimeInterval)timeSinceLast;
 
 -(void)unitHit;
 
--(CBWalker *)createProjectile;
+-(CGVector)getDirectionToPlayer;
+
+-(void)setDirectionToPlayer:(CGVector)direction;
+
+-(CBEnemy *)createProjectile;
 
 -(CBWalker *)maybeAttack;
 

@@ -11,6 +11,7 @@
 #import <CosmicBlast-Swift.h>
 
 
+
 @implementation CBEnemyUnit{
     CGVector directionToPlayer;
 }
@@ -45,6 +46,16 @@
     return enemyUnit;
 }
 
+
+-(CGVector)getDirectionToPlayer{
+    return self->directionToPlayer;
+}
+
+-(void)setDirectionToPlayer:(CGVector)direction{
+    self->directionToPlayer = direction;
+}
+
+
 -(BehaviorType)getBehaviorTypeFromInt:(int)behaviorInt {
     switch (behaviorInt) {
         case 0:
@@ -70,7 +81,7 @@
 
 
 //createProjectile in same position as unit
--(CBWalker *)createProjectile{
+-(CBEnemy *)createProjectile{
     
     CBWalker * walker = [CBWalker walker];
     [walker setEnemyPosition:self.position];
@@ -78,10 +89,10 @@
     return walker;
 }
 
--(CBWalker *)maybeAttack {
+-(CBEnemy *)maybeAttack {
     if (self.lastSpawnTimeInterval > 0.5) {
         self.lastSpawnTimeInterval = 0;
-        CBWalker * projectile;
+        CBEnemy * projectile;
         GameValues * gameValues = [[GameValues alloc] init];
         projectile = [self createProjectile];
         projectile.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:projectile.size];
@@ -118,10 +129,12 @@
         SKAction * actionWait = [SKAction waitForDuration:1];
         SKAction * actionMoveDone = [SKAction removeFromParent];
         [projectile runAction:[SKAction sequence:@[actionWait, actionMoveDone]]];
+
         return projectile;
     }
     return nil;
 }
+
 
 -(void)updateWithPlayerPosition:(CGPoint)playerPosition timeSinceLastUpdate:(CFTimeInterval)timeSinceLast{
     //update direction to player with updated player coordinates
@@ -131,10 +144,13 @@
     
     //update last spawnTimeInterval
     self.lastSpawnTimeInterval += timeSinceLast;
-
+    
     
     [self applyMovement];
 }
+
+
+
 
 -(void)applyMovement {
     
