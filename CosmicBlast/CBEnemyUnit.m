@@ -13,7 +13,8 @@
 
 
 @implementation CBEnemyUnit{
-    CGVector directionToPlayer;
+//    CGVector directionToPlayer;
+    CGPoint playerPosition;
 }
 
 
@@ -47,13 +48,21 @@
 }
 
 
--(CGVector)getDirectionToPlayer{
-    return self->directionToPlayer;
+
+
+-(CGPoint)getPlayerPosition{
+    return self->playerPosition;
 }
 
--(void)setDirectionToPlayer:(CGVector)direction{
-    self->directionToPlayer = direction;
+
+-(CGVector)getDirectionToPlayer{
+    CGPoint rawVector = CGPointMake(playerPosition.x-self.position.x,playerPosition.y-self.position.y);
+    CGPoint normalizedVector = [CBVectorMath cbVectorNormalize:rawVector];
+    CGVector directionToPlayer = CGVectorMake(normalizedVector.x,normalizedVector.y);
+    return directionToPlayer;
 }
+
+
 
 
 -(BehaviorType)getBehaviorTypeFromInt:(int)behaviorInt {
@@ -115,7 +124,7 @@
                 break;
             case BehaviorType_Aggressive:
             {
-                CGVector shotVector = [CBVectorMath vectorMult:directionToPlayer Value:[gameValues unitShotSpeed]];
+                CGVector shotVector = [CBVectorMath vectorMult:[self getDirectionToPlayer] Value:[gameValues unitShotSpeed]];
                 projectile.physicsBody.velocity = shotVector;
                 break;
             }
@@ -136,12 +145,9 @@
 }
 
 
--(void)updateWithPlayerPosition:(CGPoint)playerPosition timeSinceLastUpdate:(CFTimeInterval)timeSinceLast{
+-(void)updateWithPlayerPosition:(CGPoint)position timeSinceLastUpdate:(CFTimeInterval)timeSinceLast{
     //update direction to player with updated player coordinates
-    CGPoint rawVector = CGPointMake(playerPosition.x-self.position.x,playerPosition.y-self.position.y);
-    CGPoint normalizedVector = [CBVectorMath cbVectorNormalize:rawVector];
-    directionToPlayer = CGVectorMake(normalizedVector.x,normalizedVector.y);
-    
+    self->playerPosition = position;
     //update last spawnTimeInterval
     self.lastSpawnTimeInterval += timeSinceLast;
     
@@ -164,7 +170,7 @@
             
             break;
         case BehaviorType_Aggressive:{
-            CGVector movementVector = [CBVectorMath vectorMult:directionToPlayer Value:10];
+            CGVector movementVector = [CBVectorMath vectorMult:[self getDirectionToPlayer] Value:10];
             [self.physicsBody applyForce:movementVector];
             break;
         }

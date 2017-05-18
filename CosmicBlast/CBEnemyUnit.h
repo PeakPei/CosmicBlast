@@ -40,13 +40,14 @@ typedef enum {
 
 -(void)applyMovement;
 
--(void)updateWithPlayerPosition:(CGPoint)playerPosition timeSinceLastUpdate:(CFTimeInterval)timeSinceLast;
+-(void)updateWithPlayerPosition:(CGPoint)position timeSinceLastUpdate:(CFTimeInterval)timeSinceLast;
 
 -(void)unitHit;
 
 -(CGVector)getDirectionToPlayer;
 
--(void)setDirectionToPlayer:(CGVector)direction;
+
+-(CGPoint)getPlayerPosition;
 
 -(CBEnemy *)createProjectile;
 

@@ -90,6 +90,10 @@
 }
 
 
+-(BOOL)prefersStatusBarHidden{
+    return YES;
+}
+
 
 - (void)returnToParentMenu
 {

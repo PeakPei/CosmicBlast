@@ -181,7 +181,7 @@ CMMotionManager *_motionManager;
     self.player.physicsBody.mass = 0.05;
     self.player.physicsBody.dynamic = YES;
     self.player.physicsBody.categoryBitMask = playerCategory;
-    self.player.physicsBody.contactTestBitMask = monsterCategory | trapCategory;
+    self.player.physicsBody.contactTestBitMask = monsterCategory | trapCategory | enemyUnitCategory;
     self.player.physicsBody.collisionBitMask = enemyUnitCategory | edgeCategory | monsterCategory | wallCategory | trapCategory;
     self.player.physicsBody.usesPreciseCollisionDetection = NO;
     self.player.physicsBody.restitution = 0;
@@ -389,6 +389,16 @@ CMMotionManager *_motionManager;
             [self returnToParentMenu];
         }
     }
+    if ((firstBody.categoryBitMask & playerCategory) != 0 &&(secondBody.categoryBitMask & enemyUnitCategory) != 0){
+        [self.player playerHit];
+        [self.healthBar updateHealthBar];
+        if (self.player.dead) {
+            [self returnToParentMenu];
+        }
+    }
+    
+    
+    
 }
 
 

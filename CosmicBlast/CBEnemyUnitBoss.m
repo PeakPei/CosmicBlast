@@ -25,25 +25,13 @@
     return boss;
 }
 
--(void)updateWithPlayerPosition:(CGPoint)playerPosition timeSinceLastUpdate:(CFTimeInterval)timeSinceLast{
-//    //update direction to player with updated player coordinates
-//    CGPoint rawVector = CGPointMake(playerPosition.x-self.position.x,playerPosition.y-self.position.y);
-//    CGPoint normalizedVector = [CBVectorMath cbVectorNormalize:rawVector];
-//    CGVector directionToPlayer = CGVectorMake(normalizedVector.x,normalizedVector.y);
-//    [self setDirectionToPlayer:directionToPlayer];
-//    //update last spawnTimeInterval
-//    self.lastSpawnTimeInterval += timeSinceLast;
-    
-    
 
-    
-    //[self applyMovement];
-}
 -(void)unitHit
 //here we can implement behavior for when the boss is attacked.
 {
     [super unitHit];
     
+    SKAction * actionMove = [SKAction moveTo:[self getPlayerPosition] duration:0.6];
     
 //    SKAction * actionWait = [SKAction waitForDuration:1];
 //
@@ -52,13 +40,16 @@
 //    
 //    
 //    
-//    [self runAction:[SKAction sequence:@[actionWait, actionMoveDone]]];
+//    [self runAction:[SKAction sequence:@[actionMove]]];
+    [self runAction:actionMove];
     
 }
 
 
 
-
+-(void)applyMovement {
+    self.physicsBody.velocity = CGVectorMake(0, 0);
+}
 
 
 
