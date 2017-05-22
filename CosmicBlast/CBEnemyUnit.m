@@ -189,6 +189,7 @@
 
 -(void)unitHitWithDamageAmount:(int)damage
 {
+    
     if (self.health>0){
         [self setHealth:self.health-damage];
         SKAction * fade = [SKAction fadeAlphaTo:0.2 duration: 0.05];
@@ -198,6 +199,7 @@
     }
     else{
         self.dead = YES;
+        [self explode];
     }
 }
 

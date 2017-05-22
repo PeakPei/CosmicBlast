@@ -320,7 +320,7 @@ CMMotionManager *_motionManager;
 -(void)updateWithTimeSinceLastUpdate: (CFTimeInterval) timeSinceLast{
     for (CBEnemyUnit *unit in self.units) {
         [unit updateWithPlayerPosition:self.player.position timeSinceLastUpdate:timeSinceLast];
-        CBWalker * shot = [unit maybeAttack];
+        CBEnemy * shot = [unit maybeAttack];
         if (shot==nil) {
             //DO NOTHING.  SHOULD PROBABLY BE FIXED
         } else {

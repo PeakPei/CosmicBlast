@@ -412,9 +412,9 @@
 		6579701619BE455D00E2B9D9 /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				65545A8119C1443B005F1073 /* CBItem.h */,
 				6515FAD519AFD25800E82568 /* CBPlayer.h */,
 				6515FAD619AFD25800E82568 /* CBPlayer.m */,
-				65545A8119C1443B005F1073 /* CBItem.h */,
 				65545A8219C1443B005F1073 /* CBItem.m */,
 			);
 			name = Player;

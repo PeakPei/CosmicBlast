@@ -46,6 +46,8 @@
     return player;
 }
 
+
+
 +(instancetype)player {
     return [CBPlayer playerWithImageNamed:@"Player"];
 }
@@ -171,7 +173,11 @@
     
     [self runAction:sequence];
     [self playerHitWithDamageAmount:20];
+    
+    
 }
+
+
 
 -(void)playerHitWithDamageAmount:(int)damage
 {

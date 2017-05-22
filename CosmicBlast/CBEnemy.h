@@ -15,6 +15,8 @@
 
 +(id)enemyWithImageNamed:(NSString *)name;
 
+-(void)explode;
+
 -(void)setEnemyPosition:(CGPoint)position;
 
 
