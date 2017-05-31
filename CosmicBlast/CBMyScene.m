@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Teddy Kitchen. All rights reserved.
 //
 
-@import CoreMotion;
 
 #import "CBMyScene.h"
 #import "CBEnemy.h"
@@ -38,7 +37,6 @@ static const uint32_t trapCategory = 0x1 << 6;
 }
 
 CBTiltVisualizer * tiltVisualizer;
-CMMotionManager *_motionManager;
 
 +(instancetype)unarchiveFromFile:(NSString *)file withSize:(CGSize)size{
     // get file path for scene that we are using
@@ -59,7 +57,6 @@ CMMotionManager *_motionManager;
     for (SKSpriteNode * child in dummyScene.children) {
         [myScene handleDummyChild:child];
     }
-    [myScene prepareForDisplay];
     return myScene;
 }
 
@@ -210,8 +207,7 @@ CMMotionManager *_motionManager;
     self.units = [[NSMutableArray alloc] init];
     self.walls = [[NSMutableArray alloc] init];
     self.traps = [[NSMutableArray alloc] init];
-    _motionManager = [[CMMotionManager alloc] init];
-    [self startMonitoringAcceleration];
+
     self.physicsWorld.gravity = CGVectorMake(0, 0);
     self.physicsWorld.contactDelegate = self;
     
@@ -230,7 +226,7 @@ CMMotionManager *_motionManager;
     
     
     
-    tiltVisualizer = [CBTiltVisualizer tiltVisualizerWithMotionManager:_motionManager];
+    tiltVisualizer = [CBTiltVisualizer tiltVisualizerWithTiltManager:self.tiltManager];
     [tiltVisualizer setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/2))];
     [self addChild:tiltVisualizer];
     
@@ -286,36 +282,12 @@ CMMotionManager *_motionManager;
     enemy.physicsBody.usesPreciseCollisionDetection = NO;
 }
 
-
-
-
--(void)startMonitoringAcceleration{
-    if(_motionManager.accelerometerAvailable){
-        [_motionManager startAccelerometerUpdates];
-        //NSLog(@"accelerometer updates on...");
-    }
-    else{
-        NSLog(@"motionManager.accelerometerAvailable is false");
-    }
-}
-
-
-
-
--(void)updatePositionFromMotionManager{
+-(void)updatePositionFromTiltManager{
     [tiltVisualizer update];
-    CMAccelerometerData* data = _motionManager.accelerometerData;
     int speed = 0;
-    GameValues * gameValues = [[GameValues alloc] init];
-    CMAcceleration zeroAcceleration = [gameValues accelerometerZero];
-    double zeroX = zeroAcceleration.x;
-    double zeroY = zeroAcceleration.y;
-    [self.player movePlayerWithAccelerationXvalue:(data.acceleration.x-zeroX) yValue:(data.acceleration.y-zeroY) speed:speed];
+    CGVector data = [[self tiltManager] getXY];
+    [self.player movePlayerWithAccelerationXvalue:(data.dx) yValue:(data.dy) speed:speed];
 }
-
-
-
-
 
 -(void)updateWithTimeSinceLastUpdate: (CFTimeInterval) timeSinceLast{
     for (CBEnemyUnit *unit in self.units) {
@@ -331,7 +303,7 @@ CMMotionManager *_motionManager;
             [self.currentWorld addChild:shot];
         }
     }
-    [self updatePositionFromMotionManager];
+    [self updatePositionFromTiltManager];
 }
 
 -(void)update:(NSTimeInterval)currentTime {

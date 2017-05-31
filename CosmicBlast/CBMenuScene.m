@@ -10,12 +10,10 @@
 #import "CBTiltVisualizer.h"
 #import "CosmicBlast-Swift.h"
 #import "DSMultilineLabelNode.h"
-@import CoreMotion;
 
 
 @implementation CBMenuScene
 
-CMMotionManager * _motionManager;
 DSMultilineLabelNode * instructionLabel;
 SKLabelNode * levelInfoLabel;
 CBTiltVisualizer * visualizer;
@@ -27,9 +25,6 @@ CBTiltVisualizer * visualizer;
         [self addChild:menuLogo];
         CGPoint logoPosition = CGPointMake(self.frame.size.width/2,self.frame.size.height/2);
         [menuLogo setPosition:logoPosition];
-        _motionManager = [[CMMotionManager alloc] init];
-        [self startMonitoringAcceleration];
-        [self setUIValues];
     }
     return self;
 };
@@ -49,7 +44,7 @@ CBTiltVisualizer * visualizer;
     [self addChild:self.buttonBar];
     
     
-    visualizer = [CBTiltVisualizer tiltVisualizerWithMotionManager:_motionManager];
+    visualizer = [CBTiltVisualizer tiltVisualizerWithTiltManager:self.tiltManager];
     [visualizer setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/2))];
     [self addChild:visualizer];
 }
@@ -74,15 +69,6 @@ CBTiltVisualizer * visualizer;
 
 
 
--(void)startMonitoringAcceleration{
-    
-    if(_motionManager.accelerometerAvailable){
-        [_motionManager startAccelerometerUpdates];
-    }
-    else{
-        NSLog(@"motionManager.accelerometerAvailable is false");
-    }
-}
 
 -(void)update:(NSTimeInterval)currentTime{
     [visualizer update];
@@ -135,11 +121,5 @@ CBTiltVisualizer * visualizer;
     }
 }
 
-
-
-
-
-
-
-        
+ 
 @end

@@ -30,6 +30,9 @@
 
 +(CGVector)vectorNormalize:(CGVector)a;
 
++(float)vectorAngleFirst:(CGVector)a Second:(CGVector)b;
+
+
 +(float)vectorLength:(CGVector)a;
 
 @end

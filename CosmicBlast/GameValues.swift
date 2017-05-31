@@ -19,7 +19,8 @@ class GameValues: NSObject {
     
     //var archiver: NSKeyedArchiver = NSKeyedArchiver()
     //GamePlay Characteristics
-    var accelerometerZero: CMAcceleration = CMAcceleration(x: 0, y: 0, z: 0)
+
+    
     var accelerometerDataMemoryLength = 9
     
     

@@ -11,10 +11,13 @@
 #import "CBMenuScene.h"
 #import "CBMyScene.h"
 #import "CBGameSceneDelegate.h"
+#import "CBTiltManager.h"
+
 
 
 @interface CBViewController : UIViewController <CBGameSceneDelegate>
 @property CBMyScene * gameScene;
+@property CBTiltManager * tiltManager;
 - (void)returnToParentMenu;
 
 @end

@@ -58,6 +58,12 @@
     return CGPointMake(a.x / length, a.y/length);
 }
 
++(float)vectorAngleFirst:(CGVector)a Second:(CGVector)b{
+    float angle = atan2(a.dy - b.dy, a.dx - b.dx);
+    //Math.atan2(vectorA.y - vectorB.y, vectorA.x - vectorB.x)
+    return angle;
+}
+
 
 
 

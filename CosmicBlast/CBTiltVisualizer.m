@@ -7,10 +7,10 @@
 //
 
 #import "CBTiltVisualizer.h"
+
 #import <CosmicBlast-Swift.h>
 
 @implementation CBTiltVisualizer{
-    CMMotionManager * motionManager;
     SKShapeNode * indicatorLine;
     NSMutableArray * pastXData;
     NSMutableArray * pastYData;
@@ -18,9 +18,9 @@
 }
 
 
-+(instancetype)tiltVisualizerWithMotionManager:(CMMotionManager *)manager{
++(instancetype)tiltVisualizerWithTiltManager:(CBTiltManager *)manager{
     CBTiltVisualizer * visualizer = [CBTiltVisualizer node];
-    visualizer -> motionManager = manager;
+    [visualizer setTiltManager:manager];
     visualizer -> pastXData = [[NSMutableArray alloc] init];
     visualizer -> pastYData = [[NSMutableArray alloc] init];
     visualizer -> accelerometerDataMemoryLength = (int)[[[GameValues alloc] init] accelerometerDataMemoryLength];
@@ -29,9 +29,9 @@
 }
 
 -(void)update{
-    CMAccelerometerData* data = motionManager.accelerometerData;
-    //X data first
-    NSNumber * lineXData = [NSNumber numberWithFloat:roundf( data.acceleration.x*200.0)];
+
+    CGVector data = [self.tiltManager getXY];
+    NSNumber * lineXData = [NSNumber numberWithFloat:roundf( data.dx*200.0)];
     [self->pastXData addObject:lineXData];
     if([pastXData count] > self->accelerometerDataMemoryLength) {
         [pastXData removeObjectAtIndex:0];
@@ -44,7 +44,7 @@
     
     
     //Then Y Data
-    NSNumber * lineYData = [NSNumber numberWithFloat:roundf( data.acceleration.y*200.0)];
+    NSNumber * lineYData = [NSNumber numberWithFloat:roundf( data.dy*200.0)];
     [self->pastYData addObject:lineYData];
     if([pastYData count] > self->accelerometerDataMemoryLength) {
         [pastYData removeObjectAtIndex:0];

@@ -17,21 +17,26 @@
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
-    
     NSInteger currentLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"currentLevel"];
     if (currentLevel == 0) {
         [[NSUserDefaults standardUserDefaults] setInteger:1 forKey: @"currentLevel"];
     }
+    CBTiltManager * manager = [CBTiltManager tiltManager];
+    [self setTiltManager:manager];
+    
+     
+     
     // Configure the view.
     SKView * skView = (SKView *)self.view;
     if (!skView.scene) {
-        skView.showsFPS = YES;
-        
-        // Create and configure the scene.
-        CBMenuScene * menuScene = [CBMenuScene sceneWithSize:skView.bounds.size];
-        [menuScene setGameDelegate:self];
-        menuScene.scaleMode = SKSceneScaleModeAspectFill;
-        [skView presentScene:menuScene];
+        [self launchMenuScreen];
+//        skView.showsFPS = YES;
+//        
+//        // Create and configure the scene.
+//        CBMenuScene * menuScene = [CBMenuScene sceneWithSize:skView.bounds.size];
+//        [menuScene setGameDelegate:self];
+//        menuScene.scaleMode = SKSceneScaleModeAspectFill;
+//        [skView presentScene:menuScene];
     }
 }
 
@@ -65,20 +70,23 @@
     CBMyScene * gameScene = [CBMyScene unarchiveFromFile:fileName withSize:skView.bounds.size];
     self.gameScene = gameScene;
     gameScene.gameDelegate = self;
+    gameScene.tiltManager = self.tiltManager;
+    [gameScene prepareForDisplay];
     [skView presentScene:self.gameScene transition:[SKTransition crossFadeWithDuration:0.2]];
-
-    
 }
-
-
 
 
 -(void)launchMenuScreen {
     SKView * skView = (SKView *)self.view;
     CBMenuScene * menuScene = [CBMenuScene sceneWithSize:skView.bounds.size];
+    [menuScene setTiltManager:[self tiltManager]];
     menuScene.gameDelegate = self;
+    [menuScene setUIValues];
+    
+    
     menuScene.scaleMode = SKSceneScaleModeAspectFill;
     [skView presentScene:menuScene transition:[SKTransition crossFadeWithDuration:0.2]];
+    
 }
 
 -(void)launchInstructionScreen {

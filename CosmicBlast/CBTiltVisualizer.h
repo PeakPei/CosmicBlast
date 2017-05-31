@@ -7,11 +7,18 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-@import CoreMotion;
+#import "CBTiltManager.h"
+
 @interface CBTiltVisualizer : SKNode
 
-+(instancetype)tiltVisualizerWithMotionManager:(CMMotionManager *)manager;
+@property CBTiltManager * tiltManager;
+
+
++(instancetype)tiltVisualizerWithTiltManager:(CBTiltManager *)manager;
+
 
 -(void)update;
+
+
 
 @end

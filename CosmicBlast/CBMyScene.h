@@ -14,7 +14,7 @@
 #import "CBStats.h"
 #import "CBButtonDelegate.h"
 #import "CBGameSceneDelegate.h"
-
+#import "CBTiltManager.h"
 
 @interface CBMyScene : SKScene <SKPhysicsContactDelegate, CBButtonDelegate>
 
@@ -28,18 +28,17 @@
 @property (nonatomic) CBButtonBar * buttonBar;
 @property(nonatomic) CBHealthBar * healthBar;
 @property(nonatomic) CBStats * stats;
-
+@property CBTiltManager * tiltManager;
 
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
 
 +(instancetype)unarchiveFromFile:(NSString *)file withSize:(CGSize)size;
 
-
+-(void)prepareForDisplay;
 
 -(void)returnToParentMenu;
 
--(void)prepareForDisplay;
 
 
 @end

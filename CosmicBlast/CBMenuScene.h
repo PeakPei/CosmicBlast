@@ -11,16 +11,16 @@
 #import "CBButtonDelegate.h"
 #import "CBGameSceneDelegate.h"
 #import "CBButtonBar.h"
-
+#import "CBTiltManager.h"
 
 
 @interface CBMenuScene : SKScene <CBButtonDelegate>
 
 @property (nonatomic) CBButtonBar * buttonBar;
 @property (weak) id <CBGameSceneDelegate> gameDelegate;
+@property CBTiltManager * tiltManager;
 
-
-
+-(void)setUIValues;
 
 //+(id)initWithSize:(CGSize)size;
 

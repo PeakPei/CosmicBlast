@@ -16,6 +16,7 @@
 		6529D9721D061A0300A31762 /* checker.png in Resources */ = {isa = PBXBuildFile; fileRef = 6529D9711D061A0300A31762 /* checker.png */; };
 		653761361E5DD3D400757AA8 /* CBTrap.m in Sources */ = {isa = PBXBuildFile; fileRef = 653761351E5DD3D400757AA8 /* CBTrap.m */; };
 		654DC4151DFB5D860005002E /* CBWall.m in Sources */ = {isa = PBXBuildFile; fileRef = 654DC4141DFB5D860005002E /* CBWall.m */; };
+		655110881EDE2C6A00D243F5 /* CBTiltManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 655110871EDE2C6A00D243F5 /* CBTiltManager.m */; };
 		65545A8319C1443B005F1073 /* CBItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 65545A8219C1443B005F1073 /* CBItem.m */; };
 		65545A8619C14650005F1073 /* CBShuriken.m in Sources */ = {isa = PBXBuildFile; fileRef = 65545A8519C14650005F1073 /* CBShuriken.m */; };
 		655D4D4E1B7955550055FEB1 /* CBStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 655D4D4D1B7955550055FEB1 /* CBStats.m */; };
@@ -114,6 +115,8 @@
 		653761351E5DD3D400757AA8 /* CBTrap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTrap.m; sourceTree = "<group>"; };
 		654DC4131DFB5D860005002E /* CBWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWall.h; sourceTree = "<group>"; };
 		654DC4141DFB5D860005002E /* CBWall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWall.m; sourceTree = "<group>"; };
+		655110861EDE2C6A00D243F5 /* CBTiltManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTiltManager.h; sourceTree = "<group>"; };
+		655110871EDE2C6A00D243F5 /* CBTiltManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTiltManager.m; sourceTree = "<group>"; };
 		65545A8119C1443B005F1073 /* CBItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBItem.h; sourceTree = "<group>"; };
 		65545A8219C1443B005F1073 /* CBItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBItem.m; sourceTree = "<group>"; };
 		65545A8419C14650005F1073 /* CBShuriken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBShuriken.h; sourceTree = "<group>"; };
@@ -372,8 +375,6 @@
 				6579700E19BE43CE00E2B9D9 /* CBButtonBar.m */,
 				6579701019BE43E200E2B9D9 /* CBButton.h */,
 				6579701119BE43E200E2B9D9 /* CBButton.m */,
-				65E620941DE6288F0089602A /* CBTiltVisualizer.h */,
-				65E620951DE6288F0089602A /* CBTiltVisualizer.m */,
 			);
 			name = InGameUI;
 			sourceTree = "<group>";
@@ -425,6 +426,8 @@
 			children = (
 				6599EC711D02374C00DE1693 /* CBGameSceneDelegate.h */,
 				6566BE8D19802D5D00602447 /* CBAppDelegate.h */,
+				655110861EDE2C6A00D243F5 /* CBTiltManager.h */,
+				655110871EDE2C6A00D243F5 /* CBTiltManager.m */,
 				6566BE8E19802D5D00602447 /* CBAppDelegate.m */,
 				6566BE9319802D5D00602447 /* CBViewController.h */,
 				6566BE9419802D5D00602447 /* CBViewController.m */,
@@ -432,6 +435,8 @@
 				658FE4AF1D21FB8B0057D641 /* GameSettingsViewController.swift */,
 				6566BE9019802D5D00602447 /* Main.storyboard */,
 				65B792EB1CD6CDAE00FC7A28 /* MainMenuViewController.swift */,
+				65E620941DE6288F0089602A /* CBTiltVisualizer.h */,
+				65E620951DE6288F0089602A /* CBTiltVisualizer.m */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -735,6 +740,7 @@
 				658FE4C01D2217AD0057D641 /* WorldSettings.swift in Sources */,
 				6515FAD719AFD25800E82568 /* CBPlayer.m in Sources */,
 				65A70F761E4E1E54007D3CC4 /* DSMultilineLabelNode.m in Sources */,
+				655110881EDE2C6A00D243F5 /* CBTiltManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
