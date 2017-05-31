@@ -14,6 +14,4 @@
 
 -(CGVector)getXY;
 
--(float)getX;
-+(float)getY;
 @end
