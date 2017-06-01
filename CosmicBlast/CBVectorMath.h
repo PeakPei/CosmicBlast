@@ -35,4 +35,12 @@
 
 +(float)vectorLength:(CGVector)a;
 
+
+struct Vector3D{
+    float x;
+    float y;
+    float z;
+};
+
+
 @end

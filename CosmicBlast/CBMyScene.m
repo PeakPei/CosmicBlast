@@ -126,8 +126,6 @@ CBTiltVisualizer * tiltVisualizer;
 
 
 -(void)setWorldValues {
-    GameValues *gameValues = [[GameValues alloc] init];
-    self.backgroundColor = [gameValues backgroundColor];
     self.currentWorld = [CBWorld world];
     [self addChild: self.currentWorld];
 }

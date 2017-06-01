@@ -14,8 +14,12 @@
 
 
 
-@interface CBInstructionScene : SKScene
+@interface CBInstructionScene : SKScene <CBButtonDelegate>
+
 @property (nonatomic) CBButtonBar * buttonBar;
 @property (weak) id <CBGameSceneDelegate> gameDelegate;
+@property CBTiltManager * tiltManager;
+
+-(void)setUIValues;
 
 @end

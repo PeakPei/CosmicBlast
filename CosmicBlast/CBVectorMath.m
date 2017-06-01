@@ -59,8 +59,10 @@
 }
 
 +(float)vectorAngleFirst:(CGVector)a Second:(CGVector)b{
-    float angle = atan2(a.dy - b.dy, a.dx - b.dx);
+    //float angle = atan2(a.dy - b.dy, a.dx - b.dx);
+    float angle = atan2(a.dx - b.dx, a.dy - b.dy);
     //Math.atan2(vectorA.y - vectorB.y, vectorA.x - vectorB.x)
+    
     return angle;
 }
 

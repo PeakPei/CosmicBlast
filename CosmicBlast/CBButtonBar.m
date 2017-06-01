@@ -53,6 +53,17 @@ CGRect sceneFrame;
     [buttonBar setButtonTitles:[CBButtonBar getGameButtonTitles]];
     return buttonBar;
 }
++(instancetype)instructionButtonBarWithFrame:(CGRect)frame buttonDelegate:(id <CBButtonDelegate>)delegate{
+    CBButtonBar * buttonBar = [CBButtonBar emptyBarWithFrame:frame];
+    
+    //[buttonBar setButtonValues];
+    for (CBButton * button in buttonBar.buttons){
+        button.delegate = delegate;
+    }
+    [buttonBar setButtonTitles:[CBButtonBar getInstructionButtonTitles]];
+    return buttonBar;
+    
+}
 
 
 +(instancetype)emptyBarWithFrame:(CGRect)frame{
@@ -73,7 +84,9 @@ CGRect sceneFrame;
 }
 
 
-
++(NSArray<CBButton*> *)getInstructionButtonTitles{
+    return [NSArray arrayWithObjects:@"Previous\nPage", @"Next\nPage", @"Reset\nTilt", @"Main\nMenu", nil];
+}
 
 -(void)setButtonTitles:(NSArray *)titles {
     for (int i = 0; i<titles.count; i++){

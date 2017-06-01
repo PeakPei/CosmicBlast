@@ -7,11 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CBVectorMath.h"
 
 @interface CBTiltManager : NSObject
 
 +(id)tiltManager;
 
 -(CGVector)getXY;
+
+-(void)setTiltZero;
+
 
 @end

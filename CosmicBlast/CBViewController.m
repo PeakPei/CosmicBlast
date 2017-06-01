@@ -92,7 +92,10 @@
 -(void)launchInstructionScreen {
     SKView * skView = (SKView *)self.view;
     CBInstructionScene * instructionScene = [CBInstructionScene sceneWithSize:skView.bounds.size];
+    
+    [instructionScene setTiltManager:[self tiltManager]];
     instructionScene.gameDelegate = self;
+    [instructionScene setUIValues];
     instructionScene.scaleMode = SKSceneScaleModeAspectFill;
     [skView presentScene:instructionScene transition:[SKTransition crossFadeWithDuration:0.2]];
 }
