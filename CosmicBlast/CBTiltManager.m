@@ -28,21 +28,32 @@ CMMotionManager * _motionManager;
     [manager startMonitoringAcceleration];
     manager->tiltZero.x = 0.0;
     manager->tiltZero.y = 0.0;
-    manager->tiltZero.z = 1.0;
+    manager->tiltZero.z = -1.0;
     
     manager->realZero.x = 0.0;
     manager->realZero.y = 0.0;
-    manager->realZero.z = 1.0;
+    manager->realZero.z = -1.0;
     return manager;
 }
 
 
 -(void)setTiltZero{
     CMAccelerometerData* data = _motionManager.accelerometerData;
-    self->tiltZero.x = data.acceleration.x;
-    self->tiltZero.y = data.acceleration.y;
-    self->tiltZero.z = data.acceleration.z;
+    struct Vector3D rawData;
+    
+    rawData.x = data.acceleration.x;
+    rawData.y = data.acceleration.y;
+    rawData.z = data.acceleration.z;
+    
+    //self->tiltZero =[self normalizeVector3D:rawData];
+    self->tiltZero = rawData;
+
+    
+    NSLog(@"****START********");
+    NSLog(@"tiltZero.x = %f, tiltZero.y = %f, tiltZero.z = %f ", tiltZero.x, tiltZero.y, tiltZero.z);
+    NSLog(@"****STOP********");
     NSLog(@"Tilt Zero Set");
+    
 }
 
 
@@ -80,6 +91,47 @@ CMMotionManager * _motionManager;
 
 
 
+
+
+
+-(struct Vector3D)applyRotation:(struct Vector3D)v{
+    
+
+    struct Vector3D toReturn;
+    
+    
+    //Should be looking at tilt Zero and real zero
+//    float thetaX =  0;//M_PI;//[CBVectorMath vectorAngleFirst:(CGVectorMake(self->realZero.y, self->realZero.z)) Second:CGVectorMake(tiltZero.y, tiltZero.z)];
+    
+//    float thetaY = M_PI/6;//[CBVectorMath vectorAngleFirst:(CGVectorMake(self->realZero.x, self->realZero.z)) Second:CGVectorMake(tiltZero.x, tiltZero.z)];
+
+float thetaX = [CBVectorMath vectorAngleFirst:(CGVectorMake(self->realZero.y, self->realZero.z)) Second:CGVectorMake(tiltZero.y, tiltZero.z)];
+    
+    float thetaY = [CBVectorMath vectorAngleFirst:(CGVectorMake(self->realZero.x, self->realZero.z)) Second:CGVectorMake(tiltZero.x, tiltZero.z)];
+    
+    //    float thetaX = [CBVectorMath vectorAngleFirst:(CGVectorMake(self->realZero.y, self->realZero.z)) Second:CGVectorMake(v.y, v.z)];
+//    
+//    float thetaY = [CBVectorMath vectorAngleFirst:(CGVectorMake(self->realZero.x, self->realZero.z)) Second:CGVectorMake(v.x, v.z)];
+ 
+//    NSLog(@"****START********");
+//    NSLog(@"thetaX = x %f, thetaY:%f",thetaX,thetaY);
+//    NSLog(@"****STOP********");
+    
+    
+    
+    float newX = v.x * cos(thetaY) + (v.y * sin(thetaX) + v.z * cos(thetaX)) * sin(thetaY);
+    float newY = (v.y * cos(thetaX)) - (v.z * sin(thetaX));
+    float newZ = (v.y * sin(thetaX) + v.z * cos(thetaX)) * cos(thetaY) - v.x * sin(thetaY);
+    
+    toReturn.x = newX;
+    toReturn.y = newY;
+    toReturn.z = newZ;
+    
+
+    return toReturn;
+}
+
+
 -(struct Vector3D)normalizeVector3D:(struct Vector3D)vector{
     //length = sqrt((ax * ax) + (ay * ay) + (az * az))
     float length = sqrtf(pow(vector.x, 2.0)) + (pow(vector.y, 2.0))  + (pow(vector.z, 2.0));
@@ -90,29 +142,4 @@ CMMotionManager * _motionManager;
     
     return toReturn;
 }
-
-
--(struct Vector3D)applyRotation:(struct Vector3D)v{
-    
-    struct Vector3D vn = v;
-    //[self normalizeVector3D:v];
-    struct Vector3D toReturn;
-    
-    float thetaX = [CBVectorMath vectorAngleFirst:(CGVectorMake(self->realZero.y, self->realZero.z)) Second:CGVectorMake(vn.y, vn.z)];
-    
-    float thetaY = [CBVectorMath vectorAngleFirst:(CGVectorMake(self->realZero.x, self->realZero.z)) Second:CGVectorMake(vn.x, vn.z)];
- 
-    
-    float newX = v.x * cos(thetaY) + (v.y * sin(thetaX) + v.z * cos(thetaX)) * sin(thetaY);
-    float newY = (v.y * cos(thetaX))- (v.z * sin(thetaX));
-    float newZ = (v.y * sin(thetaX) + v.z * cos(thetaX)) * cos(thetaY) - v.x * sin(thetaY);
-    
-    toReturn.x = newX;
-    toReturn.y = newY;
-    toReturn.z = newZ;
-    return toReturn;
-}
-
-
-
 @end

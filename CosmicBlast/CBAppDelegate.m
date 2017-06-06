@@ -51,7 +51,7 @@ UIStoryboard* _initalStoryboard;
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (void)resetWindowToInitialView
+- (void)heWindowToInitialView
 {
     for (UIView* view in self.window.subviews)
     {

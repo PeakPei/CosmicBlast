@@ -58,12 +58,18 @@
     return CGPointMake(a.x / length, a.y/length);
 }
 
-+(float)vectorAngleFirst:(CGVector)a Second:(CGVector)b{
-    //float angle = atan2(a.dy - b.dy, a.dx - b.dx);
-    float angle = atan2(a.dx - b.dx, a.dy - b.dy);
-    //Math.atan2(vectorA.y - vectorB.y, vectorA.x - vectorB.x)
++(float)vectorAngleFirst:(CGVector)b Second:(CGVector)a{
+    float lengthA = [CBVectorMath vectorLength:a];
+    float lengthB = [CBVectorMath vectorLength:b];
+    float dotProduct = (a.dx * b.dx) + (a.dy * b.dy);
+    float angle1 = acos(dotProduct/(lengthA*lengthB));
+//    float angle = atan2f( a.dy - b.dy , a.dx - b.dx) + M_PI;
+//    float angle = atan2(a.dx - b.dx, a.dy - b.dy);
     
-    return angle;
+    
+
+    
+    return angle1;
 }
 
 
