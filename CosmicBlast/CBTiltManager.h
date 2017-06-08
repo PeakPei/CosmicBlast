@@ -16,6 +16,6 @@
 -(CGVector)getXY;
 
 -(void)setTiltZero;
-
+-(void)resetTiltZero;
 
 @end

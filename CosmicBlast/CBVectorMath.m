@@ -22,7 +22,7 @@
 
 
 //Vector multiplication
-+(CGPoint)cbVectorMultFirst:(CGPoint)a Value:(float)b{
++(CGPoint)cbVectorMultFirst:(CGPoint)a Value:(double)b{
     return CGPointMake(a.x * b, a.y * b);
 }
 
@@ -34,37 +34,52 @@
     return CGVectorMake(v1.dx-v2.dx, v1.dy-v2.dy);
 }
 
-+(CGVector)vectorMult:(CGVector)vector Value:(float)multiplier{
++(CGVector)vectorMult:(CGVector)vector Value:(double)multiplier{
     return CGVectorMake(vector.dx * multiplier, vector.dy * multiplier);
 }
 
 +(CGVector)vectorNormalize:(CGVector)a{
-    float length = [CBVectorMath vectorLength:a];
+    double length = [CBVectorMath vectorLength:a];
     return CGVectorMake(a.dx / length, a.dy / length);
 }
 
-+(float)vectorLength:(CGVector)a{
++(double)vectorLength:(CGVector)a{
     return sqrtf(a.dx*a.dx + a.dy * a.dy);
 }
 
 ///Vector Length
-+(float)cbVectorLength:(CGPoint)a{
++(double)cbVectorLength:(CGPoint)a{
     return sqrtf(a.x*a.x + a.y * a.y);
 }
 
 //Vector normalization (makes length = 1)
 +(CGPoint)cbVectorNormalize:(CGPoint)a{
-    float length = [CBVectorMath cbVectorLength:a];
+    double length = [CBVectorMath cbVectorLength:a];
     return CGPointMake(a.x / length, a.y/length);
 }
 
-+(float)vectorAngleFirst:(CGVector)b Second:(CGVector)a{
-    float lengthA = [CBVectorMath vectorLength:a];
-    float lengthB = [CBVectorMath vectorLength:b];
-    float dotProduct = (a.dx * b.dx) + (a.dy * b.dy);
-    float angle1 = acos(dotProduct/(lengthA*lengthB));
++(double)vectorAngleFirst:(CGVector)b Second:(CGVector)a{
+    
+    double lengthA = [CBVectorMath vectorLength:a];
+    double lengthB = [CBVectorMath vectorLength:b];
+    
+//    CGVector an = [CBVectorMath vectorNormalize:a];
+//    CGVector bn = [CBVectorMath vectorNormalize:b];
+    double dotProduct = (a.dx * b.dx) + (a.dy * b.dy);
+    double determinant = (a.dx * b.dy) - (a.dy * b.dx);
+    double angle1;
+//    if (dotProduct < 0){
+//        angle1 = atan2(determinant, dotProduct) - M_PI;
+//        
+//    } else {
+//        angle1 = atan2(determinant, dotProduct);
+//    }
+    angle1 = atan2(determinant, dotProduct);
+    
+    //float angle1 = acos(dotProduct/(lengthA*lengthB));
 //    float angle = atan2f( a.dy - b.dy , a.dx - b.dx) + M_PI;
 //    float angle = atan2(a.dx - b.dx, a.dy - b.dy);
+    
     
     
 

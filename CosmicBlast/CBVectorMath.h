@@ -20,26 +20,26 @@
 
 +(CGPoint)cbVectorSubFirst:(CGPoint)a Second:(CGPoint)b;
 
-+(CGPoint)cbVectorMultFirst:(CGPoint)a Value:(float)b;
++(CGPoint)cbVectorMultFirst:(CGPoint)a Value:(double)b;
 
-+(float)cbVectorLength:(CGPoint)a;
++(double)cbVectorLength:(CGPoint)a;
 
 +(CGPoint)cbVectorNormalize:(CGPoint)a;
 
-+(CGVector)vectorMult:(CGVector)vector Value:(float)multiplier;
++(CGVector)vectorMult:(CGVector)vector Value:(double)multiplier;
 
 +(CGVector)vectorNormalize:(CGVector)a;
 
-+(float)vectorAngleFirst:(CGVector)a Second:(CGVector)b;
++(double)vectorAngleFirst:(CGVector)a Second:(CGVector)b;
 
 
-+(float)vectorLength:(CGVector)a;
++(double)vectorLength:(CGVector)a;
 
 
 struct Vector3D{
-    float x;
-    float y;
-    float z;
+    double x;
+    double y;
+    double z;
 };
 
 

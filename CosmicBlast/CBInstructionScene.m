@@ -93,7 +93,7 @@ NSMutableArray * pages;
 
 -(void)executeButtonFunction:(NSString *)function{
     if([function isEqualToString:@"Previous\nPage"]){
-        //PREVIOUS PAGE
+        [self.tiltManager resetTiltZero];
     } else if([function isEqualToString:@"Main\nMenu"]){
         [self.gameDelegate launchMenuScreen];
     } else if([function isEqualToString:@"Reset\nTilt"]){
