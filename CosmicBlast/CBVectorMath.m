@@ -60,11 +60,14 @@
 
 +(double)vectorAngleFirst:(CGVector)b Second:(CGVector)a{
     
+
+    
     double lengthA = [CBVectorMath vectorLength:a];
     double lengthB = [CBVectorMath vectorLength:b];
     
-//    CGVector an = [CBVectorMath vectorNormalize:a];
-//    CGVector bn = [CBVectorMath vectorNormalize:b];
+//    a = [CBVectorMath vectorNormalize:a];
+//    b = [CBVectorMath vectorNormalize:b];
+    
     double dotProduct = (a.dx * b.dx) + (a.dy * b.dy);
     double determinant = (a.dx * b.dy) - (a.dy * b.dx);
     double angle1;

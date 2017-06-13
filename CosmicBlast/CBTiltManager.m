@@ -45,8 +45,8 @@ CMMotionManager * _motionManager;
     rawData.y = data.acceleration.y;
     rawData.z = data.acceleration.z;
     
-    self->tiltZero =[self normalizeVector3D:rawData];
-    self->tiltZero = rawData;
+    tiltZero =[self normalizeVector3D:rawData];
+    //self->tiltZero = rawData;
 
     
     NSLog(@"****START********");
@@ -98,8 +98,10 @@ CMMotionManager * _motionManager;
     rawVector.x = data.acceleration.x;
     rawVector.y = data.acceleration.y;
     rawVector.z = data.acceleration.z;
+    struct Vector3D normalVector = [self normalizeVector3D:rawVector];
     
-    struct Vector3D transformedVector = [self applyRotation:rawVector];
+    
+    struct Vector3D transformedVector = [self applyRotation:normalVector];
     CGVector xy = CGVectorMake(transformedVector.x, transformedVector.y);
     CGVector xyOrig = CGVectorMake(rawVector.x, rawVector.y);
 //    NSLog(@"****START********");
@@ -115,51 +117,51 @@ CMMotionManager * _motionManager;
 
 
 
--(struct Vector3D)applyRotation:(struct Vector3D)v{
-    
-
-    struct Vector3D toReturn;
-    
-    
-    //Should be looking at tilt Zero and real zero
-//    float thetaX =  0;//M_PI;//[CBVectorMath vectorAngleFirst:(CGVectorMake(self->realZero.y, self->realZero.z)) Second:CGVectorMake(tiltZero.y, tiltZero.z)];
-    
-//    float thetaY = M_PI/6;//[CBVectorMath vectorAngleFirst:(CGVectorMake(self->realZero.x, self->realZero.z)) Second:CGVectorMake(tiltZero.x, tiltZero.z)];
-
-    double thetaX = [CBVectorMath vectorAngleFirst:(CGVectorMake(realZero.y, realZero.z)) Second:CGVectorMake(tiltZero.y, tiltZero.z)];
-    
-    
-    //float thetaY = [CBVectorMath vectorAngleFirst:CGVectorMake(tiltZero.x, tiltZero.z) Second:CGVectorMake(realZero.x, realZero.z)];
-                                                                                               
-    double thetaY = -1 * [CBVectorMath vectorAngleFirst:(CGVectorMake(realZero.x, realZero.z)) Second:CGVectorMake(tiltZero.x, tiltZero.z)];
-    
-    //    float thetaX = [CBVectorMath vectorAngleFirst:(CGVectorMake(self->realZero.y, self->realZero.z)) Second:CGVectorMake(v.y, v.z)];
+//-(struct Vector3D)applyRotation:(struct Vector3D)v{
 //    
-//    float thetaY = [CBVectorMath vectorAngleFirst:(CGVectorMake(self->realZero.x, self->realZero.z)) Second:CGVectorMake(v.x, v.z)];
- 
-//    NSLog(@"****START********");
-//    NSLog(@"thetaX = x %f, thetaY:%f",thetaX,thetaY);
-//    NSLog(@"****STOP********");
+//    struct Vector3D toReturn;
+//    double thetaX = [CBVectorMath vectorAngleFirst:(CGVectorMake(realZero.y, realZero.z)) Second:CGVectorMake(tiltZero.y, tiltZero.z)];
+//    
+//    double thetaY = -1 * [CBVectorMath vectorAngleFirst:(CGVectorMake(realZero.x, realZero.z)) Second:CGVectorMake(tiltZero.x, tiltZero.z)];
+//    
+//    NSLog(@"thetaX = x %f, thetaY:%f", thetaX, thetaY);
+//
+//    
+//    double newX = v.x * cos(thetaY) + (v.y * sin(thetaX) + v.z * cos(thetaX)) * sin(thetaY);
+//    double newY = (v.y * cos(thetaX)) - (v.z * sin(thetaX));
+//    double newZ = (v.y * sin(thetaX) + v.z * cos(thetaX)) * cos(thetaY) - v.x * sin(thetaY);
+//    
+//    toReturn.x = newX;
+//    toReturn.y = newY;
+//    toReturn.z = newZ;
+//    
+//    NSLog(@"\ntransformed = (%f, %f, %f) len = %f",newX,newY,newZ,[self getVectorLength:toReturn]);
+//    NSLog(@"\noriginal = (%f, %f, %f) len = %f", v.x,v.y,v.z, [self getVectorLength:v]);
+//    //NSLog(@"xyOrig = x %f, y:%f",xyOrig.dx,xyOrig .dy);
+//    return toReturn;
+//}
+
+-(struct Vector3D)applyRotation:(struct Vector3D)v{
+    struct Vector3D toReturn;
+    double theta = [self vectorAngleFirst:realZero Second:tiltZero];
+    struct Vector3D axis = [self normalizeVector3D:[self getCrossProductFirst:realZero Second:tiltZero]];
+    double cosT = cos(theta);
+    double sinT = sin(theta);
     
-    struct Vector3D vn = [self normalizeVector3D:v];
+    double newX = v.x * (cosT + pow(axis.x, 2.0) * (1 - cosT)) + v.y * (axis.x * axis.y *(1 - cosT) - axis.z * sinT) + v.z * (axis.x * axis.z * (1 - cosT) + axis.y * sinT);
     
-    double newX = vn.x * cos(thetaY) + (vn.y * sin(thetaX) + vn.z * cos(thetaX)) * sin(thetaY);
-    double newY = (vn.y * cos(thetaX)) - (vn.z * sin(thetaX));
-    double newZ = (vn.y * sin(thetaX) + vn.z * cos(thetaX)) * cos(thetaY) - vn.x * sin(thetaY);
+    double newY = v.x * (axis.y * axis.x * (1 - cosT) + axis.z * sinT) + v.y * (cosT + pow(axis.y, 2.0) * (1 - cosT)) + v.z * (axis.y * axis.z * (1 - cosT) - axis.x * sinT);
+    
+    
+    double newZ = v.x * (axis.z * axis.x * (1 - cosT) - axis.y * sinT) + v.y * (axis.z * axis.y * (1 - cosT) + axis.x * sinT) + v.z * (cosT + pow(axis.z ,2.0) * (1 - cosT));
     
     toReturn.x = newX;
     toReturn.y = newY;
     toReturn.z = newZ;
     
-    toReturn = [self normalizeVector3D:toReturn];
-    //NSLog(@"\ntransformed = x:%f, y:%f, z:%f",newX,newY,newZ);
-
-    //NSLog(@"xyOrig = x %f, y:%f",xyOrig.dx,xyOrig .dy);
-
-
-
     return toReturn;
 }
+
 
 
 -(double)getVectorLength:(struct Vector3D)vector{
@@ -173,15 +175,34 @@ CMMotionManager * _motionManager;
     if(length == 0){
         toReturn.x = 0;
         toReturn.y = 0;
-        toReturn.z = 0;
+        toReturn.z = -1;
         return toReturn;
     }
 
     toReturn.x = vector.x/length;
     toReturn.y = vector.y/length;
     toReturn.z = vector.z/length;
-    NSLog(@"\noriginal length = %f",length);
-    NSLog(@"\nnormalized length = %f",[self getVectorLength:toReturn]);
+    
     return toReturn;
+}
+
+-(struct Vector3D)getCrossProductFirst:(struct Vector3D)v1 Second:(struct Vector3D)v2{
+    struct Vector3D toReturn;
+    toReturn.x = (v1.y * v2.z) - (v1.z * v2.y);
+    toReturn.y = (v1.z * v2.x) - (v1.x * v2.z);
+    toReturn.z = (v1.x * v2.y) - (v1.y * v2.x);
+    return toReturn;
+}
+
+
+-(double)vectorAngleFirst:(struct Vector3D)v1 Second:(struct Vector3D)v2{
+    double dotProduct = [self dotProductFirst:v1 Second:v2];
+    double denominator = [self getVectorLength:v1] * [self getVectorLength:v2];
+    return acos(dotProduct/denominator);
+}
+
+
+-(double)dotProductFirst:(struct Vector3D)v1 Second:(struct Vector3D)v2{
+    return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
 }
 @end
