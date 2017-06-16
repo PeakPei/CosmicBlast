@@ -11,6 +11,7 @@
 #import "CBInstructionScene.h"
 #import "CBAppDelegate.h"
 
+
 @implementation CBViewController
 
 
@@ -24,7 +25,7 @@
     CBTiltManager * manager = [CBTiltManager tiltManager];
     [self setTiltManager:manager];
     
-     
+    
      
     // Configure the view.
     SKView * skView = (SKView *)self.view;

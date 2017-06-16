@@ -44,7 +44,9 @@ CMMotionManager * _motionManager;
     rawData.x = data.acceleration.x;
     rawData.y = data.acceleration.y;
     rawData.z = data.acceleration.z;
-    
+//    rawData.x = 0;
+//    rawData.y = -1;
+//    rawData.z = 0;
     tiltZero =[self normalizeVector3D:rawData];
     //self->tiltZero = rawData;
 
@@ -62,7 +64,7 @@ CMMotionManager * _motionManager;
     
     zero.x = 0;
     zero.y = 0;
-    zero.z = 0;
+    zero.z = -1.0;
     
     //self->tiltZero =[self normalizeVector3D:rawData];
     self->tiltZero = zero;
@@ -143,8 +145,13 @@ CMMotionManager * _motionManager;
 
 -(struct Vector3D)applyRotation:(struct Vector3D)v{
     struct Vector3D toReturn;
-    double theta = [self vectorAngleFirst:realZero Second:tiltZero];
+    double theta = -1 * [self vectorAngleFirst:tiltZero Second:realZero];
     struct Vector3D axis = [self normalizeVector3D:[self getCrossProductFirst:realZero Second:tiltZero]];
+//    double theta = -1 * M_PI/2;
+//    struct Vector3D axis;
+//    axis.x = -1;
+//    axis.y = 0;
+//    axis.z = 0;
     double cosT = cos(theta);
     double sinT = sin(theta);
     
@@ -158,6 +165,10 @@ CMMotionManager * _motionManager;
     toReturn.x = newX;
     toReturn.y = newY;
     toReturn.z = newZ;
+    
+    NSLog(@"toReturn = (%f,%f,%f)", toReturn.x,toReturn.y,toReturn.z);
+    NSLog(@"axis = (%f,%f,%f)", axis.x,axis.y,axis.z);
+    NSLog(@"theta = %f", theta);
     
     return toReturn;
 }
@@ -175,7 +186,7 @@ CMMotionManager * _motionManager;
     if(length == 0){
         toReturn.x = 0;
         toReturn.y = 0;
-        toReturn.z = -1;
+        toReturn.z = 1;
         return toReturn;
     }
 
