@@ -24,7 +24,7 @@ typedef enum {
 @property BehaviorType attackBehavior;
 @property BehaviorType movementBehavior;
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
-
+@property (nonatomic) NSTimeInterval lastShotTimeInterval;
 
 
 +(id)enemyUnit;
@@ -54,6 +54,8 @@ typedef enum {
 -(CBWalker *)maybeAttack;
 
 
+-(CBEnemy *)randomShot;
 
+-(CBEnemy *)getAimedShot;
 
 @end

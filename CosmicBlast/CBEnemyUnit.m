@@ -101,8 +101,9 @@
 -(CBEnemy *)maybeAttack {
     if (self.lastSpawnTimeInterval > 0.5) {
         self.lastSpawnTimeInterval = 0;
-        CBEnemy * projectile;
         GameValues * gameValues = [[GameValues alloc] init];
+        CBEnemy * projectile;
+
         projectile = [self createProjectile];
         projectile.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:projectile.size];
         projectile.physicsBody.dynamic = YES;
@@ -112,20 +113,11 @@
                 return nil;
                 break;
             case BehaviorType_Random:
-                //need to have this statement here or it won't compile.  WTF.
-                NSLog(@"");
-                float x = ((float)rand() / RAND_MAX)-0.5;
-                float y = ((float)rand() / RAND_MAX)-0.5;
-                
-                CGVector randomVector = CGVectorMake(x, y);
-                CGVector randomDirection = [CBVectorMath vectorNormalize:randomVector];
-                CGVector shotVector = [CBVectorMath vectorMult:randomDirection Value:[gameValues unitShotSpeed]];
-                projectile.physicsBody.velocity = shotVector;
+                projectile = [self randomShot];
                 break;
             case BehaviorType_Aggressive:
             {
-                CGVector shotVector = [CBVectorMath vectorMult:[self getDirectionToPlayer] Value:[gameValues unitShotSpeed]];
-                projectile.physicsBody.velocity = shotVector;
+                projectile = [self getAimedShot];
                 break;
             }
             default:
@@ -135,9 +127,9 @@
         
 
         
-        SKAction * actionWait = [SKAction waitForDuration:1];
-        SKAction * actionMoveDone = [SKAction removeFromParent];
-        [projectile runAction:[SKAction sequence:@[actionWait, actionMoveDone]]];
+//        SKAction * actionWait = [SKAction waitForDuration:1];
+//        SKAction * actionMoveDone = [SKAction removeFromParent];
+//        [projectile runAction:[SKAction sequence:@[actionWait, actionMoveDone]]];
 
         return projectile;
     }
@@ -150,7 +142,7 @@
     self->playerPosition = position;
     //update last spawnTimeInterval
     self.lastSpawnTimeInterval += timeSinceLast;
-    
+    self.lastShotTimeInterval += timeSinceLast;
     
     [self applyMovement];
 }
@@ -203,5 +195,42 @@
     }
 }
 
+-(CBEnemy *)getAimedShot{
+    
+    CBEnemy * projectile;
+    GameValues * gameValues = [[GameValues alloc] init];
+    projectile = [self createProjectile];
+    projectile.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:projectile.size];
+    projectile.physicsBody.dynamic = YES;
+    CGVector shotVector = [CBVectorMath vectorMult:[self getDirectionToPlayer] Value:[gameValues unitShotSpeed]];
+
+    projectile.physicsBody.velocity = shotVector;
+    SKAction * actionWait = [SKAction waitForDuration:1];
+    SKAction * actionMoveDone = [SKAction removeFromParent];
+    [projectile runAction:[SKAction sequence:@[actionWait, actionMoveDone]]];
+    return projectile;
+}
+
+
+-(CBEnemy *)randomShot{
+    CBEnemy * projectile;
+    GameValues * gameValues = [[GameValues alloc] init];
+    projectile = [self createProjectile];
+    projectile.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:projectile.size];
+    projectile.physicsBody.dynamic = YES;
+    
+    float x = ((float)rand() / RAND_MAX)-0.5;
+    float y = ((float)rand() / RAND_MAX)-0.5;
+    
+    CGVector randomVector = CGVectorMake(x, y);
+    CGVector randomDirection = [CBVectorMath vectorNormalize:randomVector];
+    CGVector shotVector = [CBVectorMath vectorMult:randomDirection Value:[gameValues unitShotSpeed]];
+    projectile.physicsBody.velocity = shotVector;
+    SKAction * actionWait = [SKAction waitForDuration:1];
+    SKAction * actionMoveDone = [SKAction removeFromParent];
+    [projectile runAction:[SKAction sequence:@[actionWait, actionMoveDone]]];
+    
+    return projectile;
+}
 
 @end
