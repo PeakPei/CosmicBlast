@@ -30,6 +30,10 @@
 
 +(CGVector)vectorNormalize:(CGVector)a;
 
++(CGVector)vectorFromAngle:(double)a;
+
++(double)angleFromVector:(CGVector)v;
+
 +(double)vectorAngleFirst:(CGVector)a Second:(CGVector)b;
 
 

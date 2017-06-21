@@ -101,7 +101,6 @@
 -(CBEnemy *)maybeAttack {
     if (self.lastSpawnTimeInterval > 0.5) {
         self.lastSpawnTimeInterval = 0;
-        GameValues * gameValues = [[GameValues alloc] init];
         CBEnemy * projectile;
 
         projectile = [self createProjectile];
@@ -143,6 +142,12 @@
     //update last spawnTimeInterval
     self.lastSpawnTimeInterval += timeSinceLast;
     self.lastShotTimeInterval += timeSinceLast;
+    //CGVector playerDirection = [self getDirectionToPlayer];
+    //CGVector currentRotation = [CBVectorMath vectorFromAngle:self.zRotation];
+    
+    
+    self.zRotation = [CBVectorMath angleFromVector:[self getDirectionToPlayer]] - M_PI/2;
+
     
     [self applyMovement];
 }

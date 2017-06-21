@@ -140,6 +140,7 @@ CBTiltVisualizer * tiltVisualizer;
         wall.physicsBody.restitution = 1;
         wall.physicsBody.dynamic = NO;
         wall.physicsBody.categoryBitMask = wallCategory;
+        wall.physicsBody.contactTestBitMask = enemyUnitCategory;
         wall.physicsBody.collisionBitMask = playerCategory | projectileCategory | enemyUnitCategory | monsterCategory;
         wall.physicsBody.usesPreciseCollisionDetection = NO;
         
@@ -331,7 +332,13 @@ CBTiltVisualizer * tiltVisualizer;
         firstBody = contact.bodyB;
         secondBody = contact.bodyA;
     }
-    
+
+    //wall hit by enemy
+    if ((firstBody.categoryBitMask & enemyUnitCategory) != 0 &&(secondBody.categoryBitMask & wallCategory) != 0){
+        SKNode * enemyUnit = firstBody.node;
+        [enemyUnit removeAllActions];
+        
+    }
     //monster hit by projectile
     if ((firstBody.categoryBitMask & projectileCategory) != 0 &&(secondBody.categoryBitMask & monsterCategory) != 0){
         [self projectile:(SKSpriteNode *) firstBody.node didCollideWithMonster:(SKSpriteNode *) secondBody.node];

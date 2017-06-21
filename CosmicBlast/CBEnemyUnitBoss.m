@@ -22,6 +22,7 @@
     CBEnemyUnitBoss * boss = [CBEnemyUnitBoss spriteNodeWithImageNamed:@"EnemyBoss"];
     GameValues * gameValues = [[GameValues alloc] init];
     boss->isShooting = false;
+    boss.lastSpawnTimeInterval = arc4random_uniform(40) / -10.0 ;
     boss.maxHealth = (int)[gameValues unitMaxHealth]*10;
     boss.health = boss.maxHealth;
     boss.dead = NO;
@@ -106,8 +107,13 @@
 
 
 -(void)chargePlayer{
-    SKAction * actionMove = [SKAction moveTo:[self getPlayerPosition] duration:0.6];
-    [self runAction:actionMove];
+    
+    SKAction * fade = [SKAction fadeAlphaTo:0.0 duration: 0.1];
+    SKAction * unfade = [SKAction fadeAlphaTo:1.0 duration: 0.1];
+    SKAction * actionMove = [SKAction moveTo:[self getPlayerPosition] duration:0.5];
+    SKAction *sequence = [SKAction sequence:@[fade, unfade, actionMove]];
+    [self runAction:sequence];
+    self.lastSpawnTimeInterval = -4.0;
 }
 
 

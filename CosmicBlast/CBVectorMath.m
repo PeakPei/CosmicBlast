@@ -92,5 +92,18 @@
 
 
 
++(double)angleFromVector:(CGVector)v{
+    return atan2 (v.dy, v.dx);
+}
+
+
++(CGVector)vectorFromAngle:(double)a{
+    CGVector v;
+    v.dx = cos(a);
+    v.dy = sin(a);
+    return v;
+}
+
+
 
 @end

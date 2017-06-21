@@ -147,11 +147,7 @@ CMMotionManager * _motionManager;
     struct Vector3D toReturn;
     double theta = -1 * [self vectorAngleFirst:tiltZero Second:realZero];
     struct Vector3D axis = [self normalizeVector3D:[self getCrossProductFirst:realZero Second:tiltZero]];
-//    double theta = -1 * M_PI/2;
-//    struct Vector3D axis;
-//    axis.x = -1;
-//    axis.y = 0;
-//    axis.z = 0;
+    
     double cosT = cos(theta);
     double sinT = sin(theta);
     
@@ -165,10 +161,7 @@ CMMotionManager * _motionManager;
     toReturn.x = newX;
     toReturn.y = newY;
     toReturn.z = newZ;
-    
-    NSLog(@"toReturn = (%f,%f,%f)", toReturn.x,toReturn.y,toReturn.z);
-    NSLog(@"axis = (%f,%f,%f)", axis.x,axis.y,axis.z);
-    NSLog(@"theta = %f", theta);
+
     
     return toReturn;
 }
