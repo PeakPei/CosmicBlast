@@ -201,7 +201,7 @@ CBTiltVisualizer * tiltVisualizer;
     self.currentWorld.physicsBody.categoryBitMask = edgeCategory;
     self.currentWorld.physicsBody.contactTestBitMask = projectileCategory;
     self.currentWorld.physicsBody.collisionBitMask = 0;
-    
+    self.currentWorld.physicsBody.restitution = 1;
     
     self.units = [[NSMutableArray alloc] init];
     self.walls = [[NSMutableArray alloc] init];
@@ -453,8 +453,10 @@ CBTiltVisualizer * tiltVisualizer;
 
 -(void)projectile:(SKSpriteNode *)projectile didCollideWithEnemyUnit:(CBEnemyUnit *)unit {
     [unit unitHit];
+    [projectile removeFromParent];
     if(unit.dead){
         [unit removeFromParent];
+        
         [self.units removeObject:unit];
     }
     if (self.units.count == 0) {
