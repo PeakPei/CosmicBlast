@@ -44,6 +44,7 @@
     enemyUnit.health = enemyUnit.maxHealth;
     enemyUnit.dead = NO;
     enemyUnit.movementBehavior = BehaviorType_Aggressive;
+    enemyUnit.lastSpawnTimeInterval = arc4random_uniform(40) / -10.0;
     return enemyUnit;
 }
 
@@ -237,5 +238,7 @@
     
     return projectile;
 }
+
+
 
 @end

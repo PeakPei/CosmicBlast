@@ -11,6 +11,7 @@
 #import <CosmicBlast-Swift.h>
 
 
+#define DEGREES_TO_RADIANS(degrees)((M_PI * degrees)/180)
 
 @implementation CBEnemyUnitBoss {
     BOOL isShooting;
@@ -33,7 +34,16 @@
 -(void)unitHit
 //here we can implement behavior for when the boss is attacked.
 {
+    
     [super unitHit];
+    
+    int roll = arc4random_uniform(360);
+    double angle = DEGREES_TO_RADIANS(roll);
+    double newX = (self.scene.size.width/2) * cos(angle);
+    double newY = (self.scene.size.height/2) * sin(angle);
+    CGPoint newPos = CGPointMake(newX, newY);
+    
+    [self runAction:[SKAction moveTo:newPos duration:0.5]];
 
 }
 
@@ -104,6 +114,7 @@
 //    
 //    return projectile;
 //}
+
 
 
 -(void)chargePlayer{

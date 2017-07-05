@@ -336,6 +336,8 @@ CBTiltVisualizer * tiltVisualizer;
     //wall hit by enemy
     if ((firstBody.categoryBitMask & enemyUnitCategory) != 0 &&(secondBody.categoryBitMask & wallCategory) != 0){
         SKNode * enemyUnit = firstBody.node;
+        
+        [enemyUnit setAlpha:1];
         [enemyUnit removeAllActions];
         
     }
