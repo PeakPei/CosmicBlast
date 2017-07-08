@@ -79,6 +79,8 @@
 		65B792EC1CD6CDAE00FC7A28 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B792EB1CD6CDAE00FC7A28 /* MainMenuViewController.swift */; };
 		65BA8A8419B8E187003DCDD9 /* CBWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8A8319B8E187003DCDD9 /* CBWalker.m */; };
 		65BA8A8719B8E4B6003DCDD9 /* CBEnemyUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BA8A8619B8E4B6003DCDD9 /* CBEnemyUnit.m */; };
+		65CF5F811F0F1F93003465B2 /* VerticalTrapWall.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65CF5F801F0F1F93003465B2 /* VerticalTrapWall.sks */; };
+		65CF5F831F0F1FB1003465B2 /* HorizontalTrapWall.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65CF5F821F0F1FB1003465B2 /* HorizontalTrapWall.sks */; };
 		65D9B93F1CFFC1BE00A808BD /* GameValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9B93E1CFFC1BE00A808BD /* GameValues.swift */; };
 		65E01BC61D5A736500AF5AAD /* LevelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E01BC51D5A736500AF5AAD /* LevelData.swift */; };
 		65E620961DE6288F0089602A /* CBTiltVisualizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E620951DE6288F0089602A /* CBTiltVisualizer.m */; };
@@ -199,6 +201,8 @@
 		65BA8A8319B8E187003DCDD9 /* CBWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWalker.m; sourceTree = "<group>"; };
 		65BA8A8519B8E4B6003DCDD9 /* CBEnemyUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBEnemyUnit.h; sourceTree = "<group>"; };
 		65BA8A8619B8E4B6003DCDD9 /* CBEnemyUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBEnemyUnit.m; sourceTree = "<group>"; };
+		65CF5F801F0F1F93003465B2 /* VerticalTrapWall.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = VerticalTrapWall.sks; sourceTree = "<group>"; };
+		65CF5F821F0F1FB1003465B2 /* HorizontalTrapWall.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HorizontalTrapWall.sks; sourceTree = "<group>"; };
 		65D9B93E1CFFC1BE00A808BD /* GameValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameValues.swift; sourceTree = "<group>"; };
 		65D9BC681B2651EE005A5324 /* EnumConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnumConstants.h; sourceTree = "<group>"; };
 		65E01BC51D5A736500AF5AAD /* LevelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelData.swift; sourceTree = "<group>"; };
@@ -507,6 +511,8 @@
 			isa = PBXGroup;
 			children = (
 				657F2EA51E67AB0500351A13 /* VerticlaWall.sks */,
+				65CF5F801F0F1F93003465B2 /* VerticalTrapWall.sks */,
+				65CF5F821F0F1FB1003465B2 /* HorizontalTrapWall.sks */,
 				65ADBEE61E66593200DD50B8 /* HorizontalWall.sks */,
 			);
 			name = Scenes;
@@ -614,12 +620,14 @@
 				6566BEBF1980387400602447 /* sprites.atlas in Resources */,
 				658BE5DB1E5BAB7A00601C95 /* Level-6.sks in Resources */,
 				6529D9721D061A0300A31762 /* checker.png in Resources */,
+				65CF5F811F0F1F93003465B2 /* VerticalTrapWall.sks in Resources */,
 				658BE5E91E5BABDF00601C95 /* Level-13.sks in Resources */,
 				658BE5EB1E5BABE800601C95 /* Level-14.sks in Resources */,
 				658BE5F51E5BAC1500601C95 /* Level-19.sks in Resources */,
 				65ADBEE71E66593200DD50B8 /* HorizontalWall.sks in Resources */,
 				65AF0B7F1E3ADA40008DDE91 /* Level-4.sks in Resources */,
 				658BE5D91E5B9DCD00601C95 /* Level-5.sks in Resources */,
+				65CF5F831F0F1FB1003465B2 /* HorizontalTrapWall.sks in Resources */,
 				658BE5F71E5BAC1B00601C95 /* Level-20.sks in Resources */,
 				658BE5E51E5BABCA00601C95 /* Level-11.sks in Resources */,
 				65977D561CD5232400BFEAB9 /* LaunchScreen.storyboard in Resources */,

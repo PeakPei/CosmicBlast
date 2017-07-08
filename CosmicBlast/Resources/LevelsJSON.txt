@@ -97,8 +97,8 @@
         },
         {
             "number": 20,
-            "imageName": "Mothership.png",
-            "shape": "circle",
+            "imageName": "GrassWorld.png",
+            "shape": "square",
         }
     ]
 }

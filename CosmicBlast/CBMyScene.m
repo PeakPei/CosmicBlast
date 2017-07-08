@@ -158,7 +158,7 @@ CBTiltVisualizer * tiltVisualizer;
         trap.physicsBody.dynamic = NO;
         trap.physicsBody.categoryBitMask = trapCategory;
         trap.physicsBody.contactTestBitMask = playerCategory;
-        trap.physicsBody.collisionBitMask = enemyUnitCategory | monsterCategory | playerCategory;
+        trap.physicsBody.collisionBitMask =  monsterCategory | playerCategory;
         trap.physicsBody.usesPreciseCollisionDetection = NO;
         
         [self.currentWorld addChild:trap];
@@ -277,7 +277,7 @@ CBTiltVisualizer * tiltVisualizer;
     enemy.physicsBody.mass = 0.05;
     enemy.physicsBody.categoryBitMask = enemyUnitCategory;
     enemy.physicsBody.contactTestBitMask = projectileCategory;
-    enemy.physicsBody.collisionBitMask = playerCategory | projectileCategory | edgeCategory | enemyUnitCategory | wallCategory | trapCategory;
+    enemy.physicsBody.collisionBitMask = playerCategory | projectileCategory | edgeCategory | enemyUnitCategory | wallCategory;
     enemy.physicsBody.usesPreciseCollisionDetection = NO;
 }
 
@@ -314,9 +314,7 @@ CBTiltVisualizer * tiltVisualizer;
         timeSinceLast = 1.0 / 60.0;
         self.lastUpdateTimeInterval = currentTime;
     }
-    
     [self updateWithTimeSinceLastUpdate:timeSinceLast];
-    
 }
 
 
@@ -409,7 +407,7 @@ CBTiltVisualizer * tiltVisualizer;
     GameValues * gameValues = [[GameValues alloc] init];
     UITouch * touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self.currentWorld];
-    if([self.player weaponRecharged]){
+    if([self.player weaponRecharged] && !self.view.paused){
         SKSpriteNode * projectile = [CBShuriken shuriken];
         projectile.position = self.player.position;
         projectile.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:projectile.size.width/2];
@@ -421,7 +419,7 @@ CBTiltVisualizer * tiltVisualizer;
 
         projectile.physicsBody.categoryBitMask = projectileCategory;
         projectile.physicsBody.contactTestBitMask = monsterCategory;
-        projectile.physicsBody.collisionBitMask = enemyUnitCategory | wallCategory | edgeCategory;
+        projectile.physicsBody.collisionBitMask = enemyUnitCategory | wallCategory | edgeCategory | trapCategory;
     
         //configure offset
         CGPoint offset = [CBVectorMath cbVectorSubFirst:location Second:projectile.position];

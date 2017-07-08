@@ -172,7 +172,11 @@
     SKAction *sequence = [SKAction sequence:@[fade, unfade, fade, unfade, fade, unfade]];
     
     [self runAction:sequence];
-    [self playerHitWithDamageAmount:20];
+    
+    // Easy = 5
+    // Normal = 20
+    // Hard = ??
+    [self playerHitWithDamageAmount:5];
     
     
 }

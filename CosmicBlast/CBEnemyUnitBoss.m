@@ -43,7 +43,7 @@
     double newY = (self.scene.size.height/2) * sin(angle);
     CGPoint newPos = CGPointMake(newX, newY);
     
-    [self runAction:[SKAction moveTo:newPos duration:0.5]];
+    [self runAction:[SKAction moveTo:newPos duration:0.65]];
 
 }
 
@@ -53,8 +53,8 @@
 -(CBEnemy *)maybeAttack {
     int roll = arc4random_uniform(100) ;
     if(isShooting){
-        if  (self.lastSpawnTimeInterval < 2) {
-            if (self.lastShotTimeInterval > 0.3) {
+        if  (self.lastSpawnTimeInterval < 1.5) {
+            if (self.lastShotTimeInterval > 0.15) {
                 self.lastShotTimeInterval = 0.0;
                 return [self getAimedShot];
             }
@@ -64,7 +64,7 @@
             isShooting = false;
         }
     }
-    if (self.lastSpawnTimeInterval > 2) {
+    if (self.lastSpawnTimeInterval > 1.5) {
         self.lastSpawnTimeInterval = 0;
         if (roll < 33){
             return [self getAimedShot];
@@ -121,7 +121,7 @@
     
     SKAction * fade = [SKAction fadeAlphaTo:0.0 duration: 0.1];
     SKAction * unfade = [SKAction fadeAlphaTo:1.0 duration: 0.1];
-    SKAction * actionMove = [SKAction moveTo:[self getPlayerPosition] duration:0.5];
+    SKAction * actionMove = [SKAction moveTo:[self getPlayerPosition] duration:0.65];
     SKAction *sequence = [SKAction sequence:@[fade, unfade, actionMove]];
     [self runAction:sequence];
     self.lastSpawnTimeInterval = -4.0;
