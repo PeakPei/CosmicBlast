@@ -24,6 +24,15 @@
     
 }
 
++(id)buttonWithImageNamed:(NSString *)name{
+    SKSpriteNode * buttonImage = [CBButton spriteNodeWithImageNamed:name];
+    CBButton * button = [CBButton spriteNodeWithColor:[UIColor clearColor] size:buttonImage.size];
+    [button addChild:buttonImage];
+    button.title = name;
+    button.userInteractionEnabled = YES;
+    return button;
+}
+
 -(void)setButtonDelegate:(id <CBButtonDelegate>)toSet{
     self.delegate = toSet;
 }
@@ -45,7 +54,7 @@
 }
 
 -(void)setButtonPosition:(CGPoint)position{
-    [self setSummary:NSStringFromCGSize(self.size)];
+    //[self setSummary:NSStringFromCGSize(self.size)];
     [self setPosition : position];
 }
 
@@ -61,9 +70,6 @@
     [self.delegate buttonReleased:self.title];
 }
 
--(NSString *)description{
-    return self.summary;
-}
 
 
 

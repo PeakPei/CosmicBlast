@@ -14,16 +14,18 @@
 
 @interface CBButton : SKSpriteNode
 
-@property NSString * summary;
+//@property NSString * summary;
 @property NSString * title;
 @property (weak) id <CBButtonDelegate> delegate;
 
 
 +(id)buttonWithColor:(SKColor *)color size:(CGSize)size;
 
++(id)buttonWithImageNamed:(NSString *)name;
+
 -(void)updateLabelAndSetTitle:(NSString *)myTitle;
 
--(NSString *)description;
+//-(NSString *)description;
 
 -(void)setButtonPosition:(CGPoint)position;
 

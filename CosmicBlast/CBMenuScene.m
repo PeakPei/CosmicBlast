@@ -10,7 +10,7 @@
 #import "CBTiltVisualizer.h"
 #import "CosmicBlast-Swift.h"
 #import "DSMultilineLabelNode.h"
-
+#import "CBButton.h"
 
 @implementation CBMenuScene
 
@@ -43,10 +43,18 @@ CBTiltVisualizer * visualizer;
     self.buttonBar = [CBButtonBar menuButtonBarWithFrame:self.frame buttonDelegate:self];
     [self addChild:self.buttonBar];
     
+    CBButton * tutorialButton = [CBButton buttonWithImageNamed:@"Tutorial"];
+    tutorialButton.delegate = self;
+    [tutorialButton setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/4))];
+    [self addChild:tutorialButton];
+    
     
     visualizer = [CBTiltVisualizer tiltVisualizerWithTiltManager:self.tiltManager];
     [visualizer setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/2))];
     [self addChild:visualizer];
+    
+    
+
 }
 
 
@@ -98,6 +106,7 @@ CBTiltVisualizer * visualizer;
     } else if([function isEqualToString:@"Start\nLevel"]){
         [self.gameDelegate launchGameScreen];
     }
+    NSLog(@"function:%@", function);
 }
 
 -(void)buttonReleased:(NSString *)function{
