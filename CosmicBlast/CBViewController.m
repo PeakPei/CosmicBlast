@@ -101,6 +101,20 @@
     [skView presentScene:instructionScene transition:[SKTransition crossFadeWithDuration:0.2]];
 }
 
+-(void)launchTutorialScreenNumber:(int)i {
+    SKView * skView = (SKView *)self.view;
+    NSString * fileName = [NSString stringWithFormat:@"Demo-%d", i];
+    NSLog(@"FileName for demo scene = %@", fileName);
+    CBMyScene * gameScene = [CBMyScene unarchiveFromFile:fileName withSize:skView.bounds.size];
+    self.gameScene = gameScene;
+    gameScene.gameDelegate = self;
+    gameScene.tiltManager = self.tiltManager;
+    [gameScene prepareForDisplay];
+    [skView presentScene:self.gameScene transition:[SKTransition crossFadeWithDuration:0.2]];
+}
+
+
+
 
 -(BOOL)prefersStatusBarHidden{
     return YES;

@@ -13,6 +13,7 @@
 		6515FAD719AFD25800E82568 /* CBPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6515FAD619AFD25800E82568 /* CBPlayer.m */; };
 		65171B421DF0F012001F58E7 /* LevelsJSON.txt in Resources */ = {isa = PBXBuildFile; fileRef = 65171B411DF0F012001F58E7 /* LevelsJSON.txt */; };
 		651A9EA61E36F88400BE254E /* Level-1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 651A9EA51E36F88400BE254E /* Level-1.sks */; };
+		651E14E11F14715200488589 /* Demo-1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 651E14E01F14715200488589 /* Demo-1.sks */; };
 		6529D9721D061A0300A31762 /* checker.png in Resources */ = {isa = PBXBuildFile; fileRef = 6529D9711D061A0300A31762 /* checker.png */; };
 		653761361E5DD3D400757AA8 /* CBTrap.m in Sources */ = {isa = PBXBuildFile; fileRef = 653761351E5DD3D400757AA8 /* CBTrap.m */; };
 		654DC4151DFB5D860005002E /* CBWall.m in Sources */ = {isa = PBXBuildFile; fileRef = 654DC4141DFB5D860005002E /* CBWall.m */; };
@@ -111,6 +112,7 @@
 		6515FAD619AFD25800E82568 /* CBPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBPlayer.m; sourceTree = "<group>"; };
 		65171B411DF0F012001F58E7 /* LevelsJSON.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LevelsJSON.txt; sourceTree = "<group>"; };
 		651A9EA51E36F88400BE254E /* Level-1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-1.sks"; sourceTree = "<group>"; };
+		651E14E01F14715200488589 /* Demo-1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Demo-1.sks"; sourceTree = "<group>"; };
 		6529D9711D061A0300A31762 /* checker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checker.png; sourceTree = "<group>"; };
 		652D56701D01017500AF13C3 /* CBButtonDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CBButtonDelegate.h; path = ../CBButtonDelegate.h; sourceTree = "<group>"; };
 		653761341E5DD3D400757AA8 /* CBTrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTrap.h; sourceTree = "<group>"; };
@@ -253,6 +255,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		651E14DF1F14711200488589 /* Demos */ = {
+			isa = PBXGroup;
+			children = (
+				651E14E01F14715200488589 /* Demo-1.sks */,
+			);
+			name = Demos;
+			sourceTree = "<group>";
+		};
 		6566BE7019802D5D00602447 = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +306,7 @@
 				65977D551CD5232400BFEAB9 /* LaunchScreen.storyboard */,
 				65D71CA51E6DE89200852C9E /* Scenes */,
 				6579701719BE458F00E2B9D9 /* App */,
+				651E14DF1F14711200488589 /* Demos */,
 				65AF0B7B1E3AD842008DDE91 /* Levels */,
 				6579701419BE44BE00E2B9D9 /* WorldScene */,
 				656ADE791DA47F8F00766DB4 /* MainMenu */,
@@ -632,6 +643,7 @@
 				658BE5E51E5BABCA00601C95 /* Level-11.sks in Resources */,
 				65977D561CD5232400BFEAB9 /* LaunchScreen.storyboard in Resources */,
 				658BE5E31E5BABB800601C95 /* Level-10.sks in Resources */,
+				651E14E11F14715200488589 /* Demo-1.sks in Resources */,
 				65171B421DF0F012001F58E7 /* LevelsJSON.txt in Resources */,
 				658BE5E11E5BABAE00601C95 /* Level-9.sks in Resources */,
 				657432D71CEBEEA900EB6864 /* Level1.sks in Resources */,

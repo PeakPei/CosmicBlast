@@ -56,6 +56,13 @@ NSMutableArray * pages;
     self.buttonBar = [CBButtonBar instructionButtonBarWithFrame:self.frame buttonDelegate:self];
     [self addChild:self.buttonBar];
     
+    
+    CBButton * demoButton = [CBButton buttonWithImageNamed:@"Demo"];
+    demoButton.delegate = self;
+    [demoButton setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/4.75))];
+    [self addChild:demoButton];
+    
+    
     visualizer = [CBTiltVisualizer tiltVisualizerWithTiltManager:self.tiltManager];
     [visualizer setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/2))];
     [self addChild:visualizer];
@@ -98,6 +105,8 @@ NSMutableArray * pages;
         [self.gameDelegate launchMenuScreen];
     } else if([function isEqualToString:@"Reset\nTilt"]){
         [self.tiltManager setTiltZero];
+    }else if([function isEqualToString:@"Demo"]){
+        [self.gameDelegate launchTutorialScreenNumber:currentPage+1];
     }
 }
 -(void)buttonReleased:(NSString *)function{

@@ -66,6 +66,7 @@
     
     [yourline setLineWidth:5];
     [yourline setLineCap:kCGLineCapRound];
+
     [self->indicatorLine removeFromParent];
     self->indicatorLine = yourline;
     [self addChild:yourline];

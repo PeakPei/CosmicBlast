@@ -45,7 +45,7 @@ CBTiltVisualizer * visualizer;
     
     CBButton * tutorialButton = [CBButton buttonWithImageNamed:@"Tutorial"];
     tutorialButton.delegate = self;
-    [tutorialButton setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/4))];
+    [tutorialButton setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/4.75))];
     [self addChild:tutorialButton];
     
     
