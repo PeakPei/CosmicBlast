@@ -18,6 +18,7 @@
 #import "CBTiltVisualizer.h"
 #import "CBWall.h"
 #import "CBTrap.h"
+#import "DSMultilineLabelNode.h"
 #import <CosmicBlast-Swift.h>
 
 static const uint32_t projectileCategory = 0x1 << 0;
@@ -34,6 +35,7 @@ static const uint32_t trapCategory = 0x1 << 6;
     NSMutableArray * bossPositions;
     NSMutableArray * unitDescriptions;
     CGPoint playerStartingLocation;
+    DSMultilineLabelNode * pauseLabel;
 }
 
 CBTiltVisualizer * tiltVisualizer;
@@ -113,6 +115,10 @@ CBTiltVisualizer * tiltVisualizer;
     [self setPhysicsValues];
     [self setUIValues];
     [self setEnemyValues];
+    
+    if(self.units.count == 0){
+        [self addExitLabels];
+    }
 }
 
 
@@ -214,7 +220,12 @@ CBTiltVisualizer * tiltVisualizer;
 
 -(void)setUIValues {
     //Set up button bar
-    self.buttonBar = [CBButtonBar gameButtonBarWithFrame:self.frame buttonDelegate:self];
+    if(self.isDemo){
+        self.buttonBar = [CBButtonBar demoButtonBarWithFrame:self.frame buttonDelegate:self];
+    } else {
+        self.buttonBar = [CBButtonBar gameButtonBarWithFrame:self.frame buttonDelegate:self];
+    }
+    
     [self addChild:self.buttonBar];
     
 
@@ -223,7 +234,12 @@ CBTiltVisualizer * tiltVisualizer;
     self.healthBar = [CBHealthBar healthBarWithFrame:self.frame player:self.player];
     [self addChild:self.healthBar];
     
-    
+    //initialize pause Label
+    pauseLabel = [[DSMultilineLabelNode alloc] init];
+    pauseLabel.text = @"";
+    pauseLabel.position = CGPointMake(self.frame.size.width/2,self.frame.size.height * 0.7);
+    [self addChild:pauseLabel];
+
     
     tiltVisualizer = [CBTiltVisualizer tiltVisualizerWithTiltManager:self.tiltManager];
     [tiltVisualizer setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/2))];
@@ -383,18 +399,28 @@ CBTiltVisualizer * tiltVisualizer;
     if (self.view.paused){
         [self pause];
     }
-    [self.gameDelegate launchMenuScreen];
+    if (self.isDemo) {
+        [self.gameDelegate launchInstructionScreen];
+    } else {
+        [self.gameDelegate launchMenuScreen];
+    }
+    
     [self.stats saveTotalKills];
 }
 
 -(void)pause{
     NSLog(@"****PAUSE CALLED*****");
+
+    
     if(self.view.paused)
     {
+        
         self.view.paused = NO;
+        pauseLabel.text = @"";
     }
     else
     {
+        pauseLabel.text = @"Paused";
         self.view.paused = YES;
     }
 }
@@ -460,16 +486,7 @@ CBTiltVisualizer * tiltVisualizer;
         [self.units removeObject:unit];
     }
     if (self.units.count == 0) {
-        SKLabelNode * instructionLabel1 = [SKLabelNode labelNodeWithText:@"Level Complete!"];
-        SKLabelNode * instructionLabel2 = [SKLabelNode labelNodeWithText:@"Tap Menu to Return"];
-        [instructionLabel1 setFontColor:[UIColor purpleColor]];
-        [instructionLabel2 setFontColor:[UIColor purpleColor]];
-        [instructionLabel1 setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height*0.66))];
-        [instructionLabel2 setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height*0.33))];
-        [instructionLabel1 setFontName:@"Arial"];
-        [instructionLabel2 setFontName:@"Arial"];
-        [self addChild:instructionLabel1];
-        [self addChild:instructionLabel2];
+        [self addExitLabels];
         long currentLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"currentLevel"];
         long highestBeatenLevel = [[NSUserDefaults standardUserDefaults] integerForKey: @"highestBeatenLevel"];
         if (currentLevel > highestBeatenLevel) {
@@ -483,6 +500,24 @@ CBTiltVisualizer * tiltVisualizer;
     }
 }
 
+
+
+-(void)addExitLabels{
+    DSMultilineLabelNode * instructionLabel1 = [[DSMultilineLabelNode alloc] init];
+    DSMultilineLabelNode * instructionLabel2 = [[DSMultilineLabelNode alloc] init];
+    
+    if(self.isDemo){
+        instructionLabel1.text = @"Tap Return to go Back";
+        instructionLabel2.text = @"";
+    } else {
+        instructionLabel1.text = @"Level Complete!";
+        instructionLabel2.text = @"Tap Menu to Return";
+    }
+    [instructionLabel1 setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height*0.66))];
+    [instructionLabel2 setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height*0.33))];
+    [self addChild:instructionLabel1];
+    [self addChild:instructionLabel2];
+}
 
 -(void)executeButtonFunction:(NSString *)function{
     if ([function isEqualToString:@"break"]){
@@ -498,6 +533,8 @@ CBTiltVisualizer * tiltVisualizer;
         [self pause];
     } else if ([function isEqualToString:@"break"]){
         [self.player endBreaking];
+    } if([function isEqualToString:@"return"]){
+        [self returnToParentMenu];
     }
 }
 

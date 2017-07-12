@@ -13,7 +13,7 @@
 		6515FAD719AFD25800E82568 /* CBPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6515FAD619AFD25800E82568 /* CBPlayer.m */; };
 		65171B421DF0F012001F58E7 /* LevelsJSON.txt in Resources */ = {isa = PBXBuildFile; fileRef = 65171B411DF0F012001F58E7 /* LevelsJSON.txt */; };
 		651A9EA61E36F88400BE254E /* Level-1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 651A9EA51E36F88400BE254E /* Level-1.sks */; };
-		651E14E11F14715200488589 /* Demo-1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 651E14E01F14715200488589 /* Demo-1.sks */; };
+		651E14E11F14715200488589 /* Demo-3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 651E14E01F14715200488589 /* Demo-3.sks */; };
 		6529D9721D061A0300A31762 /* checker.png in Resources */ = {isa = PBXBuildFile; fileRef = 6529D9711D061A0300A31762 /* checker.png */; };
 		653761361E5DD3D400757AA8 /* CBTrap.m in Sources */ = {isa = PBXBuildFile; fileRef = 653761351E5DD3D400757AA8 /* CBTrap.m */; };
 		654DC4151DFB5D860005002E /* CBWall.m in Sources */ = {isa = PBXBuildFile; fileRef = 654DC4141DFB5D860005002E /* CBWall.m */; };
@@ -85,6 +85,7 @@
 		65D9B93F1CFFC1BE00A808BD /* GameValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9B93E1CFFC1BE00A808BD /* GameValues.swift */; };
 		65E01BC61D5A736500AF5AAD /* LevelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E01BC51D5A736500AF5AAD /* LevelData.swift */; };
 		65E620961DE6288F0089602A /* CBTiltVisualizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E620951DE6288F0089602A /* CBTiltVisualizer.m */; };
+		65E912D21F15DE170040263B /* Demo-6.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65E912D11F15DE170040263B /* Demo-6.sks */; };
 		65EBF13719A97AD400F0BA37 /* CBWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EBF13619A97AD400F0BA37 /* CBWorld.m */; };
 		65F42C301AB7B79B001DA12A /* CBLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F42C2F1AB7B79B001DA12A /* CBLogger.m */; };
 		65FDF3B119A996B200D4269C /* CBEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FDF3B019A996B200D4269C /* CBEnemy.m */; };
@@ -112,7 +113,7 @@
 		6515FAD619AFD25800E82568 /* CBPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBPlayer.m; sourceTree = "<group>"; };
 		65171B411DF0F012001F58E7 /* LevelsJSON.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LevelsJSON.txt; sourceTree = "<group>"; };
 		651A9EA51E36F88400BE254E /* Level-1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-1.sks"; sourceTree = "<group>"; };
-		651E14E01F14715200488589 /* Demo-1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Demo-1.sks"; sourceTree = "<group>"; };
+		651E14E01F14715200488589 /* Demo-3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Demo-3.sks"; sourceTree = "<group>"; };
 		6529D9711D061A0300A31762 /* checker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checker.png; sourceTree = "<group>"; };
 		652D56701D01017500AF13C3 /* CBButtonDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CBButtonDelegate.h; path = ../CBButtonDelegate.h; sourceTree = "<group>"; };
 		653761341E5DD3D400757AA8 /* CBTrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTrap.h; sourceTree = "<group>"; };
@@ -210,6 +211,7 @@
 		65E01BC51D5A736500AF5AAD /* LevelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelData.swift; sourceTree = "<group>"; };
 		65E620941DE6288F0089602A /* CBTiltVisualizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTiltVisualizer.h; sourceTree = "<group>"; };
 		65E620951DE6288F0089602A /* CBTiltVisualizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTiltVisualizer.m; sourceTree = "<group>"; };
+		65E912D11F15DE170040263B /* Demo-6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Demo-6.sks"; sourceTree = "<group>"; };
 		65EBF13519A97AD400F0BA37 /* CBWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWorld.h; sourceTree = "<group>"; };
 		65EBF13619A97AD400F0BA37 /* CBWorld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWorld.m; sourceTree = "<group>"; };
 		65F42C2E1AB7B79B001DA12A /* CBLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBLogger.h; path = ../CBLogger.h; sourceTree = "<group>"; };
@@ -258,7 +260,8 @@
 		651E14DF1F14711200488589 /* Demos */ = {
 			isa = PBXGroup;
 			children = (
-				651E14E01F14715200488589 /* Demo-1.sks */,
+				651E14E01F14715200488589 /* Demo-3.sks */,
+				65E912D11F15DE170040263B /* Demo-6.sks */,
 			);
 			name = Demos;
 			sourceTree = "<group>";
@@ -643,7 +646,7 @@
 				658BE5E51E5BABCA00601C95 /* Level-11.sks in Resources */,
 				65977D561CD5232400BFEAB9 /* LaunchScreen.storyboard in Resources */,
 				658BE5E31E5BABB800601C95 /* Level-10.sks in Resources */,
-				651E14E11F14715200488589 /* Demo-1.sks in Resources */,
+				651E14E11F14715200488589 /* Demo-3.sks in Resources */,
 				65171B421DF0F012001F58E7 /* LevelsJSON.txt in Resources */,
 				658BE5E11E5BABAE00601C95 /* Level-9.sks in Resources */,
 				657432D71CEBEEA900EB6864 /* Level1.sks in Resources */,
@@ -653,6 +656,7 @@
 				658BE5DD1E5BAB8900601C95 /* Level-7.sks in Resources */,
 				6507900A1B9CD7DA00F9931F /* Background.png in Resources */,
 				657F2EA61E67AB0500351A13 /* VerticlaWall.sks in Resources */,
+				65E912D21F15DE170040263B /* Demo-6.sks in Resources */,
 				65AF0B7D1E3AD9BB008DDE91 /* Level-3.sks in Resources */,
 				6566BE9C19802D5D00602447 /* Images.xcassets in Resources */,
 				6566BE9219802D5D00602447 /* Main.storyboard in Resources */,

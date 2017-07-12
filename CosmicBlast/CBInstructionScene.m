@@ -19,13 +19,15 @@
 
 DSMultilineLabelNode * instructionLabel1;
 CBTiltVisualizer * visualizer;
-
+CBButton * demoButton;
+CBButton * nextButton;
 
 
 
 int currentPage;
 
 NSMutableArray * pages;
+NSMutableArray * buttonSequence;
 
 
 -(id)initWithSize:(CGSize)size {
@@ -40,16 +42,7 @@ NSMutableArray * pages;
 
 
 -(void)setUIValues {
-    //set up label
-    [self initializeInstructionText];
-    currentPage = 0;
-    
-    instructionLabel1 = [[DSMultilineLabelNode alloc] init];
-    instructionLabel1.text = pages[currentPage];
-    [instructionLabel1 setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height*0.5))];
-    instructionLabel1.paragraphWidth = self.frame.size.width;
-    
-    [self addChild:instructionLabel1];
+
     
   
     // set up button bar
@@ -57,14 +50,33 @@ NSMutableArray * pages;
     [self addChild:self.buttonBar];
     
     
-    CBButton * demoButton = [CBButton buttonWithImageNamed:@"Demo"];
+    
+    //initializeButtons
+    nextButton = [CBButton buttonWithImageNamed:@"Next"];
+    nextButton.delegate = self;
+    [nextButton setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/4.75))];
+    
+    demoButton = [CBButton buttonWithImageNamed:@"Demo"];
     demoButton.delegate = self;
     [demoButton setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/4.75))];
-    [self addChild:demoButton];
+    
+    //set up label
+    [self initializeInstructionText];
+    currentPage = 0;
+    
+    instructionLabel1 = [[DSMultilineLabelNode alloc] init];
+    instructionLabel1.text = pages[currentPage];
+    [instructionLabel1 setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height* 0.65))];
+    instructionLabel1.paragraphWidth = self.frame.size.width;
+    
+    [self addChild:instructionLabel1];
+    
+    [self addChild:buttonSequence[currentPage]];
     
     
     visualizer = [CBTiltVisualizer tiltVisualizerWithTiltManager:self.tiltManager];
     [visualizer setPosition:CGPointMake((self.frame.size.width/2), (self.frame.size.height/2))];
+    [visualizer setAlphaValue:0.8];
     [self addChild:visualizer];
     
 }
@@ -74,39 +86,81 @@ NSMutableArray * pages;
     currentPage ++;
     if (currentPage < [pages count]){
         instructionLabel1.text = pages[currentPage];
+        [demoButton removeFromParent];
+        [nextButton removeFromParent];
+        [self addChild:buttonSequence[currentPage]];
     } else {
         [self.gameDelegate launchMenuScreen];
     }
 }
 
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+-(void)previousInstructionStep {
+    currentPage --;
+    if (currentPage > 0){
+        instructionLabel1.text = pages[currentPage];
+        [demoButton removeFromParent];
+        [nextButton removeFromParent];
+        [self addChild:buttonSequence[currentPage]];
+    }
+}
+
+-(void)setPage:(int)i{
+    currentPage = i-1;
     [self nextInstructionStep];
 }
 
 
+//-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+//    [self nextInstructionStep];
+//}
+
+
 -(void)initializeInstructionText {
     pages = [[NSMutableArray alloc] init];
-    [pages addObject:@"The four buttons at the bottom of the screen are always there to be used for various functions.  Be mindful of the options they give"];
+    buttonSequence =[[NSMutableArray alloc] init];
+    //[pages addObject:@"The four buttons at the bottom of the screen are always there to be used for various functions.  Be mindful of the options they give are always there to be used for various functions. and fuck and shit and stuff"];
     
-    [pages addObject:@"In this game you will move around and defeat enemies to advance."];
-    [pages addObject:@"You must hold your device with the screen facing directly up. Tilt the device to make the player move"];
-    [pages addObject:@"At the top of the screen in-game is your health bar. It goes down as you get hit by attacks."];
-    [pages addObject:@"Your enemies will fire shots to damage you and will move around when you attack them."];
-    [pages addObject:@"You can shoot enemies by tapping the screen. They will change colors As they lose health"];
-    [pages addObject:@"New levels will become available as you progress Good Luck!"];
+    [pages addObject:@"Welcome to Tilt Rider!  First, notice the four buttons at the bottom of the screen. These allow you to do things like start a level or pause the game.  Pay attention to what the labels say"];
+    [buttonSequence addObject:nextButton];
+    
+    
+    [pages addObject:@"In this game you will move around 2D levels by tilting your device.  Observe the white Tilt Indicator line in the center of your screen, and how it behaves as you tilt your device. "];
+    [buttonSequence addObject:nextButton];
+    
+    [pages addObject:@"The Tilt Indicator shows which direction your player will move.  Angle your phone so that the screen faces directly up and press the demo buttton to try moving around."];
+    [buttonSequence addObject:demoButton];
+    
+    [pages addObject:@"Nice Job.  You can try the Movement demo again by tapping the Previous Page Button, and then tapping the Demo Button again."];
+    [buttonSequence addObject:nextButton];
+    
+    [pages addObject:@"In addition to moving around, you will need to shoot at your enemies.  Tapping anywhere on the screen will let you shoot in that direction relative to the player"];
+    [buttonSequence addObject:nextButton];
+    
+    [pages addObject:@"Tap on or towards your enemies to fire shots at them and destroy them.  Tap the Demo Button below to give it a shot."];
+    [buttonSequence addObject:demoButton];
+
+    [pages addObject:@"Nice job.  There is more to discover in Tilt Rider, but you now have a grasp on the basics.  Good luck out there!"];
+    [buttonSequence addObject:nextButton];
+//    [pages addObject:@"New levels will become available as you progress Good Luck!"];
 }
 
 
 -(void)executeButtonFunction:(NSString *)function{
     if([function isEqualToString:@"Previous\nPage"]){
-        [self.tiltManager resetTiltZero];
+        [self previousInstructionStep];
+    }if([function isEqualToString:@"Next\nPage"]){
+        [self nextInstructionStep];
     } else if([function isEqualToString:@"Main\nMenu"]){
         [self.gameDelegate launchMenuScreen];
     } else if([function isEqualToString:@"Reset\nTilt"]){
         [self.tiltManager setTiltZero];
-    }else if([function isEqualToString:@"Demo"]){
+    } else if([function isEqualToString:@"Demo"]){
+        //Need to handle getting to next page
+        // and being tilt centered
         [self.gameDelegate launchTutorialScreenNumber:currentPage+1];
+    } else if([function isEqualToString:@"Next"]){
+        [self nextInstructionStep];
     }
 }
 -(void)buttonReleased:(NSString *)function{

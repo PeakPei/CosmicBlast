@@ -14,6 +14,8 @@
 
 @implementation CBViewController
 
+int demoPage;
+
 
 - (void)viewWillLayoutSubviews
 {
@@ -93,11 +95,12 @@
 -(void)launchInstructionScreen {
     SKView * skView = (SKView *)self.view;
     CBInstructionScene * instructionScene = [CBInstructionScene sceneWithSize:skView.bounds.size];
-    
     [instructionScene setTiltManager:[self tiltManager]];
     instructionScene.gameDelegate = self;
     [instructionScene setUIValues];
     instructionScene.scaleMode = SKSceneScaleModeAspectFill;
+    [instructionScene setPage:demoPage];
+    demoPage = 0;
     [skView presentScene:instructionScene transition:[SKTransition crossFadeWithDuration:0.2]];
 }
 
@@ -107,11 +110,14 @@
     NSLog(@"FileName for demo scene = %@", fileName);
     CBMyScene * gameScene = [CBMyScene unarchiveFromFile:fileName withSize:skView.bounds.size];
     self.gameScene = gameScene;
+    demoPage = i;
+    gameScene.isDemo = YES;
     gameScene.gameDelegate = self;
     gameScene.tiltManager = self.tiltManager;
     [gameScene prepareForDisplay];
     [skView presentScene:self.gameScene transition:[SKTransition crossFadeWithDuration:0.2]];
 }
+
 
 
 

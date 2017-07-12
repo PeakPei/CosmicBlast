@@ -21,5 +21,6 @@
 @property CBTiltManager * tiltManager;
 
 -(void)setUIValues;
+-(void)setPage:(int)i;
 
 @end

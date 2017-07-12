@@ -65,6 +65,17 @@ CGRect sceneFrame;
     
 }
 
++(instancetype)demoButtonBarWithFrame:(CGRect)frame buttonDelegate:(id <CBButtonDelegate>)delegate{
+    CBButtonBar * buttonBar = [CBButtonBar emptyBarWithFrame:frame];
+    
+    //[buttonBar setButtonValues];
+    for (CBButton * button in buttonBar.buttons){
+        button.delegate = delegate;
+    }
+    [buttonBar setButtonTitles:[CBButtonBar getDemoButtonTitles]];
+    return buttonBar;
+}
+
 
 +(instancetype)emptyBarWithFrame:(CGRect)frame{
     buttonRatio = [[[GameValues alloc] init] uiRatio];
@@ -77,6 +88,11 @@ CGRect sceneFrame;
 
 +(NSArray<CBButton*> *)getMenuButtonTitles{
     return [NSArray arrayWithObjects:@"Settings", @"Previous\nLevel", @"Next\nLevel",  @"Start\nLevel", nil];
+}
+
+
++(NSArray<CBButton*> *)getDemoButtonTitles{
+    return [NSMutableArray arrayWithObjects:@"break", @"pause", @"7", @"return", nil];
 }
 
 +(NSArray<CBButton*> *)getGameButtonTitles{

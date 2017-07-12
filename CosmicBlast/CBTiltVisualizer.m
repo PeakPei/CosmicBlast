@@ -14,6 +14,7 @@
     SKShapeNode * indicatorLine;
     NSMutableArray * pastXData;
     NSMutableArray * pastYData;
+
     int accelerometerDataMemoryLength;
 }
 
@@ -21,6 +22,7 @@
 +(instancetype)tiltVisualizerWithTiltManager:(CBTiltManager *)manager{
     CBTiltVisualizer * visualizer = [CBTiltVisualizer node];
     [visualizer setTiltManager:manager];
+    [visualizer setAlphaValue:0.4];
     visualizer -> pastXData = [[NSMutableArray alloc] init];
     visualizer -> pastYData = [[NSMutableArray alloc] init];
     visualizer -> accelerometerDataMemoryLength = (int)[[[GameValues alloc] init] accelerometerDataMemoryLength];
@@ -61,7 +63,7 @@
     CGPathMoveToPoint(pathToDraw, NULL, 0.0, 0.0);
     CGPathAddLineToPoint(pathToDraw, NULL, lineX, lineY);
     yourline.path = pathToDraw;
-    UIColor * lineColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.4];
+    UIColor * lineColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:self.alphaValue];
     [yourline setStrokeColor:lineColor];
     
     [yourline setLineWidth:5];

@@ -29,6 +29,8 @@
 @property(nonatomic) CBHealthBar * healthBar;
 @property(nonatomic) CBStats * stats;
 @property CBTiltManager * tiltManager;
+@property BOOL isDemo;
+
 
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;

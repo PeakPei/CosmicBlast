@@ -12,7 +12,7 @@
 @interface CBTiltVisualizer : SKNode
 
 @property CBTiltManager * tiltManager;
-
+@property float alphaValue;
 
 +(instancetype)tiltVisualizerWithTiltManager:(CBTiltManager *)manager;
 
