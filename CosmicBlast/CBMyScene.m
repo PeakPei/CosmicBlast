@@ -36,6 +36,7 @@ static const uint32_t trapCategory = 0x1 << 6;
     NSMutableArray * unitDescriptions;
     CGPoint playerStartingLocation;
     DSMultilineLabelNode * pauseLabel;
+    BOOL pauseFlag;
 }
 
 CBTiltVisualizer * tiltVisualizer;
@@ -236,8 +237,10 @@ CBTiltVisualizer * tiltVisualizer;
     
     //initialize pause Label
     pauseLabel = [[DSMultilineLabelNode alloc] init];
-    pauseLabel.text = @"";
+    pauseLabel.text = @"Paused";
     pauseLabel.position = CGPointMake(self.frame.size.width/2,self.frame.size.height * 0.7);
+    pauseLabel.hidden = YES;
+    pauseFlag = NO;
     [self addChild:pauseLabel];
 
     
@@ -319,6 +322,10 @@ CBTiltVisualizer * tiltVisualizer;
         }
     }
     [self updatePositionFromTiltManager];
+    if (pauseFlag){
+        pauseFlag = NO;
+        [self pause];
+    }
 }
 
 -(void)update:(NSTimeInterval)currentTime {
@@ -410,17 +417,14 @@ CBTiltVisualizer * tiltVisualizer;
 
 -(void)pause{
     NSLog(@"****PAUSE CALLED*****");
-
-    
     if(self.view.paused)
     {
-        
         self.view.paused = NO;
-        pauseLabel.text = @"";
+        pauseLabel.hidden = YES;
     }
     else
     {
-        pauseLabel.text = @"Paused";
+        //pauseLabel.text = @"Paused";
         self.view.paused = YES;
     }
 }
@@ -530,7 +534,12 @@ CBTiltVisualizer * tiltVisualizer;
     if([function isEqualToString:@"menu"]){
         [self returnToParentMenu];
     } else if ([function isEqualToString:@"pause"]){
-        [self pause];
+        if (!self.paused){
+            pauseFlag = YES;
+            pauseLabel.hidden = NO;
+        } else {
+            [self pause];
+        }
     } else if ([function isEqualToString:@"break"]){
         [self.player endBreaking];
     } if([function isEqualToString:@"return"]){
