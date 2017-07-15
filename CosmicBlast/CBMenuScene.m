@@ -105,6 +105,8 @@ CBTiltVisualizer * visualizer;
         [self.gameDelegate launchInstructionScreen];
     } else if([function isEqualToString:@"Start\nLevel"]){
         [self.gameDelegate launchGameScreen];
+    }else if ([function isEqualToString:@"Settings"]){
+        [self.gameDelegate launchSettingsScreen];
     }
     NSLog(@"function:%@", function);
 }

@@ -86,6 +86,7 @@
 		65E01BC61D5A736500AF5AAD /* LevelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E01BC51D5A736500AF5AAD /* LevelData.swift */; };
 		65E620961DE6288F0089602A /* CBTiltVisualizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E620951DE6288F0089602A /* CBTiltVisualizer.m */; };
 		65E912D21F15DE170040263B /* Demo-6.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65E912D11F15DE170040263B /* Demo-6.sks */; };
+		65E912D51F19790C0040263B /* CBSettingsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E912D41F19790C0040263B /* CBSettingsScene.m */; };
 		65EBF13719A97AD400F0BA37 /* CBWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EBF13619A97AD400F0BA37 /* CBWorld.m */; };
 		65F42C301AB7B79B001DA12A /* CBLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F42C2F1AB7B79B001DA12A /* CBLogger.m */; };
 		65FDF3B119A996B200D4269C /* CBEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FDF3B019A996B200D4269C /* CBEnemy.m */; };
@@ -212,6 +213,8 @@
 		65E620941DE6288F0089602A /* CBTiltVisualizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTiltVisualizer.h; sourceTree = "<group>"; };
 		65E620951DE6288F0089602A /* CBTiltVisualizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTiltVisualizer.m; sourceTree = "<group>"; };
 		65E912D11F15DE170040263B /* Demo-6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Demo-6.sks"; sourceTree = "<group>"; };
+		65E912D31F19790C0040263B /* CBSettingsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBSettingsScene.h; sourceTree = "<group>"; };
+		65E912D41F19790C0040263B /* CBSettingsScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBSettingsScene.m; sourceTree = "<group>"; };
 		65EBF13519A97AD400F0BA37 /* CBWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWorld.h; sourceTree = "<group>"; };
 		65EBF13619A97AD400F0BA37 /* CBWorld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWorld.m; sourceTree = "<group>"; };
 		65F42C2E1AB7B79B001DA12A /* CBLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBLogger.h; path = ../CBLogger.h; sourceTree = "<group>"; };
@@ -379,6 +382,8 @@
 				6507E14D1A5117DD00A3FADB /* CBMenuScene.m */,
 				656ADE761DA47F1700766DB4 /* CBInstructionScene.h */,
 				656ADE771DA47F1700766DB4 /* CBInstructionScene.m */,
+				65E912D31F19790C0040263B /* CBSettingsScene.h */,
+				65E912D41F19790C0040263B /* CBSettingsScene.m */,
 			);
 			name = MainMenu;
 			sourceTree = "<group>";
@@ -731,6 +736,7 @@
 			files = (
 				6507E14F1A5117DD00A3FADB /* CBMenuScene.m in Sources */,
 				65545A8319C1443B005F1073 /* CBItem.m in Sources */,
+				65E912D51F19790C0040263B /* CBSettingsScene.m in Sources */,
 				65545A8619C14650005F1073 /* CBShuriken.m in Sources */,
 				6566BE8B19802D5D00602447 /* main.m in Sources */,
 				65F42C301AB7B79B001DA12A /* CBLogger.m in Sources */,

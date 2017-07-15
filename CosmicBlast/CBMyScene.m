@@ -524,25 +524,25 @@ CBTiltVisualizer * tiltVisualizer;
 }
 
 -(void)executeButtonFunction:(NSString *)function{
-    if ([function isEqualToString:@"break"]){
+    if ([function isEqualToString:@"Break"]){
         [self.player startBreaking];
     }
 }
 
 
 -(void)buttonReleased:(NSString *)function{
-    if([function isEqualToString:@"menu"]){
+    if([function isEqualToString:@"Menu"]){
         [self returnToParentMenu];
-    } else if ([function isEqualToString:@"pause"]){
+    } else if ([function isEqualToString:@"Pause"]){
         if (!self.paused){
             pauseFlag = YES;
             pauseLabel.hidden = NO;
         } else {
             [self pause];
         }
-    } else if ([function isEqualToString:@"break"]){
+    } else if ([function isEqualToString:@"Break"]){
         [self.player endBreaking];
-    } if([function isEqualToString:@"return"]){
+    } if([function isEqualToString:@"Return"]){
         [self returnToParentMenu];
     }
 }

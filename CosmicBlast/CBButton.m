@@ -39,7 +39,7 @@
 
 -(void)updateLabelAndSetTitle:(NSString *)myTitle{
     self.title = myTitle;
-    SKSpriteNode * buttonImage = [SKSpriteNode spriteNodeWithImageNamed:@"StartLevelButton"];
+    SKSpriteNode * buttonImage = [SKSpriteNode spriteNodeWithImageNamed:@"BarButton"];
     [self addChild:buttonImage];
     DSMultilineLabelNode * label = [[DSMultilineLabelNode alloc] init];
     label.text = self.title;

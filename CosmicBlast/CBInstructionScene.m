@@ -97,11 +97,13 @@ NSMutableArray * buttonSequence;
 
 -(void)previousInstructionStep {
     currentPage --;
-    if (currentPage > 0){
+    if (currentPage >= 0){
         instructionLabel1.text = pages[currentPage];
         [demoButton removeFromParent];
         [nextButton removeFromParent];
         [self addChild:buttonSequence[currentPage]];
+    } else {
+        currentPage ++;
     }
 }
 
@@ -112,7 +114,7 @@ NSMutableArray * buttonSequence;
 
 
 //-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-//    [self nextInstructionStep];
+//
 //}
 
 

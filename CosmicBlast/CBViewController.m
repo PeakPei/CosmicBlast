@@ -9,6 +9,7 @@
 #import "CBViewController.h"
 #import "CBMyScene.h"
 #import "CBInstructionScene.h"
+#import "CBSettingsScene.h"
 #import "CBAppDelegate.h"
 
 
@@ -103,6 +104,18 @@ int demoPage;
     demoPage = 0;
     [skView presentScene:instructionScene transition:[SKTransition crossFadeWithDuration:0.2]];
 }
+
+
+-(void)launchSettingsScreen {
+    SKView * skView = (SKView *)self.view;
+    CBSettingsScene * settingsScene = [CBSettingsScene sceneWithSize:skView.bounds.size];
+    [settingsScene setTiltManager:[self tiltManager]];
+    settingsScene.gameDelegate = self;
+    [settingsScene setUIValues];
+    settingsScene.scaleMode = SKSceneScaleModeAspectFill;
+    [skView presentScene:settingsScene transition:[SKTransition crossFadeWithDuration:0.2]];
+}
+
 
 -(void)launchTutorialScreenNumber:(int)i {
     SKView * skView = (SKView *)self.view;

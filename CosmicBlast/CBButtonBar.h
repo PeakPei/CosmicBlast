@@ -21,6 +21,8 @@
 
 +(instancetype)menuButtonBarWithFrame:(CGRect)frame buttonDelegate:(id <CBButtonDelegate>)delegate;
 
++(instancetype)settingsButtonBarWithFrame:(CGRect)frame buttonDelegate:(id <CBButtonDelegate>)delegate;
+
 +(instancetype)gameButtonBarWithFrame:(CGRect)frame buttonDelegate:(id <CBButtonDelegate>)delegate;
 
 +(instancetype)instructionButtonBarWithFrame:(CGRect)frame buttonDelegate:(id <CBButtonDelegate>)delegate;

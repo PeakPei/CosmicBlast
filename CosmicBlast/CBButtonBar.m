@@ -43,6 +43,19 @@ CGRect sceneFrame;
     [buttonBar setButtonTitles:[CBButtonBar getMenuButtonTitles]];
     return buttonBar;
 }
+
++(instancetype)settingsButtonBarWithFrame:(CGRect)frame buttonDelegate:(id <CBButtonDelegate>)delegate{
+    CBButtonBar * buttonBar = [CBButtonBar emptyBarWithFrame:frame];
+    
+    //[buttonBar setButtonValues];
+    for (CBButton * button in buttonBar.buttons){
+        button.delegate = delegate;
+    }
+    [buttonBar setButtonTitles:[CBButtonBar getSettingsButtonTitles]];
+    return buttonBar;
+}
+
+
 +(instancetype)gameButtonBarWithFrame:(CGRect)frame buttonDelegate:(id <CBButtonDelegate>)delegate{
     CBButtonBar * buttonBar = [CBButtonBar emptyBarWithFrame:frame];
     
@@ -92,17 +105,24 @@ CGRect sceneFrame;
 
 
 +(NSArray<CBButton*> *)getDemoButtonTitles{
-    return [NSMutableArray arrayWithObjects:@"break", @"pause", @"7", @"return", nil];
+    return [NSMutableArray arrayWithObjects:@"Break", @"Pause", @"-", @"Return", nil];
 }
 
 +(NSArray<CBButton*> *)getGameButtonTitles{
-    return [NSMutableArray arrayWithObjects:@"break", @"pause", @"7", @"menu", nil];
+    return [NSMutableArray arrayWithObjects:@"Break", @"Pause", @"-", @"Menu", nil];
 }
 
 
 +(NSArray<CBButton*> *)getInstructionButtonTitles{
+    return [NSArray arrayWithObjects:@"Previous\nPage", @"Next\nPage", @"-", @"Main\nMenu", nil];
+}
+
+
+
++(NSArray<CBButton*> *)getSettingsButtonTitles{
     return [NSArray arrayWithObjects:@"Previous\nPage", @"Next\nPage", @"Reset\nTilt", @"Main\nMenu", nil];
 }
+
 
 -(void)setButtonTitles:(NSArray *)titles {
     for (int i = 0; i<titles.count; i++){

@@ -11,6 +11,7 @@
 -(void)launchMenuScreen;
 -(void)launchGameScreen;
 -(void)launchInstructionScreen;
+-(void)launchSettingsScreen;
 -(void)launchTutorialScreenNumber:(int)i;
 
 -(void)returnToParentMenu;
