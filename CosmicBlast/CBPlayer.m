@@ -19,7 +19,7 @@
     BOOL breaking;
     CFTimeInterval lastShotTime;
     CFTimeInterval deadTime;
-
+    CFTimeInterval healthGoneTime;
 }
 
 
@@ -136,6 +136,14 @@
     float newDirection = atan2(-directionVector.x, directionVector.y);
     self.zRotation = newDirection;
     self.parent.position = newParentPosition;
+    
+    
+    if ([self playerDeadYet]){
+        
+        
+        self.dead = YES;
+    }
+    
 }
 
 -(BOOL)weaponRecharged{
@@ -182,27 +190,25 @@
 
 -(BOOL)playerDeadYet{
     if (self.dying){
-        
+        self.alpha = 0.2;
+        CFTimeInterval deathWaitTime = 1;
+        CFTimeInterval elapsedTime = CACurrentMediaTime() - healthGoneTime;
+        if(elapsedTime > deathWaitTime){
+            return true;
+        }
     }
-    CFTimeInterval shotWaitTime = [[[GameValues alloc] init] playerShotRechargeTime];
-    CFTimeInterval elapsedTime = CACurrentMediaTime() - lastShotTime;
-    if(elapsedTime > shotWaitTime){
-        self->lastShotTime = CACurrentMediaTime();
-        return true;
-    } else {
-        return false;
-    }
+    return false;
 }
 
 
 
 -(void)explode{
     SKEmitterNode * emitter = [[SKEmitterNode alloc] init];
-    [emitter setParticleSize:CGSizeMake(3,3)];
+    [emitter setParticleSize:CGSizeMake(4,4)];
     [emitter setParticleBirthRate: 100];
-    [emitter setParticleSpeed:80];
-    [emitter setParticleColor:[UIColor redColor]];
-    [emitter setParticleLifetime:0.6];
+    [emitter setParticleSpeed:200];
+    [emitter setParticleColor:[UIColor magentaColor]];
+    [emitter setParticleLifetime:1];
     emitter.numParticlesToEmit = 30;
     emitter.position = self.position;
     [emitter setEmissionAngleRange:(2*M_PI)];
@@ -217,7 +223,13 @@
         [self setHealth:self.health-damage];
     }
     else{
-        self.dead = YES;
+        if (!self.dying){
+            healthGoneTime = CACurrentMediaTime();
+            [self explode];
+            self.dying = YES;
+            
+        }
+
     }
 }
 

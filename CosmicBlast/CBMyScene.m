@@ -305,6 +305,9 @@ CBTiltVisualizer * tiltVisualizer;
     int speed = 0;
     CGVector data = [[self tiltManager] getXY];
     [self.player movePlayerWithAccelerationXvalue:(data.dx) yValue:(data.dy) speed:speed];
+    if (self.player.dead) {
+        [self returnToParentMenu];
+    }
 }
 
 -(void)updateWithTimeSinceLastUpdate: (CFTimeInterval) timeSinceLast{
@@ -378,25 +381,16 @@ CBTiltVisualizer * tiltVisualizer;
     if ((firstBody.categoryBitMask & playerCategory) != 0 &&(secondBody.categoryBitMask & trapCategory) != 0){
         [self.player playerHit];
         [self.healthBar updateHealthBar];
-        if (self.player.dead) {
-            [self returnToParentMenu];
-        }
     }
     
     //Player hit by monster
     if((firstBody.categoryBitMask & monsterCategory) != 0){
         [self.player playerHit];
         [self.healthBar updateHealthBar];
-        if (self.player.dead) {
-            [self returnToParentMenu];
-        }
     }
     if ((firstBody.categoryBitMask & playerCategory) != 0 &&(secondBody.categoryBitMask & enemyUnitCategory) != 0){
         [self.player playerHit];
         [self.healthBar updateHealthBar];
-        if (self.player.dead) {
-            [self returnToParentMenu];
-        }
     }
     
     
