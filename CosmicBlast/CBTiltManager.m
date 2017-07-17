@@ -47,7 +47,8 @@ CMMotionManager * _motionManager;
 //    rawData.x = 0;
 //    rawData.y = -1;
 //    rawData.z = 0;
-    tiltZero =[self normalizeVector3D:rawData];
+    self.customTilt = YES;
+    tiltZero = [self normalizeVector3D:rawData];
     //self->tiltZero = rawData;
 
     
@@ -59,7 +60,6 @@ CMMotionManager * _motionManager;
 }
 
 -(void)resetTiltZero{
-    CMAccelerometerData* data = _motionManager.accelerometerData;
     struct Vector3D zero;
     
     zero.x = 0;
@@ -68,7 +68,7 @@ CMMotionManager * _motionManager;
     
     //self->tiltZero =[self normalizeVector3D:rawData];
     self->tiltZero = zero;
-    
+    self.customTilt = NO;
     
     NSLog(@"****START********");
     NSLog(@"tiltZero.x = %f, tiltZero.y = %f, tiltZero.z = %f ", tiltZero.x, tiltZero.y, tiltZero.z);
@@ -105,12 +105,6 @@ CMMotionManager * _motionManager;
     
     struct Vector3D transformedVector = [self applyRotation:normalVector];
     CGVector xy = CGVectorMake(transformedVector.x, transformedVector.y);
-    CGVector xyOrig = CGVectorMake(rawVector.x, rawVector.y);
-//    NSLog(@"****START********");
-//    NSLog(@"getXY = x %f, y:%f",xy.dx,xy.dy);
-//    NSLog(@"xyOrig = x %f, y:%f",xyOrig.dx,xyOrig .dy);
-//    NSLog(@"****STOP********");
-
     return xy;
 }
 

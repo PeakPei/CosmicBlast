@@ -133,7 +133,7 @@ NSMutableArray * buttonSequence;
     [pages addObject:@"The Tilt Indicator shows which direction your player will move.  Angle your phone so that the screen faces directly up and press the demo buttton to try moving around."];
     [buttonSequence addObject:demoButton];
     
-    [pages addObject:@"Nice Job.  You can try the Movement demo again by tapping the Previous Page Button, and then tapping the Demo Button again."];
+    [pages addObject:@"You can try the Movement demo again by tapping the previous page button.  You can callibrate the Tilt indicator to your preference in the settings menu."];
     [buttonSequence addObject:nextButton];
     
     [pages addObject:@"In addition to moving around, you will need to shoot at your enemies.  Tapping anywhere on the screen will let you shoot in that direction relative to the player"];
@@ -142,9 +142,9 @@ NSMutableArray * buttonSequence;
     [pages addObject:@"Tap on or towards your enemies to fire shots at them and destroy them.  Tap the Demo Button below to give it a shot."];
     [buttonSequence addObject:demoButton];
 
-    [pages addObject:@"Nice job.  There is more to discover in Tilt Rider, but you now have a grasp on the basics.  Good luck out there!"];
+    [pages addObject:@"Nice job. New levels will become available as you progress.  The difficulty can be adjusted in the settings menu."];
     [buttonSequence addObject:nextButton];
-//    [pages addObject:@"New levels will become available as you progress Good Luck!"];
+
 }
 
 
@@ -155,8 +155,6 @@ NSMutableArray * buttonSequence;
         [self nextInstructionStep];
     } else if([function isEqualToString:@"Main\nMenu"]){
         [self.gameDelegate launchMenuScreen];
-    } else if([function isEqualToString:@"Reset\nTilt"]){
-        [self.tiltManager setTiltZero];
     } else if([function isEqualToString:@"Demo"]){
         //Need to handle getting to next page
         // and being tilt centered

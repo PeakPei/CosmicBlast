@@ -308,6 +308,8 @@ CBTiltVisualizer * tiltVisualizer;
 }
 
 -(void)updateWithTimeSinceLastUpdate: (CFTimeInterval) timeSinceLast{
+    
+    
     for (CBEnemyUnit *unit in self.units) {
         [unit updateWithPlayerPosition:self.player.position timeSinceLastUpdate:timeSinceLast];
         CBEnemy * shot = [unit maybeAttack];

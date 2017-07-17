@@ -18,6 +18,7 @@
     int accelerometerDataMemoryLength;
     BOOL breaking;
     CFTimeInterval lastShotTime;
+    CFTimeInterval deadTime;
 
 }
 
@@ -34,6 +35,7 @@
     player -> accelerometerDataMemoryLength = (int)[[[GameValues alloc] init] accelerometerDataMemoryLength];
 
     player -> lastShotTime = 0;
+    player -> deadTime = 0;
     // perform some action
     return player;
 }
@@ -61,16 +63,7 @@
     player.health = player.maxHealth;
     player.dead = NO;
     player.maxSpeed = gameValues.playerMaxSpeed;
-    
-//    SKEmitterNode * emitter = [[SKEmitterNode alloc] init];
-//    [emitter setParticleSize:CGSizeMake(1,1)];
-//    [emitter setParticleBirthRate: 50];
-//    [emitter setParticleSpeed:100];
-//    [emitter setParticleColor:[UIColor greenColor]];
-//    [emitter setParticleLifetime:100];
-//    [emitter setEmissionAngleRange:(2*M_PI)];
-//    [emitter setEmissionAngle:player.zRotation];
-//    [player addChild:emitter];
+
     
 }
 
@@ -175,10 +168,45 @@
     
     // Easy = 5
     // Normal = 20
-    // Hard = ??
-    [self playerHitWithDamageAmount:5];
-    
-    
+    // Hard = 40
+    int currentDifficulty = (int)[[NSUserDefaults standardUserDefaults] integerForKey: @"difficulty"];
+    if (currentDifficulty == 2) {
+        [self playerHitWithDamageAmount:20];
+    } else if (currentDifficulty == 3) {
+        [self playerHitWithDamageAmount:40];
+    } else {
+        [self playerHitWithDamageAmount:5];
+    }
+}
+
+
+-(BOOL)playerDeadYet{
+    if (self.dying){
+        
+    }
+    CFTimeInterval shotWaitTime = [[[GameValues alloc] init] playerShotRechargeTime];
+    CFTimeInterval elapsedTime = CACurrentMediaTime() - lastShotTime;
+    if(elapsedTime > shotWaitTime){
+        self->lastShotTime = CACurrentMediaTime();
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+
+-(void)explode{
+    SKEmitterNode * emitter = [[SKEmitterNode alloc] init];
+    [emitter setParticleSize:CGSizeMake(3,3)];
+    [emitter setParticleBirthRate: 100];
+    [emitter setParticleSpeed:80];
+    [emitter setParticleColor:[UIColor redColor]];
+    [emitter setParticleLifetime:0.6];
+    emitter.numParticlesToEmit = 30;
+    emitter.position = self.position;
+    [emitter setEmissionAngleRange:(2*M_PI)];
+    [self.parent addChild:emitter];
 }
 
 

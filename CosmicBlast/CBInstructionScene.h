@@ -20,6 +20,7 @@
 @property (weak) id <CBGameSceneDelegate> gameDelegate;
 @property CBTiltManager * tiltManager;
 
+
 -(void)setUIValues;
 -(void)setPage:(int)i;
 

@@ -98,8 +98,6 @@ CBTiltVisualizer * visualizer;
     if([function isEqualToString:@"Previous\nLevel"]){
         [self previousLevel];
     } else if ([function isEqualToString:@"Next\nLevel"]){
-        //Remove this for production we want to limit the highest accessible level
-        [[NSUserDefaults standardUserDefaults] setInteger:20 forKey:@"highestBeatenLevel"];
         [self nextLevel];
     } else if([function isEqualToString:@"Tutorial"]){
         [self.gameDelegate launchInstructionScreen];

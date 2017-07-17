@@ -25,6 +25,12 @@ int demoPage;
     if (currentLevel == 0) {
         [[NSUserDefaults standardUserDefaults] setInteger:1 forKey: @"currentLevel"];
     }
+    
+    NSInteger difficulty = [[NSUserDefaults standardUserDefaults] integerForKey: @"difficulty"];
+    if (difficulty == 0) {
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey: @"difficulty"];
+    }
+
     CBTiltManager * manager = [CBTiltManager tiltManager];
     [self setTiltManager:manager];
     

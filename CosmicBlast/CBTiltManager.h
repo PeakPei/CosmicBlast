@@ -10,6 +10,7 @@
 #import "CBVectorMath.h"
 
 @interface CBTiltManager : NSObject
+@property BOOL customTilt;
 
 +(id)tiltManager;
 
@@ -17,5 +18,7 @@
 
 -(void)setTiltZero;
 -(void)resetTiltZero;
+
+
 
 @end

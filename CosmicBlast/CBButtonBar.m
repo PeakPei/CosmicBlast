@@ -100,7 +100,7 @@ CGRect sceneFrame;
 }
 
 +(NSArray<CBButton*> *)getMenuButtonTitles{
-    return [NSArray arrayWithObjects:@"Settings", @"Previous\nLevel", @"Next\nLevel",  @"Start\nLevel", nil];
+    return [NSArray arrayWithObjects:@"Previous\nLevel", @"Next\nLevel", @"Settings",  @"Start\nLevel", nil];
 }
 
 
@@ -120,7 +120,7 @@ CGRect sceneFrame;
 
 
 +(NSArray<CBButton*> *)getSettingsButtonTitles{
-    return [NSArray arrayWithObjects:@"Previous\nPage", @"Next\nPage", @"Reset\nTilt", @"Main\nMenu", nil];
+    return [NSArray arrayWithObjects:@"Default\nTilt",@"Calibrate\nTilt",@"-", @"Main\nMenu", nil];
 }
 
 

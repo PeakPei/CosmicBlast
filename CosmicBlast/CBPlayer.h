@@ -12,6 +12,7 @@
 @property int maxHealth;
 @property int health;
 @property BOOL dead;
+@property BOOL dying;
 @property CGFloat maxSpeed;
 
 
@@ -30,6 +31,8 @@
 +(id)player;
 
 -(void)movePlayerWithAccelerationXvalue:(double)x yValue:(double)y speed:(int)speed;
+
+-(void)explode;
 
 -(void)startBreaking;
 

@@ -62,9 +62,7 @@
     
 
     
-    double lengthA = [CBVectorMath vectorLength:a];
-    double lengthB = [CBVectorMath vectorLength:b];
-    
+
 //    a = [CBVectorMath vectorNormalize:a];
 //    b = [CBVectorMath vectorNormalize:b];
     
